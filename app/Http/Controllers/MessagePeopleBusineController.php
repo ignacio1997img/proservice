@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\MessagePeople;
+use Illuminate\Support\Facades\DB;
+use App\Models\People;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+
+class MessagePeopleBusineController extends Controller
+{
+    public function store(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try {
+            MessagePeople::create([
+                'people_id' => $request->people_id,
+                'rubro_people_id' => $request->rubro_people_id,
+                'busine_id' => $request->busine_id,
+                'rubro_busine_id' => $request->rubro_busine_id,
+                'detail' => $request->detail
+            ]);
+            DB::commit();
+            return response()->json(['success' => true, 'message' => 'Mensaje enviado correctamente.']);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['success' => false, 'message' => 'Error al enviar mensaje.']);
+        }
+    }
+
+
+
+    public function message_people()
+    {
+        $user = Auth::user();
+        $people = People::where('user_id', $user->id)->where('status', 1)->where('deleted_at', null)->first();
+        // return $people;
+        $message = MessagePeople::with(['busine','rubro_busine'])->where('people_id', $people->id)->where('deleted_at', null)->orderBy('id', 'desc')->get();
+        // return $message;
+        return view('message.message-people.browse', compact('message'));
+    }
+
+    public function aceptar(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try {
+            $message = MessagePeople::find($request->id);
+            $message->update([
+                'status' => 1
+            ]);
+            DB::commit();
+            return redirect()->route('message-people.bandeja')->with(['message' => 'Mensaje aceptado correctamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->route('message-people.bandeja')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+
+        }
+    }
+
+    public function rechazar(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try {
+            $message = MessagePeople::find($request->id);
+            $message->update([
+                'status' => 0
+            ]);
+            DB::commit();
+            return redirect()->route('message-people.bandeja')->with(['message' => 'Mensaje rechazado correctamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->route('message-people.bandeja')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }
+    }
+}
