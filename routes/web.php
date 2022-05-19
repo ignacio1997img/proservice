@@ -31,9 +31,13 @@ Route::get('login', function () {
     return redirect('admin/login');
 })->name('login');
 
-Route::get('/', function () {
-    return redirect('admin');
-});
+
+// Route::get('/', function () {
+//     return redirect('admin');
+// });
+Route::get('/', [HomeController::class, 'index']);
+
+
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -86,7 +90,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('search-busine/search', [SearchBusineController::class, 'search'])->name('search-busine.search');
 });
 
-    Route::get('welcome', [HomeController::class, 'welcome'])->name('welcome');
+    // Route::get('welcome', [HomeController::class, 'welcome'])->name('welcome');
 
     Route::get('people/create-people', [PeopleController::class, 'create'])->name('people.create');
     Route::post('people/people-store', [PeopleController::class, 'store'])->name('people.store');
