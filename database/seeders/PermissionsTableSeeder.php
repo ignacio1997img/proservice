@@ -12,12 +12,23 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+
         \DB::table('permissions')->delete();
+        
         Permission::firstOrCreate([
             'key'        => 'browse_admin',
-            // 'key'        => 'browse_clear-cache',
             'table_name' => 'admin',
         ]);
+        
+        // \DB::table('permissions')->delete();
+        
+
+
+        // Permission::firstOrCreate([
+        //     'key'        => 'browse_admin',
+        //     // 'key'        => 'browse_clear-cache',
+        //     'table_name' => 'admin',
+        // ]);
         $keys = [
             // 'browse_admin',
             'browse_bread',
