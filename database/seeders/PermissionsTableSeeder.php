@@ -161,6 +161,21 @@ class PermissionsTableSeeder extends Seeder
 
 
         $keys = [
+            'browse_message-beneficiary-bandeja'
+        ];
+
+        foreach ($keys as $key) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'table_name' => 'message-beneficiary-bandeja',
+            ]);
+        }
+
+
+
+
+
+        $keys = [
             'browse_search-busine',
             'add_message-busine'
         ];

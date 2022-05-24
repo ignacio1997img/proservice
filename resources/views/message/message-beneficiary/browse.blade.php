@@ -1,5 +1,5 @@
 @extends('voyager::master')
-{{-- @if(auth()->user()->hasPermission('browse_message-people-bandeja')) --}}
+@if(auth()->user()->hasPermission('browse_message-beneficiary-bandeja'))
 
 @section('page_title', 'Viendo Registros')
 
@@ -221,9 +221,9 @@
     </script>
 
 @stop
-{{-- 
+
 @else
     @section('content')
         <h1>No tienes permiso</h1>
     @stop
-@endif --}}
+@endif
