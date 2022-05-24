@@ -19,6 +19,8 @@ class CreateMessagePeopleTable extends Migration
             $table->foreignId('rubro_people_id')->nullable()->constrained('rubro_people');
             $table->foreignId('busine_id')->nullable()->constrained('busines');
             $table->foreignId('rubro_busine_id')->nullable()->constrained('rubro_busines');
+            $table->string('imoney')->nullable();//porcio estimado
+            $table->string('fmoney')->nullable();//precio estimado
             $table->text('detail')->nullable();
             $table->datetime('view')->nullable();
             $table->smallInteger('status')->default(2);

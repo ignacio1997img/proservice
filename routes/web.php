@@ -12,6 +12,12 @@ use App\Http\Controllers\SearchWorkController;
 
 use App\Http\Controllers\MessagePeopleBusineController;
 use App\Http\Controllers\SearchBusineController;
+
+use App\Http\Controllers\MessageBusineController;
+
+use App\Http\Controllers\MessageBeneficiaryController;
+use App\Models\MessageBusine;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,8 +60,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('people-perfil-experience/requirement-guardia-store' , [PeopleWorkExperienceController::class, 'requirementGuardiaStore'])->name('work-experience.requirement-guardia-store');
     Route::post('people-perfil-experience/requirement-jardineria-store' , [PeopleWorkExperienceController::class, 'requirementJardineriaStore'])->name('work-experience.requirement-jardineria-store');
 
+    //para la bandeja de la persona
+    Route::get('message-people-bandeja', [MessagePeopleBusineController::class, 'message_people'])->name('message-people.bandeja');
+    Route::post('message-ṕeople-bandeja/aceptar', [MessagePeopleBusineController::class, 'aceptar'])->name('message-people.aceptar');
+    Route::post('message-people-bandeja/rechazar', [MessagePeopleBusineController::class, 'rechazar'])->name('message-people.rechazar');
 
 
+//######## BUSIBNES ##############
     Route::resource('busines', BusineController::class);    
     Route::post('busines/aprobar-busine', [BusineController::class, 'aprobarBusine'])->name('busines.aprobar-busine');
 
@@ -72,10 +83,17 @@ Route::group(['prefix' => 'admin'], function () {
     // para enviar solicicitudes de una empresa a los trabaladores
     Route::resource('message-people-busine', MessagePeopleBusineController::class);
 
-    //para la bandeja de la persona
-    Route::get('message-people-bandeja', [MessagePeopleBusineController::class, 'message_people'])->name('message-people.bandeja');
-    Route::post('message-ṕeople-bandeja/aceptar', [MessagePeopleBusineController::class, 'aceptar'])->name('message-people.aceptar');
-    Route::post('message-people-bandeja/rechazar', [MessagePeopleBusineController::class, 'rechazar'])->name('message-people.rechazar');
+    //para la bandeja de la empresa
+    Route::get('message-busine-bandeja', [MessageBusineController::class, 'message_busine'])->name('message-busine.bandeja');
+    Route::post('message-busine-bandeja/aceptar', [MessageBusineController::class, 'aceptar'])->name('message-busine.aceptar');
+    Route::post('message-busine-bandeja/rechazar', [MessageBusineController::class, 'rechazar'])->name('message-busine.rechazar');
+
+    //para  que la empresa pueda cancelar o eliminar una solicitud
+    Route::post('message-busine-bandeja/cancelar', [MessageBusineController::class, 'cancelar'])->name('message-busine.cancelar');
+
+    //para que la empresa pueda ver los perfiles de las personas que aceptaron sus solicitudes de la empresa
+    Route::get('message-busine.bandeja/people-perfil-view/{people_id}/{rubro_id}', [MessageBusineController::class, 'people_perfil_view'])->name('message-busine.bandeja.people-perfil-view');
+ 
 
 
 
@@ -88,6 +106,20 @@ Route::group(['prefix' => 'admin'], function () {
     //para buscar empresas
     Route::resource('search-busine', SearchBusineController::class);
     Route::post('search-busine/search', [SearchBusineController::class, 'search'])->name('search-busine.search');
+
+    // para enviar solicicitudes de una empresa a los trabaladores
+    Route::resource('message-beneficiary-busine', MessageBusineController::class);
+
+    //para  la bandeja del beneficiario
+    Route::get('message-beneficiary-bandeja', [MessageBeneficiaryController::class, 'message_beneficiary'])->name('message-beneficiary.bandeja');
+
+    //para  que la empresa pueda cancelar o eliminar una solicitud
+    Route::post('message-beneficiary-bandeja/cancelar', [MessageBeneficiaryController::class, 'cancelar'])->name('message-beneficiary.cancelar');
+
+        
+    //para que la empresa pueda ver los perfiles de las personas que aceptaron sus solicitudes de la empresa
+    Route::get('message-beneficiary.bandeja/busine-perfil-view/{busine_id}', [MessageBeneficiaryController::class, 'busine_perfil_view'])->name('message-beneficiary.bandeja.busine-perfil-view');
+
 });
 
     // Route::get('welcome', [HomeController::class, 'welcome'])->name('welcome');

@@ -31,6 +31,7 @@ class PeopleController extends Controller
     }
     public function store(Request $request)
     {
+        // return  $request->all();
         DB::beginTransaction();
         try {
             $password = $request->password;
@@ -44,16 +45,18 @@ class PeopleController extends Controller
             // $user->update(['role_id' => 1]);
 
             $file = $request->file('image');
- 
-            $nombre_origen = $file->getClientOriginalName();
-                    
-            $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                    
-            $dir = "people/perfil/".date('F').date('Y');
-                    
-            Storage::makeDirectory($dir);
-            Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));
-                    
+            if($file)
+            {  
+                $nombre_origen = $file->getClientOriginalName();
+                        
+                $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                        
+                $dir = "people/perfil/".date('F').date('Y');
+                        
+                Storage::makeDirectory($dir);
+                Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));
+                $image_ap = $dir.'/'.$newFileName;
+            }   
 
         
             $people = People::create([
@@ -66,9 +69,9 @@ class PeopleController extends Controller
                 'phone1' => $request->phone1,
                 'phone2' => $request->phone2,
                 'address' => $request->address,
-                'city' => $request->city,
+                // 'city' => $request->city,
                 'sex' => $request->sex,
-                'image' => $dir.'/'.$newFileName,
+                'image' => $file? $image_ap: null
             ]);
 
 
@@ -92,7 +95,7 @@ class PeopleController extends Controller
 
         } catch (\Throwable $th) {
             DB::rollback();
-       
+            return 0;
         }
     }
 

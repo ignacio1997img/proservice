@@ -15,8 +15,23 @@ class MessageBusine extends Model
         'detail',
         'view',
         'status',
-        'delete_at',
+        'deleted_at',
     ];
+
+    public function busine()
+    {
+        return $this->belongsTo(Busine::class, 'busine_id');
+    }
+
+    public function rubro_busine()
+    {
+        return $this->belongsTo(RubroBusine::class, 'rubro_busine_id');
+    }
+
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class, 'beneficiary_id');
+    }
 }
 
 

@@ -23,22 +23,17 @@ class SearchBusineController extends Controller
     public function search(Request $request)
     {
         // dd($request);
-        $data = Busine::with(['rubrobusines'=>function($query)use($request){
-                    $query->where('id', $request->rubro_id);
-                    // dd($query);
-                }])
-        ->where('status',1)->where('deleted_at', null)->get();
+        // $data = Busine::with(['rubrobusines'=>function($query)use($request){
+        //             $query->where('id', $request->rubro_id);
+        //             // dd($query);
+        //         }])
+        // ->where('status',1)->where('deleted_at', null)->get();
 
         $data = Busine::where('rubro_id', $request->rubro_id)->where('status',1)->where('deleted_at', null)->get();
         // dd($data);
 
-
-
-        $rubro_busine = $request->rubro_id;
-
-
-
-        return view('beneficiary.search-busine.search-result', compact('data', 'rubro_busine'));
+        // $rubro_busine = $request->rubro_id;
+        return view('beneficiary.search-busine.search-result', compact('data'));
     }
 
 }

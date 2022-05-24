@@ -58,6 +58,22 @@
                     <br>
                     <p><b>Desea Enviar solicitud...!</b></p>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-6" id="div-destinatario" >
+                        <label class="control-label">Incluir Precio Estimado</label>
+                        <input 
+                        type="checkbox" 
+                        
+                        id="toggleswitch" 
+                        data-toggle="toggle" 
+                        data-on="Interno" 
+                        data-off="Externo" 
+                        >
+                    </div>
+                </div>
+                <div class="row" id="money">
+                    
+                </div>
 
                 <div class="row">   
                     <div class="col-md-12">
@@ -155,6 +171,30 @@
             })
             $('.modal').modal('hide');
         }
+
+        $('#toggleswitch').on('change', function() {
+            if (this.checked) {
+                // alert('checked');
+                var html_money = '<div class="col-md-6">'+
+                                    '<div class="input-group-prepend">'+
+                                        '<span class="input-group-text"><b>Precio Estimado:</b></span>'+
+                                    '</div>'+
+                                    '<input type="text" class="form-control" name="imoney" value="0.00">'+
+                                '</div>'+
+                                '<div class="col-md-6">'+
+                                    '<div class="input-group-prepend">'+
+                                        '<span class="input-group-text"><b>Precio Estimado:</b></span>'+
+                                    '</div>'+
+                                    '<input type="text" class="form-control" name="fmoney" value="0.00">'+
+                                '</div>';
+                $('#money').html(html_money);
+            } else 
+            {
+                $('#money').html('');
+                // alert('unchecked');
+            }
+        });
+
 
     
 </script>

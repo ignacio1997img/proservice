@@ -2,13 +2,17 @@
 @if(auth()->user()->hasPermission('browse_busines_perfil_view'))
 @section('page_title', 'Viendo Ingresos')
 
-    @section('page_header')
-        
+    @section('page_header')        
         <div class="container-fluid">
-            <div class="row">
-                <h1 class="page-title">
-                    <i class="voyager-receipt"></i> Empresa 
-                </h1>
+            <div class="row">                
+                <div class="col-md-8">
+                    <h1 class="page-title">
+                        <i class="voyager-receipt"></i> Empresa 
+                    </h1>
+                </div>
+                <div class="col-md-4">
+    
+                </div>
             </div>
         </div>
     @stop
@@ -125,12 +129,27 @@
                                                     </div>
                                                 </div>                                                
                                             </div>
+
                                             @if(auth()->user()->hasPermission('add_busine-perfil-requirement'))
                                                 <a type="button" data-toggle="modal" data-target="#modal_requirement" class="btn btn-success">
                                                     <i class="voyager-plus"></i> <span>Editar Requisitos</span>
                                                 </a>
                                             @endif
+
+                                            
                                             {{-- para desplegar los requisitos de GUARDIA --}}
+                                            @if ($busine->rubro_id == 1)
+                                                @include('busine.perfil-requirement.guardia')
+                                            @endif
+                                            @if ($busine->rubro_id == 2)
+                                                @include('busine.perfil-requirement.jardineria')
+                                            @endif
+
+
+
+
+
+
                                             
                                             {{-- <table id="detalles" class="table table-bordered table-striped table-sm">
                                                 <thead>
@@ -292,7 +311,7 @@
         </div>
     @stop
 
-    <style>
+    {{-- <style>
         img {
             max-width: 10%;
             max-height: 10%;
@@ -301,7 +320,7 @@
             height: 100px;
             width: 20px;
         }
-    </style>
+    </style> --}}
 
 
     @section('css')

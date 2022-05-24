@@ -15,6 +15,7 @@ class PermissionsTableSeeder extends Seeder
         \DB::table('permissions')->delete();
         Permission::firstOrCreate([
             'key'        => 'browse_admin',
+            // 'key'        => 'browse_clear-cache',
             'table_name' => 'admin',
         ]);
         $keys = [
@@ -49,6 +50,8 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('people');
 
 
+    //############### TRABAJADORES ######################
+
         //paar ver el perfil de la persona
         // Permission::generateFor('people-perfil-experience');
         $keys = [
@@ -81,6 +84,7 @@ class PermissionsTableSeeder extends Seeder
 //____________________________________-________________________________
 
 
+//############### BUSINESS ######################
 
         $keys = [
             'browse_busines_perfil_view',
@@ -110,13 +114,24 @@ class PermissionsTableSeeder extends Seeder
             ]);
         }
 
+        $keys = [
+            'browse_search-work',
+            'add_message-people'
+        ];
+
+        foreach ($keys as $key) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'table_name' => 'search-people',
+            ]);
+        }
+
+        
+
+//____________________________________-________________________________
 
 
-
-
-
-
-
+//############### BENEFICIARIO ######################
 
         // BENEFICIARIO
         $keys = [
@@ -128,6 +143,21 @@ class PermissionsTableSeeder extends Seeder
             Permission::firstOrCreate([
                 'key'        => $key,
                 'table_name' => 'beneficiary-perfil-view',
+            ]);
+        }
+
+
+
+
+        $keys = [
+            'browse_search-busine',
+            'add_message-busine'
+        ];
+
+        foreach ($keys as $key) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'table_name' => 'search-busine',
             ]);
         }
         

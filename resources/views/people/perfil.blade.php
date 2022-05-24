@@ -15,172 +15,158 @@
 @stop
 
 @section('content')
-<div id="app">
-    <div class="page-content browse container-fluid" >
-        @include('voyager::alerts')
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-bordered">
-                    <div class="panel-body">                            
-                        <div class="table-responsive">
-                            <main class="main">   
-                                <div class="card-body">
-                                    @if(auth()->user()->hasPermission('edit_people-perfil-data'))
-                                        <a type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-success">
-                                            <i class="voyager-plus"></i> <span>Editar Datos</span>
-                                        </a>
-                                    @endif
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>CI.</small>
-                                                <div class="form-line">
-                                                    <b>{{$people->ci}} </b>
+    <div id="app">
+        <div class="page-content browse container-fluid" >
+            @include('voyager::alerts')
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-bordered">
+                        <div class="panel-body">                            
+                            <div class="table-responsive">
+                                <main class="main">   
+                                    <div class="card-body">
+                                        @if(auth()->user()->hasPermission('edit_people-perfil-data'))
+                                            <a type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-success">
+                                                <i class="voyager-plus"></i> <span>Editar Datos</span>
+                                            </a>
+                                        @endif
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>CI.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$people->ci}} </b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>                                            
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Nombre.</small>
-                                                <div class="form-line">
-                                                    <b>{{$people->first_name}} </b>
+                                            </div>                                            
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Nombre.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$people->first_name}} </b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>   
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Apellido.</small>
-                                                <div class="form-line">
-                                                    <b>{{$people->last_name}} </b>
+                                            </div>   
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Apellido.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$people->last_name}} </b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>   
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Fecha de Nacimiento.</small>
-                                                <div class="form-line">
-                                                    <b>{{$people->birth_date}}</b>
+                                            </div>   
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Fecha de Nacimiento.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$people->birth_date}}</b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>                                                  
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Email.</small>
-                                                <div class="form-line">
-                                                    <b>{{$people->email}}</b>
+                                            </div>                                                  
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Email.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$people->email}}</b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>                                            
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Telefono 1.</small>
-                                                <div class="form-line">
-                                                    <b> {{$people->phone1}}</b>
+                                            </div>                                            
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Telefono 1.</small>
+                                                    <div class="form-line">
+                                                        <b> {{$people->phone1}}</b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>   
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Telefono 2.</small>
-                                                <div class="form-line">
-                                                    <b> {{$people->phone2}}</b>
+                                            </div>   
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Telefono 2.</small>
+                                                    <div class="form-line">
+                                                        <b> {{$people->phone2}}</b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>      
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Sexo.</small>
-                                                <div class="form-line">
-                                                    <b>{{$people->sex==1? 'Masculino' : 'Femenino'}}</b>
+                                            </div>      
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Sexo.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$people->sex==1? 'Masculino' : 'Femenino'}}</b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>                                                  
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <small>Direccion.</small>
-                                                <div class="form-line">
-                                                    <b>{{$people->address? $people->address:'S/N'}} </b>
+                                            </div>                                                  
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Direccion.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$people->address? $people->address:'S/N'}} </b>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>                                                 
-                                    </div>
-                                    @if(auth()->user()->hasPermission('add_people-perfil-experience'))
-                                        <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
-                                            <i class="voyager-plus"></i> <span>Experiencia de Trabajo</span>
-                                        </a>
-                                    @endif
-                                        <table id="dataTable" class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nro&deg;</th>
-                                                    <th>Experiencia Laboral</th>
-                                                    <th>Estado</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @php
-                                                    $i = 1;
-                                                @endphp
-                                                @foreach ($experiences as $item)
+                                            </div>                                                 
+                                        </div>
+                                        @if(auth()->user()->hasPermission('add_people-perfil-experience'))
+                                            <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
+                                                <i class="voyager-plus"></i> <span>Experiencia de Trabajo</span>
+                                            </a>
+                                        @endif
+                                            <table id="dataTable" class="table table-hover">
+                                                <thead>
                                                     <tr>
-                                                        <td>{{$i}}</td>
-                                                        <td>{{$item->rubro_people->name}}</td>    
-                                                        <td>
-                                                            @if ($item->status == 1)
-                                                                <label class="label label-success">Aprobado</label>
-                                                            @else
-                                                                <label class="label label-danger">Pendiente</label>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            <div class="no-sort no-click bread-actions text-right">
-                                                                {{-- @if(auth()->user()->hasPermission('read_income')) --}}
-                                                                    {{-- <a href="" title="Ver" target="_blank" class="btn btn-sm btn-info view">
-                                                                        <i class="voyager-basket"></i> <span class="hidden-xs hidden-sm">Stock</span>
-                                                                    </a> --}}
-                                                                    {{-- <a href="" title="Ver" target="_blank" class="btn btn-sm btn-info view">
-                                                                        <i class="voyager-file-text"></i> <span class="hidden-xs hidden-sm">Ver</span>
-                                                                    </a>                                                                 --}}
-                                                                {{-- @endif
-                                                                @if($item->condicion == 1) --}}
-                                                                    {{-- @if(auth()->user()->hasPermission('edit_income')) --}}
-                                                                       
-                                                                    {{-- @endif
-                                                                    
-                                                                @endif --}}
-                                                                @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
-                                                                    <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
-                                                                        <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
-                                                                    </a>
-                                                                @endif
-                                                                @if(auth()->user()->hasPermission('delete_people-perfil-experience'))
-                                                                    <button title="Anular" class="btn btn-sm btn-danger delete" data-toggle="modal" data-id="{{$item->id}}" data-target="#modal_delete">
-                                                                        <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Anular</span>
-                                                                    </button>
-                                                                @endif
-                                                            </div>
-                                                        </td>
+                                                        <th>Nro&deg;</th>
+                                                        <th>Experiencia Laboral</th>
+                                                        <th>Estado</th>
+                                                        <th>Acciones</th>
                                                     </tr>
+                                                </thead>
+                                                <tbody>
                                                     @php
-                                                        $i++;
+                                                        $i = 1;
                                                     @endphp
-                                                @endforeach                                        
-                                            </tbody>
-                                        </table>
-                                </div>                      
-                            </main>
+                                                    @foreach ($experiences as $item)
+                                                        <tr>
+                                                            <td>{{$i}}</td>
+                                                            <td>{{$item->rubro_people->name}}</td>    
+                                                            <td>
+                                                                @if ($item->status == 1)
+                                                                    <label class="label label-success">Aprobado</label>
+                                                                @else
+                                                                    <label class="label label-danger">Pendiente</label>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <div class="no-sort no-click bread-actions text-right">
+                                                                    @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                                        <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
+                                                                            <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                                        </a>
+                                                                    @endif
+                                                                    {{-- @if(auth()->user()->hasPermission('delete_people-perfil-experience'))
+                                                                        <button title="Anular" class="btn btn-sm btn-danger delete" data-toggle="modal" data-id="{{$item->id}}" data-target="#modal_delete">
+                                                                            <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Anular</span>
+                                                                        </button>
+                                                                    @endif --}}
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @php
+                                                            $i++;
+                                                        @endphp
+                                                    @endforeach                                        
+                                                </tbody>
+                                            </table>
+                                    </div>                      
+                                </main>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>   
+    </div>   
 
 
 {{-- para editar los datos basico de una persona mediante un perfil --}}

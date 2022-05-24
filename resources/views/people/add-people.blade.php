@@ -1,120 +1,135 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Tickets - GADBENI</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
+	<title>Booking Form HTML Template</title>
 
+	<!-- Google font -->
+	<link href="http://fonts.googleapis.com/css?family=Playfair+Display:900" rel="stylesheet" type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Alice:400,700" rel="stylesheet" type="text/css" />
 
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{{ asset('register/css/bootstrap.min.css')}}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{{ asset('register/css/style.css')}}" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
 </head>
+
 <body>
-    {!! Form::open(['route' => 'people.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text"><b>Ci:</b></span>
-                </div>
-                <input type="number" step="any" class="form-control" id="ci" name="ci" required>
-            </div>
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>Nombre:</b></span>
-                </div>
-                <input type="text" class="form-control" id="first_name" name="first_name" required>
-            </div> 
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>Apellido:</b></span>
-                </div>
-                <input type="text" class="form-control" id="last_name" name="last_name" required>
-            </div> 
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>Fecha Nacimiento:</b></span>
-                </div>
-                <input type="date" class="form-control" id="birth_date" name="birth_date" required>
-            </div> 
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text"><b>Telefono 1:</b></span>
-                </div>
-                <input type="number" step="any" class="form-control" id="phone1" name="phone1" >
-            </div>
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>Telefono 2:</b></span>
-                </div>
-                <input type="number" class="form-control" id="phone2" name="phone2">
-            </div> 
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>Sexo:</b></span>
-                </div>
-                <select name="sex" id="sex" class="form-control">
-                    <option value="">Seleccione su genero</option>
-                    <option value="1">Masculino</option>
-                    <option value="0">Femenino</option>
-                </select>
-                {{-- <input type="text" class="form-control" id="sex" name="sex"> --}}
-            </div> 
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>foto:</b></span>
-                </div>
-                <input type="file" class="form-control" id="image" name="image">
-            </div> 
-        </div>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="booking-bg">
+							<div class="form-header">
+								<h2>Make your reservation</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+							</div>
+						</div>
+						{!! Form::open(['route' => 'people.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                            <div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<span class="form-label">CI</span>
+										<input class="form-control" type="text" name="ci" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Nombre</span>
+										<input class="form-control" type="text" name="first_name" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Apellido</span>
+										<input class="form-control" type="text" name="last_name" required>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Telefono 1</span>
+										<input class="form-control" type="text" name="phone1" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Telefono 2</span>
+										<input class="form-control" type="text" name="phone2" required>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Fecha  Nacimiento</span>
+										<input class="form-control"  name="birth_date" type="date" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Genero</span>
+										<select class="form-control" name="sex"required>
+                                            <option value="">Seleccione</option>
+											<option value="1">Masculino</option>
+											<option value="0">Femenino</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<span class="form-label">Direccion</span>
+										<textarea class="form-control" name="address" id="" cols="10" rows="10"></textarea>
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Usuario</span>
+										<input class="form-control" type="email" name="email" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Contraseña</span>
+										<input class="form-control" type="password" name="password" required>
+									</div>
+								</div>
+							</div>
+							<div class="form-btn">
+								<button class="submit-btn">Check availability</button>
+                                {{-- <button type="submit" class="btn btn-primary btn-sm" title="Registrar..">
+                                    Registrar
+                                </button> --}}
+							</div>
+                        {!! Form::close()!!} 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
-        <div class="row">
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                <span class="input-group-text"><b>Usuario:</b></span>
-                </div>
-                <input type="email" class="form-control" id="email" name="email" >
-            </div>
-            <div class="col-md-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>Contraseña:</b></span>
-                </div>
-                <input type="password" class="form-control" id="password" name="password">
-            </div> 
-        </div>
-        <div class="row">    
-                                 
-            <div class="col-md-12">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><b>Direccion:</b></span>
-                </div>
-                <textarea id="address" class="form-control" name="address" cols="77" rows="3"></textarea>
-            </div>                
-        </div>
-        <div class="modal-footer justify-content-between">
-            <button type="button text-left" class="btn btn-default" data-dismiss="modal" data-toggle="tooltip" title="Volver">Cancelar
-            </button>
-            <button type="submit" class="btn btn-primary btn-sm" title="Registrar..">
-                Registrar
-            </button>
-        </div>
-        
-    </div>
-
-
-    {!! Form::close()!!} 
-    
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-  
-</body>
 </html>

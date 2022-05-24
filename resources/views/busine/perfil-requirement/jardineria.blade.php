@@ -1,4 +1,3 @@
-
 <table id="detalles" class="table table-bordered table-striped table-sm">
     <thead>
         <tr>

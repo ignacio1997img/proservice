@@ -45,14 +45,13 @@
 <div class="modal modal-primary fade" tabindex="-1" id="modal_solicitud" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            {!! Form::open(['route' => 'message-people-busine.store', 'id' => 'form-pagar', 'method' => 'POST', 'class' => 'form-search']) !!}        
+            {!! Form::open(['route' => 'message-beneficiary-busine.store', 'id' => 'form-pagar', 'method' => 'POST', 'class' => 'form-search']) !!}        
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="voyager-check"></i> Enviar solicitud de Trabajo</h4>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="rubro_busine_id" value="{{$rubro_busine}}">
-                <input type="hidden" name="busine_id" id="id">
+                <input type="text" name="busine_id" id="id">
 
                 <div class="text-center" style="text-transform:uppercase">
                     <i class="voyager-check" style="color: green; font-size: 5em;"></i>

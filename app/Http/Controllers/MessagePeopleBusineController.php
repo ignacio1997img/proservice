@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MessagePeopleBusineController extends Controller
 {
+    // para poder enivar mensajes a la persona
     public function store(Request $request)
     {
         // return $request;
@@ -21,6 +22,8 @@ class MessagePeopleBusineController extends Controller
                 'rubro_people_id' => $request->rubro_people_id,
                 'busine_id' => $request->busine_id,
                 'rubro_busine_id' => $request->rubro_busine_id,
+                'imoney' => $request->imoney?$request->imoney:0,
+                'fmoney' => $request->fmoney?$request->fmoney:0,
                 'detail' => $request->detail
             ]);
             DB::commit();
@@ -33,6 +36,7 @@ class MessagePeopleBusineController extends Controller
 
 
 
+    //para que puedan ver las solicitudes de mensajes las personas
     public function message_people()
     {
         $user = Auth::user();
@@ -50,7 +54,8 @@ class MessagePeopleBusineController extends Controller
         try {
             $message = MessagePeople::find($request->id);
             $message->update([
-                'status' => 1
+                'status' => 1,
+                'view' => Carbon::now()
             ]);
             DB::commit();
             return redirect()->route('message-people.bandeja')->with(['message' => 'Mensaje aceptado correctamente.', 'alert-type' => 'success']);
@@ -68,7 +73,8 @@ class MessagePeopleBusineController extends Controller
         try {
             $message = MessagePeople::find($request->id);
             $message->update([
-                'status' => 0
+                'status' => 0,
+                'view' => Carbon::now()
             ]);
             DB::commit();
             return redirect()->route('message-people.bandeja')->with(['message' => 'Mensaje rechazado correctamente.', 'alert-type' => 'success']);
