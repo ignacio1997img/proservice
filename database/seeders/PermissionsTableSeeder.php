@@ -172,9 +172,6 @@ class PermissionsTableSeeder extends Seeder
         }
 
 
-
-
-
         $keys = [
             'browse_search-busine',
             'add_message-busine'
