@@ -81,9 +81,10 @@ class PeopleWorkExperienceController extends Controller
         DB::beginTransaction();
         try {
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
-            // return $ok;
+            
             if($ok)
             {
+                
                 $image_ci = null;
                 $image_ap = null;
                 $image_lsm = null;
@@ -188,6 +189,7 @@ class PeopleWorkExperienceController extends Controller
                 $m=0;
                 $t=0;
                 $n=0;
+               
 
                 $file = $request->file('image_ci');
                 if($file)
@@ -236,7 +238,7 @@ class PeopleWorkExperienceController extends Controller
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_fcc = $dir.'/'.$newFileName;
                 }
-
+               
                 if($request->turno)
                 {
                     $i=0;
@@ -257,13 +259,14 @@ class PeopleWorkExperienceController extends Controller
                         $i++;
                     }
                 }
+               
                 // return $request->all();
                 PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'guardia', 'image_ci' => $image_ci, 'image_ap' => $image_ap,
                                         'image_lsm' => $image_lsm, 'image_fcc' => $image_fcc, 't_manana' => $m, 't_tarde' => $t, 't_noche' => $n, 'estatura' => $request->estatura, 'peso'=>$request->peso]);
         
             }
 
-            
+            // return 1;
             DB::commit();
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
             

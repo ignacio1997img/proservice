@@ -15,6 +15,7 @@ class MessageBeneficiaryController extends Controller
 {
     public function message_beneficiary()
     {
+        // return 1;
         $message = MessageBusine::with(['busine','rubro_busine', 'beneficiary'])->where('deleted_at', null)->orderBy('id', 'desc')->get();
         // return $message;
         return view('message.message-beneficiary.browse', compact('message'));
@@ -50,11 +51,11 @@ class MessageBeneficiaryController extends Controller
         $busine = Busine::find($busine_id);
         return $busine;
         $rubro = RubroBusine::find($busine->rubro_id);
-        $requirement = BusineRequirement::where('busine_id')
+        $requirement = BusineRequirement::where('busine_id')->first();
         // $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('rubro_id', $rubro_id)->first();
         // // return $experiences;
         // $peoplerequirement = PeopleRequirement::where('people_experience_id', $experiences->id)->where('deleted_at', null)->first();
         // return $requirement;
-        return view('message.message-people.people-perfil.perfil', compact('people', 'experiences', 'peoplerequirement', 'rubro_id'));
+        // return view('message.message-people.people-perfil.perfil', compact('people', 'experiences', 'peoplerequirement', 'rubro_id'));
     }
 }

@@ -23,7 +23,7 @@ class CreatePeopleRequirementsTable extends Migration
             //guardia            
             $table->string('image_lsm')->nullable();//libreta de servicio militar
             $table->string('image_fcc')->nullable();//foto de cuerpo completo
-            $table->smallInteger('t_mañana')->nullable();
+            $table->smallInteger('t_manana')->nullable();
             $table->smallInteger('t_tarde')->nullable();
             $table->smallInteger('t_noche')->nullable();
 
