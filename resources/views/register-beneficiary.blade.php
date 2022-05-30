@@ -18,7 +18,7 @@
 
                 <div class="row">
                     <div class="col-md-12" style="">
-                        <div class="info-box" style="height: 600px; width: 550px; background-image: url(https://cdn.pixabay.com/photo/2016/11/17/16/05/icons-1831922_960_720.png)">
+                        <div class="info-box" style="height: 600px; background-image: url(https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg)">
                         </div>
                     </div>
                 </div>
@@ -59,13 +59,14 @@
                         <input type="password" class="form-control" name="password" id="email" placeholder="Contraseña" required>
                         </div>
                     </div>
-                    <div class="my-3">
+                    {{-- <div class="my-3">
                         <div class="loading">Loading</div>
                         <div class="error-message"></div>
                         <div class="sent-message">Your message has been sent. Thank you!</div>
-                    </div>
-                    <div class="text-center col-md-12">
-                        <button type="button" class="btn btn-default">Cancelar</button>
+                    </div> --}}
+                    <br>
+                    <div style="text-align: right" >
+                        {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
                         <button type="submit" class="btn btn-primary">Registrarse</button>
                     </div>
                 {!! Form::close()!!} 
