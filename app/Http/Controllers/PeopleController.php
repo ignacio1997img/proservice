@@ -39,9 +39,16 @@ class PeopleController extends Controller
             {
                 // return redirect()->back()->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
                 // return redirect()->back()->with('error', 'El CI ya existe');
+                // return redirect()->route('people.create')->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
                 return redirect()->route('people.create')->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
-
             }
+
+            $ok = User::where('email', $request->email)->first();
+            if($ok)
+            {
+                return redirect()->back()->with(['message' => 'El email ya existe.', 'alert-type' => 'error']);
+            }
+
             $password = $request->password;
             $user = User::create([
                         'name' => $request->first_name,

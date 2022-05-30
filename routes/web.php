@@ -29,9 +29,20 @@ use App\Models\MessageBusine;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('register-employe', function () {
+    return view('register-employe');
 });
+Route::get('register-busine', function () {
+    return view('register-busine');
+});
+Route::get('register-beneficiary', function () {
+    return view('register-beneficiary');
+});
+
 
 Route::get('login', function () {
     return redirect('admin/login');
