@@ -34,6 +34,14 @@ class PeopleController extends Controller
         // return  $request->all();
         DB::beginTransaction();
         try {
+            $ok = People::where('ci', $request->ci)->first();
+            if($ok)
+            {
+                // return redirect()->back()->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
+                // return redirect()->back()->with('error', 'El CI ya existe');
+                return redirect()->route('people.create')->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
+
+            }
             $password = $request->password;
             $user = User::create([
                         'name' => $request->first_name,
@@ -95,7 +103,7 @@ class PeopleController extends Controller
 
         } catch (\Throwable $th) {
             DB::rollback();
-            return 0;
+            // return 0;
         }
     }
 
