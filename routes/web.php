@@ -106,6 +106,8 @@ Route::group(['prefix' => 'admin'], function () {
     //para que la empresa pueda ver los perfiles de las personas que aceptaron sus solicitudes de la empresa
     Route::get('message-busine.bandeja/people-perfil-view/{people_id}/{rubro_id}', [MessageBusineController::class, 'people_perfil_view'])->name('message-busine.bandeja.people-perfil-view');
  
+    //calificacion
+    Route::post('message-busine.bandeja/calificacion', [MessagePeopleBusineController::class, 'calification'])->name('message-busine.bandeja.calificacion');
 
 
 

@@ -39,6 +39,7 @@ class MessagePeopleBusineController extends Controller
     //para que puedan ver las solicitudes de mensajes las personas
     public function message_people()
     {
+        // return 1;
         $user = Auth::user();
         $people = People::where('user_id', $user->id)->where('status', 1)->where('deleted_at', null)->first();
         // return $people;
@@ -81,6 +82,27 @@ class MessagePeopleBusineController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
             return redirect()->route('message-people.bandeja')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }
+    }
+    public function calification(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try {
+            $message = MessagePeople::find($request->id);
+            $message->update([
+                'star' => $request->star,
+                'comment' => $request->comment,
+                'star_date' => Carbon::now()
+            ]);
+            DB::commit();
+            // return 1;
+            
+            return redirect()->route('message-busine.bandeja')->with(['message' => 'Calificación enviada correctamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            // return 1;
+            return redirect()->route('message-busine.bandeja')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
         }
     }
 }

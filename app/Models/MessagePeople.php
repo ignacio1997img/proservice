@@ -10,7 +10,8 @@ class MessagePeople extends Model
     use HasFactory;
 
     protected $fillable = [
-        'people_id', 'rubro_people_id', 'busine_id', 'rubro_busine_id', 'detail', 'view', 'status', 'imoney', 'fmoney', 'deleted_at'
+        'people_id', 'rubro_people_id', 'busine_id', 'rubro_busine_id', 'detail', 'view', 'status', 'imoney', 'fmoney', 'deleted_at',
+        'star', 'comment', 'star_date'
     ];
 
     public function busine()

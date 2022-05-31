@@ -24,6 +24,13 @@ class CreateMessagePeopleTable extends Migration
             $table->text('detail')->nullable();
             $table->datetime('view')->nullable();
             $table->smallInteger('status')->default(2);
+
+            //para la calificacion de la persona por sus servicios o trabajos
+            $table->smallInteger('star')->default(0);
+            $table->text('comment')->nullable();
+            $table->date('star_date')->nullable();
+
+            
             $table->timestamps();
             $table->softDeletes();
         });
