@@ -16,7 +16,7 @@
 
             <div class="section-title">
             <h2>Registrate Como Empresa</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>Registra tu empresa y podrás encontrar los trabajadores que estás necesitando al instante y no te olvides de verificar tu empresa para que encuentres clientes mediante TrabajosTOP.</p>
             </div>
 
             <div class="row">
