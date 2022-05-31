@@ -13,7 +13,11 @@ class UpdateMessageBusineTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('message_busines', function (Blueprint $table) {
+            $table->smallInteger('star')->default(0);
+            $table->text('comment')->nullable();
+            $table->date('star_date')->nullable();
+        });
     }
 
     /**
@@ -23,6 +27,10 @@ class UpdateMessageBusineTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('message_busines', function (Blueprint $table) {
+            $table->dropColumn('star');
+            $table->dropColumn('comment');
+            $table->dropColumn('star_date');
+        });
     }
 }

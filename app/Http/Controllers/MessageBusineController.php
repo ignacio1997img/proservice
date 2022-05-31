@@ -142,4 +142,32 @@ class MessageBusineController extends Controller
         // return $requirement;
         return view('message.message-people.people-perfil.perfil', compact('people', 'experiences', 'peoplerequirement', 'rubro_id'));
     }
+
+
+
+    public function calification(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try {
+            $message = MessageBusine::find($request->id);
+            $message->update([
+                'star' => $request->star,
+                'comment' => $request->comment,
+                'star_date' => Carbon::now()
+            ]);
+            DB::commit();
+            return redirect()->route('message-beneficiary.bandeja')->with(['message' => 'Calificación enviada correctamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->route('message-beneficiary.bandeja')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }
+    }
+
+
+
+
+
+
+
 }

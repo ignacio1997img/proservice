@@ -21,6 +21,11 @@ class CreateMessageBusinesTable extends Migration
             $table->text('detail')->nullable();
             $table->datetime('view')->nullable();
             $table->smallInteger('status')->default(2);
+
+            $table->smallInteger('star')->default(0);
+            $table->text('comment')->nullable();
+            $table->date('star_date')->nullable();
+            
             $table->timestamps();
             $table->softDeletes();
         });

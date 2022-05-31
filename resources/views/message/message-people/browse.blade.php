@@ -70,7 +70,7 @@
                                         </td>
                                         <td class="actions text-right">
                                             @if ($item->status == 1)
-                                                <a type="button" data-toggle="modal" href="https://wa.me/59169154634?text=Hola, quiero contactarme con usted"  class="btn btn-success" title="Contactarme"><i class="fa-brands fa-whatsapp"></i> <span class="hidden-xs hidden-sm"></span></a>                                           
+                                                <a type="button" data-toggle="modal" href="https://wa.me/591{{$item->busine->phone1? $item->busine->phone1:$item->busine->phone2}}?text=Hola, quiero contactarme con usted"  class="btn btn-success" title="Contactarme"><i class="fa-brands fa-whatsapp"></i> <span class="hidden-xs hidden-sm"></span></a>                                           
                                             @endif
                                             @if ($item->status == 2)
                                                 <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-primary"><span class="hidden-xs hidden-sm">Aceptar</span></a>

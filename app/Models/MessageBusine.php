@@ -16,6 +16,8 @@ class MessageBusine extends Model
         'view',
         'status',
         'deleted_at',
+
+        'star', 'comment', 'star_date'
     ];
 
     public function busine()

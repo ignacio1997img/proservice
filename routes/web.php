@@ -18,6 +18,7 @@ use App\Http\Controllers\MessageBusineController;
 
 use App\Http\Controllers\MessageBeneficiaryController;
 use App\Models\MessageBusine;
+use App\Models\MessagePeople;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,6 +136,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('message-beneficiary.bandeja/busine-perfil-view/{busine_id}', [MessageBeneficiaryController::class, 'busine_perfil_view'])->name('message-beneficiary.bandeja.busine-perfil-view');
 
 
+    //calificacion
+    Route::post('message-beneficiary.bandeja/calificacion', [MessageBusineController::class, 'calification'])->name('message-beneficiary.bandeja.calificacion');
 
 
 

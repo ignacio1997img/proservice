@@ -89,7 +89,7 @@
                                                 </td>
                                                 <td class="actions text-right">
                                                     @if ($item->status == 1)
-                                                        <a type="button" data-toggle="modal" href="https://wa.me/59167662833?text=Hola, quiero contactarme con usted"  class="btn btn-success" title="Contactarme"><i class="fa-brands fa-whatsapp"></i> <span class="hidden-xs hidden-sm"></span></a>                                           
+                                                        <a type="button" data-toggle="modal" href="https://wa.me/591{{$item->beneficiary->phone1? $item->beneficiary->phone1 : $item->beneficiary->phone2}}?text=Hola, quiero contactarme con usted"  class="btn btn-success" title="Contactarme"><i class="fa-brands fa-whatsapp"></i> <span class="hidden-xs hidden-sm"></span></a>                                           
                                                     @endif
                                                     @if ($item->status == 2)
                                                         <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-primary"><span class="hidden-xs hidden-sm">Aceptar</span></a>
@@ -285,32 +285,6 @@
 
 
     {{-- para cancelar la solicitud enviada al trabajador --}}
-    <div class="modal fade" tabindex="-1" id="modal_calificars" role="dialog">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                {!! Form::open(['route' => 'message-busine.aceptar', 'method' => 'POST']) !!}
-                <div class="modal-header" >
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="fa-regular fa-envelope"></i> Calificar</h4>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="id">
-
-                    <div class="text-center" style="text-transform:uppercase">
-                        {{-- <i class="voyager-check" style="color: green; font-size: 5em;"></i> --}}
-                        <i class="fa-regular fa-envelope" style="color: rgb(51, 161, 75); font-size: 4em;"></i>
-                        <br>
-                        <p><b>Aceptar Solicitud....!</b></p>
-                    </div>
-                </div>                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <input type="submit" class="btn btn-dark" value="Sí, ACEPTAR">
-                </div>
-                {!! Form::close()!!} 
-            </div>
-        </div>
-    </div>
     <div class="modal modal-primary fade" data-backdrop="static" data-keyboard="false" id="modal_calificar" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm">
         <div class="modal-content">

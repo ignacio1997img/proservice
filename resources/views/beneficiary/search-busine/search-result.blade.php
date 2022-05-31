@@ -51,7 +51,7 @@
                 <h4 class="modal-title"><i class="voyager-check"></i> Enviar solicitud de Trabajo</h4>
             </div>
             <div class="modal-body">
-                <input type="text" name="busine_id" id="id">
+                <input type="hidden" name="busine_id" id="id">
 
                 <div class="text-center" style="text-transform:uppercase">
                     <i class="voyager-check" style="color: green; font-size: 5em;"></i>
