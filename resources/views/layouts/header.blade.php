@@ -1,7 +1,8 @@
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">TrabajosTop</a></h1>
+      <h1 class="logo"><a href="{{url('/')}}"><span style="color:rgb(13, 86, 221)">Trabajos</span><span style="color:rgb(216, 105, 15)">TOP</span></a></h1>
+
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 

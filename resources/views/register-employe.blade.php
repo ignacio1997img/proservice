@@ -1,6 +1,13 @@
 @extends('layouts.master')
 
 @section('main')
+<style>
+    .div-img {
+        width: 600px;
+        height: 910px;
+        /* background-color: #9FC; */
+        }
+</style>
     <main id="main">
 
     <!-- ======= Contact Section ======= -->
@@ -9,7 +16,7 @@
 
             <div class="section-title">
             <h2>Registrate Como Trabajador</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>Regístrate como trabajador y elige todas las áreas en las que quisieras trabajar. y quédate atento a tus notificaciones ya que te estaremos invitando a capacitaciones gratuitas todos los meses!.</p>
             </div>
 
             <div class="row">
@@ -17,9 +24,12 @@
             <div class="col-lg-6">
 
                 <div class="row">
-                    <div class="col-md-12" style="">
+                    {{-- <div class="col-md-12" style="">
                         <div class="info-box" style="height: 600px; background-image: url(https://cdn.pixabay.com/photo/2015/01/09/11/09/meeting-594091_960_720.jpg)">
                         </div>
+                    </div> --}}
+                    <div class="col-md-12 div-img" style="height: 600px;">
+                        <img src="images/register/BUSCO-TRABAJO-3.png" class="img-fluid" alt="">
                     </div>
                 </div>
 

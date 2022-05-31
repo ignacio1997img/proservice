@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
-          <img src="template/assets/img/hero-img.jpg" class="img-fluid" alt="">
+          <img src="template/assets/img/hero-img.png" class="img-fluid" alt="">
         </div>
       </div>
     </div>

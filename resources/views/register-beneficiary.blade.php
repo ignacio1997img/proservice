@@ -1,6 +1,13 @@
 @extends('layouts.master')
 
 @section('main')
+<style>
+    .div-img {
+        width: 600px;
+        height: 910px;
+        /* background-color: #9FC; */
+        }
+</style>
     <main id="main">
 
     <!-- ======= Contact Section ======= -->
@@ -17,9 +24,12 @@
             <div class="col-lg-6">
 
                 <div class="row">
-                    <div class="col-md-12" style="">
-                        <div class="info-box" style="height: 600px; background-image: url(https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg)">
+                    {{-- <div class="col-md-12" style="">
+                        <div class="info-box" style="height: 400px; background-image: url(https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg)" >
                         </div>
+                    </div> --}}
+                    <div class="col-md-12 div-img" style="height: 600px;">
+                        <img src="images/register/BUSCO-EMPRESA-1.png" class="img-fluid" alt="">
                     </div>
                 </div>
 
