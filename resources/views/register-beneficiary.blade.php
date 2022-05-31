@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-lg-6 mt-4 mt-lg-0">
-                {!! Form::open(['route' => 'beneficiary.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                {!! Form::open(['route' => 'beneficiary.store', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                     <div class="row">
                         <div class="col-md-6 form-group">
                         <input type="text" name="name" class="form-control" id="nombre" placeholder="Razon Social" required>
@@ -77,7 +77,9 @@
                     <br>
                     <div style="text-align: right" >
                         {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                        <button type="submit" class="btn" style="background-color: #ff9d00;">Registrarse</button>
+                        {{-- <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a> --}}
+
                     </div>
                 {!! Form::close()!!} 
             </div>

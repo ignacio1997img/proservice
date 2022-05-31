@@ -45,7 +45,7 @@
                                         </thead>
                                         <tbody>
                                             @forelse($entrada as $item)
-                                            <tr style="text-align: center">
+                                            <tr @if (!$item->view) style="background-color: rgba(192,57,43,0.3); text-align: center" @endif style="text-align: center">
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->beneficiary->name }}<br>{{$item->rubro_busine->name}} </td>
                                         
@@ -113,7 +113,7 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->imoney || $item->fmoney)
-                                                        {{ $item->imoney }} -  {{ $item->imoney }}<br>
+                                                        {{ $item->imoney }} -  {{ $item->fmoney }}<br>
                                                     @else
                                                         <i class="fa-solid fa-bars"></i>
                                                     @endif

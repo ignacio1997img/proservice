@@ -38,7 +38,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse($message as $item)
-                                    <tr style="text-align: center">
+                                    <tr @if (!$item->view) style="background-color: rgba(192,57,43,0.3); text-align: center" @endif style="text-align: center">
                                         <td>{{ $item->id }}</td>
                                         <td>
                                             @if ($item->status==1)
@@ -70,7 +70,7 @@
                                         </td>
                                         <td class="actions text-right">
                                             @if ($item->status == 1)
-                                                <a type="button" data-toggle="modal" href="https://wa.me/59167662833?text=Hola, quiero contactarme con usted"  class="btn btn-success" title="Contactarme"><i class="fa-brands fa-whatsapp"></i> <span class="hidden-xs hidden-sm"></span></a>                                           
+                                                <a type="button" data-toggle="modal" href="https://wa.me/59169154634?text=Hola, quiero contactarme con usted"  class="btn btn-success" title="Contactarme"><i class="fa-brands fa-whatsapp"></i> <span class="hidden-xs hidden-sm"></span></a>                                           
                                             @endif
                                             @if ($item->status == 2)
                                                 <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-primary"><span class="hidden-xs hidden-sm">Aceptar</span></a>
@@ -132,7 +132,8 @@
                     <input type="hidden" name="id" id="id">
 
                     <div class="text-center" style="text-transform:uppercase">
-                        <i class="voyager-check" style="color: green; font-size: 5em;"></i>
+                        {{-- <i class="voyager-check" style="color: green; font-size: 5em;"></i> --}}
+                        <i class="fa-solid fa-message" style="font-size: 4em;"></i>
                         <br>
                         <p><b>Rechazar Solicitud....!</b></p>
                     </div>

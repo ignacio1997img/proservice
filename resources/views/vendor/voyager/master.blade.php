@@ -145,6 +145,62 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
     }
     @endif
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
+<script>
+    $(function() {
+        setInterval(            
+            function () 
+            {                
+                $.get('{{route('get.notifications')}}', function (data) {
+                    if(data.length > 0)
+                    {
+                        // alert(data.length);
+                        var luz = '<i class="voyager-bell text-danger" style="width: 20px; font-size: 1.5em;"></i>'
+                            luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
+                        $('#not').html(luz)
+                        $('#bandeja').text(data.length)
+                        const myTimeout1 = setTimeout(si, 400);
+                        
+                    }
+                    else
+                    {
+                        var luz = '<i class="voyager-bell text-primary" style="width: 20px; font-size: 1.5em;"></i>'
+                            luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
+                        $('#not').html(luz)
+                    }
+                    
+
+                    $('#listadoc').text('Tiene '+data.length + ' Solicitud')
+                    var list = '';
+                    var j = '';
+                    list = '<table class="dataTable table-hover">'
+                    list+='<tbody>'
+                    for (var i = 0; i < data.length; ++i) {
+                        list+='<tr>'
+                        list+='<td>'+data[i].name+'</td>'
+                        list+='<tr>'                            
+                    }
+                    list+='</tbody>'
+                    list +='</table>'
+                    $('#notificaciones').html(list);
+                    
+
+
+
+                });
+            }, 800 //en medio minuto se recargará solo la campana de notificación..
+        );
+       
+    });
+
+    function si()
+    {
+        var luz = '<i class="voyager-bell text-primary" style="width: 20px; font-size: 1.5em;"></i>'
+                            luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
+        $('#not').html(luz)
+    }
+
+</script>
 @include('voyager::media.manager')
 @yield('javascript')
 @stack('javascript')

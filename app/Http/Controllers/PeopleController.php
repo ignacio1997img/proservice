@@ -111,6 +111,7 @@ class PeopleController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
             // return 0;
+            return redirect()->back()->with(['message' => 'Contactese Con Los Administradores.', 'alert-type' => 'error']);
         }
     }
 

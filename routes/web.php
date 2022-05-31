@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PeopleController;
@@ -130,6 +131,17 @@ Route::group(['prefix' => 'admin'], function () {
         
     //para que la empresa pueda ver los perfiles de las personas que aceptaron sus solicitudes de la empresa
     Route::get('message-beneficiary.bandeja/busine-perfil-view/{busine_id}', [MessageBeneficiaryController::class, 'busine_perfil_view'])->name('message-beneficiary.bandeja.busine-perfil-view');
+
+
+
+
+
+
+
+
+
+    //  notificaciones
+    Route::get('notification-message', [AjaxController::class, 'getNotifications'])->name('get.notifications');
 
 });
 

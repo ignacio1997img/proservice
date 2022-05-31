@@ -49,11 +49,12 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-block login-button">
+            <button type="submit" class="btn btn-success">
                 <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('voyager::login.loggingin') }}...</span>
                 <span class="signin">{{ __('voyager::generic.login') }}</span>
             </button>
-            {{-- <a type="button" href="{{route('welcome')}}">si</a> --}}
+            &nbsp;&nbsp;&nbsp;
+            <a type="button" href="{{url('/')}}" class="btn btn-dark">Cancelar</a>
 
         </form>
 
