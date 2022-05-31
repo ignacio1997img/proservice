@@ -9,8 +9,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="{{url('/')}}">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          {{-- <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li> --}}
           <li><a class="nav-link scrollto " href="#portfolio">Buscar Trabajadores</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Buscar Empresas</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
