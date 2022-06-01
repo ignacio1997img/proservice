@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-lg-6 mt-4 mt-lg-0">
-                {!! Form::open(['route' => 'beneficiary.store', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                {!! Form::open(['route' => 'beneficiary.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                     <div class="row">
                         <div class="col-md-6 form-group">
                         <input type="text" name="name" class="form-control" id="nombre" placeholder="Razon Social" required>

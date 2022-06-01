@@ -55,9 +55,10 @@
 @section('page_header')
     <h1 class="page-title">
         <i class="voyager-folder"></i> Requisitos para {{$rubro->name}}
+        &nbsp; 
         <a href="{{route('people-perfil-experience.index')}}" class="btn btn-warning">
-            <span class="glyphicon glyphicon-list"></span>&nbsp;
-            Volver a la lista
+          <i class="fa-solid fa-circle-left"></i>
+            Volver
         </a>
     </h1>
 @stop

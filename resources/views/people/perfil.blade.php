@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="page-title">
-                    <i class="voyager-people"></i> Perfil Persona
+                    <i class="fa-solid fa-person-digging"></i> Perfil
                 </h1>
             </div>
         </div>

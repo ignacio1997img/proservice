@@ -92,9 +92,11 @@
                         <div class="sent-message">Your message has been sent. Thank you!</div>
                     </div> --}}
                     <br>
-                    <div class="text-center col-md-12">
-                        <button type="button" class="btn btn-default">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <div style="text-align: right" >
+                        {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
+                        <button type="submit" class="btn" style="background-color: #ff9d00;">Registrarse</button>
+                        {{-- <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a> --}}
+
                     </div>
                 {!! Form::close()!!} 
             </div>
