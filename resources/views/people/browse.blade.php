@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="page-title">
-                    <i class="voyager-person"></i> Personas
+                    <i class="fa-solid fa-person-digging"></i> Trabajadores
                 </h1>
                 {{-- <a href="" class="btn btn-success btn-add-new">
                     <i class="voyager-plus"></i> <span>Crear</span>
@@ -71,7 +71,7 @@
                                             @endif
                                         </td>
                                         <td class="actions text-right dt-not-orderable sorting_disabled">
-                                            <a type="button" data-toggle="modal" href=""  class="btn btn-warning"><i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span></a>                                           
+                                            <a type="button" data-toggle="modal" href="{{route('people.view', $item->id)}}"  class="btn btn-warning"><i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span></a>                                           
                                         </td>
 
                                     </tr>

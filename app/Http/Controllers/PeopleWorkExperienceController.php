@@ -74,6 +74,29 @@ class PeopleWorkExperienceController extends Controller
 
 
 
+    //FUNCION PARA APROBAR LOS RUBRO O EXPERIENCIA DE TRABAJOS
+    public function aprobarRubro(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try
+        {
+            $experience = PeopleExperience::find($request->id);
+            $experience->update(['status' => 1]);
+            DB::commit();
+            return redirect()->route('people.view', $experience->people_id)->with(['message' => 'Registro aprobado exitosamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th)
+        {
+            DB::rollBack();
+            return redirect()->route('people.view', $experience->people_id)->with(['message' => 'Ocurrió un error al aprobar el registro.', 'alert-type' => 'error']);
+        }
+    }
+
+
+
+
+
+
     //FUNCIONES PARA REGISTRAR LOS REQUERIMIENTOS DE CADA RUBRO DE MANERA ESTATICA
 
     public function requirementGuardiaStore(Request $request)

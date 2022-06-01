@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="page-title">
-                    <i class="voyager-person"></i> Empresa
+                    <i class="fa-solid fa-briefcase"></i> Empresa
                 </h1>
                 {{-- <a href="" class="btn btn-success btn-add-new">
                     <i class="voyager-plus"></i> <span>Crear</span>
@@ -99,15 +99,6 @@
                         <br>
                         <p><b>Verificar Empresa....!</b></p>
                     </div>
-{{-- 
-                    <div class="row">   
-                        <div class="col-md-12">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><b>Observacion:</b></span>
-                            </div>
-                            <textarea id="observacion" class="form-control" name="observacion" cols="77" rows="3"></textarea>
-                        </div>                
-                    </div> --}}
                 </div>                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

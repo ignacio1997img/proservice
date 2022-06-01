@@ -63,10 +63,13 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
     Route::resource('people', PeopleController::class);
-
+    Route::get('people/view/{id}', [PeopleController::class, 'read'])->name('people.view');
+    Route::post('people/view/aprobar-rubro', [PeopleWorkExperienceController::class, 'aprobarRubro'])->name('people.aprobarRubro');
+    
 
     //rutas para exeperiencia laboral de la persona
     Route::resource('people-perfil-experience', PeopleWorkExperienceController::class);
+
     Route::post('people-perfil-experience/perfil/update', [PeopleController::class, 'perfilUpdate'])->name('people-perfil.update');
     Route::delete('people-perfil-experience/delete', [PeopleWorkExperienceController::class, 'destroy'])->name('work-experience.delete');
     Route::get('people-perfil-experience/requirement-create/{id}/{rubro_id}', [PeopleWorkExperienceController::class, 'requirementCreate'])->name('work-experience.requirement-create');

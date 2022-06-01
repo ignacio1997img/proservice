@@ -1,5 +1,5 @@
 @extends('voyager::master')
-@if(auth()->user()->hasPermission('browse_people-perfil-experience'))
+@if(auth()->user()->hasPermission('browse_people-perfil-experience') || auth()->user()->hasRole('admin'))
 @section('page_title', 'Viendo Registros')
 
 @section('page_header')
@@ -8,6 +8,22 @@
             <div class="col-md-8">
                 <h1 class="page-title">
                     <i class="fa-solid fa-person-digging"></i> Perfil
+                    &nbsp; 
+                    {{-- para el administrador que va a aceptar los rubro de la persona --}}
+                    @if(auth()->user()->hasRole('admin'))
+                        <a href="{{route('people.index')}}" class="btn btn-warning">
+                        <i class="fa-solid fa-circle-left"></i>
+                            Volver
+                        </a>
+                    @endif
+
+
+                    {{-- @if(auth()->user()->hasPermission('browse_people-perfil-experience'))
+                        <a href="{{route('people-perfil-experience.index')}}" class="btn btn-warning">
+                        <i class="fa-solid fa-circle-left"></i>
+                            Volver
+                        </a>
+                    @endif --}}
                 </h1>
             </div>
         </div>
@@ -25,7 +41,7 @@
                             <div class="table-responsive">
                                 <main class="main">   
                                     <div class="card-body">
-                                        @if(auth()->user()->hasPermission('edit_people-perfil-data'))
+                                        @if(auth()->user()->hasPermission('edit_people-perfil-data') && !auth()->user()->hasRole('admin'))
                                             <a type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-success">
                                                 <i class="voyager-plus"></i> <span>Editar Datos</span>
                                             </a>
@@ -108,9 +124,9 @@
                                                 </div>
                                             </div>                                                 
                                         </div>
-                                        @if(auth()->user()->hasPermission('add_people-perfil-experience'))
+                                        @if(auth()->user()->hasPermission('add_people-perfil-experience') && !auth()->user()->hasRole('admin'))
                                             <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
-                                                <i class="voyager-plus"></i> <span>Experiencia de Trabajo</span>
+                                                <i class="voyager-plus"></i> <span>Busco trabajo de</span>
                                             </a>
                                         @endif
                                             <table id="dataTable" class="table table-hover">
@@ -139,16 +155,17 @@
                                                             </td>
                                                             <td>
                                                                 <div class="no-sort no-click bread-actions text-right">
+
+
+                                                                    @if ($item->status == 2 && auth()->user()->hasRole('admin'))
+                                                                        <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
+                                                                    @endif
+
                                                                     @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
                                                                         <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
                                                                             <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
                                                                         </a>
                                                                     @endif
-                                                                    {{-- @if(auth()->user()->hasPermission('delete_people-perfil-experience'))
-                                                                        <button title="Anular" class="btn btn-sm btn-danger delete" data-toggle="modal" data-id="{{$item->id}}" data-target="#modal_delete">
-                                                                            <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Anular</span>
-                                                                        </button>
-                                                                    @endif --}}
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -168,6 +185,32 @@
         </div>
     </div>   
 
+    {{-- modal para aprobar los rubros de cada persona --}}
+    <div class="modal modal-primary fade" tabindex="-1" id="modal_aprobar" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {!! Form::open(['route' => 'people.aprobarRubro', 'method' => 'POST']) !!}
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="fa-solid fa-check-to-slot"></i> Verificar Rubro</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id">
+
+                    <div class="text-center" style="text-transform:uppercase">
+                        <i class="fa-solid fa-check-to-slot" style="color: rgb(53, 232, 53); font-size: 5em;"></i>
+                        <br>
+                        <p><b>Verificar Rubro....!</b></p>
+                    </div>
+                </div>                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-dark" value="Sí, VERIFICAR">
+                </div>
+                {!! Form::close()!!} 
+            </div>
+        </div>
+    </div>
 
 {{-- para editar los datos basico de una persona mediante un perfil --}}
 {{-- modal para editar los datos de la empresa --}}
@@ -394,6 +437,20 @@
                         order: [[ 0, 'desc' ]],
                     })
         });
+
+        $('#modal_aprobar').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) 
+
+                var id = button.data('id')
+
+                var modal = $(this)
+                modal.find('.modal-body #id').val(id)
+                
+        });
+
+
+
+
         $('#modal_delete').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) //captura valor del data-empresa=""
 
@@ -402,6 +459,7 @@
                 modal.find('.modal-body #id').val(id)
                 
         });
+
     </script>
 @stop
 @else

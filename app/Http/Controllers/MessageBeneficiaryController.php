@@ -10,13 +10,15 @@ use App\Models\Busine;
 use App\Models\RubroBusine;
 use App\Models\BusineRequirement;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class MessageBeneficiaryController extends Controller
 {
     public function message_beneficiary()
     {
         // return 1;
-        $message = MessageBusine::with(['busine','rubro_busine', 'beneficiary'])->where('deleted_at', null)->orderBy('id', 'desc')->get();
+        $busine = Busine::where('user_id', Auth::user()->id)->first();
+        $message = MessageBusine::with(['busine','rubro_busine', 'beneficiary'])->where('busine_id', $busine->id)->where('deleted_at', null)->orderBy('id', 'desc')->get();
         // return $message;
         return view('message.message-beneficiary.browse', compact('message'));
     }

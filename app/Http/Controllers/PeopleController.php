@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\People;
+use App\Models\PeopleExperience;
+use App\Models\RubroPeople;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +17,7 @@ class PeopleController extends Controller
     public function index()
     {
         $people = People::where('status',1)->where('deleted_at', null)->get();
+        // return 1;
         return view('people.browse', compact('people'));
     }
     
@@ -149,5 +152,19 @@ class PeopleController extends Controller
             DB::rollBack();
             return redirect()->route('people-perfil-experience.index')->with(['message' => 'Error al actualizar el perfil.', 'alert-type' => 'error']);
         }
+    }
+
+
+
+    //para que el administrador pueda ver los datos de una persona
+
+    public function read($id)
+    {
+        $people = People::find($id);
+        
+        $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
+        $experiences = PeopleExperience::with('rubro_people')->where('people_id',$id)->where('deleted_at', null)->where('status', '!=', 0)->get();
+        // return $experiences;
+        return view('people.perfil', compact('people', 'experiences', 'rubro'));
     }
 }
