@@ -220,7 +220,7 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="voyager-plus"></i> Editar Datos de la Empresa</h4>
+                <h4 class="modal-title"><i class="voyager-plus"></i> Editar Datos Personales</h4>
             </div>
             {!! Form::open(['route' => 'people-perfil.update','class' => 'was-validated'])!!}
                 <!-- Modal body -->
@@ -324,7 +324,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-plus"></i> Crear cheque</h4>
+                    <h4 class="modal-title"><i class="voyager-plus"></i>Registrar</h4>
                 </div>
                 {!! Form::open(['route' => 'people-perfil-experience.store','class' => 'was-validated'])!!}
                     <!-- Modal body -->
@@ -332,7 +332,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Tipo de Cheque:</b></span>
+                                    <span class="input-group-text"><b>Tipo de Trabajo:</b></span>
                                 </div>
                                 <select name="rubro_id" id="rubro_id" class="form-control select2" required>
                                     <option value="">Seleccione un tipo..</option>
