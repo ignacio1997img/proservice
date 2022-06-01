@@ -113,8 +113,13 @@
                                                 </div>                                                
                                             </div>
 
-                                            
-                                            <table id="detalles" class="table table-bordered table-striped table-sm">
+                                            @if ($busine->rubro_id == 1)
+                                                @include('busine.perfil-requirement.guardia')
+                                            @endif
+                                            @if ($busine->rubro_id == 2)
+                                                @include('busine.perfil-requirement.jardineria')
+                                            @endif
+                                            {{-- <table id="detalles" class="table table-bordered table-striped table-sm">
                                                 <thead>
                                                     <tr>
                                                         <th>Tipo</th>
@@ -157,7 +162,7 @@
                                                         </td>          
                                                     </tr>
                                                 </tbody>                                        
-                                            </table>
+                                            </table> --}}
                                             
                                         </div>                      
                                     </main>

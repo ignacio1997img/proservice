@@ -6,8 +6,9 @@
                 <div class="panel panel-bordered">
                     <div class="panel-body">                            
                         <div class="table-responsive">
-                            <main class="main">        
-                            {!! Form::open(['route' => 'work-experience.requirement-jardineria-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                            <main class="main">    
+                                @if(!auth()->user()->hasRole('admin'))    
+                                {!! Form::open(['route' => 'work-experience.requirement-jardineria-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                                 
                                 <div class="card-body">
                                     <input type="hidden" name="people_experience_id" value="{{$id}}">
@@ -69,7 +70,8 @@
                                     <div class="card-footer">
                                         <button id="btn_guardar" type="submit"  class="btn btn-primary"><i class="fas fa-save"></i> Actualizar</button>
                                     </div>   
-                                {!! Form::close()!!}    
+                                {!! Form::close()!!}
+                                @endif    
                                     <table id="detalles" class="table table-bordered table-striped table-sm">
                                         <thead>
                                             <tr>

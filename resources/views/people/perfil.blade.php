@@ -307,7 +307,7 @@
                 <div class="modal-footer justify-content-between">
                     <button type="button text-left" class="btn btn-danger" data-dismiss="modal" data-toggle="tooltip" title="Volver">Cancelar
                     </button>
-                    <button type="submit" class="btn btn-success btn-sm" title="Registrar..">
+                    <button type="submit" class="btn btn-dark btn-sm" title="Registrar..">
                         Actualizar
                     </button>
                 </div>

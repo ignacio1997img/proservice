@@ -56,10 +56,14 @@
     <h1 class="page-title">
         <i class="voyager-folder"></i> Requisitos para {{$rubro->name}}
         &nbsp; 
-        <a href="{{route('people-perfil-experience.index')}}" class="btn btn-warning">
+        <a href="{{ auth()->user()->hasRole('admin')? URL::previous():route('people-perfil-experience.index')}}" class="btn btn-warning">
           <i class="fa-solid fa-circle-left"></i>
             Volver
         </a>
+        {{-- <a href="{{ URL::previous() }}" class="btn btn-warning">
+            <i class="fa-solid fa-circle-left"></i>
+              Volver
+        </a> --}}
     </h1>
 @stop
 
