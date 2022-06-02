@@ -22,7 +22,7 @@ class RubroBusinesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Empresa de Seguridad Fisical',
+                'name' => 'Empresa de Seguridad Fisica',
                 'description' => NULL,
                 'image' => NULL,
                 'status' => 1,
