@@ -20,6 +20,8 @@ class CreateMessageBusinesTable extends Migration
             $table->foreignId('beneficiary_id')->nullable()->constrained('beneficiaries');
             $table->text('detail')->nullable();
             $table->datetime('view')->nullable();
+            $table->datetime('date_view')->nullable();
+
             $table->smallInteger('status')->default(2);
 
             $table->smallInteger('star')->default(0);

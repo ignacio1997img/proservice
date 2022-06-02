@@ -152,37 +152,43 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
             function () 
             {                
                 $.get('{{route('get.notifications')}}', function (data) {
-                    if(data.length > 0)
-                    {
+                    // alert(data)
+                    // if(data > 0)
+                    // {
                         // alert(data.length);
-                        var luz = '<i class="voyager-bell text-danger" style="width: 20px; font-size: 1.5em;"></i>'
-                            luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
-                        $('#not').html(luz)
-                        $('#bandeja').text(data.length)
-                        const myTimeout1 = setTimeout(si, 400);
+                        // var luz = '<i class="voyager-bell text-danger" style="width: 20px; font-size: 1.5em;"></i>'
+                        //     luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
+                        // var luz = '<span class="voyager-bell text-danger" style="font-size: 25px"></span> <span class="badge" style="margin-left: -10px">'+data+'</span>'
                         
-                    }
-                    else
-                    {
-                        var luz = '<i class="voyager-bell text-primary" style="width: 20px; font-size: 1.5em;"></i>'
-                            luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
-                        $('#not').html(luz)
-                    }
+                        $('#not').html(data)
+                        // $('#bandeja').text(data)
+                        // $('#bandeja').text(data.length)
+                        // const myTimeout1 = setTimeout(si, 400);
+                        
+                    // }
+                    // else
+                    // {
+                    //     // var luz = '<i class="voyager-bell text-primary" style="width: 20px; font-size: 1.5em;"></i>'
+                    //     //     luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
+                    //     var luz = '<span class="voyager-bell text-danger" style="font-size: 25px"></span> <span class="badge" style="margin-left: -10px">'+data+'</span>'
+
+                    //     $('#not').html(luz)
+                    // }
                     
 
-                    $('#listadoc').text('Tiene '+data.length + ' Solicitud')
-                    var list = '';
-                    var j = '';
-                    list = '<table class="dataTable table-hover">'
-                    list+='<tbody>'
-                    for (var i = 0; i < data.length; ++i) {
-                        list+='<tr>'
-                        list+='<td>'+data[i].name+'</td>'
-                        list+='<tr>'                            
-                    }
-                    list+='</tbody>'
-                    list +='</table>'
-                    $('#notificaciones').html(list);
+                    // $('#listadoc').text('Tiene '+data.length + ' Solicitud')
+                    // var list = '';
+                    // var j = '';
+                    // list = '<table class="dataTable table-hover">'
+                    // list+='<tbody>'
+                    // for (var i = 0; i < data.length; ++i) {
+                    //     list+='<tr>'
+                    //     list+='<td>'+data[i].name+'</td>'
+                    //     list+='<tr>'                            
+                    // }
+                    // list+='</tbody>'
+                    // list +='</table>'
+                    // $('#notificaciones').html(list);
                     
 
 

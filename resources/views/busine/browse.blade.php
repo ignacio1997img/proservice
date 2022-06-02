@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="page-title">
-                    <i class="fa-solid fa-briefcase"></i> Empresa
+                    <i class="fa-solid fa-building"></i> Empresa
                 </h1>
                 {{-- <a href="" class="btn btn-success btn-add-new">
                     <i class="voyager-plus"></i> <span>Crear</span>
@@ -64,9 +64,9 @@
                                         </td>
                                         <td class="actions text-right dt-not-orderable sorting_disabled">
                                             @if ($item->status == 2)
-                                                <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="voyager-check"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
+                                                <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
                                             @endif
-                                            <a type="button" data-toggle="modal" href="{{route('busines.show', $item->id)}}"  class="btn btn-warning"><i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span></a>                                           
+                                            <a type="button" data-toggle="modal" href="{{route('busines.show', $item->id)}}"  class="btn btn-warning"><i class="fa-solid fa-eye"></i> <span class="hidden-xs hidden-sm">Ver</span></a>                                           
                                         </td>
 
                                     </tr>
@@ -89,13 +89,13 @@
                 {!! Form::open(['route' => 'busines.aprobar-busine', 'method' => 'POST']) !!}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-dollar"></i> Verificar Empresa</h4>
+                    <h4 class="modal-title"><i class="fa-solid fa-building"></i> Verificar Empresa</h4>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">
 
                     <div class="text-center" style="text-transform:uppercase">
-                        <i class="voyager-check" style="color: green; font-size: 5em;"></i>
+                        <i class="fa-solid fa-check-to-slot" style="color: rgb(53,61,71); font-size: 5em;"></i>
                         <br>
                         <p><b>Verificar Empresa....!</b></p>
                     </div>

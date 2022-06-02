@@ -23,6 +23,7 @@ class CreateMessagePeopleTable extends Migration
             $table->string('fmoney')->nullable();//precio estimado
             $table->text('detail')->nullable();
             $table->datetime('view')->nullable();
+            $table->datetime('date_view')->nullable();
             $table->smallInteger('status')->default(2);
 
             //para la calificacion de la persona por sus servicios o trabajos

@@ -9,6 +9,7 @@ use App\Models\RubroBusine;
 use App\Models\RubroPeople;
 use App\Models\Busines;
 use App\Models\People;
+use App\Models\Beneficiary;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,7 @@ class AjaxController extends Controller
                     ->where('m.status','!=', 0)
                     ->where('m.view', null)
                     ->select('r.name')
-                    ->get();
+                    ->count();
 
 
             // return MessagePeople::where('people_id', $people->id)->where('view', null)->count();
@@ -40,14 +41,35 @@ class AjaxController extends Controller
         if($user->role_id == 3)
         {
             $busines = Busine::where('user_id', $user->id)->first();
-            return DB::table('message_busines as m')
+            $entrada = DB::table('message_busines as m')
                     // ->join('rubro_busines as r', 'm.rubro_busines_id', 'r.id')
                     ->join('beneficiaries as b', 'm.beneficiary_id', 'b.id')
                     ->where('m.busine_id', $busines->id)
                     ->where('m.status','!=', 0)
                     ->where('m.view', null)
                     ->select('b.name')
-                    ->get();
+                    ->count();
+            
+            $salida = DB::table('message_people as m')
+                    // ->join('rubro_busines as r', 'm.rubro_busine_id', 'r.id')
+                    ->where('m.busine_id', $busines->id)
+                    ->where('m.status', 1)
+                    ->where('m.date_view', null)
+                    // ->select('r.name')
+                    ->count();
+            return $entrada + $salida;
+        }
+
+        if($user->role_id ==5)
+        {
+            $beneficiary = Beneficiary::where('user_id', $user->id)->first();
+            return DB::table('message_busines as m')
+                    // ->join('rubro_busines as r', 'm.rubro_busine_id', 'r.id')
+                    ->where('m.beneficiary_id', $beneficiary->id)
+                    ->where('m.status',1)
+                    ->where('m.date_view', null)
+                    // ->select('r.name')
+                    ->count();
         }
     }
 }

@@ -44,7 +44,7 @@ class MessageBusineController extends Controller
 
     public function message_busine()
     {
-
+// return 1;
         $busine = Busine::where('user_id', Auth::user()->id)->where('deleted_at', null)->first();
 
         //para las solicitudes de los beneficiarios que sean de la empresa
@@ -131,9 +131,17 @@ class MessageBusineController extends Controller
 
 
     //PARA VER LOS PERFILES DE CADA PERSONA QUE SE HAYA ENVIADO UN MENSAJE
-    public function people_perfil_view($people_id, $rubro_id)
+    public function people_perfil_view($id, $people_id, $rubro_id)
     {
         // return $id;
+
+        $message = MessagePeople::find($id);
+        if($message->data_view == null){
+            $message->update([
+                'date_view' => Carbon::now()
+            ]);
+        }
+
         // return $rubro_id;
         $people = People::find($people_id);
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('rubro_id', $rubro_id)->first();
@@ -151,6 +159,15 @@ class MessageBusineController extends Controller
         DB::beginTransaction();
         try {
             $message = MessageBusine::find($request->id);
+
+            if($message->date_date == null)
+            {
+                $message->update([
+                    'date_view' => Carbon::now()
+                ]);
+            }
+
+
             $message->update([
                 'star' => $request->star,
                 'comment' => $request->comment,

@@ -7,7 +7,7 @@
             <div class="row">                
                 <div class="col-md-8">
                     <h1 class="page-title">
-                        <i class="voyager-receipt"></i> Empresa 
+                        <i class="fa-solid fa-building"></i> Empresa 
                     </h1>
                 </div>
                 <div class="col-md-4">

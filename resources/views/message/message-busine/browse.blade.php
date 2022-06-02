@@ -32,7 +32,9 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="page-title">
-                    <i class="fa-regular fa-envelope"></i> Empresa
+                    <i class="fa-regular fa-envelope"></i> Solicitudes
+                    &nbsp; 
+                    
                 </h1>
             </div>
             <div class="col-md-4">
@@ -127,7 +129,7 @@
                                         </thead>
                                         <tbody>
                                             @forelse($message as $item)
-                                            <tr style="text-align: center">
+                                            <tr @if (!$item->date_view && $item->status == 1) style="background-color: rgba(192,57,43,0.3); text-align: center" @endif style="text-align: center">
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->rubro_people->name }}</td>
                                                 <td>
@@ -198,7 +200,7 @@
                                                         @else
 
                                                         @endif
-                                                        <a type="button" data-toggle="modal" href="{{route('message-busine.bandeja.people-perfil-view',['people_id'=>$item->people->id, 'rubro_id'=>$item->rubro_people->id])}}" class="btn btn-success"><span class="hidden-xs hidden-sm">Ver</span></a>
+                                                        <a type="button" data-toggle="modal" href="{{route('message-busine.bandeja.people-perfil-view',['id'=>$item->id, 'people_id'=>$item->people->id, 'rubro_id'=>$item->rubro_people->id])}}" class="btn btn-success"><span class="hidden-xs hidden-sm">Ver</span></a>
                                                     @endif
                                                     @if ($item->status == 2)
                                                         {{-- <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-primary"><span class="hidden-xs hidden-sm">Aceptar</span></a> --}}

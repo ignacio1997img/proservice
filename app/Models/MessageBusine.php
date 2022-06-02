@@ -14,6 +14,7 @@ class MessageBusine extends Model
         'beneficiary_id',
         'detail',
         'view',
+        'date_view',
         'status',
         'deleted_at',
 

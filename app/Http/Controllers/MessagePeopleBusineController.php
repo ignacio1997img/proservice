@@ -90,6 +90,13 @@ class MessagePeopleBusineController extends Controller
         DB::beginTransaction();
         try {
             $message = MessagePeople::find($request->id);
+
+            if($message->date_view == null){
+                $message->update([
+                    'date_view' => Carbon::now()
+                ]);
+            }
+
             $message->update([
                 'star' => $request->star,
                 'comment' => $request->comment,

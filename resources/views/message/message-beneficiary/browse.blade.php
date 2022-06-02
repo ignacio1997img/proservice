@@ -41,7 +41,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse($message as $item)
-                                    <tr style="text-align: center">
+                                    <tr @if (!$item->date_view && $item->status == 1) style="background-color: rgba(192,57,43,0.3); text-align: center" @endif style="text-align: center">
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->busine->name }} <br> {{$item->rubro_busine->name}} </td>                                        
                                         <td>{{ $item->detail }}</td>
@@ -96,7 +96,7 @@
                                                 @if (!$item->star_date)
                                                     <a type="button" data-toggle="modal" data-target="#modal_calificar" data-id="{{$item->id}}" class="btn btn-primary"><span class="hidden-xs hidden-sm">Calificar</span></a>
                                                 @endif
-                                                <a type="button" data-toggle="modal" href="{{route('message-beneficiary.bandeja.busine-perfil-view',['busine_id'=>$item->busine->id])}}" class="btn btn-success"><span class="hidden-xs hidden-sm">Ver</span></a>
+                                                <a type="button" data-toggle="modal" href="{{route('message-beneficiary.bandeja.busine-perfil-view',['id'=>$item->id, 'busine_id'=>$item->busine->id])}}" class="btn btn-success"><span class="hidden-xs hidden-sm">Ver</span></a>
                                             @endif
                                             @if ($item->status == 2)
                                                 {{-- <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-primary"><span class="hidden-xs hidden-sm">Aceptar</span></a> --}}

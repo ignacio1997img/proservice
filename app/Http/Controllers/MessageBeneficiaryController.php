@@ -17,8 +17,9 @@ class MessageBeneficiaryController extends Controller
     public function message_beneficiary()
     {
         // return 1;
-        $busine = Busine::where('user_id', Auth::user()->id)->first();
-        $message = MessageBusine::with(['busine','rubro_busine', 'beneficiary'])->where('busine_id', $busine->id)->where('deleted_at', null)->orderBy('id', 'desc')->get();
+        $beneficiary = Beneficiary::where('user_id', Auth::user()->id)->first();
+        // return $beneficiary;
+        $message = MessageBusine::with(['busine','rubro_busine', 'beneficiary'])->where('beneficiary_id', $beneficiary->id)->where('deleted_at', null)->orderBy('id', 'desc')->get();
         // return $message;
         return view('message.message-beneficiary.browse', compact('message'));
     }
@@ -45,8 +46,15 @@ class MessageBeneficiaryController extends Controller
 
 
     //PARA VER LOS PERFILES DE CADA EMPRESA QUE SE HAYA ENVIADO UN MENSAJE
-    public function busine_perfil_view($busine_id)
+    public function busine_perfil_view($id, $busine_id)
     {
+        $message = MessageBusine::find($id);
+        if($message->date_date == null)
+        {
+            $message->update([
+                'date_view' => Carbon::now()
+            ]);
+        }
         // return $busine_id;
         // return $id;
         // return $rubro_id;

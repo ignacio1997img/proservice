@@ -7,7 +7,12 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="page-title">
-                    <i class="voyager-people"></i> Datos Personales
+                    <i class="fa-solid fa-person-digging"></i> Datos Personales
+                    &nbsp; &nbsp; 
+                    <a href="{{ URL::previous()}}" class="btn btn-warning">
+                        <i class="fa-solid fa-circle-left"></i>
+                            Volver
+                    </a>
                 </h1>
             </div>
         </div>

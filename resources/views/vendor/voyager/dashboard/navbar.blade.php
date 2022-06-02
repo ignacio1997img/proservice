@@ -34,36 +34,30 @@
         </div>
 
         
-
+        {{-- <a href="{{ route('bandeja.index') }}"> <span class="voyager-bell text-danger" style="font-size: 25px"></span> <span class="badge" style="margin-left: -10px">{{ $cont }}</span> </a> --}}
         <ul class="nav navbar-nav @if (__('voyager::generic.is_rtl') == 'true') navbar-left @else navbar-right @endif">
             @if(!auth()->user()->hasRole('admin'))
-            <li class="nav-item dropdown" >
-                <a class="nav-link" data-toggle="dropdown" href="#" id="not" aria-expanded="false">
-                <!-- <span class="voyager-power spinner-grow-sm" id="luz" style="background: #16ff16"></span> -->
-                    <!-- <i class="voyager-bell" style="width: 20px; font-size: 1.5em;"></i> -->
-                    <!-- <span class="badge badge-warning navbar-badge" id="bandeja"></span> -->
-                </a>
-                <div class="dropdown-menu">
-                    <span class="dropdown-item dropdown-header bg-danger text-danger" id="listadoc"></span>
-                    <div id="notificaciones">
-
-                    </div>
-                    <!-- <div class="dropdown-divider"></div> -->
-                    {{-- <a href="">Ir a la bandeja</a> --}}
-                    @php
-                        $user = Auth::user();
-                        // $people = People::where('user_id', $user->id)->first();
-                        // dd($user);
-                    @endphp
-                    @if ($user->role_id == 4)
-                        <a href="{{route('message-people.bandeja')}}">Ir a la bandeja</a>
-                    @endif
-                    @if ($user->role_id == 3)
-                        <a href="{{route('message-busine.bandeja')}}">Ir a la bandeja</a>                        
-                    @endif
-                </div>
-            </li>
-        @endif
+                @php
+                    $user = Auth::user();
+                @endphp
+                {{-- <input type="text" id="not"> --}}
+                <li >
+                   
+                    {{-- <a class="nav-link" data-toggle="dropdown" href="#" id="not" aria-expanded="false"></a> --}}
+                    <a href="
+                        @if ($user->role_id == 4)
+                        {{ route('message-people.bandeja') }}
+                        @endif
+                        @if ($user->role_id == 3)
+                        {{ route('message-busine.bandeja')     }}                   
+                        @endif
+                        @if ($user->role_id == 5)
+                        {{ route('message-beneficiary.bandeja')     }}                   
+                        @endif
+                    " > <span class="voyager-bell text-danger" style="font-size: 25px"></span> <span class="badge" style="margin-left: -10px" id="not"></span> </a>
+              
+                </li>
+            @endif
             <li class="dropdown profile">
                 <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button"
                    aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span

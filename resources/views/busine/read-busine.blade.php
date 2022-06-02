@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <h1 class="page-title">
-                    <i class="voyager-receipt"></i> Kardex 
+                    <i class="fa-solid fa-building"></i> Empresa
                 </h1>
             </div>
         </div>
