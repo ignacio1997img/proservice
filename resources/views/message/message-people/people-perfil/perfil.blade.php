@@ -192,12 +192,12 @@
                                                         <td>Turno</td>
                                                         <td>
                                                             @if ($peoplerequirement)
-                                                                @if ($peoplerequirement->t_manana || $peoplerequirement->t_tarde || $peoplerequirement->t_noche)
-                                                                    @if ($peoplerequirement->t_manana)
-                                                                        Mañana 
-                                                                    @endif
-                                                                    @if ($peoplerequirement->t_tarde)
-                                                                        Tarde
+                                                                @if ($peoplerequirement->t_dia || $peoplerequirement->t_noche)
+                                                                    @if ($peoplerequirement->t_dia)
+                                                                        Día 
+                                                                        @if($peoplerequirement->t_noche)
+                                                                        -
+                                                                        @endif
                                                                     @endif
                                                                     @if ($peoplerequirement->t_noche)
                                                                         Noche

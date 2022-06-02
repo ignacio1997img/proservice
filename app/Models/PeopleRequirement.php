@@ -18,6 +18,7 @@ class PeopleRequirement extends Model
         'image_fcc',
         't_manana',
         't_tarde',
+        't_dia',
         't_noche',
         'exp_jardineria',
         'exp_paisajismo',

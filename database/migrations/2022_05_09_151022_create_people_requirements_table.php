@@ -25,6 +25,7 @@ class CreatePeopleRequirementsTable extends Migration
             $table->string('image_fcc')->nullable();//foto de cuerpo completo
             $table->smallInteger('t_manana')->nullable();
             $table->smallInteger('t_tarde')->nullable();
+            $table->smallInteger('t_dia')->nullable();
             $table->smallInteger('t_noche')->nullable();
 
             //jardinero

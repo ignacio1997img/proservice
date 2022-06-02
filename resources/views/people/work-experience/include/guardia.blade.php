@@ -53,9 +53,8 @@
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <select id="provider" name="turno[]" class="form-control select2" multiple="multiple">
-                                                        <option value="1">MAÑANA</option>
-                                                        <option value="2">TARDE</option>
-                                                        <option value="3">NOCHE</option>                                                 
+                                                        <option value="1">DIA</option>
+                                                        <option value="2">NOCHE</option>                                                 
                                                     </select>
                                                 </div>
                                                 <small>Turno.</small>
@@ -166,12 +165,12 @@
                                                 <td>Turno</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->t_manana || $peoplerequirement->t_tarde || $peoplerequirement->t_noche)
-                                                            @if ($peoplerequirement->t_manana)
-                                                                Mañana 
-                                                            @endif
-                                                            @if ($peoplerequirement->t_tarde)
-                                                                Tarde
+                                                        @if ($peoplerequirement->t_dia || $peoplerequirement->t_noche)
+                                                            @if ($peoplerequirement->t_dia)
+                                                                Día 
+                                                                @if($peoplerequirement->t_noche)
+                                                                 -
+                                                                @endif
                                                             @endif
                                                             @if ($peoplerequirement->t_noche)
                                                                 Noche

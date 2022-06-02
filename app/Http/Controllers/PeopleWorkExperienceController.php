@@ -112,8 +112,8 @@ class PeopleWorkExperienceController extends Controller
                 $image_ap = null;
                 $image_lsm = null;
                 $image_fcc = null;
-                $m=0;
-                $t=0;
+                // $m=0;
+                $d=0;
                 $n=0;
                 
 
@@ -174,21 +174,21 @@ class PeopleWorkExperienceController extends Controller
                     $i=0;
                     while($i < count($request->turno))
                     {
+                        // if($request->turno[$i] == '1')
+                        // {
+                        //     $m++;
+                        // }
                         if($request->turno[$i] == '1')
                         {
-                            $m++;
+                            $d++;
                         }
                         if($request->turno[$i] == '2')
-                        {
-                            $t++;
-                        }
-                        if($request->turno[$i] == '3')
                         {
                             $n++;
                         }
                         $i++;
                     }
-                    $ok->update(['t_manana' => $m, 't_tarde' => $t, 't_noche' => $n]);
+                    $ok->update(['t_dia' => $d, 't_noche' => $n]);
 
                 }
                 // return $request;
@@ -209,8 +209,8 @@ class PeopleWorkExperienceController extends Controller
                 $image_ap = null;
                 $image_lsm = null;
                 $image_fcc = null;
-                $m=0;
-                $t=0;
+                // $m=0;
+                $d=0;
                 $n=0;
                
 
@@ -267,15 +267,15 @@ class PeopleWorkExperienceController extends Controller
                     $i=0;
                     while($i < count($request->turno))
                     {
+                        // if($request->turno[$i] == '1')
+                        // {
+                        //     $m++;
+                        // }
                         if($request->turno[$i] == '1')
                         {
-                            $m++;
+                            $d++;
                         }
                         if($request->turno[$i] == '2')
-                        {
-                            $t++;
-                        }
-                        if($request->turno[$i] == '3')
                         {
                             $n++;
                         }
@@ -285,7 +285,7 @@ class PeopleWorkExperienceController extends Controller
                
                 // return $request->all();
                 PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'guardia', 'image_ci' => $image_ci, 'image_ap' => $image_ap,
-                                        'image_lsm' => $image_lsm, 'image_fcc' => $image_fcc, 't_manana' => $m, 't_tarde' => $t, 't_noche' => $n, 'estatura' => $request->estatura, 'peso'=>$request->peso]);
+                                        'image_lsm' => $image_lsm, 'image_fcc' => $image_fcc, 't_dia' => $d, 't_noche' => $n, 'estatura' => $request->estatura, 'peso'=>$request->peso]);
         
             }
 
