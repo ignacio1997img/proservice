@@ -25,7 +25,7 @@
                             <select name="verified" required class="form-control select2" style="margin-bottom: 10px">
                                 <option value="">Seleccione una opcion</option>
                                 <option value="1">VERIFICADA</option>
-                                <option value="0">NO VERIFICADA</option>
+                                <option value="2">NO VERIFICADA</option>
                             </select>   
                                 <h4 class="page-title">
                                     Por Rango de Estrellas

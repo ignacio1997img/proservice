@@ -8,26 +8,62 @@
 
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table id="dataTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
+                                <th>Calificación</th>
                                 <th>Accion</th>                                
                             </tr>
                         </thead>
-                        <tbody id="dataTable-body">
+                        <tbody>
                             @forelse ($data as $item)
                             <tr>
-                                <td>{{ $item->first_name }}</td>
-                                <td class="text-selected">{{ $item->last_name}}</td>
-                                <td>
-                                    <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}"  class="btn btn-success"><i class="voyager-check"></i> <span class="hidden-xs hidden-sm">Enviar</span></a>
+                                <td style="text-align: center">{{ $item->first_name }}</td>
+                                <td style="text-align: center">{{ $item->last_name}}</td>
+                                <td style="text-align: center">
+                                    @if($item->star >= 1 && $item->star < 2)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 2 && $item->star < 3)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 3 && $item->star < 4)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 4 && $item->star < 5)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 5)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                    @endif
+                                    <br>
+                                    <small>{{number_format($item->star, 2)}}</small>
+                                </td>
+                                <td style="text-align: right">
+                                    <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>
                                 </td>                                
                             </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">No hay datos</td>
+                                    <td colspan="4" style="text-align: center">No hay resultados</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -39,13 +75,13 @@
     </div>
 </div>
 {{-- modal para enviar solicitud de trabajo --}}
-<div class="modal modal-primary fade" tabindex="-1" id="modal_solicitud" role="dialog">
-    <div class="modal-dialog">
+<div class="modal modal-info fade" tabindex="-1" id="modal_solicitud" role="dialog">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             {!! Form::open(['route' => 'message-people-busine.store', 'id' => 'form-pagar', 'method' => 'POST', 'class' => 'form-search']) !!}        
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="voyager-check"></i> Enviar solicitud de Trabajo</h4>
+                <h4 class="modal-title"><i class="fa-regular fa-envelope"></i>  Enviar solicitud de Trabajo</h4>
             </div>
             <div class="modal-body">
                 <input type="hidden" name="rubro_people_id" value="{{$rubro_people}}">
@@ -54,7 +90,7 @@
                 <input type="hidden" name="people_id" id="id">
 
                 <div class="text-center" style="text-transform:uppercase">
-                    <i class="voyager-check" style="color: green; font-size: 5em;"></i>
+                    <i class="fa-regular fa-envelope" style="color: rgb(87, 87, 87); font-size: 5em;"></i>
                     <br>
                     <p><b>Desea Enviar solicitud...!</b></p>
                 </div>
@@ -87,7 +123,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 {{-- <input type="submit" class="btn btn-dark" value="Sí, Enviar"> --}}
-                <button type="button" class="btn btn-success btn-submit" onclick="sendForm('form-pagar', 'Mensaje enviado exitosamente.')">Sí, Enviar</button>
+                <button type="button" class="btn btn-info btn-submit" onclick="sendForm('form-pagar', 'Mensaje enviado exitosamente.')">Sí, Enviar</button>
 
             </div>
             {!! Form::close() !!}
@@ -103,7 +139,35 @@
 
 
 <style>
-    .text-selected {
+    #dataTable {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        #dataTable td, #dataTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        color: #0f0f0f;
+        }
+
+        #dataTable tr:nth-child(even){background-color: #f2f2f2;}
+
+        #dataTable tr:hover {background-color: #ddd;}
+
+        #dataTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #04AA6D;
+            color: white;
+        }
+        small{font-size: 12px;
+        color: rgb(12, 12, 12);
+        font-weight: bold;
+    }
+
+    /* .text-selected {
         cursor: pointer;
     }
     .app-footer {
@@ -119,7 +183,7 @@
     }
     th{
         font-size: 11px !important;
-    }
+    } */
 </style>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
