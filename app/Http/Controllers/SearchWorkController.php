@@ -12,14 +12,48 @@ class SearchWorkController extends Controller
     // PARA BUSCAR A TRABAJADORES
     public function index()
     {
+
+        $data = DB::table('people as p')
+            ->join('people_experiences as pe', 'pe.people_id', 'p.id')
+            ->join('message_people as mp', 'mp.people_id', 'p.id')
+            
+            ->where('mp.rubro_people_id', 2)
+            ->where('pe.rubro_id', 2)
+            ->where('mp.star_date', '!=', null)
+            // ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("SUM(mp.star) as start"), DB::raw("count(mp.star_date) as count"))
+            ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("SUM(mp.star) / count(mp.star_date) as total"))
+            // ->select('*')
+            ->groupBy('p.id', 'p.first_name', 'p.last_name')
+            ->get();
+        return $data;
+
+
+
+
+
+
+
+
         $rubro_people = RubroPeople::where('status',1)->where('deleted_at', null)->get();
 
         return view('busine.search-workers.search', compact('rubro_people'));
+    }
+    public function data(Request $request)
+    {
+        $data = DB::table('people as p')
+            ->join('people_experiences as pe', 'pe.people_id', 'p.id')
+            ->join('message_people as mp', 'mp.people_id', 'p.id')
+            
+            ->where('mp.rubro_people_id', $request->rubro_id)
+            ->where('pe.rubro_id', $request->rubro_id)
+            ->select('*')
+            ->get();
     }
 
 
     public function search(Request $request)
     {    
+        // dd($request);
         // $rubro_busine 
        $data = DB::table('people as p')
             ->join('people_experiences as pe', 'pe.people_id', '=', 'p.id')

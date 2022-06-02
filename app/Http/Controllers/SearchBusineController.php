@@ -22,7 +22,7 @@ class SearchBusineController extends Controller
 
     public function search(Request $request)
     {
-        // dd($request);
+        dd($request);
         // $data = Busine::with(['rubrobusines'=>function($query)use($request){
         //             $query->where('id', $request->rubro_id);
         //             // dd($query);
