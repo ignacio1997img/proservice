@@ -72,22 +72,48 @@ class SearchWorkController extends Controller
             ->first();
 
         // dd($request->star);
+        // $i='';
+        // if($request->star == null)
+        // {
+        //     $i = '=';
+        // }
+        // else
+        // {
+        //     $i = '<';
+        // // }
+        // $data = DB::table('people as p')
+        //         ->join('people_experiences as pe', 'pe.people_id', 'p.id')
+        //         ->leftJoin('message_people as mp', 'mp.people_id', 'p.id')
+                
+        //         // ->where('mp.rubro_people_id', $request->rubro_id)
+        //         ->where('pe.rubro_id', $request->rubro_id)
+        //         ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia
+        //         ->orWhere('mp.star_date', '!=', null)
+        //         ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("(SUM(mp.star) / count(mp.star_date)) as star"))
+        //         // ->having('star', $request->star != 'null'? '<' : '=', $request->star != 'star'? $request->star+1 : 'null')
+        //         ->havi('star', null)
+        //         ->groupBy('p.id', 'p.first_name', 'p.last_name')
+        //         ->orderBy('star', 'desc')
+        //         ->get();
+        //         dd($data);
+        
+        $star = $request->star;
+
         $data = DB::table('people as p')
                 ->join('people_experiences as pe', 'pe.people_id', 'p.id')
-                ->join('message_people as mp', 'mp.people_id', 'p.id')
+                ->leftJoin('message_people as mp', 'mp.people_id', 'p.id')//ineer join
                 
-                ->where('mp.rubro_people_id', $request->rubro_id)
+                // ->where('mp.rubro_people_id', $request->rubro_id)
                 ->where('pe.rubro_id', $request->rubro_id)
                 ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia
-                ->where('mp.star_date', '!=', null)
+                ->orWhere('mp.star_date', '!=', null)
                 ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("(SUM(mp.star) / count(mp.star_date)) as star"))
-                ->having('star', '<', $request->star+1)
-                // ->having('star', '>=', $request->star)
-                // ->where(DB::raw("(SUM(mp.star) / count(mp.star_date))") , '>=', $request->star)
+                // ->having('star', '<', $request->star+1)
                 ->groupBy('p.id', 'p.first_name', 'p.last_name')
                 ->orderBy('star', 'desc')
                 ->get();
+                // dd($request);
 
-        return view('busine.search-workers.search-result', compact('data','rubro_people', 'rubro_busine'));
+        return view('busine.search-workers.search-result', compact('data','rubro_people', 'rubro_busine', 'star'));
     }
 }

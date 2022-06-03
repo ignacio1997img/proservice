@@ -46,6 +46,17 @@
                                         <td>{{ $item->busine->name }} <br> {{$item->rubro_busine->name}} </td>                                        
                                         <td>{{ $item->detail }}</td>
                                         <td style="text-align: center">
+                                            @if($item->star == 0 && $item->star_date != null)
+                                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                    @endif
+                                                    @if( $item->star_date == null && $item->status != 0)
+
+                                                        Sin Calificar
+                                                    @endif
                                             @if($item->star == 1)
                                                 <i class="fa fa-star" style="color: #ffc107"></i>
                                                 <i class="fa fa-star" style="color: #b3b3b3"></i>

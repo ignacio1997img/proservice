@@ -14,7 +14,28 @@ class SearchBusineController extends Controller
     // para buscar empresas 
     public function index()
     {
-        // $rubro_people = RubroPeople::where('status',1)->where('deleted_at', null)->get();
+        // $data = DB::table('busines as b')
+        //     ->join('message_busines as mb', 'mb.busine_id', 'b.id')
+        //     ->where('mb.rubro_busine_id', 1)
+        //     ->where('b.rubro_id', 1)
+        //     ->where('b.status', 0)// para ver si esta verificada la experiencia
+        //     ->where('mb.star_date', '!=', null)
+        //     ->select('b.id', 'b.name', 'b.responsible', DB::raw("(SUM(mb.star) / count(mb.star_date)) as star"))            
+        //     // ->having('star', '<', $request->star+1)
+        //     ->groupBy('b.id', 'b.name', 'b.responsible')
+        //     ->orderBy('star', 'desc')
+        //     ->get();
+        
+        // return $data;
+
+
+
+
+
+
+
+
+
         $rubro_busine = RubroBusine::where('status',1)->where('deleted_at', null)->get();
 
         return view('beneficiary.search-busine.search', compact('rubro_busine'));
@@ -22,17 +43,30 @@ class SearchBusineController extends Controller
 
     public function search(Request $request)
     {
-        dd($request);
-        // $data = Busine::with(['rubrobusines'=>function($query)use($request){
-        //             $query->where('id', $request->rubro_id);
-        //             // dd($query);
-        //         }])
-        // ->where('status',1)->where('deleted_at', null)->get();
+       
+        // $data = DB::table('busines as b')
+        //     ->join('message_busines as mb', 'mb.busine_id', 'b.id')
+        //     ->where('mb.rubro_busine_id', $request->rubro_id)
+        //     ->where('b.rubro_id', $request->rubro_id)
+        //     ->where('b.status', $request->verified)// para ver si esta verificada la experiencia
+        //     ->where('mb.star_date', '!=', null)
+        //     ->select('b.id', 'b.name', 'b.responsible', DB::raw("(SUM(mb.star) / count(mb.star_date)) as star"))            
+        //     ->having('star', '<', $request->star+1)
+        //     ->groupBy('b.id', 'b.name', 'b.responsible')
+        //     ->orderBy('star', 'desc')
+        //     ->get();
 
-        $data = Busine::where('rubro_id', $request->rubro_id)->where('status',1)->where('deleted_at', null)->get();
-        // dd($data);
-
-        // $rubro_busine = $request->rubro_id;
+        $data = DB::table('busines as b')
+            ->leftJoin('message_busines as mb', 'mb.busine_id', 'b.id')
+            ->where('mb.rubro_busine_id', $request->rubro_id)
+            ->where('b.rubro_id', $request->rubro_id)
+            ->where('b.status', $request->verified)// para ver si esta verificada la experiencia
+            ->where('mb.star_date', '!=', null)
+            ->select('b.id', 'b.name', 'b.responsible', DB::raw("(SUM(mb.star) / count(mb.star_date)) as star"))            
+            ->having('star', '<', $request->star+1)
+            ->groupBy('b.id', 'b.name', 'b.responsible')
+            ->orderBy('star', 'desc')
+            ->get();
         return view('beneficiary.search-busine.search-result', compact('data'));
     }
 

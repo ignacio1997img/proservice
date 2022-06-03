@@ -8,29 +8,65 @@
 
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table id="dataTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Empresa</th>
                                 <th>Responsable</th>
+                                <th>Calificación</th>
                                 <th>Accion</th>
                                 
                             </tr>
                         </thead>
                        
-                        <tbody id="dataTable-body">
+                        <tbody>
                             @forelse ($data as $item)
                             <tr>
-                                <td>{{ $item->name }}</td>
-                                <td class="text-selected">{{ $item->responsible}}</td>
-                                <td>
+                                <td style="text-align: center">{{ $item->name }}</td>
+                                <td style="text-align: center">{{ $item->responsible}}</td>
+                                <td style="text-align: center">
+                                    @if($item->star >= 1 && $item->star < 2)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 2 && $item->star < 3)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 3 && $item->star < 4)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 4 && $item->star < 5)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                    @elseif($item->star >= 5)
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                        <i class="fa fa-star" style="color: #ffc107"></i>
+                                    @endif
+                                    <br>
+                                    <small>{{number_format($item->star, 2)}}</small>
+                                </td>
+                                <td style="text-align: right">
                                     <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}"  class="btn btn-success"><i class="voyager-check"></i> <span class="hidden-xs hidden-sm">Enviar</span></a>
                                 </td>
                                 
                             </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">No hay datos</td>
+                                    <td colspan="4" style="text-align: center">No hay resultados</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -87,23 +123,33 @@
 
 
 <style>
-    .text-selected {
-        cursor: pointer;
-    }
-    .app-footer {
-        opacity: 1 !important;
-    }
-    .text-selected-copy{
-        color: green !important;
-        text-decoration: underline !important;
-    }
+        #dataTable {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    #dataTable-aguinaldo th{
-        background-color: #E74C3C !important;
-    }
-    th{
-        font-size: 11px !important;
-    }
+        #dataTable td, #dataTable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            color: #0f0f0f;
+        }
+
+        #dataTable tr:nth-child(even){background-color: #f2f2f2;}
+
+        #dataTable tr:hover {background-color: #ddd;}
+
+        #dataTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #04AA6D;
+            color: white;
+        }
+        small{font-size: 12px;
+            color: rgb(12, 12, 12);
+            font-weight: bold;
+        }
 </style>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

@@ -24,8 +24,8 @@
                             <br><br>
                             <select name="verified" required class="form-control select2" style="margin-bottom: 10px">
                                 <option value="">Seleccione una opcion</option>
-                                <option value="1">VERIFICADA</option>
-                                <option value="2">NO VERIFICADA</option>
+                                <option value="1">Persona Verificada</option>
+                                <option value="2">Persona no Verificada</option>
                             </select>   
                                 <h4 class="page-title">
                                     Por Rango de Estrellas
@@ -36,7 +36,8 @@
                                 <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="4estrella"></span>
                                 <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="5estrella"></span>
                            
-                            <div class="row" id="div_cis">                                
+                            <div class="row" id="div_cis"> 
+                                <input type="hidden" class="form-control" name="star" value="0">                               
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-info" style="padding: 5px 10px"> <i class="voyager-settings"></i> Generar</button>
