@@ -55,19 +55,19 @@ class SearchBusineController extends Controller
         //     ->groupBy('b.id', 'b.name', 'b.responsible')
         //     ->orderBy('star', 'desc')
         //     ->get();
-
+        $star = $request->star;
         $data = DB::table('busines as b')
             ->leftJoin('message_busines as mb', 'mb.busine_id', 'b.id')
-            ->where('mb.rubro_busine_id', $request->rubro_id)
+            // ->where('mb.rubro_busine_id', $request->rubro_id)
             ->where('b.rubro_id', $request->rubro_id)
             ->where('b.status', $request->verified)// para ver si esta verificada la experiencia
-            ->where('mb.star_date', '!=', null)
+            ->orWhere('mb.star_date', '!=', null)
             ->select('b.id', 'b.name', 'b.responsible', DB::raw("(SUM(mb.star) / count(mb.star_date)) as star"))            
-            ->having('star', '<', $request->star+1)
+            // ->having('star', '<', $request->star+1)
             ->groupBy('b.id', 'b.name', 'b.responsible')
             ->orderBy('star', 'desc')
             ->get();
-        return view('beneficiary.search-busine.search-result', compact('data'));
+        return view('beneficiary.search-busine.search-result', compact('data', 'star'));
     }
 
 }

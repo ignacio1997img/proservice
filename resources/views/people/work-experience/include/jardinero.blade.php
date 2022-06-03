@@ -87,7 +87,7 @@
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_ci)
                                                             <span class="badge badge-success">Si cargado</span>
-                                                            <a href="{{url('storage/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                            <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                                                 <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else
@@ -104,7 +104,7 @@
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_ap)
                                                             <span class="badge badge-success">Si cargado</span>
-                                                            <a href="{{url('storage/'.$peoplerequirement->image_ap)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                            <a href="{{url('storage/public/'.$peoplerequirement->image_ap)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                                                 <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else

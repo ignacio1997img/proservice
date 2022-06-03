@@ -21,49 +21,51 @@
                        
                         <tbody>
                             @forelse ($data as $item)
-                            <tr>
-                                <td style="text-align: center">{{ $item->name }}</td>
-                                <td style="text-align: center">{{ $item->responsible}}</td>
-                                <td style="text-align: center">
-                                    @if($item->star >= 1 && $item->star < 2)
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                    @elseif($item->star >= 2 && $item->star < 3)
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                    @elseif($item->star >= 3 && $item->star < 4)
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                    @elseif($item->star >= 4 && $item->star < 5)
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #b3b3b3"></i>
-                                    @elseif($item->star >= 5)
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                        <i class="fa fa-star" style="color: #ffc107"></i>
-                                    @endif
-                                    <br>
-                                    <small>{{number_format($item->star, 2)}}</small>
-                                </td>
-                                <td style="text-align: right">
-                                    <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}"  class="btn btn-success"><i class="voyager-check"></i> <span class="hidden-xs hidden-sm">Enviar</span></a>
-                                </td>
-                                
-                            </tr>
+                                @if(number_format($item->star, 2) <= $star+1)
+                                    <tr>
+                                        <td style="text-align: center">{{ $item->name }}</td>
+                                        <td style="text-align: center">{{ $item->responsible}}</td>
+                                        <td style="text-align: center">
+                                            @if($item->star >= 1 && $item->star < 2)
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                            @elseif($item->star >= 2 && $item->star < 3)
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                            @elseif($item->star >= 3 && $item->star < 4)
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                            @elseif($item->star >= 4 && $item->star < 5)
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                            @elseif($item->star >= 5)
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                                <i class="fa fa-star" style="color: #ffc107"></i>
+                                            @endif
+                                            <br>
+                                            <small>{{number_format($item->star, 2)}}</small>
+                                        </td>
+                                        <td style="text-align: right">
+                                            <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}"  class="btn btn-success"><i class="voyager-check"></i> <span class="hidden-xs hidden-sm">Enviar</span></a>
+                                        </td>
+                                        
+                                    </tr>
+                                @endif
                             @empty
                                 <tr>
                                     <td colspan="4" style="text-align: center">No hay resultados</td>
