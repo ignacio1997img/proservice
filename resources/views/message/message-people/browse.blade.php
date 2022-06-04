@@ -49,7 +49,7 @@
                                         </td>
                                         <td>
                                             @if ($item->status==1)
-                                                {{ $item->imoney }} -  {{ $item->imoney }}<br>
+                                                {{ $item->imoney }} -  {{ $item->fmoney }}<br>
                                             @else
                                                 <label class="label label-warning"><i class="fa-solid fa-eye-slash" style="font-size: 1.3em;"></i></label>
                                             @endif
