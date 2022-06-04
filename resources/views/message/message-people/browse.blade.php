@@ -32,6 +32,7 @@
                                         <th>Id&deg;</th>
                                         <th>Empresa.</th>
                                         <th>Precio Estimado.</th>
+                                        <th>Detalle.</th>
                                         <th>Estado.</th>
                                         <th>Accion.</th>
                                     </tr>
@@ -48,13 +49,14 @@
                                             {{$item->rubro_busine->name}}
                                         </td>
                                         <td>
-                                            @if ($item->status==1)
+                                            {{-- @if ($item->status==1) --}}
                                                 {{ $item->imoney }} -  {{ $item->fmoney }}<br>
-                                            @else
+                                            {{-- @else
                                                 <label class="label label-warning"><i class="fa-solid fa-eye-slash" style="font-size: 1.3em;"></i></label>
-                                            @endif
+                                            @endif --}}
 
                                         </td>
+                                        <td>{{$item->detail}}</td>
                                         <td>
                                             @if ($item->status == 1)
                                                 <label class="label label-success">Contacto Realizado</label>
