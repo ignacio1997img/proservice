@@ -75,6 +75,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('people-perfil-experience/requirement-create/{id}/{rubro_id}', [PeopleWorkExperienceController::class, 'requirementCreate'])->name('work-experience.requirement-create');
     Route::post('people-perfil-experience/requirement-guardia-store' , [PeopleWorkExperienceController::class, 'requirementGuardiaStore'])->name('work-experience.requirement-guardia-store');
     Route::post('people-perfil-experience/requirement-jardineria-store' , [PeopleWorkExperienceController::class, 'requirementJardineriaStore'])->name('work-experience.requirement-jardineria-store');
+    Route::post('people-perfil-experience/requirement-piscinero-store' , [PeopleWorkExperienceController::class, 'requirementPiscineroStore'])->name('work-experience.requirement-piscinero-store');
+
 
     //para la bandeja de la persona
     Route::get('message-people-bandeja', [MessagePeopleBusineController::class, 'message_people'])->name('message-people.bandeja');

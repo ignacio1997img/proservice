@@ -74,6 +74,9 @@
     @if ($rubro_id == 2)
         @include('people.work-experience.include.jardinero')
     @endif
+    @if ($rubro_id == 3)
+        @include('people.work-experience.include.piscinero')
+    @endif
     
 @stop
 

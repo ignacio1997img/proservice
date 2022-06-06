@@ -119,7 +119,7 @@
                                                 <td>Experiencia en jardineria</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->exp_jardineria)
+                                                        @if ($peoplerequirement->exp_jardineria == 1 || $peoplerequirement->exp_jardineria == 0)
                                                             @if ($peoplerequirement->exp_jardineria == 1)
                                                                 <span class="badge badge-success">Si</span>
                                                             @else
@@ -137,7 +137,7 @@
                                                 <td>Experiencia en paisajismo</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->exp_paisajismo)
+                                                        @if ($peoplerequirement->exp_paisajismo == 1 || $peoplerequirement->exp_paisajismo == 0)
                                                             @if ($peoplerequirement->exp_paisajismo == 1)
                                                                 <span class="badge badge-success">Si</span>
                                                             @else

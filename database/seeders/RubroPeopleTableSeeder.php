@@ -41,6 +41,28 @@ class RubroPeopleTableSeeder extends Seeder
                 'updated_at' => '2022-05-09 15:36:02',
                 'deleted_at' => NULL,
             ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Piscinero',
+                'description' => NULL,
+                'image' => NULL,
+                'status' => 1,
+                'created_at' => '2022-05-09 14:28:45',
+                'updated_at' => '2022-05-09 15:36:02',
+                'deleted_at' => NULL,
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'Modelos',
+                'description' => NULL,
+                'image' => NULL,
+                'status' => 1,
+                'created_at' => '2022-05-09 14:28:45',
+                'updated_at' => '2022-05-09 15:36:02',
+                'deleted_at' => NULL,
+            ),
         ));
         
         

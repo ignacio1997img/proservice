@@ -26,6 +26,25 @@ class PeopleRequirement extends Model
         'estatura',
         'peso',
         'status',
+
+        'spanish',
+        'english',
+        'frances',
+        'italiano',
+        'portugues',
+        'aleman',
+        'otro_idioma',
+
+        'exp_mant_piscina',
+        'trabajado_ante_donde',
+        'medir_ph',
+        'asp_piscina',
+        'cant_quimico',
+        'bomba_agua',
+
+        'image_book',
+        'curso_modelaje',
+        'exp_modelaje'
     ];
     
 }
