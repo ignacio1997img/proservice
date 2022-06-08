@@ -119,6 +119,12 @@
                                             @if ($busine->rubro_id == 2)
                                                 @include('busine.perfil-requirement.jardineria')
                                             @endif
+                                            @if ($busine->rubro_id == 3)
+                                                @include('busine.perfil-requirement.piscina')
+                                            @endif
+                                            @if ($busine->rubro_id == 4)
+                                                @include('busine.perfil-requirement.modelo')
+                                            @endif
                                             {{-- <table id="detalles" class="table table-bordered table-striped table-sm">
                                                 <thead>
                                                     <tr>

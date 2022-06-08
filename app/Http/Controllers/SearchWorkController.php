@@ -112,7 +112,7 @@ class SearchWorkController extends Controller
                 ->groupBy('p.id', 'p.first_name', 'p.last_name')
                 ->orderBy('star', 'desc')
                 ->get();
-                // dd($request);
+                dd($request);
 
         return view('busine.search-workers.search-result', compact('data','rubro_people', 'rubro_busine', 'star'));
     }

@@ -244,6 +244,126 @@
                                                     </tbody>                                        
                                                 </table>
                                             @endif
+                                            @if ($busine->rubro_id == 3)
+                                                <table id="detalles" class="table table-bordered table-striped table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Tipo</th>
+                                                            <th>Estado</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Licencia de funcionamiento</td>
+                                                            <td>
+                                                                @if ($businerequirements)
+                                                                    @if ($businerequirements->image_lf)
+                                                                        <span class="badge badge-success">Si cargado</span>
+                                                                        
+                                                                            <a href="{{url('storage/public/'.$businerequirements->image_lf)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                            </a>
+                                                                    
+                                                                    @else
+                                                                        <span class="badge badge-danger">No cargado</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            </td>            
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Roe</td>
+                                                            <td>
+                                                                @if ($businerequirements)
+                                                                    @if ($businerequirements->image_roe)
+                                                                        <span class="badge badge-success">Si cargado</span>
+                                                                        @if(auth()->user()->hasPermission('view_busine-perfil-requirement'))
+                                                                            <a href="{{url('storage/public/'.$businerequirements->image_roe)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                            </a>
+                                                                        @endif
+                                                                    @else
+                                                                        <span class="badge badge-danger">No cargado</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            </td>          
+                                                        </tr>
+                                                    </tbody>                                        
+                                                </table>
+                                            @endif
+
+
+                                            @if ($busine->rubro_id == 4)
+                                                <table id="detalles" class="table table-bordered table-striped table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Tipo</th>
+                                                            <th>Estado</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Licencia de funcionamiento</td>
+                                                            <td>
+                                                                @if ($businerequirements)
+                                                                    @if ($businerequirements->image_lf)
+                                                                        <span class="badge badge-success">Si cargado</span>
+                                                                        
+                                                                            <a href="{{url('storage/public/'.$businerequirements->image_lf)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                            </a>
+                                                                    
+                                                                    @else
+                                                                        <span class="badge badge-danger">No cargado</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            </td>            
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Roe</td>
+                                                            <td>
+                                                                @if ($businerequirements)
+                                                                    @if ($businerequirements->image_roe)
+                                                                        <span class="badge badge-success">Si cargado</span>
+                                                                        @if(auth()->user()->hasPermission('view_busine-perfil-requirement'))
+                                                                            <a href="{{url('storage/public/'.$businerequirements->image_roe)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                            </a>
+                                                                        @endif
+                                                                    @else
+                                                                        <span class="badge badge-danger">No cargado</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            </td>          
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Experiencia</td>
+                                                            <td>
+                                                                @if ($businerequirements)
+                                                                    @if ($businerequirements->exp_modelo == 1 || $businerequirements->exp_modelo == 0)
+                                                                        @if($businerequirements->exp_modelo == 1)
+                                                                            <span class="badge badge-success">Si</span>
+                                                                        @else
+                                                                            <span class="badge badge-danger">No</span>
+                                                                        @endif
+                                                                    @else
+                                                                        <span class="badge badge-danger">No cargado</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            </td>          
+                                                        </tr>
+                                                    </tbody>                                        
+                                                </table>
+                                            @endif
 
 
 

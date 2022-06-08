@@ -76,6 +76,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('people-perfil-experience/requirement-guardia-store' , [PeopleWorkExperienceController::class, 'requirementGuardiaStore'])->name('work-experience.requirement-guardia-store');
     Route::post('people-perfil-experience/requirement-jardineria-store' , [PeopleWorkExperienceController::class, 'requirementJardineriaStore'])->name('work-experience.requirement-jardineria-store');
     Route::post('people-perfil-experience/requirement-piscinero-store' , [PeopleWorkExperienceController::class, 'requirementPiscineroStore'])->name('work-experience.requirement-piscinero-store');
+    Route::post('people-perfil-experience/requirement-modelos-store' , [PeopleWorkExperienceController::class, 'requirementModelosStore'])->name('work-experience.requirement-modelos-store');
 
 
     //para la bandeja de la persona
@@ -93,6 +94,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('busines/perfil/update', [BusineController::class, 'perfilUpdate'])->name('busines.perfil-update');//para actualizar el perfil de la empresa
     Route::post('busine/perfil/requirement-jardineria-store' , [BusineController::class, 'requirementJardineriaStore'])->name('busine.perfil.requirement-jardineria-store');
     Route::post('busine/perfil/requirement-guardia-store' , [BusineController::class, 'requirementGuardiaStore'])->name('busine.perfil.requirement-guardia-store');
+    Route::post('busine/perfil/requirement-piscina-store' , [BusineController::class, 'requirementPiscinaStore'])->name('busine.perfil.requirement-piscina-store');
+    Route::post('busine/perfil/requirement-modelo-store' , [BusineController::class, 'requirementModeloStore'])->name('busine.perfil.requirement-modelo-store');
+
 
     // buscar trabajadores de empresas 
     Route::resource('search-work',SearchWorkController::class);

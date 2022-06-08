@@ -340,6 +340,299 @@
                                             </table>
                                         @endif
 
+                                        @if($rubro_id == 3)
+                                            <table id="detalles" class="table table-bordered table-striped table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tipo</th>
+                                                        <th>Estado</th>
+                                                        {{-- <th>Accion</th>             --}}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Carnet de identidad</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->image_ci)
+                                                                    <span class="badge badge-success">Si cargado</span>
+                                                                    <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                        <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                    </a>
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>            
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Antecedentes penales</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->image_ap)
+                                                                    <span class="badge badge-success">Si cargado</span>
+                                                                    <a href="{{url('storage/public/'.$peoplerequirement->image_ap)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                        <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                    </a>
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>          
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Experiencia en Mantenimiento de Piscinas.</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->exp_mant_piscina == 1 || $peoplerequirement->exp_mant_piscina == 0)
+                                                                    @if ($peoplerequirement->exp_mant_piscina == 1)
+                                                                        <span class="badge badge-success">Si</span>
+                                                                    @else
+                                                                        <span class="badge badge-danger">No</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>            
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Saber Medir PH.</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->medir_ph == 1 || $peoplerequirement->medir_ph == 0)
+                                                                    @if ($peoplerequirement->medir_ph == 1)
+                                                                        <span class="badge badge-success">Si</span>
+                                                                    @else
+                                                                        <span class="badge badge-danger">No</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>           
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Saber Aspirar Piscina</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->asp_piscina == 1 || $peoplerequirement->asp_piscina == 0)
+                                                                    @if ($peoplerequirement->asp_piscina == 1)
+                                                                        <span class="badge badge-success">Si</span>
+                                                                    @else
+                                                                        <span class="badge badge-danger">No</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>          
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Saber Calcular la Cantidad de Quimico para Piscina.</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->cant_quimico == 1 || $peoplerequirement->cant_quimico == 0)
+                                                                    @if ($peoplerequirement->cant_quimico == 1)
+                                                                        <span class="badge badge-success">Si</span>
+                                                                    @else
+                                                                        <span class="badge badge-danger">No</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>             
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tiene Conocimiento de Funcionamiento de Bomba</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->bomba_agua == 1 || $peoplerequirement->bomba_agua == 0)
+                                                                    @if ($peoplerequirement->bomba_agua == 1)
+                                                                        <span class="badge badge-success">Si</span>
+                                                                    @else
+                                                                        <span class="badge badge-danger">No</span>
+                                                                    @endif
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>            
+                                                    </tr>
+                                                    <tr>
+                                                        <td>¿Donde ha Trabajado ante como Piscinero?</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->trabajado_ante_donde)
+                                                                    {{$peoplerequirement->trabajado_ante_donde}}
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>            
+                                                    </tr>
+                                                </tbody>                                        
+                                            </table>
+                                        @endif
+
+
+
+                                        @if($rubro_id == 4)
+                                            <table id="detalles" class="table table-bordered table-striped table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tipo</th>
+                                                        <th>Estado</th>
+                                                        {{-- <th>Accion</th>             --}}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Carnet de identidad</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->image_ci)
+                                                                    <span class="badge badge-success">Si cargado</span>
+                                                                    <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                        <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                    </a>
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>            
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Book</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->image_book)
+                                                                    <span class="badge badge-success">Si cargado</span>
+                                                                    <a href="{{url('storage/public/'.$peoplerequirement->image_book)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                        <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                    </a>
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>          
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estatura</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->estatura)
+                                                                    {{$peoplerequirement->estatura}}
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>            
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Peso</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->peso)
+                                                                    {{$peoplerequirement->peso}}
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>           
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Idioma</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->spanish || $peoplerequirement->english || $peoplerequirement->frances || $peoplerequirement->italiano || $peoplerequirement->portugues || $peoplerequirement->aleman || $peoplerequirement->otro_idioma)
+                                                                    @if ($peoplerequirement->spanish)
+                                                                        <span class="badge badge-success">Español</span>
+                                                                    @endif
+                                                                    @if ($peoplerequirement->english)
+                                                                        <span class="badge badge-success">Ingles</span>
+                                                                    @endif
+                                                                    @if ($peoplerequirement->frances)
+                                                                        <span class="badge badge-success">Frances</span>
+                                                                    @endif
+                                                                    @if ($peoplerequirement->italiano)
+                                                                        <span class="badge badge-success">Italiano</span>
+                                                                    @endif
+                                                                    @if ($peoplerequirement->portugues)
+                                                                        <span class="badge badge-success">Portugues</span>
+                                                                    @endif
+                                                                    @if ($peoplerequirement->aleman)
+                                                                        <span class="badge badge-success">Aleman</span>
+                                                                    @endif
+                                                                    @if ($peoplerequirement->otro_idioma)
+                                                                        <span class="badge badge-success">{{$peoplerequirement->otro_idioma}}</span>
+                                                                    @endif
+                                                                    {{-- {{$peoplerequirement->spanish}} {{$peoplerequirement->english}} {{$peoplerequirement->frances}} {{$peoplerequirement->italiano}} {{$peoplerequirement->portugues}} {{$peoplerequirement->aleman}} {{$peoplerequirement->otro_idioma}} --}}
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>           
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Curso de Modelaje y otros Relacionado</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->curso_modelaje)
+                                                                    {{$peoplerequirement->curso_modelaje}}
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>           
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Experiencia en Modelaje</td>
+                                                        <td>
+                                                            @if ($peoplerequirement)
+                                                                @if ($peoplerequirement->exp_modelaje)
+                                                                    {{$peoplerequirement->exp_modelaje}}
+                                                                @else
+                                                                    <span class="badge badge-danger">No cargado</span>
+                                                                @endif
+                                                            @else
+                                                                <span class="badge badge-danger">No cargado</span>
+                                                            @endif
+                                                        </td>           
+                                                    </tr>
+                                                </tbody>                                        
+                                            </table>
+                                        @endif
+
                                         {{-- para ver los requisitos de educacion --}}
                                     </div>                      
                                 </main>

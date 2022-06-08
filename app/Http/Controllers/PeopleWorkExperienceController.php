@@ -520,7 +520,144 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
-            // return 0;
+            dd($th);
+            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
+        }
+    }
+
+    //para modelos
+    public function requirementModelosStore(Request $request)
+    {
+        DB::beginTransaction();
+        // return $request->all();
+        try {
+
+            $image_ci = null;
+            $image_book = null;
+
+            $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
+           
+            if($ok)
+            {
+                // return 2;
+                $file = $request->file('image_ci');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/modelos/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci = $dir.'/'.$newFileName;
+                    $ok->update(['image_ci' => $image_ci]);
+                }
+
+                $file = $request->file('image_book');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/modelos/book/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_book = $dir.'/'.$newFileName;
+                    $ok->update(['image_book' => $image_book]);
+                }
+
+                if($request->curso_modelaje != null)
+                {
+                    $ok->update(['curso_modelaje' => $request->curso_modelaje]);
+                }
+                if($request->exp_modelaje != null)
+                {
+                    $ok->update(['exp_modelaje' => $request->exp_modelaje]);
+                }
+                if($request->estatura != null)
+                {
+                    $ok->update(['estatura' => $request->estatura]);
+                }
+                if($request->peso != null)
+                {
+                    $ok->update(['peso' => $request->peso]);
+                }
+                if($request->spanish != null)
+                {
+                    $ok->update(['spanish' => $request->spanish]);
+                }
+                if($request->english != null)
+                {
+                    $ok->update(['english' => $request->english]);
+                }
+                if($request->frances != null)
+                {
+                    $ok->update(['frances' => $request->frances]);
+                }
+                if($request->italiano != null)
+                {
+                    $ok->update(['italiano' => $request->italiano]);
+                }
+                if($request->portugues != null)
+                {
+                    $ok->update(['portugues' => $request->portugues]);
+                }
+                if($request->aleman != null)
+                {
+                    $ok->update(['aleman' => $request->aleman]);
+                }
+                if($request->otro_idioma != null)
+                {
+                    $ok->update(['otro_idioma' => $request->otro_idioma]);
+                }
+
+                DB::commit();
+                return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
+                
+
+            }
+            else
+            {
+
+                
+                $file = $request->file('image_ci');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/modelos/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci = $dir.'/'.$newFileName;
+                }
+                // return 3;
+                $file = $request->file('image_book');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/modelos/book/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_book = $dir.'/'.$newFileName;
+                }
+
+                // return 1;
+                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'modelos', 'image_ci' => $image_ci, 'image_book' => $image_book, 'estatura' => $request->estatura, 'peso'=>$request->peso,
+                                                'spanish' => $request->spanish, 'english'=> $request->english, 'frances' => $request->frances, 'italiano' => $request->italiano, 'portugues'=> $request->portugues, 'aleman'=> $request->aleman, 'otro_idioma'=> $request->otro_idioma,
+                                            'curso_modelaje'=> $request->curso_modelaje, 'exp_modelaje'=> $request->exp_modelaje ]);
+                DB::commit();
+                return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
+            }
+
+            
+            
+            
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return 0;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }

@@ -27,7 +27,7 @@ class CreatePeopleRequirementsTable extends Migration
             $table->smallInteger('italiano')->nullable();
             $table->smallInteger('portugues')->nullable();
             $table->smallInteger('aleman')->nullable();
-            $table->smallInteger('otro')->nullable();
+            $table->string('otro_idioma', 500)->nullable();
 
 
 
@@ -49,6 +49,7 @@ class CreatePeopleRequirementsTable extends Migration
             $table->string('estatura')->nullable();
             $table->string('peso')->nullable();
 
+
             //piscinero
             $table->smallInteger('exp_mant_piscina')->nullable();// experiencia en mantenimiento de piscina
             $table->string('trabajado_ante_donde')->nullable();// donde ha trabajado ante como piscinero
@@ -60,7 +61,7 @@ class CreatePeopleRequirementsTable extends Migration
             //modelo
             $table->string('image_book')->nullable();
             $table->text('curso_modelaje')->nullable();//curso de modelaje y otros relacionados
-            $table->smallInteger('exp_modelaje')->nullable();//experiencia en modelaje
+            $table->text('exp_modelaje')->nullable();//experiencia en modelaje
 
 
             $table->smallInteger('status')->default(1);

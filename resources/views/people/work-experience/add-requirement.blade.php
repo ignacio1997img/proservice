@@ -77,6 +77,9 @@
     @if ($rubro_id == 3)
         @include('people.work-experience.include.piscinero')
     @endif
+    @if ($rubro_id == 4)
+        @include('people.work-experience.include.modelos')
+    @endif
     
 @stop
 

@@ -24,6 +24,11 @@ class CreateBusineRequirementsTable extends Migration
             $table->string('image_pd')->nullable(); //Permiso de denacev
 
 
+            //modelo
+            $table->smallInteger('exp_modelo')->nullable();
+
+
+
             $table->smallInteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();

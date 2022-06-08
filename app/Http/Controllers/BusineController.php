@@ -331,6 +331,170 @@ class BusineController extends Controller
     }
 
 
+    public function requirementPiscinaStore(Request $request)
+    {
+        // return $request->all();
+        DB::beginTransaction();
+        try {
+            $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
+      
+
+            if($ok)
+            {
+                $image_lf = null;
+                $image_roe = null;                
+
+                $file = $request->file('image_lf');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/piscina/licencia_funcionamiento/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_lf = $dir.'/'.$newFileName;
+                    $ok->update(['image_lf' => $image_lf]);
+                }
+
+
+                $file = $request->file('image_roe');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/piscina/roe/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_roe = $dir.'/'.$newFileName;
+                    $ok->update(['image_roe' => $image_roe]);
+                }
+
+
+            }
+            else
+            {
+                $image_lf = null;
+                $image_roe = null;
+
+                $file = $request->file('image_lf');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/piscina/licencia_funcionamiento/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_lf = $dir.'/'.$newFileName;
+                }
+
+                $file = $request->file('image_roe');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/piscina/roe".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_roe = $dir.'/'.$newFileName;
+                }
+
+                BusineRequirement::create(['type' => 'piscina', 'busine_id' => $request->busine_id, 'image_lf' => $image_lf, 'image_roe' => $image_roe]);
+                                    
+            }            
+            DB::commit();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
+        }
+    }
+
+    public function requirementModeloStore(Request $request)
+    {
+        // return $request->all();
+        DB::beginTransaction();
+        try {
+            $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
+      
+
+            if($ok)
+            {
+                $image_lf = null;
+                $image_roe = null;                
+
+                $file = $request->file('image_lf');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/modelo/licencia_funcionamiento/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_lf = $dir.'/'.$newFileName;
+                    $ok->update(['image_lf' => $image_lf]);
+                }
+
+
+                $file = $request->file('image_roe');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/modelo/roe/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_roe = $dir.'/'.$newFileName;
+                    $ok->update(['image_roe' => $image_roe]);
+                }
+
+
+            }
+            else
+            {
+                $image_lf = null;
+                $image_roe = null;
+
+                $file = $request->file('image_lf');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/modelo/licencia_funcionamiento/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_lf = $dir.'/'.$newFileName;
+                }
+
+                $file = $request->file('image_roe');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "empresa/modelo/roe".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_roe = $dir.'/'.$newFileName;
+                }
+
+                BusineRequirement::create(['type' => 'modelo', 'busine_id' => $request->busine_id, 'image_lf' => $image_lf, 'image_roe' => $image_roe]);
+                                    
+            }            
+            DB::commit();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
+        }
+    }
+
 
 
 

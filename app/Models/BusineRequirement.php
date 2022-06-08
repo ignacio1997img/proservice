@@ -15,6 +15,7 @@ class BusineRequirement extends Model
         'image_lf',
         'image_roe',
         'image_pd',
+        'exp_modelo',
         'status',
         'deleted_at'
     ];

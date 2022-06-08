@@ -61,7 +61,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <textarea name="exp_maquinas" id="" cols="320" rows="3"></textarea>
+                                                    <textarea name="exp_maquinas" class="form-control" id="" rows="3"></textarea>
                                                 </div>
                                                 <small>Experiencia en Maquinaria.</small>
                                             </div>

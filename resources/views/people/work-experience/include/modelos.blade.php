@@ -8,7 +8,7 @@
                         <div class="table-responsive">
                             <main class="main">     
                                 @if(!auth()->user()->hasRole('admin'))
-                                {!! Form::open(['route' => 'work-experience.requirement-piscinero-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}                               
+                                {!! Form::open(['route' => 'work-experience.requirement-modelos-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}                               
                                 <div class="card-body">
                                     <input type="hidden" name="people_experience_id" value="{{$id}}">
                                     <input type="hidden" name="rubro_id" value="{{$rubro_id}}">
@@ -17,7 +17,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" name="image_ci"  multiple class="form-control" accept="image/*">
+                                                    <input type="file" name="image_ci" class="form-control" accept="image/*">
                                                 </div>
                                                 <small>Carnet de identidad (imagen):</small>
                                             </div>
@@ -25,85 +25,80 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" name="image_ap"  multiple class="form-control" accept="image/*">
+                                                    <input type="file" name="image_book"  class="form-control" accept="image/*">
                                                 </div>
-                                                <small>Antecedentes penales (imagen):</small>
+                                                <small>Book (imagen):</small>
                                             </div>
                                         </div> 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="exp_mant_piscina" class="form-control">
-                                                        <option value="">Selecione</option>
-                                                        <option value="1">Si</option>
-                                                        <option value="0">No</option>                                                 
-                                                    </select>
+                                                    <input type="number" id="nit" name="estatura" class="form-control form-control-sm text" placeholder="Seleccione un Proveedor">
                                                 </div>
-                                                <small>Experiencia en Mantenimiento de Piscinas.</small>
+                                                <small>Estatura.</small>
                                             </div>
                                         </div>
+                                        <!-- === -->
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="medir_ph" class="form-control">
-                                                        <option value="">Selecione</option>
-                                                        <option value="1">Si</option>
-                                                        <option value="0">No</option>                                                 
-                                                    </select>
+                                                    <input type="number" id="responsable" name="peso" class="form-control form-control-sm text" placeholder="Seleccione un Proveedor">
                                                 </div>
-                                                <small>Saber Medir PH.</small>
+                                                <small>Peso.</small>
                                             </div>
-                                        </div> 
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <select name="asp_piscina" class="form-control">
-                                                        <option value="">Selecione</option>
-                                                        <option value="1">Si</option>
-                                                        <option value="0">No</option>                                                 
-                                                    </select>
-                                                </div>
-                                                <small>Saber Aspirar Piscina</small>
-                                            </div>
-                                        </div> 
-                                        <div class="col-sm-2">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <select name="cant_quimico" class="form-control">
-                                                        <option value="">Selecione</option>
-                                                        <option value="1">Si</option>
-                                                        <option value="0">No</option>                                                 
-                                                    </select>
-                                                </div>
-                                                <small>Saber Calcular la Cantidad de Quimico para Piscina.</small>
-                                            </div>
-                                        </div> 
+                                        </div>
                                     </div>
 
+                                    <h4>Idiomas</h4>
                                     <div class="row">
                                        
                                         <div class="col-sm-2">
                                             <div class="form-group">
-                                                <div class="form-line">
-                                                    <select name="bomba_agua" class="form-control">
-                                                        <option value="">Selecione</option>
-                                                        <option value="1">Si</option>
-                                                        <option value="0">No</option>                                                 
-                                                    </select>
-                                                </div>
-                                                <small>Tiene Conocimiento de Funcionamiento de Bomba</small>
+                                                <small><input type="checkbox" id="cbox1" value="1" name="spanish"> Español</small><br>
+
+                                                <small><input type="checkbox" id="cbox2" value="1" name="english"> Ingles</small>
                                             </div>
                                         </div> 
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <small><input type="checkbox" id="cbox1" value="1" name="frances"> Frances</small><br>
+
+                                                <small><input type="checkbox" id="cbox2" value="1" name="italiano"> Italiano</small>
+                                            </div>
+                                        </div> 
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <small><input type="checkbox" id="cbox1" value="1" name="portugues"> portugues</small><br>
+
+                                                <small><input type="checkbox" id="cbox2" value="1" name="aleman"> Aleman</small>
+                                            </div>
+                                        </div> 
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <textarea name="otro_idioma" class="form-control" rows="2"></textarea>
+                                                </div>
+                                                <small>Otro Idiomas.</small>
+                                            </div>
+                                        </div>
                                         <!-- === -->
                                         
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <textarea name="trabajado_ante_donde" class="form-control" rows="2"></textarea>
+                                                    <textarea name="curso_modelaje" class="form-control" rows="2"></textarea>
                                                 </div>
-                                                <small>¿Donde ha Trabajado ante como Piscinero?.</small>
+                                                <small>Curso de Modelaje y otros Relacionado.</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <textarea name="exp_modelaje" class="form-control" rows="2"></textarea>
+                                                </div>
+                                                <small>Experiencia en Modelaje.</small>
                                             </div>
                                         </div>
                                     </div>
@@ -139,12 +134,12 @@
                                                 </td>            
                                             </tr>
                                             <tr>
-                                                <td>Antecedentes penales</td>
+                                                <td>Book</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->image_ap)
+                                                        @if ($peoplerequirement->image_book)
                                                             <span class="badge badge-success">Si cargado</span>
-                                                            <a href="{{url('storage/public/'.$peoplerequirement->image_ap)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                            <a href="{{url('storage/public/'.$peoplerequirement->image_book)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                                                 <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else
@@ -156,15 +151,11 @@
                                                 </td>          
                                             </tr>
                                             <tr>
-                                                <td>Experiencia en Mantenimiento de Piscinas.</td>
+                                                <td>Estatura</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->exp_mant_piscina == 1 || $peoplerequirement->exp_mant_piscina == 0)
-                                                            @if ($peoplerequirement->exp_mant_piscina == 1)
-                                                                <span class="badge badge-success">Si</span>
-                                                            @else
-                                                                <span class="badge badge-danger">No</span>
-                                                            @endif
+                                                        @if ($peoplerequirement->estatura)
+                                                            {{$peoplerequirement->estatura}}
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
                                                         @endif
@@ -174,15 +165,11 @@
                                                 </td>            
                                             </tr>
                                             <tr>
-                                                <td>Saber Medir PH.</td>
+                                                <td>Peso</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->medir_ph == 1 || $peoplerequirement->medir_ph == 0)
-                                                            @if ($peoplerequirement->medir_ph == 1)
-                                                                <span class="badge badge-success">Si</span>
-                                                            @else
-                                                                <span class="badge badge-danger">No</span>
-                                                            @endif
+                                                        @if ($peoplerequirement->peso)
+                                                            {{$peoplerequirement->peso}}
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
                                                         @endif
@@ -192,6 +179,69 @@
                                                 </td>           
                                             </tr>
                                             <tr>
+                                                <td>Idioma</td>
+                                                <td>
+                                                    @if ($peoplerequirement)
+                                                        @if ($peoplerequirement->spanish || $peoplerequirement->english || $peoplerequirement->frances || $peoplerequirement->italiano || $peoplerequirement->portugues || $peoplerequirement->aleman || $peoplerequirement->otro_idioma)
+                                                            @if ($peoplerequirement->spanish)
+                                                                <span class="badge badge-success">Español</span>
+                                                            @endif
+                                                            @if ($peoplerequirement->english)
+                                                                <span class="badge badge-success">Ingles</span>
+                                                            @endif
+                                                            @if ($peoplerequirement->frances)
+                                                                <span class="badge badge-success">Frances</span>
+                                                            @endif
+                                                            @if ($peoplerequirement->italiano)
+                                                                <span class="badge badge-success">Italiano</span>
+                                                            @endif
+                                                            @if ($peoplerequirement->portugues)
+                                                                <span class="badge badge-success">Portugues</span>
+                                                            @endif
+                                                            @if ($peoplerequirement->aleman)
+                                                                <span class="badge badge-success">Aleman</span>
+                                                            @endif
+                                                            @if ($peoplerequirement->otro_idioma)
+                                                                <span class="badge badge-success">{{$peoplerequirement->otro_idioma}}</span>
+                                                            @endif
+                                                            {{-- {{$peoplerequirement->spanish}} {{$peoplerequirement->english}} {{$peoplerequirement->frances}} {{$peoplerequirement->italiano}} {{$peoplerequirement->portugues}} {{$peoplerequirement->aleman}} {{$peoplerequirement->otro_idioma}} --}}
+                                                        @else
+                                                            <span class="badge badge-danger">No cargado</span>
+                                                        @endif
+                                                    @else
+                                                        <span class="badge badge-danger">No cargado</span>
+                                                    @endif
+                                                </td>           
+                                            </tr>
+                                            <tr>
+                                                <td>Curso de Modelaje y otros Relacionado</td>
+                                                <td>
+                                                    @if ($peoplerequirement)
+                                                        @if ($peoplerequirement->curso_modelaje)
+                                                            {{$peoplerequirement->curso_modelaje}}
+                                                        @else
+                                                            <span class="badge badge-danger">No cargado</span>
+                                                        @endif
+                                                    @else
+                                                        <span class="badge badge-danger">No cargado</span>
+                                                    @endif
+                                                </td>           
+                                            </tr>
+                                            <tr>
+                                                <td>Experiencia en Modelaje</td>
+                                                <td>
+                                                    @if ($peoplerequirement)
+                                                        @if ($peoplerequirement->exp_modelaje)
+                                                            {{$peoplerequirement->exp_modelaje}}
+                                                        @else
+                                                            <span class="badge badge-danger">No cargado</span>
+                                                        @endif
+                                                    @else
+                                                        <span class="badge badge-danger">No cargado</span>
+                                                    @endif
+                                                </td>           
+                                            </tr>
+                                            {{--<tr>
                                                 <td>Saber Aspirar Piscina</td>
                                                 <td>
                                                     @if ($peoplerequirement)
@@ -231,7 +281,7 @@
                                                 <td>Tiene Conocimiento de Funcionamiento de Bomba</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->bomba_agua == 1 || $peoplerequirement->bomba_agua == 0)
+                                                        @if ($peoplerequirement->bomba_agua == 1 || $peoplerequirement->| == 0)
                                                             @if ($peoplerequirement->bomba_agua == 1)
                                                                 <span class="badge badge-success">Si</span>
                                                             @else
@@ -258,7 +308,7 @@
                                                         <span class="badge badge-danger">No cargado</span>
                                                     @endif
                                                 </td>            
-                                            </tr>
+                                            </tr> --}}
                                         </tbody>                                        
                                     </table>                                    
                                 </div>     
