@@ -52,7 +52,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Resi.</h3>
+            <h3><span style="color:rgb(13, 86, 221)">Trabajos</span><span style="color:rgb(255,157,0)">TOP</span></a></h1></h3>
             <p>
               A108 Adam Street <br>
               New York, NY 535022<br>
@@ -62,7 +62,7 @@
             </p>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
+          <!-- <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -94,13 +94,13 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="container d-md-flex py-4">
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Resi</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>IdeaCreativa</span></strong>. Todos los Derechos son reservados
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
