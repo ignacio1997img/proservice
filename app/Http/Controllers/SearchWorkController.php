@@ -66,11 +66,8 @@ class SearchWorkController extends Controller
 
         $data = DB::table('people as p')
                 ->join('people_experiences as pe', 'pe.people_id', 'p.id')
-                ->leftJoin('message_people as mp', 'mp.people_id', 'p.id')
                 ->where('pe.rubro_id', $request->rubro_id)
-                ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia
-                // ->Where('mp.star', '>', 0)
-                ->orwhere('mp.rubro_people_id', $request->rubro_id)
+                ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia}
 
                 // ->orWhereRaw('mp.star > 0')
                 // ->orWhere('mp.rubro_people_id', '!=', 0)
@@ -79,7 +76,8 @@ class SearchWorkController extends Controller
                 // ->groupBy('p.id', 'p.first_name', 'p.last_name')
                 // ->orderBy('star', 'desc')
                 ->get();
-                dd($data);
+                // dd($data);
+        // $data = DB::table()
 // 
         // $data = DB::table('people as p')
         //         ->join('people_experiences as pe', 'pe.people_id', 'p.id')
