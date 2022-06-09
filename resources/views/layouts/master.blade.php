@@ -54,11 +54,9 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3><span style="color:rgb(13, 86, 221)">Trabajos</span><span style="color:rgb(255,157,0)">TOP</span></a></h1></h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Calle Gral. Davo Terrazas #3340 <br>
+              <strong>Phone:</strong> +591 69154634<br>
+              <strong>Email:</strong> trabajostopContacto@gmail.com<br>
             </p>
           </div>
 
