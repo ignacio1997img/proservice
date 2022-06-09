@@ -153,43 +153,43 @@
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
-            <h3><a href="">Carpitenros</a></h3>
+            <h3><a href="">Carpinteros</a></h3>
           </div>
         </div>
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-            <h3><a href="">Midela Teren</a></h3>
+            <h3><a href="">Modelos</a></h3>
           </div>
         </div>
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-            <h3><a href="">Pira Neve</a></h3>
+            <h3><a href="">Arquitectos</a></h3>
           </div>
         </div>
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-anchor-line" style="color: #b2904f;"></i>
-            <h3><a href="">Dirada Pack</a></h3>
+            <h3><a href="">Marketing y Publicidad</a></h3>
           </div>
         </div>
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-disc-line" style="color: #b20969;"></i>
-            <h3><a href="">Moton Ideal</a></h3>
+            <h3><a href="">Limpieza de Piscinas</a></h3>
           </div>
         </div>
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-base-station-line" style="color: #ff5828;"></i>
-            <h3><a href="">Verdo Park</a></h3>
+            <h3><a href="">Mantenimiento y reparacion de A/C</a></h3>
           </div>
         </div>
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-            <h3><a href="">Flavor Nivelanda</a></h3>
+            <h3><a href="">Limpieza en General</a></h3>
           </div>
         </div>
       </div>
@@ -205,10 +205,10 @@
       <div class="row">
         <div class="col-lg-12 d-flex justify-content-center">
           <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
+            <li data-filter="*" class="filter-active">Todas</li>
+            <li data-filter=".filter-app">Guardias</li>
+            <li data-filter=".filter-card">Modelos</li>
+            <li data-filter=".filter-web">Jardineros</li>
           </ul>
         </div>
       </div>
@@ -351,8 +351,8 @@
     <div class="container">
 
       <div class="section-title">
-        <h2>Team</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <h2>Referencias Top</h2>
+        <p>Felicitamos y premiamos a nuestros usuarios por el espectacular y confiable trabajo que realizan y ofrecen a través de nuestra plataforma.</p>
       </div>
 
       <div class="row">
@@ -439,49 +439,50 @@
     <div class="container">
 
       <div class="section-title">
-        <h2>Pricing</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <h2>Verificación de cuenta</h2>
+        <p>Verifica tu cuenta para poder acceder a los beneficios que tenemos para ofrecerte y tengas más herramientas y mejores oportunidades para poder impulsarte.</p>
       </div>
 
       <div class="row no-gutters">
 
         <div class="col-lg-4 box">
-          <h3>Free</h3>
-          <h4>$0<span>per month</span></h4>
+          <h3>Empleados</h3>
+          <h4><span>permanente</span></h4>
           <ul>
-            <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-            <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-            <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-            <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-            <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+            <li><i class="bx bx-check"></i> Verificación de cuenta</li>
+            <li><i class="bx bx-check"></i> Certificación de documentación</li>
+            <li><i class="bx bx-check"></i> Accede a capacitaciones sin costo adicional </li>
+            <li><i class="bx bx-check"></i> Aplica a más de un trabajo al mismo tiempo </li>
+            <li><i class="bx bx-check"></i> Recibe invitaciones de trabajo sin límites </li>
           </ul>
-          <a href="#" class="btn-buy">Get Started</a>
+          <a href="https://trabajostop.com/register-employe" class="btn-buy">Ingresar</a>
         </div>
 
         <div class="col-lg-4 box featured">
-          <h3>Business</h3>
-          <h4>$29<span>per month</span></h4>
+          <h3>Empresas</h3>
+          <h4><span>Servicios sin limites</span></h4>
           <ul>
-            <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-            <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-            <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-            <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-            <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+            <li><i class="bx bx-check"></i> Accede a capacitaciones sin costo adicional</li>
+            <li><i class="bx bx-check"></i> Podrás recibir invitaciones de ofertas de servicios</li>
+            <li><i class="bx bx-check"></i> Busca personal de trabajo sin límites</li>
+            <li><i class="bx bx-check"></i> Verificación de tu cuenta</li>
+            <li><i class="bx bx-check"></i> Certificación de la documentación de la empresa</li>
           </ul>
-          <a href="#" class="btn-buy">Get Started</a>
+          <a href="https://trabajostop.com/register-busine" class="btn-buy">Ingresar</a>
         </div>
 
         <div class="col-lg-4 box">
-          <h3>Developer</h3>
-          <h4>$49<span>per month</span></h4>
+          <h3>Búsqueda de servicios</h3>
+          <h4><span>ilimitado</span></h4>
           <ul>
-            <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-            <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-            <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-            <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-            <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+            <li><i class="bx bx-check"></i> Verificación de tu cuenta</li>
+            <li><i class="bx bx-check"></i> Pago seguro mediante la plataforma </li>
+            <li><i class="bx bx-check"></i> Atención personalizada</li>
+            <li><i class="bx bx-check"></i> Consultoria sin costo adicional</li>
+            <li><i class="bx bx-check"></i> Búsqueda de servicios sin límites</li>
+            <li><i class="bx bx-check"></i> Personal verificado y Confiable</li>
           </ul>
-          <a href="#" class="btn-buy">Get Started</a>
+          <a href="https://trabajostop.com/register-beneficiary" class="btn-buy">Ingresar</a>
         </div>
 
       </div>
@@ -565,8 +566,8 @@
     <div class="container">
 
       <div class="section-title">
-        <h2>Contact</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <h2>Contactenos</h2>
+        <p>Si quieres representarnos en otra ciudad o tienes  alguna sugerencia, solicitud o si quieres incluir tu rubro, servicio o emprendimiento no dudes en ponerte en contacto con nosotros.</p>
       </div>
 
       <div class="row">
@@ -577,22 +578,22 @@
             <div class="col-md-12">
               <div class="info-box">
                 <i class="bx bx-map"></i>
-                <h3>Our Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h3>Nuestra Direccion</h3>
+                <p>Calle Gral. Davo Terrazas #3340</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-envelope"></i>
                 <h3>Email Us</h3>
-                <p>info@example.com<br>contact@example.com</p>
+                <p>trabajostopContacto@gmail.com<br></p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-phone-call"></i>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                <h3>Telefono</h3>
+                <p>+591 69154634<br></p>
               </div>
             </div>
           </div>
@@ -603,24 +604,24 @@
           <form action="forms/contact.php" method="post" role="form" class="php-email-form">
             <div class="row">
               <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Tu nombre" required>
               </div>
               <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Tu Email" required>
               </div>
             </div>
             <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Titulo" required>
             </div>
             <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
             </div>
             <div class="my-3">
-              <div class="loading">Loading</div>
+              <div class="loading">Enviando</div>
               <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="sent-message">Tu mensaje ha sido Enviado!</div>
             </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
+            <div class="text-center"><button type="submit">Enviar mensaje</button></div>
           </form>
         </div>
 

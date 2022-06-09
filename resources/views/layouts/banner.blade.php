@@ -7,7 +7,7 @@
           <ul>
             <li><i class="ri-check-line"></i> Ofrecemos Todo Tipo de Trabajo</li>
             <li><i class="ri-check-line"></i> Ofrecemos Servicios a las Empresas</li>
-            <li><i class="ri-check-line"></i> Duis aute irure dolor in reprehenderit in</li>
+            <li><i class="ri-check-line"></i> Informacion Verificada y confiable</li>
           </ul>
           <div class="mt-3">
             <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a>
