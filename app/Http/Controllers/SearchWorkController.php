@@ -63,18 +63,15 @@ class SearchWorkController extends Controller
 
         
         $star = $request->star;
+        // dd($star);
 
         $data = DB::table('people as p')
                 ->join('people_experiences as pe', 'pe.people_id', 'p.id')
                 ->where('pe.rubro_id', $request->rubro_id)
-                ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia}
-
-                // ->orWhereRaw('mp.star > 0')
-                // ->orWhere('mp.rubro_people_id', '!=', 0)
-                // ->orWhere('mp.status', 1)
-                ->select('p.id', 'p.first_name', 'p.last_name', 'mp.star')
+                ->where('pe.status', $request->verified)
+                ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("(pe.star / pe.cant) as star"))
                 // ->groupBy('p.id', 'p.first_name', 'p.last_name')
-                // ->orderBy('star', 'desc')
+                ->orderBy('star', 'desc')
                 ->get();
                 // dd($data);
         // $data = DB::table()
