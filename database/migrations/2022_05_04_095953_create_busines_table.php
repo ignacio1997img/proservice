@@ -28,6 +28,9 @@ class CreateBusinesTable extends Migration
             $table->string('website')->nullable();
             $table->text('description')->nullable();
             $table->smallInteger('status')->default(2);
+
+            $table->integer('star')->default(0);
+            $table->integer('cant')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

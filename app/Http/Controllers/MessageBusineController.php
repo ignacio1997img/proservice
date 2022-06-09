@@ -159,14 +159,15 @@ class MessageBusineController extends Controller
         DB::beginTransaction();
         try {
             $message = MessageBusine::find($request->id);
-
+            // return $message;
             if($message->date_date == null)
             {
                 $message->update([
                     'date_view' => Carbon::now()
                 ]);
             }
-
+            $busine = Busine::find($message->busine_id);
+            $busine->update(['star'=> $busine->star + $request->star, 'cant'=> $busine->cant + 1]);
 
             $message->update([
                 'star' => $request->star,

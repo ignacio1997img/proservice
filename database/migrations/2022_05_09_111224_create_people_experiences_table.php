@@ -18,6 +18,10 @@ class CreatePeopleExperiencesTable extends Migration
             $table->foreignId('people_id')->nullable()->constrained('people');
             $table->foreignId('rubro_id')->nullable()->constrained('rubro_people');
             $table->smallInteger('status')->default(2);  // 1: activo, 2: pendiente 0: inactivo
+
+            $table->integer('star')->default(0);
+            $table->integer('cant')->default(0);
+
             $table->timestamps();
             $table->softDeletes();
         });

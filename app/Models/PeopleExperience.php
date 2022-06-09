@@ -13,7 +13,8 @@ class PeopleExperience extends Model
         'people_id',
         'rubro_id',
         'status',
-        'deleted_at'
+        'deleted_at',
+        'cant', 'star'
     ];
 
     public function rubro_people()

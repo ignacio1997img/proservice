@@ -54,16 +54,6 @@ class SearchWorkController extends Controller
 
     public function search(Request $request)
     {    
-        
-    //    $data = DB::table('people as p')
-    //         ->join('people_experiences as pe', 'pe.people_id', '=', 'p.id')
-    //         ->join('rubro_people as rp', 'rp.id', '=', 'pe.rubro_id')
-    //         ->where('p.status',1)
-    //         ->where('p.deleted_at', null)
-    //         ->where('rp.id', $request->rubro_id)
-    //         ->where('pe.status', '!=' ,0)
-    //         ->select('p.id', 'p.first_name', 'p.last_name', 'p.email', 'p.phone1', 'rp.name as rubro')
-    //         ->get();
         $rubro_people = $request->rubro_id;
         $rubro_busine = DB::table('busines as b')
             ->join('rubro_busines as rb', 'rb.id', '=', 'b.rubro_id')
@@ -71,48 +61,40 @@ class SearchWorkController extends Controller
             ->select('rb.id as rubro_busine', 'rb.name as rubro', 'b.id as busine_id')
             ->first();
 
-        // dd($request->star);
-        // $i='';
-        // if($request->star == null)
-        // {
-        //     $i = '=';
-        // }
-        // else
-        // {
-        //     $i = '<';
-        // // }
+        
+        $star = $request->star;
+
+        $data = DB::table('people as p')
+                ->join('people_experiences as pe', 'pe.people_id', 'p.id')
+                ->leftJoin('message_people as mp', 'mp.people_id', 'p.id')
+                ->where('pe.rubro_id', $request->rubro_id)
+                ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia
+                // ->Where('mp.star', '>', 0)
+                ->orwhere('mp.rubro_people_id', $request->rubro_id)
+
+                // ->orWhereRaw('mp.star > 0')
+                // ->orWhere('mp.rubro_people_id', '!=', 0)
+                // ->orWhere('mp.status', 1)
+                ->select('p.id', 'p.first_name', 'p.last_name', 'mp.star')
+                // ->groupBy('p.id', 'p.first_name', 'p.last_name')
+                // ->orderBy('star', 'desc')
+                ->get();
+                dd($data);
+// 
         // $data = DB::table('people as p')
         //         ->join('people_experiences as pe', 'pe.people_id', 'p.id')
-        //         ->leftJoin('message_people as mp', 'mp.people_id', 'p.id')
+        //         ->leftJoin('message_people as mp', 'mp.people_id', 'p.id')//ineer join
                 
         //         // ->where('mp.rubro_people_id', $request->rubro_id)
         //         ->where('pe.rubro_id', $request->rubro_id)
         //         ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia
         //         ->orWhere('mp.star_date', '!=', null)
         //         ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("(SUM(mp.star) / count(mp.star_date)) as star"))
-        //         // ->having('star', $request->star != 'null'? '<' : '=', $request->star != 'star'? $request->star+1 : 'null')
-        //         ->havi('star', null)
+        //         // ->having('star', '<', $request->star+1)
         //         ->groupBy('p.id', 'p.first_name', 'p.last_name')
         //         ->orderBy('star', 'desc')
         //         ->get();
-        //         dd($data);
-        
-        $star = $request->star;
-
-        $data = DB::table('people as p')
-                ->join('people_experiences as pe', 'pe.people_id', 'p.id')
-                ->leftJoin('message_people as mp', 'mp.people_id', 'p.id')//ineer join
-                
-                // ->where('mp.rubro_people_id', $request->rubro_id)
-                ->where('pe.rubro_id', $request->rubro_id)
-                ->where('pe.status', $request->verified)// para ver si esta verificada la experiencia
-                ->orWhere('mp.star_date', '!=', null)
-                ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("(SUM(mp.star) / count(mp.star_date)) as star"))
-                // ->having('star', '<', $request->star+1)
-                ->groupBy('p.id', 'p.first_name', 'p.last_name')
-                ->orderBy('star', 'desc')
-                ->get();
-                dd($request);
+        //         dd($request);
 
         return view('busine.search-workers.search-result', compact('data','rubro_people', 'rubro_busine', 'star'));
     }

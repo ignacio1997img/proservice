@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\MessagePeople;
 use Illuminate\Support\Facades\DB;
 use App\Models\People;
+use App\Models\PeopleExperience;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,6 +103,12 @@ class MessagePeopleBusineController extends Controller
                 'comment' => $request->comment,
                 'star_date' => Carbon::now()
             ]);
+
+            // return $message;
+            $people = PeopleExperience::where('people_id', $message->people_id)->where('rubro_id', $message->rubro_people_id)->first();
+            $people->update(['star' => $request->star + $people->star, 'cant' => $people->cant + 1]);
+
+
             DB::commit();
             // return 1;
             

@@ -19,7 +19,7 @@
                         </thead>
                         <tbody>
                             @forelse ($data as $item)
-                                @if(number_format($item->star, 2) <= $star+1)
+                                {{-- @if(number_format($item->star, 2) <= $star+1) --}}
                                     <tr>
                                         <td style="text-align: center">{{ $item->first_name }}</td>
                                         <td style="text-align: center">{{ $item->last_name}}</td>
@@ -62,7 +62,7 @@
                                             <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>
                                         </td>                                
                                     </tr>
-                                @endif
+                                {{-- @endif --}}
                             @empty
                                 <tr>
                                     <td colspan="4" style="text-align: center">No hay resultados</td>
