@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   padding: 10px 0 10px 30px;
   font-size: 15px;
-  color: #434175;
+  color: #020202;
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -126,18 +126,18 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 5px;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #5a5af3;
+  color: #0088ff;
 }
 .navbar .getstarted, .navbar .getstarted:focus {
   padding: 6px 25px;
   margin-left: 30px;
   border-radius: 50px;
-  color: #5a5af3;
-  border: 2px solid #5a5af3;
+  color: #0088ff;
+  border: 2px solid #0088ff;
 }
 .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
   color: #fff;
-  background: #7272f5;
+  background: #0088ff;
 }
 .navbar .dropdown ul {
   display: block;
@@ -336,9 +336,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50px;
 }
 #hero .btn-get-started {
-  background: #5a5af3;
+  background: #0088ff;
   color: #fff;
-  border: 2px solid #5a5af3;
+  border: 2px solid #0088ff;
   margin-right: 10px;
 }
 #hero .btn-get-started:hover {
@@ -346,8 +346,8 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #7272f5;
 }
 #hero .btn-get-quote {
-  color: #5a5af3;
-  border: 2px solid #5a5af3;
+  color: #0088ff;
+  border: 2px solid #0088ff;
 }
 #hero .btn-get-quote:hover {
   background: #5a5af3;
