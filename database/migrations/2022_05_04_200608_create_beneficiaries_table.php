@@ -16,6 +16,7 @@ class CreateBeneficiariesTable extends Migration
         Schema::create('beneficiaries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('city_id')->nullable()->constrained('cities');
             $table->string('name')->nullable();
             $table->string('responsible')->nullable();
             $table->string('identification')->nullable();

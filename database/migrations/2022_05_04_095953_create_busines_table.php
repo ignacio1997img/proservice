@@ -16,7 +16,8 @@ class CreateBusinesTable extends Migration
         Schema::create('busines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('rubro_id')->nullable()->constrained('rubro_busines');
-            $table->foreignId('user_id')->nullable()->constrained('users');            
+            $table->foreignId('user_id')->nullable()->constrained('users');       
+            $table->foreignId('city_id')->nullable()->constrained('cities');     
             $table->string('nit')->unique();
             $table->string('name')->nullable();
             $table->string('responsible')->nullable();

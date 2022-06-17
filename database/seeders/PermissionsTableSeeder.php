@@ -53,6 +53,8 @@ class PermissionsTableSeeder extends Seeder
 
         Permission::generateFor('settings');
 
+        Permission::generateFor('countries');
+        Permission::generateFor('cities');
 
         Permission::generateFor('rubro_busines');
         Permission::generateFor('busines');

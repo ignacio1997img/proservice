@@ -109,6 +109,42 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2022-05-04 09:57:07',
                 'updated_at' => '2022-05-04 09:57:07',
             ),
+            5 => 
+            array (
+                'id' => 9,
+                'name' => 'countries',
+                'slug' => 'countries',
+                'display_name_singular' => 'País',
+                'display_name_plural' => 'Paises',
+                'icon' => 'fa-solid fa-earth-americas',
+                'model_name' => 'App\\Models\\Country',
+                'policy_name' => NULL,
+                'controller' => NULL,
+                'description' => NULL,
+                'generate_permissions' => 1,
+                'server_side' => 0,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
+                'created_at' => '2022-06-17 15:21:52',
+                'updated_at' => '2022-06-17 15:27:48',
+            ),
+            6 => 
+            array (
+                'id' => 11,
+                'name' => 'cities',
+                'slug' => 'cities',
+                'display_name_singular' => 'Ciudad',
+                'display_name_plural' => 'Ciudades',
+                'icon' => 'fa-solid fa-city',
+                'model_name' => 'App\\Models\\City',
+                'policy_name' => NULL,
+                'controller' => NULL,
+                'description' => NULL,
+                'generate_permissions' => 1,
+                'server_side' => 0,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
+                'created_at' => '2022-06-17 15:32:39',
+                'updated_at' => '2022-06-17 15:42:07',
+            ),
         ));
         
         
