@@ -29,7 +29,7 @@
                         </div>
                     </div> --}}
                     <div class="col-md-12 div-img" style="height: 600px;">
-                        <img src="images/register/BUSCO-EMPRESA-2.png" class="img-fluid" alt="">
+                        <img src="images/register/BUSCO-EMPRESA-2.jpeg" class="img-fluid" alt="">
                     </div>
                 </div>
 
