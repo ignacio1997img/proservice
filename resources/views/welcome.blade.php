@@ -82,7 +82,7 @@
         <div class="col-lg-3 col-md-6">
           <div class="count-box">
             <i class="bi bi-emoji-smile"></i>
-            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{$peoplev}}" data-purecounter-duration="1" class="purecounter"></span>
             <p>Personas Verificadas</p>
           </div>
         </div>
@@ -90,23 +90,24 @@
         <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
           <div class="count-box">
             <i class="bi bi-journal-richtext"></i>
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{$solicitud_pendiente}}" data-purecounter-duration="1" class="purecounter"></span>
             <p>Solicitudes de Verificacion</p>
           </div>
         </div>
 
+
         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
           <div class="count-box">
             <i class="bi bi-headset"></i>
-            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Clientes Felices</p>
+            <span data-purecounter-start="0" data-purecounter-end="{{$busine}}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Empresas</p>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
           <div class="count-box">
             <i class="bi bi-people"></i>
-            <span data-purecounter-start="0" data-purecounter-end="1575" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{$miembros}}" data-purecounter-duration="1" class="purecounter"></span>
             <p>Miembros</p>
           </div>
         </div>
@@ -594,7 +595,7 @@
               <div class="info-box mt-4">
                 <i class="bx bx-phone-call"></i>
                 <h3>Telefono</h3>
-                <p>+591 69154634<br></p>
+                <p>+591 78128183<br></p>
               </div>
             </div>
           </div>

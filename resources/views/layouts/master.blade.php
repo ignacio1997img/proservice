@@ -55,7 +55,7 @@
             <h3><span style="color:rgb(13, 86, 221)">Trabajos</span><span style="color:rgb(255,157,0)">TOP</span></a></h1></h3>
             <p>
               Calle Gral. Davo Terrazas #3340 <br>
-              <strong>Phone:</strong> +591 69154634<br>
+              <strong>Phone:</strong> +591 78128183<br>
               <strong>Email:</strong> trabajostopContacto@gmail.com<br>
             </p>
           </div>
@@ -110,7 +110,8 @@
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.facebook.com/TrabajosTop/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://wa.me/59178128183?text=Me gustaría saber más sobre su plataforma" target="_blank" class="twitter"><i class="bx bxl-whatsapp"></i></a>
+        <a href="https://www.facebook.com/TrabajosTop/" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
