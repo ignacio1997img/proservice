@@ -371,7 +371,7 @@
             </div>
             <div class="member-info">
               <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
+              <span>Seguridad</span>
             </div>
           </div>
         </div>
@@ -389,7 +389,7 @@
             </div>
             <div class="member-info">
               <h4>Sarah Jhonson</h4>
-              <span>Product Manager</span>
+              <span>Jardineria</span>
             </div>
           </div>
         </div>
@@ -407,7 +407,7 @@
             </div>
             <div class="member-info">
               <h4>William Anderson</h4>
-              <span>CTO</span>
+              <span>Limpieza de Piscinas</span>
             </div>
           </div>
         </div>
@@ -425,7 +425,7 @@
             </div>
             <div class="member-info">
               <h4>Amanda Jepson</h4>
-              <span>Accountant</span>
+              <span>Modelaje</span>
             </div>
           </div>
         </div>
