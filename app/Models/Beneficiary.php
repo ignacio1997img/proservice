@@ -10,6 +10,6 @@ class Beneficiary extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'name', 'responsible', 'identification', 'address', 'phone1', 'phone2', 'email', 'image', 'description', 'status'
+        'user_id', 'name', 'responsible', 'identification', 'address', 'phone1', 'phone2', 'email', 'image', 'description', 'status', 'city_id'
     ];
 }

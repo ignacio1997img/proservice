@@ -11,7 +11,7 @@ class Busine extends Model
 
     protected $fillable = [
         'nit', 'name', 'responsible', 'address', 'phone1', 'phone2', 'email', 'image', 'user_id', 'rubro_id', 'description', 'status',
-        'deleted_at', 'website', 'cant', 'star'
+        'deleted_at', 'website', 'cant', 'star', 'city_id'
     ];
 
     public function rubrobusines()
