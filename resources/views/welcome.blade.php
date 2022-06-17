@@ -371,7 +371,7 @@
               </div>
             </div>
             <div class="member-info">
-              <h4>Walter White</h4>
+              {{-- <h4>Walter White</h4> --}}
               <span>Seguridad</span>
             </div>
           </div>
@@ -389,7 +389,7 @@
               </div>
             </div>
             <div class="member-info">
-              <h4>Sarah Jhonson</h4>
+              {{-- <h4>Sarah Jhonson</h4> --}}
               <span>Jardineria</span>
             </div>
           </div>
@@ -407,7 +407,7 @@
               </div>
             </div>
             <div class="member-info">
-              <h4>William Anderson</h4>
+              {{-- <h4>William Anderson</h4> --}}
               <span>Limpieza de Piscinas</span>
             </div>
           </div>
@@ -425,7 +425,7 @@
               </div>
             </div>
             <div class="member-info">
-              <h4>Amanda Jepson</h4>
+              {{-- <h4>Amanda Jepson</h4> --}}
               <span>Modelaje</span>
             </div>
           </div>
