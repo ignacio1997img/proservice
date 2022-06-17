@@ -218,12 +218,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/SEGURIDAD-1.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/SEGURIDAD-1.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>App 1</h4>
               <p>App</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/SEGURIDAD-1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/SEGURIDAD-1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -232,12 +232,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/JARDINERIA-2.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/JARDINERIA-2.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Web 3</h4>
               <p>Web</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/JARDINERIA-2.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/JARDINERIA-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -246,12 +246,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/SEGURIDAD-2.1.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/SEGURIDAD-2.1.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>App 2</h4>
               <p>App</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/SEGURIDAD-2.1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/SEGURIDAD-2.1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -260,12 +260,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/MODELAJE-1.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/MODELAJE-1.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Card 2</h4>
               <p>Card</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/MODELAJE-1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/MODELAJE-1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -274,12 +274,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/JARDINERIA-1.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/JARDINERIA-1.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Web 2</h4>
               <p>Web</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/JARDINERIA-1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/JARDINERIA-1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -288,12 +288,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/SEGURIDAD-3.1.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/SEGURIDAD-3.1.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>App 3</h4>
               <p>App</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/SEGURIDAD-3.1.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/SEGURIDAD-3.1.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -302,12 +302,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/MODELAJE-2.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/MODELAJE-2.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Card 1</h4>
               <p>Card</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/MODELAJE-2.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/MODELAJE-2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -316,12 +316,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/MODELAJE-3.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/MODELAJE-3.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Card 3</h4>
               <p>Card</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/MODELAJE-3.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/MODELAJE-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
@@ -330,12 +330,12 @@
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <img src="template/assets/img/portfolio/JARDINERIA-3.png" class="img-fluid" alt="">
+            <img src="template/assets/img/portfolio/JARDINERIA-3.jpeg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>Web 3</h4>
               <p>Web</p>
               <div class="portfolio-links">
-                <a href="template/assets/img/portfolio/JARDINERIA-3.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="template/assets/img/portfolio/JARDINERIA-3.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                 {{-- <a href="template/portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
               </div>
             </div>
