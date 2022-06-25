@@ -341,6 +341,18 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="col-md-12" id="div_model">
+                                {{-- <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>Categoria de Modelaje:</b></span>
+                                </div>
+                                <select name="modelo_id" id="modelo" class="form-control select2" required>
+                                    <option value="">Seleccione un tipo..</option>
+                                    @foreach($model as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select> --}}
+                            </div>
                         </div>     
 
                     </div>
@@ -436,6 +448,9 @@
                         },
                         order: [[ 0, 'desc' ]],
                     })
+
+                $('#rubro_id').on('change', tipo_modelo);
+
         });
 
         $('#modal_aprobar').on('show.bs.modal', function (event) {
@@ -447,6 +462,30 @@
                 modal.find('.modal-body #id').val(id)
                 
         });
+
+
+        function tipo_modelo()
+            {
+                var id =  $(this).val();   
+                if(id == 4)
+                {
+                    var div =   '<div class="input-group-prepend">'
+                        div+=   '<span class="input-group-text"><b>Categoria de Modelaje:</b></span>'
+                        div+=        '</div>'
+                        div+=        '<select name="modelo_id" id="modelo" class="form-control select2" required>'
+                        div+=            '<option value="">Seleccione un tipo..</option>'
+                        div+=            '@foreach($model as $item)'
+                        div+=                '<option value="{{$item->id}}">{{$item->name}}</option>'
+                        div+=            '@endforeach'
+                        div+=        '</select>'
+                    $('#div_model').html(div);
+                }
+                else
+                {
+                    div ='';
+                    $('#div_model').html(div);
+                }
+            }
 
 
 

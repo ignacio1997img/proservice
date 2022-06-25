@@ -161,6 +161,7 @@ class PeopleController extends Controller
     public function read($id)
     {
         $people = People::find($id);
+        // return 1;
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$id)->where('deleted_at', null)->where('status', '!=', 0)->get();

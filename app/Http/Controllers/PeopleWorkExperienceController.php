@@ -12,17 +12,19 @@ use Carbon\Carbon;
 use App\Models\PeopleRequirement;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\TypeModel;
 
 class PeopleWorkExperienceController extends Controller
 {
     public function index()
     {
         $people = People::where('user_id',Auth::user()->id)->first();
+        $model = TypeModel::all();
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
       
-        return view('people.perfil', compact('people', 'experiences', 'rubro'));
+        return view('people.perfil', compact('people', 'experiences', 'rubro', 'model'));
     }
 
     public function store(Request $request)
