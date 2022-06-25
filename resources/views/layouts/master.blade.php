@@ -140,6 +140,37 @@
     }
   </script>
 
+
+
+
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script type="text/javascript">
+    $(function()
+    {
+        $('#department_id').on('change', selectCity);
+    });
+
+    function selectCity()
+    {
+        var id =  $(this).val();    
+        if(id >=1)
+        {
+            $.get('{{route('ajax.get_city')}}/'+id, function(data){
+                var html_city=    '<option value="">Seleccione una ciudad..</option>'
+                    for(var i=0; i<data.length; ++i)
+                    html_city += '<option value="'+data[i].id+'">'+data[i].name+'</option>'
+
+                $('#city_id').html(html_city);;            
+            });
+        }
+        else
+        {
+            var html_city=    '<option value="">Seleccione una ciudad..</option>'       
+            $('#city_id').html(html_city);
+        }
+    };
+</script>
+
 </body>
 
 </html>

@@ -39,22 +39,23 @@
                 {!! Form::open(['route' => 'people.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                     <div class="row">
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <select name="rubro_id" id="rubro_id" class="form-control" required>
+                            <select id="department_id" class="form-control" required>
                                 <option value="">Seleccione un departamento..</option>
-                                @foreach($rubros as $data)
+                                @foreach($department as $data)
                                     <option value="{{$data->id}}">{{$data->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <select name="rubro_id" id="rubro_id" class="form-control" required>
-                                <option value="">Seleccione una Ciudad..</option>
-                                @foreach($rubros as $data)
+                            <select name="city_id" id="city_id" class="form-control" required>
+                                 <option value="">Seleccione una Ciudad..</option>
+                                {{--@foreach($department as $data)
                                     <option value="{{$data->id}}">{{$data->name}}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="ci" onkeypress='return validaNumericos(event)' class="form-control" id="name" placeholder="Carnet de Identidad" required>
@@ -122,4 +123,5 @@
     </section><!-- End Contact Section -->
 
     </main>
+
 @endsection

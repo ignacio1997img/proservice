@@ -19,6 +19,7 @@ use App\Http\Controllers\MessageBusineController;
 use App\Http\Controllers\MessageBeneficiaryController;
 use App\Models\MessageBusine;
 use App\Models\MessagePeople;
+use App\Models\Department;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +37,17 @@ use App\Models\MessagePeople;
 // });
 
 Route::get('register-employe', function () {
-    return view('register-employe');
+
+    $department = Department::where('status',1)->get();
+    return view('register-employe', compact('department'));
 });
 Route::get('register-busine', function () {
-    return view('register-busine');
+    $department = Department::where('status',1)->get();
+    return view('register-busine', compact('department'));
 });
 Route::get('register-beneficiary', function () {
-    return view('register-beneficiary');
+    return view('register-employe', compact('department'));
+    return view('register-beneficiary', compact('department'));
 });
 
 
@@ -156,6 +161,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     //  notificaciones
     Route::get('notification-message', [AjaxController::class, 'getNotifications'])->name('get.notifications');
+
+    Route::get('get/city/{id?}', [AjaxController::class , 'getCity'])->name('ajax.get_city');
 
 });
 

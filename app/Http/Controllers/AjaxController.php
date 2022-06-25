@@ -10,6 +10,7 @@ use App\Models\RubroPeople;
 use App\Models\Busines;
 use App\Models\People;
 use App\Models\Beneficiary;
+use App\Models\City;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -71,5 +72,14 @@ class AjaxController extends Controller
                     // ->select('r.name')
                     ->count();
         }
+    }
+
+
+
+    //para obtener las ciudades cuando se registra las persona, empresa, beneficiario
+
+    protected function getCity($id)
+    {
+        return City::where('department_id', $id)->where('status', 1)->get();
     }
 }

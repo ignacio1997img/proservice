@@ -23,6 +23,7 @@ class PeopleController extends Controller
     
     public function create()
     {
+        // retur
         return view('people.add-people');
     }
 
@@ -87,7 +88,7 @@ class PeopleController extends Controller
                 'phone1' => $request->phone1,
                 'phone2' => $request->phone2,
                 'address' => $request->address,
-                // 'city' => $request->city,
+                'city_id' => $request->city_id,
                 'sex' => $request->sex,
                 'image' => $file? $image_ap: null
             ]);

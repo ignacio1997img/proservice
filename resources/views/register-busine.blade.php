@@ -41,6 +41,25 @@
                 @endphp
                 {!! Form::open(['route' => 'busine.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                     <div class="row">
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <select id="department_id" class="form-control" required>
+                                <option value="">Seleccione un departamento..</option>
+                                @foreach($department as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <select name="city_id" id="city_id" class="form-control" required>
+                                <option value="">Seleccione una Ciudad..</option>
+                                {{--@foreach($department as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                @endforeach --}}
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
                         <div class="col-md-6 form-group">
                         <input type="text" name="nit" onkeypress='return validaNumericos(event)' class="form-control" id="name" placeholder="Nit" required>
                         </div>

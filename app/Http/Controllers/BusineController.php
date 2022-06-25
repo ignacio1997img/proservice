@@ -63,7 +63,9 @@ class BusineController extends Controller
                 'image' => $file? $newFileName: null,
                 'user_id' => $user->id,
                 'rubro_id' => $request->rubro_id,
-                'description' => $request->description
+                'description' => $request->description,
+                'city_id' => $request->city_id
+
             ]);
             // return $request;
             DB::commit();
