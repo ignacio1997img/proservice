@@ -40,7 +40,7 @@
                     $rubros = \DB::table('rubro_busines')->where('deleted_at', null)->where('status', 1)->get();
                 @endphp
                 {!! Form::open(['route' => 'busine.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
-                <div class="row">
+                    <div class="row">
                         <div class="col-md-6 form-group">
                         <input type="text" name="nit" onkeypress='return validaNumericos(event)' class="form-control" id="name" placeholder="Nit" required>
                         </div>

@@ -145,7 +145,7 @@
                                                     @foreach ($experiences as $item)
                                                         <tr>
                                                             <td>{{$i}}</td>
-                                                            <td>{{$item->rubro_people->name}}</td>    
+                                                            <td>{{$item->rubro_people->name}} {{$item->typeModel_id?' - '.$item->type_model->name:''}}</td>    
                                                             <td>
                                                                 @if ($item->status == 1)
                                                                     <label class="label label-success">Aprobado</label>
@@ -472,7 +472,7 @@
                     var div =   '<div class="input-group-prepend">'
                         div+=   '<span class="input-group-text"><b>Categoria de Modelaje:</b></span>'
                         div+=        '</div>'
-                        div+=        '<select name="modelo_id" id="modelo" class="form-control select2" required>'
+                        div+=        '<select name="typeModel_id" id="modelo" class="form-control select2" required>'
                         div+=            '<option value="">Seleccione un tipo..</option>'
                         div+=            '@foreach($model as $item)'
                         div+=                '<option value="{{$item->id}}">{{$item->name}}</option>'

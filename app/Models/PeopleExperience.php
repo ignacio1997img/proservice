@@ -12,6 +12,7 @@ class PeopleExperience extends Model
     protected $fillable = [
         'people_id',
         'rubro_id',
+        'typeModel_id',
         'status',
         'deleted_at',
         'cant', 'star'
@@ -20,6 +21,11 @@ class PeopleExperience extends Model
     public function rubro_people()
     {
         return $this->belongsTo(RubroPeople::class, 'rubro_id');
+    }
+
+    public function type_model()
+    {
+        return $this->belongsTo(TypeModel::class, 'typeModel_id');
     }
 
 }

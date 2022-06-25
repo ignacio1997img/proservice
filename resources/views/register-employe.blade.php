@@ -38,8 +38,26 @@
             <div class="col-lg-6 mt-4 mt-lg-0">
                 {!! Form::open(['route' => 'people.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                     <div class="row">
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <select name="rubro_id" id="rubro_id" class="form-control" required>
+                                <option value="">Seleccione un departamento..</option>
+                                @foreach($rubros as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <select name="rubro_id" id="rubro_id" class="form-control" required>
+                                <option value="">Seleccione una Ciudad..</option>
+                                @foreach($rubros as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 form-group">
-                        <input type="text" name="ci" onkeypress='return validaNumericos(event)' class="form-control" id="name" placeholder="Carnet de Identidad" required>
+                            <input type="text" name="ci" onkeypress='return validaNumericos(event)' class="form-control" id="name" placeholder="Carnet de Identidad" required>
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
                             <select class="form-control" name="sex"required>

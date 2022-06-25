@@ -13,22 +13,26 @@ use App\Models\PeopleRequirement;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\TypeModel;
+use PHPUnit\Framework\MockObject\Stub\ReturnReference;
 
 class PeopleWorkExperienceController extends Controller
 {
     public function index()
     {
+        // return 1;
         $people = People::where('user_id',Auth::user()->id)->first();
         $model = TypeModel::all();
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
-        $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
+        $experiences = PeopleExperience::with('rubro_people','type_model')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
       
+        // return $experiences;
         return view('people.perfil', compact('people', 'experiences', 'rubro', 'model'));
     }
 
     public function store(Request $request)
     {
+        // return $request;
         DB::beginTransaction();
         try {
             $people = People::where('user_id',Auth::user()->id)->first();
@@ -36,7 +40,7 @@ class PeopleWorkExperienceController extends Controller
             $ok = PeopleExperience::where('people_id',$people->id)->where('rubro_id',$request->rubro_id)->where('deleted_at', null)->where('status', '!=', 0)->first();
             if(!$ok)
             {
-                PeopleExperience::create(['rubro_id' => $request->rubro_id, 'people_id' => $people->id, 'status' => 2]);
+                PeopleExperience::create(['rubro_id' => $request->rubro_id, 'people_id' => $people->id, 'typeModel_id'=>$request->typeModel_id, 'status' => 2]);
                 DB::commit();
                 return redirect()->route('people-perfil-experience.index')->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
             }
