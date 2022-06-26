@@ -34,8 +34,8 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => NULL,
-                'created_at' => '2021-06-02 17:55:30',
-                'updated_at' => '2021-06-02 17:55:30',
+                'created_at' => '2021-06-02 13:55:30',
+                'updated_at' => '2021-06-02 13:55:30',
             ),
             1 => 
             array (
@@ -52,8 +52,8 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => NULL,
-                'created_at' => '2021-06-02 17:55:30',
-                'updated_at' => '2021-06-02 17:55:30',
+                'created_at' => '2021-06-02 13:55:30',
+                'updated_at' => '2021-06-02 13:55:30',
             ),
             2 => 
             array (
@@ -70,8 +70,8 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => NULL,
-                'created_at' => '2021-06-02 17:55:31',
-                'updated_at' => '2021-06-02 17:55:31',
+                'created_at' => '2021-06-02 13:55:31',
+                'updated_at' => '2021-06-02 13:55:31',
             ),
             3 => 
             array (
@@ -88,8 +88,8 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}',
-                'created_at' => '2022-05-04 09:54:24',
-                'updated_at' => '2022-05-04 09:54:24',
+                'created_at' => '2022-05-04 05:54:24',
+                'updated_at' => '2022-05-04 05:54:24',
             ),
             4 => 
             array (
@@ -106,8 +106,8 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}',
-                'created_at' => '2022-05-04 09:57:07',
-                'updated_at' => '2022-05-04 09:57:07',
+                'created_at' => '2022-05-04 05:57:07',
+                'updated_at' => '2022-05-04 05:57:07',
             ),
             5 => 
             array (
@@ -124,12 +124,30 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
-                'created_at' => '2022-06-17 15:21:52',
-                'updated_at' => '2022-06-17 15:27:48',
+                'created_at' => '2022-06-17 11:21:52',
+                'updated_at' => '2022-06-17 11:27:48',
             ),
             6 => 
             array (
-                'id' => 11,
+                'id' => 12,
+                'name' => 'departments',
+                'slug' => 'departments',
+                'display_name_singular' => 'Departamento',
+                'display_name_plural' => 'Departamentos',
+                'icon' => 'fa-solid fa-building',
+                'model_name' => 'App\\Models\\Department',
+                'policy_name' => NULL,
+                'controller' => NULL,
+                'description' => NULL,
+                'generate_permissions' => 1,
+                'server_side' => 0,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}',
+                'created_at' => '2022-06-25 15:43:46',
+                'updated_at' => '2022-06-25 15:43:46',
+            ),
+            7 => 
+            array (
+                'id' => 13,
                 'name' => 'cities',
                 'slug' => 'cities',
                 'display_name_singular' => 'Ciudad',
@@ -142,8 +160,8 @@ class DataTypesTableSeeder extends Seeder
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
-                'created_at' => '2022-06-17 15:32:39',
-                'updated_at' => '2022-06-17 15:42:07',
+                'created_at' => '2022-06-25 15:46:29',
+                'updated_at' => '2022-06-25 15:48:21',
             ),
         ));
         
