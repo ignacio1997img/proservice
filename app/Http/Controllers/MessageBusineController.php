@@ -21,7 +21,7 @@ class MessageBusineController extends Controller
 
     public function store(Request $request)
     {
-        dd(1);
+        // dd(1);
         DB::beginTransaction();
         try {
             $busine = Busine::find($request->busine_id);
