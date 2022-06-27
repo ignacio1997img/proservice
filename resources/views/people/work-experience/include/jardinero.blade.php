@@ -20,9 +20,18 @@
                                                 <div class="form-line">
                                                     <input type="file" name="image_ci"  multiple class="form-control" accept="image/*">
                                                 </div>
-                                                <small>Carnet de identidad (imagen):</small>
+                                                <small>Carnet de identidad Anverso(imagen):</small>
                                             </div>
-                                        </div>                                            
+                                        </div>      
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="file" name="image_ci2"  multiple class="form-control" accept="image/*">
+                                                </div>
+                                                <small>Carnet de identidad Reverso(imagen):</small>
+                                            </div>
+                                        </div>  
+
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
@@ -42,7 +51,9 @@
                                                 </div>
                                                 <small>Experiencia en jardineria:</small>
                                             </div>
-                                        </div>
+                                        </div>                                        
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
@@ -76,7 +87,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Tipo</th>
-                                                <th>Estado</th>
+                                                <th>Detalle</th>
                                                 {{-- <th>Accion</th>             --}}
                                             </tr>
                                         </thead>
@@ -85,11 +96,20 @@
                                                 <td>Carnet de identidad</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->image_ci)
+                                                        @if ($peoplerequirement->image_ci || $peoplerequirement->image_ci2)
                                                             <span class="badge badge-success">Si cargado</span>
-                                                            <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
-                                                            </a>
+                                                            @if ($peoplerequirement->image_ci)                                                            
+                                                                <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Anverso</span>
+                                                                </a>
+                                                            @endif
+
+                                                            @if ($peoplerequirement->image_ci2)                                                            
+                                                                <a href="{{url('storage/public/'.$peoplerequirement->image_ci2)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Reverso</span>
+                                                                </a>
+                                                            @endif
+
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
                                                         @endif

@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('people', PeopleController::class);
     Route::get('people/view/{id}', [PeopleController::class, 'read'])->name('people.view');
     Route::post('people/view/aprobar-rubro', [PeopleWorkExperienceController::class, 'aprobarRubro'])->name('people.aprobarRubro');
+    Route::post('people/view/rubro/modelaje-update', [PeopleWorkExperienceController::class, 'updateCategoriaModelaje'])->name('people.updateCategoriaModelaje');
     
 
     //rutas para exeperiencia laboral de la persona

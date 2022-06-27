@@ -174,6 +174,9 @@
 
 
                                                                     @if ($item->status == 2 && auth()->user()->hasRole('admin'))
+                                                                        @if($item->rubro_id == 4)
+                                                                            <a type="button" data-toggle="modal" data-target="#modal_editarModelaje" data-id="{{ $item->id}}"  class="btn btn-primary"><i class="fa-solid fa-edit"></i> <span class="hidden-xs hidden-sm">Editar Categoria Modelaje</span></a>
+                                                                        @endif
                                                                         <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
                                                                     @endif
 
@@ -206,6 +209,39 @@
         </div>
     </div>   
 
+    <div class="modal modal-primary fade" tabindex="-1" id="modal_editarModelaje" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {!! Form::open(['route' => 'people.updateCategoriaModelaje', 'method' => 'POST']) !!}
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="fa-solid fa-edit"></i> Categoria de Modelaje</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id">
+
+                    <div class="col-md-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><b>Categoria de Modelaje:</b></span>
+                        </div>
+                        <select name="typeModel_id" id="typeModel_id" class="form-control select2" required>
+                            <option value="">Seleccione un tipo..</option>
+                            @foreach($model as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>          
+                <br>      
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-dark" value="Sí, VERIFICAR">
+                </div>
+                {!! Form::close()!!} 
+            </div>
+        </div>
+    </div>
+
     {{-- modal para aprobar los rubros de cada persona --}}
     <div class="modal modal-primary fade" tabindex="-1" id="modal_aprobar" role="dialog">
         <div class="modal-dialog">
@@ -219,7 +255,7 @@
                     <input type="hidden" name="id" id="id">
 
                     <div class="text-center" style="text-transform:uppercase">
-                        <i class="fa-solid fa-check-to-slot" style="color: rgb(53, 232, 53); font-size: 5em;"></i>
+                        <i class="fa-solid fa-check-to-slot" style="color: rgb(53,61,71); font-size: 5em;"></i>
                         <br>
                         <p><b>Verificar Rubro....!</b></p>
                     </div>
@@ -504,6 +540,16 @@
                 
         });
 
+        
+        $('#modal_editarModelaje').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) 
+
+                var id = button.data('id')
+
+                var modal = $(this)
+                modal.find('.modal-body #id').val(id)
+                
+        });
 
         function tipo_modelo()
             {

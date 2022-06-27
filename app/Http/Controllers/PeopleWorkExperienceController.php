@@ -117,8 +117,24 @@ class PeopleWorkExperienceController extends Controller
             return redirect()->route('people.view', $experience->people_id)->with(['message' => 'Ocurrió un error al aprobar el registro.', 'alert-type' => 'error']);
         }
     }
+    
 
-
+    public function updateCategoriaModelaje(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try
+        {
+            $experience = PeopleExperience::find($request->id);
+            $experience->update(['typeModel_id' => $request->typeModel_id]);
+            DB::commit();
+            return redirect()->route('people.view', $experience->people_id)->with(['message' => 'Categoria actualizada exitosamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th)
+        {
+            DB::rollBack();
+            return redirect()->route('people.view', $experience->people_id)->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }
+    }
 
 
 
@@ -367,6 +383,7 @@ class PeopleWorkExperienceController extends Controller
             if($ok)
             {
                 $image_ci = null;
+                $image_ci2 = null;
                 $image_ap = null;
                 
 
@@ -381,6 +398,19 @@ class PeopleWorkExperienceController extends Controller
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_ci = $dir.'/'.$newFileName;
                     $ok->update(['image_ci' => $image_ci]);
+                }
+
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/jardinero/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
+                    $ok->update(['image_ci2' => $image_ci2]);
                 }
 
                 $file = $request->file('image_ap');
@@ -414,6 +444,7 @@ class PeopleWorkExperienceController extends Controller
             else
             {
                 $image_ci = null;
+                $image_ci2 = null;
                 $image_ap = null;
 
                 $file = $request->file('image_ci');
@@ -426,6 +457,18 @@ class PeopleWorkExperienceController extends Controller
                     Storage::makeDirectory($dir);
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_ci = $dir.'/'.$newFileName;
+                }
+
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/jardinero/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
                 }
 
                 $file = $request->file('image_ap');
@@ -441,7 +484,7 @@ class PeopleWorkExperienceController extends Controller
                 }
 
 
-                $ok = PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'jardinero', 'image_ci' => $image_ci, 'image_ap' => $image_ap]);
+                $ok = PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'jardinero', 'image_ci' => $image_ci, 'image_ci2' => $image_ci2, 'image_ap' => $image_ap]);
                 if($request->exp_jardineria)
                 {
                     $ok->update(['exp_jardineria' => $request->exp_jardineria]);
@@ -463,7 +506,7 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
-            // return 0;
+            // return $th;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }
@@ -475,6 +518,7 @@ class PeopleWorkExperienceController extends Controller
         try {
 
             $image_ci = null;
+            $image_ci2 = null;
             $image_ap = null;
 
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
@@ -492,6 +536,19 @@ class PeopleWorkExperienceController extends Controller
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_ci = $dir.'/'.$newFileName;
                     $ok->update(['image_ci' => $image_ci]);
+                }
+
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
+                    $ok->update(['image_ci2' => $image_ci2]);
                 }
 
                 $file = $request->file('image_ap');
@@ -551,6 +608,18 @@ class PeopleWorkExperienceController extends Controller
                     $image_ci = $dir.'/'.$newFileName;
                 }
 
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
+                }
+
                 $file = $request->file('image_ap');
                 if($file)
                 {                        
@@ -564,7 +633,7 @@ class PeopleWorkExperienceController extends Controller
                 }
 
 
-                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'piscinero', 'image_ci' => $image_ci, 'image_ap' => $image_ap, 'exp_mant_piscina' => $request->exp_mant_piscina,
+                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'piscinero', 'image_ci' => $image_ci, 'image_ci2' => $image_ci2, 'image_ap' => $image_ap, 'exp_mant_piscina' => $request->exp_mant_piscina,
                                                 'medir_ph' => $request->medir_ph, 'asp_piscina'=> $request->asp_piscina, 'cant_quimico' => $request->cant_quimico, 'bomba_agua' => $request->bomba_agua, 'trabajado_ante_donde'=> $request->trabajado_ante_donde ]);
         
             }
@@ -588,6 +657,7 @@ class PeopleWorkExperienceController extends Controller
         try {
 
             $image_ci = null;
+            $image_ci2 = null;
             $image_book = null;
 
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
@@ -606,6 +676,19 @@ class PeopleWorkExperienceController extends Controller
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_ci = $dir.'/'.$newFileName;
                     $ok->update(['image_ci' => $image_ci]);
+                }
+
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/modelos/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
+                    $ok->update(['image_ci2' => $image_ci2]);
                 }
 
                 $file = $request->file('image_book');
@@ -686,6 +769,18 @@ class PeopleWorkExperienceController extends Controller
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_ci = $dir.'/'.$newFileName;
                 }
+
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/modelos/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
+                }
                 // return 3;
                 $file = $request->file('image_book');
                 if($file)
@@ -700,7 +795,7 @@ class PeopleWorkExperienceController extends Controller
                 }
 
                 // return 1;
-                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'modelos', 'image_ci' => $image_ci, 'image_book' => $image_book, 'estatura' => $request->estatura, 'peso'=>$request->peso,
+                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'modelos', 'image_ci' => $image_ci, 'image_ci2' => $image_ci2, 'image_book' => $image_book, 'estatura' => $request->estatura, 'peso'=>$request->peso,
                                                 'spanish' => $request->spanish, 'english'=> $request->english, 'frances' => $request->frances, 'italiano' => $request->italiano, 'portugues'=> $request->portugues, 'aleman'=> $request->aleman, 'otro_idioma'=> $request->otro_idioma,
                                             'curso_modelaje'=> $request->curso_modelaje, 'exp_modelaje'=> $request->exp_modelaje ]);
                 DB::commit();
@@ -712,7 +807,7 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
-            return 0;
+            // return 0;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }
