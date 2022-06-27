@@ -132,9 +132,9 @@ class MessageBusineController extends Controller
 
 
     //PARA VER LOS PERFILES DE CADA PERSONA QUE SE HAYA ENVIADO UN MENSAJE
-    public function people_perfil_view($id, $people_id, $rubro_id)
+    public function people_perfil_view($id, $people_id, $rubro_id, $experience)
     {
-        return 111;
+        // return $people_id;
 
         $message = MessagePeople::find($id);
         if($message->data_view == null){
@@ -145,11 +145,13 @@ class MessageBusineController extends Controller
 
         // return $rubro_id;
         $people = People::find($people_id);
-        $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('rubro_id', $rubro_id)->first();
-        return $experiences;
-        $peoplerequirement = PeopleRequirement::where('people_experience_id', $experiences->id)->where('deleted_at', null)->first();
+        // $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('rubro_id', $rubro_id)->first();
+
+        // $experiences = PeopleExperience::find($experience);
+        // return $experiences;
+        $peoplerequirement = PeopleRequirement::where('people_experience_id', $experience)->first();
         // return $requirement;
-        return view('message.message-people.people-perfil.perfil', compact('people', 'experiences', 'peoplerequirement', 'rubro_id'));
+        return view('message.message-people.people-perfil.perfil', compact('people', 'peoplerequirement', 'rubro_id'));
     }
 
 

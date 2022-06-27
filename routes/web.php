@@ -119,7 +119,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('message-busine-bandeja/cancelar', [MessageBusineController::class, 'cancelar'])->name('message-busine.cancelar');
 
     //para que la empresa pueda ver los perfiles de las personas que aceptaron sus solicitudes de la empresa
-    Route::get('message-busine.bandeja/people-perfil-view/{id}/{people_id}/{rubro_id}', [MessageBusineController::class, 'people_perfil_view'])->name('message-busine.bandeja.people-perfil-view');
+    Route::get('message-busine.bandeja/people-perfil-view/{id}/{people_id}/{rubro_id}/{experience?}', [MessageBusineController::class, 'people_perfil_view'])->name('message-busine.bandeja.people-perfil-view');
  
     //calificacion
     Route::post('message-busine.bandeja/calificacion', [MessagePeopleBusineController::class, 'calification'])->name('message-busine.bandeja.calificacion');

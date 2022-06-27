@@ -211,7 +211,7 @@
                                                         @else
 
                                                         @endif
-                                                        <a type="button" data-toggle="modal" href="{{route('message-busine.bandeja.people-perfil-view',['id'=>$item->id, 'people_id'=>$item->people->id, 'rubro_id'=>$item->rubro_people->id])}}" class="btn btn-success"><span class="hidden-xs hidden-sm">Ver</span></a>
+                                                        <a type="button" data-toggle="modal" href="{{route('message-busine.bandeja.people-perfil-view',['id'=>$item->id, 'people_id'=>$item->people->id, 'rubro_id'=>$item->rubro_people->id, 'experience'=>$item->people_experience_id != null? $item->people_experience_id:0])}}" class="btn btn-success"><span class="hidden-xs hidden-sm">Ver</span></a>
                                                     @endif
                                                     @if ($item->status == 2)
                                                         {{-- <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-primary"><span class="hidden-xs hidden-sm">Aceptar</span></a> --}}
