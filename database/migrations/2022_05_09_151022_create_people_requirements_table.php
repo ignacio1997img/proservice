@@ -17,7 +17,8 @@ class CreatePeopleRequirementsTable extends Migration
             $table->id();
             $table->string('type')->nullable();
             $table->foreignId('people_experience_id')->nullable()->constrained('people_experiences');
-            $table->string('image_ci')->nullable(); //carta de identidad
+            $table->string('image_ci')->nullable(); //carnet de identidad anverso
+            $table->string('image_ci2')->nullable(); //carta de identidad reverso
             $table->string('image_ap')->nullable();//antecedentes penales
 
             //idiomas

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdatePeopleExperienceTable extends Migration
+class UpdateRequirementTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdatePeopleExperienceTable extends Migration
     public function up()
     {
         Schema::table('message_people', function (Blueprint $table) {
-            $table->foreignId('people_experience_id')->nullable()->constrained('people_experiences');
+            $table->string('image_ci2')->nullable(); //carta de identidad reverso
         });
     }
 

@@ -13,6 +13,7 @@ class PeopleRequirement extends Model
         'type',
         'people_experience_id',
         'image_ci',
+        'image_ci2',
         'image_ap',
         'image_lsm',
         'image_fcc',
