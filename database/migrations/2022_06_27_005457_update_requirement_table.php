@@ -13,7 +13,7 @@ class UpdateRequirementTable extends Migration
      */
     public function up()
     {
-        Schema::table('message_people', function (Blueprint $table) {
+        Schema::table('people_requirements', function (Blueprint $table) {
             $table->string('image_ci2')->nullable(); //carta de identidad reverso
         });
     }

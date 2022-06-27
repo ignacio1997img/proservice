@@ -127,6 +127,7 @@ class PeopleWorkExperienceController extends Controller
 
     public function requirementGuardiaStore(Request $request)
     {
+        // return $request;
         DB::beginTransaction();
         try {
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
@@ -135,6 +136,7 @@ class PeopleWorkExperienceController extends Controller
             {
                 
                 $image_ci = null;
+                $image_ci2 = null;
                 $image_ap = null;
                 $image_lsm = null;
                 $image_fcc = null;
@@ -156,6 +158,21 @@ class PeopleWorkExperienceController extends Controller
                     $ok->update(['image_ci' => $image_ci]);
                 }
 
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/guardia/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
+                    $ok->update(['image_ci2' => $image_ci2]);
+                }
+
+                // return 1;
                 $file = $request->file('image_ap');
                 if($file)
                 {                        
@@ -232,6 +249,7 @@ class PeopleWorkExperienceController extends Controller
             else
             {
                 $image_ci = null;
+                $image_ci2 = null;
                 $image_ap = null;
                 $image_lsm = null;
                 $image_fcc = null;
@@ -250,6 +268,18 @@ class PeopleWorkExperienceController extends Controller
                     Storage::makeDirectory($dir);
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_ci = $dir.'/'.$newFileName;
+                }
+
+                $file = $request->file('image_ci2');
+                if($file)
+                {                        
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/guardia/ci/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $image_ci2 = $dir.'/'.$newFileName;
                 }
 
                 $file = $request->file('image_ap');
@@ -310,7 +340,7 @@ class PeopleWorkExperienceController extends Controller
                 }
                
                 // return $request->all();
-                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'guardia', 'image_ci' => $image_ci, 'image_ap' => $image_ap,
+                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'guardia', 'image_ci' => $image_ci, 'image_ci2' => $image_ci2, 'image_ap' => $image_ap,
                                         'image_lsm' => $image_lsm, 'image_fcc' => $image_fcc, 't_dia' => $d, 't_noche' => $n, 'estatura' => $request->estatura, 'peso'=>$request->peso]);
         
             }
@@ -321,7 +351,7 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
-            // return 0;
+            return 0;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }

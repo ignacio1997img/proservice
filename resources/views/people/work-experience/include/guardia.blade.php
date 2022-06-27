@@ -19,9 +19,17 @@
                                                 <div class="form-line">
                                                     <input type="file" name="image_ci"  multiple class="form-control" accept="image/*">
                                                 </div>
-                                                <small>Carnet de identidad (imagen):</small>
+                                                <small>Carnet de identidad Anverso(imagen):</small>
                                             </div>
-                                        </div>                                            
+                                        </div>      
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="file" name="image_ci2"  multiple class="form-control" accept="image/*">
+                                                </div>
+                                                <small>Carnet de identidad Reverso(imagen):</small>
+                                            </div>
+                                        </div>                                       
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
@@ -37,7 +45,10 @@
                                                 </div>
                                                 <small>Libreta de servicio militar (imagen ):</small>
                                             </div>
-                                        </div>
+                                        </div>                                        
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
@@ -46,10 +57,7 @@
                                                 <small>Foto cuerpo completo de pantalón y camisa (imagen ):</small>
                                             </div>
                                         </div> 
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <select id="provider" name="turno[]" class="form-control select2" multiple="multiple">
