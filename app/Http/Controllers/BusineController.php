@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Department;
+use App\Models\City;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Busine;
@@ -91,7 +93,7 @@ class BusineController extends Controller
             // DB::commit();
         } catch (\Throwable $th) {
             DB::rollback();
-            return 0;
+            // return 0;
         }
     }
 
@@ -99,9 +101,11 @@ class BusineController extends Controller
     {
         // return $id;
         $busine = Busine::with('rubrobusines')->where('id',$id)->first();
+        $city = City::with('department')->where('id', $busine->city_id)->first();
+
         // return $busine;
         $businerequirements = BusineRequirement::where('busine_id',$id)->first();
-        return view('busine.read-busine', compact('busine', 'businerequirements'));
+        return view('busine.read-busine', compact('busine', 'city', 'businerequirements'));
     }
 
     public function aprobarBusine(Request $request)
@@ -122,10 +126,17 @@ class BusineController extends Controller
     {
         // return 1;
         $busine = Busine::with('rubrobusines')->where('user_id', Auth::user()->id)->first();
+
+        $city = City::with('department')->where('id', $busine->city_id)->first();
+
+        $department= Department::where('status', 1)->get();
+        $cities = City::where('department_id', $city->department->id)->get();
+
+
         // return $busine;
         $businerequirements = BusineRequirement::where('busine_id',$busine->id)->where('deleted_at', null)->first();
         // return $businerequirements;
-        return view('busine.perfil', compact('busine', 'businerequirements'));
+        return view('busine.perfil', compact('busine', 'city', 'department', 'cities', 'businerequirements'));
     }
 
     public function perfilUpdate(Request $request)
@@ -136,7 +147,7 @@ class BusineController extends Controller
             $busine = Busine::find($request->id);
             $busine->update(['nit' => $request->nit, 'name' => $request->name, 'responsible' => $request->responsible, 'address' => $request->address,
                             'phone1' => $request->phone1, 'phone2' => $request->phone2, 'email' => $request->email, 'description' => $request->description,
-                            'website' => $request->website
+                            'website' => $request->website, 'city_id'=>$request->city_id
                         ]);
             DB::commit();
             return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);

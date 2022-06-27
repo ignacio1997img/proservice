@@ -25,7 +25,7 @@ class PeopleWorkExperienceController extends Controller
         $city = City::with('department')->where('id', $people->city_id)->first();
 
         $department= Department::where('status', 1)->get();
-        $cities = City::with('department')->get();
+        $cities = City::where('department_id', $city->department->id)->get();
 
 
         // return $city;
@@ -37,7 +37,7 @@ class PeopleWorkExperienceController extends Controller
         $experiences = PeopleExperience::with('rubro_people','type_model')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
       
         // return $experiences;
-        return view('people.perfil', compact('people', 'city', 'department', 'experiences', 'rubro', 'model'));
+        return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model'));
     }
 
     public function store(Request $request)

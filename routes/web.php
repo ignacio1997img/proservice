@@ -46,7 +46,7 @@ Route::get('register-busine', function () {
     return view('register-busine', compact('department'));
 });
 Route::get('register-beneficiary', function () {
-    return view('register-employe', compact('department'));
+    $department = Department::where('status',1)->get();
     return view('register-beneficiary', compact('department'));
 });
 

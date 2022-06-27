@@ -8,6 +8,8 @@ use App\Models\MessageBusine;
 use Illuminate\Support\Carbon;
 use App\Models\Busine;
 use App\Models\RubroBusine;
+use App\Models\Department;
+use App\Models\City;
 use App\Models\BusineRequirement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +51,7 @@ class MessageBeneficiaryController extends Controller
     public function busine_perfil_view($id, $busine_id)
     {
         $message = MessageBusine::find($id);
+
         if($message->date_date == null)
         {
             $message->update([
@@ -59,12 +62,14 @@ class MessageBeneficiaryController extends Controller
         // return $id;
         // return $rubro_id;
         $busine = Busine::find($busine_id);
+        $city = City::with('department')->where('id', $busine->city_id)->first();
+
 
         $rubro = RubroBusine::find($busine->rubro_id);
         $businerequirements = BusineRequirement::where('busine_id', $busine->id)->first();
         // return $requirement;
 
-        return view('message.message-busine.busine-perfil.perfil', compact('busine', 'rubro', 'businerequirements'));
+        return view('message.message-busine.busine-perfil.perfil', compact('busine','city', 'rubro', 'businerequirements'));
         // $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('rubro_id', $rubro_id)->first();
         // // return $experiences;
         // $peoplerequirement = PeopleRequirement::where('people_experience_id', $experiences->id)->where('deleted_at', null)->first();

@@ -114,6 +114,22 @@
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
+                                                        <small>Departamento.</small>
+                                                        <div class="form-line">
+                                                            <b>{{$city? $city->department->name : 'SN'}}</b>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <small>Ciudad.</small>
+                                                        <div class="form-line">
+                                                            <b>{{$city? $city->name : 'SN'}}</b>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
                                                         <small>Direccion.</small>
                                                         <div class="form-line">
                                                             <b>{{$busine->address? $busine->address:'S/N'}} </b>
@@ -225,8 +241,33 @@
                         <!-- Modal body -->
                         <div class="modal-body">
                             <input type="hidden" name="id" value="{{$busine->id}}">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Departamento:</b></span>
+                                    </div>
+                                    <select id="department_id" class="form-control select2" required>
+                                        <option value="">Seleccione un departamento..</option>
+                                        @foreach($department as $data)
+                                            <option value="{{$data->id}}" @if($city) {{$city->department_id==$data->id? 'selected':''}} @endif>{{$data->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Ciudad:</b></span>
+                                    </div>
+                                    <select name="city_id" id="city_id" class="form-control select2" required>
+                                        <option value="">Seleccione una Ciudad..</option>
+                                        @foreach($cities as $data)
+                                            <option value="{{$data->id}}" {{$city->id==$data->id? 'selected':''}}>{{$data->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             
-                            <div id="cantcheque">                                   
+                            <div id="si">                                   
                                 <div class="row" >
                                     <div class="col-md-4">
                                         <div class="input-group-prepend">
@@ -243,7 +284,7 @@
                                 </div>
                             </div>
 
-                            <div id="cantcheque">                                   
+                            <div id="">                                   
                                 <div class="row" >
                                     <div class="col-md-4">
                                         <div class="input-group-prepend">
@@ -265,7 +306,7 @@
                                     </div>                         
                                 </div>
                             </div>
-                            <div id="cantcheque">                                   
+                            <div id="">                                   
                                 <div class="row" >
                                     <div class="col-md-4">
                                         <div class="input-group-prepend">
@@ -337,11 +378,36 @@
     
         <script>
 
-           
+            $(function()
+                {
+                    $('#department_id').on('change', selectCity);
+                });
+
+                function selectCity()
+                {
+                    var id =  $(this).val();    
+                    if(id >=1)
+                    {
+                        $.get('{{route('ajax.get_city')}}/'+id, function(data){
+                            var html_city=    '<option value="">Seleccione una ciudad..</option>'
+                                for(var i=0; i<data.length; ++i)
+                                html_city += '<option value="'+data[i].id+'">'+data[i].name+'</option>'
+
+                            $('#city_id').html(html_city);;            
+                        });
+                    }
+                    else
+                    {
+                        var html_city=    '<option value="">Seleccione una ciudad..</option>'       
+                        $('#city_id').html(html_city);
+                    }
+                };
 
 
         </script> 
+        
     @stop
+
 
 @else
     @section('content')

@@ -127,7 +127,7 @@
                                                 <div class="form-group">
                                                     <small>Ciudad.</small>
                                                     <div class="form-line">
-                                                        <b>{{$city? $city->department->name : 'SN'}}</b>
+                                                        <b>{{$city? $city->name : 'SN'}}</b>
                                                     </div>
                                                 </div>
                                             </div>       
@@ -302,7 +302,9 @@
                                 </div>
                                 <select name="city_id" id="city_id" class="form-control select2" required>
                                     <option value="">Seleccione una Ciudad..</option>
-                                   
+                                    @foreach($cities as $data)
+                                        <option value="{{$data->id}}" {{$city->id==$data->id? 'selected':''}}>{{$data->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -527,6 +529,7 @@
                     })
 
                 $('#rubro_id').on('change', tipo_modelo);
+                $('#department_id').on('change', selectCity);
 
         });
 
@@ -585,6 +588,28 @@
                 modal.find('.modal-body #id').val(id)
                 
         });
+
+       
+
+                function selectCity()
+                {
+                    var id =  $(this).val();    
+                    if(id >=1)
+                    {
+                        $.get('{{route('ajax.get_city')}}/'+id, function(data){
+                            var html_city=    '<option value="">Seleccione una ciudad..</option>'
+                                for(var i=0; i<data.length; ++i)
+                                html_city += '<option value="'+data[i].id+'">'+data[i].name+'</option>'
+
+                            $('#city_id').html(html_city);;            
+                        });
+                    }
+                    else
+                    {
+                        var html_city=    '<option value="">Seleccione una ciudad..</option>'       
+                        $('#city_id').html(html_city);
+                    }
+                };
 
     </script>
 @stop

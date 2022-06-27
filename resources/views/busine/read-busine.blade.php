@@ -97,6 +97,22 @@
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
+                                                        <small>Departamento.</small>
+                                                        <div class="form-line">
+                                                            <b>{{$city? $city->department->name : 'SN'}}</b>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <small>Ciudad.</small>
+                                                        <div class="form-line">
+                                                            <b>{{$city? $city->name : 'SN'}}</b>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
                                                         <small>Direccion.</small>
                                                         <div class="form-line">
                                                             <b>{{$busine->address? $busine->address:'S/N'}} </b>
