@@ -114,7 +114,23 @@
                                                 </div>
                                             </div>                                                  
                                         </div>
-                                        <div class="row">
+                                        <div class="row">                                              
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Departamento.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$city? $city->department->name : 'SN'}}</b>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <small>Ciudad.</small>
+                                                    <div class="form-line">
+                                                        <b>{{$city? $city->department->name : 'SN'}}</b>
+                                                    </div>
+                                                </div>
+                                            </div>       
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <small>Direccion.</small>
@@ -122,7 +138,7 @@
                                                         <b>{{$people->address? $people->address:'S/N'}} </b>
                                                     </div>
                                                 </div>
-                                            </div>                                                 
+                                            </div>                                         
                                         </div>
                                         @if(auth()->user()->hasPermission('add_people-perfil-experience') && !auth()->user()->hasRole('admin'))
                                             <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
@@ -145,7 +161,7 @@
                                                     @foreach ($experiences as $item)
                                                         <tr>
                                                             <td>{{$i}}</td>
-                                                            <td>{{$item->rubro_people->name}} {{$item->typeModel_id?' - '.$item->type_model->name:''}}</td>    
+                                                            <td>{{$item->rubro_people->name}} <label class="label label-primary">{{$item->typeModel_id?' - '.$item->type_model->name:''}}</label></td>    
                                                             <td>
                                                                 @if ($item->status == 1)
                                                                     <label class="label label-success">Aprobado</label>
@@ -164,6 +180,11 @@
                                                                     @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
                                                                         <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
                                                                             <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                                        </a>
+                                                                    @endif
+                                                                    @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
+                                                                        <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$item->id}}" class="btn btn-sm btn-danger">
+                                                                            <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
                                                                         </a>
                                                                     @endif
                                                                 </div>
@@ -226,8 +247,31 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <input type="hidden" name="id" value="{{$people->id}}">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>Departamento:</b></span>
+                                </div>
+                                <select id="department_id" class="form-control select2" required>
+                                    <option value="">Seleccione un departamento..</option>
+                                    @foreach($department as $data)
+                                        <option value="{{$data->id}}" @if($city) {{$city->department_id==$data->id? 'selected':''}} @endif>{{$data->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>Ciudad:</b></span>
+                                </div>
+                                <select name="city_id" id="city_id" class="form-control select2" required>
+                                    <option value="">Seleccione una Ciudad..</option>
+                                   
+                                </select>
+                            </div>
+                        </div>
                     
-                    <div id="cantcheque">                                   
+                                                 
                         <div class="row" >
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
@@ -248,9 +292,7 @@
                                 <input type="text" class="form-control" name="last_name" value="{{$people->last_name}}">
                             </div>                            
                         </div>
-                    </div>
-
-                    <div id="cantcheque">                                   
+                                           
                         <div class="row" >
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
@@ -274,8 +316,7 @@
                                 </select>
                             </div>                         
                         </div>
-                    </div>
-                    <div id="cantcheque">                                   
+                                                  
                         <div class="row" >
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
@@ -290,7 +331,7 @@
                                 <input type="number" class="form-control" name="phone2" value="{{$people->phone2}}">
                             </div>                        
                         </div>
-                    </div>
+                  
                     <div class="row">    
                             
                         <div class="col-md-12">
@@ -378,7 +419,7 @@
                 {!! Form::open(['route' => 'work-experience.delete', 'method' => 'DELETE']) !!}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Desea eliminar el siguiente registro?</h4>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> Eliminar</h4>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">
@@ -387,7 +428,7 @@
                         <i class="voyager-trash" style="color: red; font-size: 5em;"></i>
                         <br>
                         
-                        <p><b>Desea eliminar el siguiente registro?</b></p>
+                        <p><b>Desea eliminar la experiencia laboral?</b></p>
                     </div>
                     {{-- <div class="row">   
                         <div class="col-md-12">

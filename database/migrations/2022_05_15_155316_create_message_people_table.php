@@ -15,6 +15,7 @@ class CreateMessagePeopleTable extends Migration
     {
         Schema::create('message_people', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('people_experience_id')->nullable()->constrained('people_experiences');
             $table->foreignId('people_id')->nullable()->constrained('people');
             $table->foreignId('rubro_people_id')->nullable()->constrained('rubro_people');
             $table->foreignId('busine_id')->nullable()->constrained('busines');

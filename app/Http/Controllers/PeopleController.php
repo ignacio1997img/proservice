@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\People;
-use App\Models\PeopleExperience;
 use App\Models\RubroPeople;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\City;
+use App\Models\TypeModel;
+use App\Models\Department;
+use App\Models\PeopleExperience;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Storage;
 class PeopleController extends Controller
 {
     public function index()
@@ -162,11 +165,14 @@ class PeopleController extends Controller
     public function read($id)
     {
         $people = People::find($id);
-        // return 1;
+        $city = City::with('department')->where('id', $people->city_id)->first();
+        $department= Department::where('status', 1)->get();
+        $cities = City::with('department')->get();
+        $model = TypeModel::all();
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$id)->where('deleted_at', null)->where('status', '!=', 0)->get();
         // return $experiences;
-        return view('people.perfil', compact('people', 'experiences', 'rubro'));
+        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro'));
     }
 }

@@ -26,6 +26,7 @@ class PeopleRequirement extends Model
         'estatura',
         'peso',
         'status',
+        'deleted_at',
 
         'spanish',
         'english',

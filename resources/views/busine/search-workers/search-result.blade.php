@@ -59,7 +59,7 @@
                                             <small>{{number_format($item->star, 2)}}</small>
                                         </td>
                                         <td style="text-align: right">
-                                            <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>
+                                            <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}" data-experience="{{$item->people_experience_id}}" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>
                                         </td>                                
                                     </tr>
                                 @endif
@@ -89,7 +89,9 @@
                 <input type="hidden" name="rubro_people_id" value="{{$rubro_people}}">
                 <input type="hidden" name="rubro_busine_id" value="{{$rubro_busine->rubro_busine}}">
                 <input type="hidden" name="busine_id" value="{{$rubro_busine->busine_id}}">
+
                 <input type="hidden" name="people_id" id="id">
+                <input type="text" name="people_experience_id" id="experience">  
 
                 <div class="text-center" style="text-transform:uppercase">
                     <i class="fa-regular fa-envelope" style="color: rgb(87, 87, 87); font-size: 5em;"></i>
@@ -193,8 +195,11 @@
         var button = $(event.relatedTarget) 
         var id = button.data('id')
 
+        var experience = button.data('experience')
+
         var modal = $(this)
         modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #experience').val(experience)
                 
     });
 

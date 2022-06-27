@@ -15,10 +15,11 @@ class MessagePeopleBusineController extends Controller
     // para poder enivar mensajes a la persona
     public function store(Request $request)
     {
-        // return $request;
+        // dd($request);
         DB::beginTransaction();
         try {
             MessagePeople::create([
+                'people_experience_id' => $request->people_experience_id,
                 'people_id' => $request->people_id,
                 'rubro_people_id' => $request->rubro_people_id,
                 'busine_id' => $request->busine_id,

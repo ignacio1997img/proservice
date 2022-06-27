@@ -72,7 +72,9 @@ class PermissionsTableSeeder extends Seeder
             'edit_people-perfil-data',
             'add_people-perfil-experience',
             'edit_people-perfil-requirement',
-            'delete_people-perfil-experience',
+            'delete_people-perfil-requirement',
+
+            
         ];
 
         foreach ($keys as $key) {

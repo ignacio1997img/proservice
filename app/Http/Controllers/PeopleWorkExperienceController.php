@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Department;
 use App\Models\People;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +21,23 @@ class PeopleWorkExperienceController extends Controller
 {
     public function index()
     {
-        // return 1;
         $people = People::where('user_id',Auth::user()->id)->first();
+        $city = City::with('department')->where('id', $people->city_id)->first();
+
+        $department= Department::where('status', 1)->get();
+        $cities = City::with('department')->get();
+
+
+        // return $city;
+
+
         $model = TypeModel::all();
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people','type_model')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
       
         // return $experiences;
-        return view('people.perfil', compact('people', 'experiences', 'rubro', 'model'));
+        return view('people.perfil', compact('people', 'city', 'department', 'experiences', 'rubro', 'model'));
     }
 
     public function store(Request $request)
@@ -55,13 +65,20 @@ class PeopleWorkExperienceController extends Controller
     }
 
 
+
+    //metodo para que los trabajadores elimine "BAJA" la experiebncia laboral
     public function destroy(Request $request)
     {
+        // return $request;
         DB::beginTransaction();
         try {
             // return Carbon::now();
             $experience = PeopleExperience::find($request->id);
             $experience->update(['status' => 0, 'deleted_at' => Carbon::now()]);
+
+            PeopleRequirement::where('people_experience_id', $experience->id)->update(['status' => 0, 'deleted_at' => Carbon::now()]);
+
+
             DB::commit();
             return redirect()->route('people-perfil-experience.index')->with(['message' => 'Registro eliminado exitosamente.', 'alert-type' => 'success']);
         } catch (\Throwable $th) {
@@ -70,9 +87,11 @@ class PeopleWorkExperienceController extends Controller
         }
     }
 
+
+    //metodo para ver la vista de los requisitos
     public function requirementCreate($id, $rubro_id)
     {        
-        
+        // return 1;
         $rubro = RubroPeople::find($rubro_id);
         $peoplerequirement = PeopleRequirement::where('people_experience_id', $id)->where('deleted_at', null)->where('status', 1)->first();
         // return $peoplerequirement;

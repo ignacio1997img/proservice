@@ -21,6 +21,7 @@ class MessageBusineController extends Controller
 
     public function store(Request $request)
     {
+        dd(1);
         DB::beginTransaction();
         try {
             $busine = Busine::find($request->busine_id);
@@ -133,7 +134,7 @@ class MessageBusineController extends Controller
     //PARA VER LOS PERFILES DE CADA PERSONA QUE SE HAYA ENVIADO UN MENSAJE
     public function people_perfil_view($id, $people_id, $rubro_id)
     {
-        // return $id;
+        return 111;
 
         $message = MessagePeople::find($id);
         if($message->data_view == null){
@@ -145,7 +146,7 @@ class MessageBusineController extends Controller
         // return $rubro_id;
         $people = People::find($people_id);
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('rubro_id', $rubro_id)->first();
-        // return $experiences;
+        return $experiences;
         $peoplerequirement = PeopleRequirement::where('people_experience_id', $experiences->id)->where('deleted_at', null)->first();
         // return $requirement;
         return view('message.message-people.people-perfil.perfil', compact('people', 'experiences', 'peoplerequirement', 'rubro_id'));
