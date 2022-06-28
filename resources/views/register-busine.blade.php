@@ -40,9 +40,19 @@
                     $rubros = \DB::table('rubro_busines')->where('deleted_at', null)->where('status', 1)->get();
                 @endphp
                 {!! Form::open(['route' => 'busine.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                    {{-- @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $item)
+                                    <li>{{$item }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif --}}
                     <div class="row">
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <select id="department_id" class="form-control" required>
+                            <span ><b>Departamento</b></span>
+                            <select id="department_id" name="department_id" class="form-control select2bs4" required>
                                 <option value="">Seleccione un departamento..</option>
                                 @foreach($department as $data)
                                     <option value="{{$data->id}}">{{$data->name}}</option>
@@ -50,7 +60,8 @@
                             </select>
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <select name="city_id" id="city_id" class="form-control" required>
+                            <span ><b>Ciudad</b></span>
+                            <select name="city_id" id="city_id" class="form-control select2bs4" required>
                                 <option value="">Seleccione una Ciudad..</option>
                                 {{--@foreach($department as $data)
                                     <option value="{{$data->id}}">{{$data->name}}</option>
@@ -61,10 +72,15 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                        <input type="text" name="nit" onkeypress='return validaNumericos(event)' class="form-control" id="name" placeholder="Nit" required>
+                            <span ><b>Nit</b></span>
+                            <input type="text" name="nit" onkeypress='return validaNumericos(event)' class="form-control" id="nit" placeholder="7688596255" value="{{ old('nit') }}" required>
+                            @error('nit')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <select name="rubro_id" id="rubro_id" class="form-control" required>
+                            <span ><b>Rubro</b></span>
+                            <select name="rubro_id" id="rubro_id" class="form-control select2bs4" required>
                                 <option value="">Seleccione un tipo..</option>
                                 @foreach($rubros as $data)
                                     <option value="{{$data->id}}">{{$data->name}}</option>
@@ -75,41 +91,76 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Razon Social" required>
+                            <span ><b>Razón Social</b></span>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="PROTECTION SRL" value="{{ old('name') }}" required>
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="text" class="form-control" name="responsible" id="responsible" placeholder="Responsable" required>
+                            <span ><b>Responsable</b></span>
+                            <input type="text" class="form-control" name="responsible" id="responsible" placeholder="Ignacio" value="{{ old('responsible') }}" required>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="text" name="phone1" class="form-control" placeholder="Telefono" onkeypress='return validaNumericos(event)' required>
+                            <span ><b>Teléfono</b></span>
+                            <input type="text" name="phone1" id ="phone1" class="form-control" placeholder="76854410" onkeypress='return validaNumericos(event)' value="{{ old('phone1') }}" required>
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="website" placeholder="Sitio Web">
+                            <span ><b>Página Web</b></span>
+                            <input type="text" class="form-control" name="website" placeholder="ejemplo.com" value="{{ old('website') }}">
                         </div>
                     </div>
 
 
                     <div class="form-group mt-3">
-                        <textarea class="form-control" name="address" rows="5" placeholder="Dirección" required></textarea>
+                        <span ><b>Dirección</b></span>
+                        <textarea class="form-control" name="address" id="address" rows="5" placeholder="Calle Patujú" required>{{ old('address') }}</textarea>
                     </div>
 
                     <br>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                        <input type="email" name="email" class="form-control" id="name" placeholder="Email" required>
+                            <span ><b>Email</b></span>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="ejemplo@gmail.com"  value="{{ old('email') }}"required>
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="password" class="form-control" name="password" id="email" placeholder="Contraseña" required>
+                            <span ><b>Contraseña</b></span>
+                            <div class="form-group">
+                                <div class="input-group">                                  
+                                  <input type="password" class="form-control" name="password" id="password" id="email" placeholder="******" required>
+                                  
+                                  <div class="input-group-prepend">
+                                    <button class="btn btn-primary" type="button" onclick="mostrarContrasena()" id="boton"><span class="fa fa-eye"></span></button>
+                                    {{-- <span class="input-group-addon" style="background:#fff;border:0px;font-size:25px;cursor:pointer;padding:0px;position: relative;bottom:10px" id="btn-verpassword">
+                                        <span class="fa fa-eye"></span>
+                                    </span> --}}
+                                    
+                                  </div>
+                                </div>
+                            </div>    
+                            @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror                       
                         </div>
                     </div>
-                    {{-- <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    
+
+                    {{-- <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><b>Contacto</b></span>
+                          </div>
+                          <input type="text" class="form-control" name="contacto" id="contacto" style="text-transform:uppercase">
+                          <div class="valid-feedback">¡Campo opcional!</div>
+                        </div>
                     </div> --}}
+
                     <br>
                     <div style="text-align: right" >
                         {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
@@ -126,4 +177,37 @@
     </section><!-- End Contact Section -->
 
     </main>
+
+    <script>
+
+        // $(document).ready(function(){
+  
+        //     let ver_pass = false;
+        //     $('#btn-verpassword').click(function(){
+        //         // alert(4324)
+        //         if(ver_pass){
+        //             ver_pass = false;
+        //             $(this).html('<span class="fa fa-eye"></span>');
+        //             $('#password').prop('type', 'password');
+        //         }else{
+        //             ver_pass = true;
+        //             $(this).html('<span class="fa fa-eye-slash"></span>');
+        //             $('#password').prop('type', 'text');
+        //         }
+        //     });
+        // });
+        function mostrarContrasena(){
+            
+            var tipo = document.getElementById("password");
+                if(tipo.type == "password"){
+                    $('#boton').html('<span class="fa fa-eye-slash"></span>');
+                    $('#password').prop('type', 'text');
+                }
+                else
+                {
+                    $('#boton').html('<span class="fa fa-eye"></span>');
+                    $('#password').prop('type', 'password');
+                }
+        }
+    </script>
 @endsection

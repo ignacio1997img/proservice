@@ -39,6 +39,12 @@ class PeopleController extends Controller
     public function store(Request $request)
     {
         // return  $request->all();
+        $request->validate(
+        [
+            'email' => 'required|email|unique:users',
+            'ci' => 'required|unique:people',
+            'password' => 'required|min:8|max:25'
+        ]);
         DB::beginTransaction();
         try {
             $ok = People::where('ci', $request->ci)->first();

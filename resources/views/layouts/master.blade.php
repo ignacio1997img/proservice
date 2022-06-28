@@ -15,7 +15,15 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset('css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/select2-bootstrap4.min.css')}}">
+  
+{{-- <script src="{{asset('js/jquery.min.js')}}"></script> --}}
+
+  
   <!-- Vendor CSS Files -->
   <link href="template/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="template/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -144,9 +152,21 @@
 
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/select2.full.min.js')}}"></script>
 <script type="text/javascript">
     $(function()
     {
+
+      // $('.select2').select2()
+      
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })     
+      // $('.select2bs5').select2({
+      //   theme: 'bootstrap4'
+      // })
+
+
         $('#department_id').on('change', selectCity);
     });
 

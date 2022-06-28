@@ -26,9 +26,13 @@ class BeneficiaryController extends Controller
     }
     public function store(Request $request)
     {
-        // return $request;
-
-        // dd($request);
+        $request->validate(
+        [
+            'email' => 'required|email|unique:users',
+            'name' => 'required|unique:busines',
+            'password' => 'required|min:8|max:25'
+    
+        ]);
 
         DB::beginTransaction();
         try {

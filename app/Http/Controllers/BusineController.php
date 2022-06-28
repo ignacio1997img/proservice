@@ -30,6 +30,18 @@ class BusineController extends Controller
 
     public function store(Request $request)
     {
+        $message =$request->validate(
+        [
+                'email' => 'required|email|unique:users',
+                'nit' => 'required|unique:busines',
+                'name' => 'required|unique:busines',
+                'password' => 'required|min:8|max:25'
+
+        ]);
+
+        // $title = $request->old('nit');
+
+
       
         DB::beginTransaction();
         try {
