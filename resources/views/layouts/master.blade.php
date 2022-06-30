@@ -6,14 +6,19 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>TrabajosTop</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>{{setting('admin.title')}}</title>
+  <meta property="og:url"           content="{{url('')}}" />
+  {{-- <meta property="og:type"          content="" /> --}}
+  <meta property="og:title"         content="{{setting('site.title')}}" />
+  <meta property="og:description"   content="{{setting('site.description')}}" />
+  <meta property="og:image"         content="{{ asset('images/icon.png') }}" />
+  <meta name="keywords" content="beni, mamore, pagos, gadbeni, gobernacion">
 
   <!-- Favicons -->
   {{-- <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/png"> --}}
 
-  <link href="{{ asset('images/icon.png') }}" rel="icon">
-  <link href="{{ asset('images/icon.png') }}" rel="apple-touch-icon">
+  {{-- <link href="{{ asset('images/icon.png') }}" rel="icon">
+  <link href="{{ asset('images/icon.png') }}" rel="apple-touch-icon"> --}}
 
   {{-- <link href="template/assets/img/icono.png" rel="icon">
   <link href="template/assets/img/apple-touch-icon.png" rel="apple-touch-icon"> --}}
