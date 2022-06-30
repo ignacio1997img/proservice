@@ -5,7 +5,7 @@
         <div class="col-lg-6 pt-2 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1>La Mejor Solucion. Desde la Comodidad de tu Casa</h1>
           <ul>
-            <li><i class="ri-check-line"></i> Ofrecemos Todo Tipo de Trabajo</li>
+            <li><i class="ri-check-line"></i> Ofrecemos Oportunidades de Trabajos</li>
             <li><i class="ri-check-line"></i> Ofrecemos Servicios a las Empresas</li>
             <li><i class="ri-check-line"></i> Informacion Verificada y confiable</li>
           </ul>
