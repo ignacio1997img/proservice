@@ -6,6 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>TrabajosTop</title>
+  <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/png">
   <title>{{setting('admin.title')}}</title>
   <meta property="og:url"           content="{{url('')}}" />
   {{-- <meta property="og:type"          content="" /> --}}
