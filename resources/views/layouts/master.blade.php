@@ -12,7 +12,7 @@
   <meta property="og:title"         content="{{setting('site.title')}}" />
   <meta property="og:description"   content="{{setting('site.description')}}" />
   <meta property="og:image"         content="{{ asset('images/icon.png') }}" />
-  <meta name="keywords" content="beni, mamore, pagos, gadbeni, gobernacion">
+  <meta name="keywords" content="trabajostop, servicios, empleos, trabajos, empresas, proservice, trabajadores, beni">
 
   <!-- Favicons -->
   {{-- <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/png"> --}}
