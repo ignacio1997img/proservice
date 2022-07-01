@@ -14,7 +14,9 @@
                                 <th>Empresa</th>
                                 <th>Responsable</th>
                                 <th>Calificación</th>
-                                <th>Accion</th>
+                                @if (!auth()->user()->hasrole('admin'))
+                                    <th>Accion</th>
+                                @endif
                                 
                             </tr>
                         </thead>
@@ -60,9 +62,12 @@
                                             <br>
                                             <small>{{number_format($item->star, 2)}}</small>
                                         </td>
-                                        <td style="text-align: right">
-                                            <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}"  class="btn btn-success"><i class="voyager-check"></i> <span class="hidden-xs hidden-sm">Enviar</span></a>
-                                        </td>
+                                        @if (!auth()->user()->hasrole('admin'))
+                                            <td style="text-align: right">
+                                                {{-- <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}"  class="btn btn-success"><i class="voyager-check"></i> <span class="hidden-xs hidden-sm">Enviar</span></a> --}}
+                                                <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>
+                                            </td>
+                                        @endif
                                         
                                     </tr>
                                 @endif
@@ -79,6 +84,7 @@
         </form>
     </div>
 </div>
+@if (!auth()->user()->hasrole('admin'))
 {{-- modal para enviar solicitud de trabajo --}}
 <div class="modal modal-primary fade" tabindex="-1" id="modal_solicitud" role="dialog">
     <div class="modal-dialog">
@@ -116,7 +122,7 @@
         </div>
     </div>
 </div>
-
+@endif
 
 
 
