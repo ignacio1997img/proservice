@@ -1,5 +1,5 @@
 @extends('voyager::master')
-
+@if(auth()->user()->hasPermission('browse_search-work'))
 @section('page_title', 'Buscar Trabajadores')
 <style>
     a{
@@ -270,3 +270,8 @@
         
     </script>
 @stop
+@else
+@section('content')
+    <h1>No tienes permiso</h1>
+@stop
+@endif

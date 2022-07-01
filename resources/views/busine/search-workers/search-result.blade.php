@@ -14,7 +14,9 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Calificación</th>
-                                <th>Accion</th>                                
+                                @if (!auth()->user()->hasrole('admin'))
+                                    <th>Accion</th>   
+                                @endif                             
                             </tr>
                         </thead>
                         <tbody>
@@ -58,9 +60,11 @@
                                             <br>
                                             <small>{{number_format($item->star, 2)}}</small>
                                         </td>
-                                        <td style="text-align: right">
-                                            <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}" data-experience="{{$item->people_experience_id}}" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>
-                                        </td>                                
+                                        @if (!auth()->user()->hasrole('admin'))
+                                            <td style="text-align: right">                                            
+                                                <a type="button" data-toggle="modal" data-target="#modal_solicitud" data-id="{{ $item->id}}" data-experience="{{$item->people_experience_id}}" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>
+                                            </td>  
+                                        @endif                              
                                     </tr>
                                 @endif
                             @empty
@@ -73,73 +77,69 @@
                 </div>
             </div>
 
-        </form>
+
     </div>
 </div>
 {{-- modal para enviar solicitud de trabajo --}}
-<div class="modal modal-info fade" tabindex="-1" id="modal_solicitud" role="dialog">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            {!! Form::open(['route' => 'message-people-busine.store', 'id' => 'form-pagar', 'method' => 'POST', 'class' => 'form-search']) !!}        
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="fa-regular fa-envelope"></i>  Enviar solicitud de Trabajo</h4>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" name="rubro_people_id" value="{{$rubro_people}}">
-                <input type="hidden" name="rubro_busine_id" value="{{$rubro_busine->rubro_busine}}">
-                <input type="hidden" name="busine_id" value="{{$rubro_busine->busine_id}}">
-
-                <input type="hidden" name="people_id" id="id">
-                <input type="text" name="people_experience_id" id="experience">  
-
-                <div class="text-center" style="text-transform:uppercase">
-                    <i class="fa-regular fa-envelope" style="color: rgb(87, 87, 87); font-size: 5em;"></i>
-                    <br>
-                    <p><b>Desea Enviar solicitud...!</b></p>
+@if (!auth()->user()->hasrole('admin'))
+    <div class="modal modal-info fade" tabindex="-1" id="modal_solicitud" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                {!! Form::open(['route' => 'message-people-busine.store', 'id' => 'form-pagar', 'method' => 'POST', 'class' => 'form-search']) !!}        
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="fa-regular fa-envelope"></i>  Enviar solicitud de Trabajo</h4>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-6" id="div-destinatario" >
-                        <label class="control-label">Incluir Precio Estimado</label>
-                        <input 
-                        type="checkbox" 
-                        
-                        id="toggleswitch" 
-                        data-toggle="toggle" 
-                        data-on="Interno" 
-                        data-off="Externo" 
-                        >
+                <div class="modal-body">
+                    <input type="hidden" name="rubro_people_id" value="{{$rubro_people}}">
+                    <input type="hidden" name="rubro_busine_id" value="{{$rubro_busine->rubro_busine}}">
+                    <input type="hidden" name="busine_id" value="{{$rubro_busine->busine_id}}">
+
+                    <input type="hidden" name="people_id" id="id">
+                    <input type="text" name="people_experience_id" id="experience">  
+
+                    <div class="text-center" style="text-transform:uppercase">
+                        <i class="fa-regular fa-envelope" style="color: rgb(87, 87, 87); font-size: 5em;"></i>
+                        <br>
+                        <p><b>Desea Enviar solicitud...!</b></p>
                     </div>
-                </div>
-                <div class="row" id="money">
-                    
-                </div>
-
-                <div class="row">   
-                    <div class="col-md-12">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><b>Observacion:</b></span>
+                    <div class="row">
+                        <div class="form-group col-md-6" id="div-destinatario" >
+                            <label class="control-label">Incluir Precio Estimado</label>
+                            <input 
+                            type="checkbox" 
+                            
+                            id="toggleswitch" 
+                            data-toggle="toggle" 
+                            data-on="Interno" 
+                            data-off="Externo" 
+                            >
                         </div>
-                        <textarea id="detail" class="form-control" name="detail" cols="77" rows="3"></textarea>
-                    </div>                
-                </div>
-            </div>                
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                {{-- <input type="submit" class="btn btn-dark" value="Sí, Enviar"> --}}
-                <button type="button" class="btn btn-info btn-submit" onclick="sendForm('form-pagar', 'Mensaje enviado exitosamente.')">Sí, Enviar</button>
+                    </div>
+                    <div class="row" id="money">
+                        
+                    </div>
 
+                    <div class="row">   
+                        <div class="col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><b>Observacion:</b></span>
+                            </div>
+                            <textarea id="detail" class="form-control" name="detail" cols="77" rows="3"></textarea>
+                        </div>                
+                    </div>
+                </div>                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    {{-- <input type="submit" class="btn btn-dark" value="Sí, Enviar"> --}}
+                    <button type="button" class="btn btn-info btn-submit" onclick="sendForm('form-pagar', 'Mensaje enviado exitosamente.')">Sí, Enviar</button>
+
+                </div>
+                {!! Form::close() !!}
             </div>
-            {!! Form::close() !!}
         </div>
     </div>
-</div>
-
-
-
-
-
-
+@endif                              
 
 
 <style>
@@ -170,24 +170,6 @@
             color: rgb(12, 12, 12);
             font-weight: bold;
         }
-
-    /* .text-selected {
-        cursor: pointer;
-    }
-    .app-footer {
-        opacity: 1 !important;
-    }
-    .text-selected-copy{
-        color: green !important;
-        text-decoration: underline !important;
-    }
-
-    #dataTable-aguinaldo th{
-        background-color: #E74C3C !important;
-    }
-    th{
-        font-size: 11px !important;
-    } */
 </style>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
