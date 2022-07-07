@@ -8,7 +8,7 @@
         <div class="container row" style="text-align: center">
             <div class="row">
                 <div class="col-sm-3"></div>
-                <div class="col-sm-7"><div id="myCarousel" class="carousel slide" style="width:100%" data-ride="carousel">
+                <div class="col-sm-7"><div id="myCarousel" class="carousel slide" style="width:100%; height: 500px;" data-ride="carousel">
                     <!-- Indicators -->
                    
                 
@@ -16,7 +16,7 @@
                     <div class="carousel-inner">
                 
                       <div class="item active">
-                        <img src="{{ asset('images/carousel/1.jpeg') }}" alt="Los Angeles" >
+                        <img src="{{ asset('images/carousel/1.jpeg') }}" alt="Los Angeles" style="width:100%">
                         {{-- <div class="carousel-caption">
                           <h3>Los Angeles</h3>
                           <p>LA is always so much fun!</p>
@@ -25,32 +25,16 @@
                 
                       <div class="item">
                         <img src="{{ asset('images/carousel/2.jpeg') }}" alt="Chicago" style="width:100%;">
-                        {{-- <div class="carousel-caption">
-                          <h3>Chicago</h3>
-                          <p>Thank you, Chicago!</p>
-                        </div> --}}
                       </div>
                     
                       <div class="item">
                         <img src="{{ asset('images/carousel/3.jpeg') }}" alt="New York" style="width:100%;">
-                        {{-- <div class="carousel-caption">
-                          <h3>New York</h3>
-                          <p>We love the Big Apple!</p>
-                        </div> --}}
                       </div>
                       <div class="item">
                         <img src="{{ asset('images/carousel/4.jpeg') }}" alt="New York" style="width:100%;">
-                        {{-- <div class="carousel-caption">
-                          <h3>New York</h3>
-                          <p>We love the Big Apple!</p>
-                        </div> --}}
                       </div>
                       <div class="item">
                         <img src="{{ asset('images/carousel/5.jpeg') }}" alt="New York" style="width:100%;">
-                        {{-- <div class="carousel-caption">
-                          <h3>New York</h3>
-                          <p>We love the Big Apple!</p>
-                        </div> --}}
                       </div>
                   
                     </div>
