@@ -1,80 +1,73 @@
 @extends('voyager::master')
-
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+  {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 @section('content')
     <div class="page-content">
         @include('voyager::alerts')
         @include('voyager::dimmers')
-        <div class="analytics-container">
-            <?php $google_analytics_client_id = Voyager::setting("admin.google_analytics_client_id"); ?>
-            {{-- @if (isset($google_analytics_client_id) && !empty($google_analytics_client_id))
-              
-                <div id="embed-api-auth-container"></div>
-            @else
-                <p style="border-radius:4px; padding:20px; background:#fff; margin:0; color:#999; text-align:center;">
-                    {!! __('voyager::analytics.no_client_id') !!}
-                    <a href="https://console.developers.google.com" target="_blank">https://console.developers.google.com</a>
-                </p>
-            @endif --}}
-
-            <div class="Dashboard Dashboard--full" id="analytics-dashboard">
-                <header class="Dashboard-header">
-                    <ul class="FlexGrid">
-                        <li class="FlexGrid-item">
-                            <div class="Titles">
-                                <h1 class="Titles-main" id="view-name">{{ __('voyager::analytics.select_view') }}</h1>
-                                <div class="Titles-sub">{{ __('voyager::analytics.various_visualizations') }}</div>
-                            </div>
-                        </li>
-                        <li class="FlexGrid-item FlexGrid-item--fixed">
-                            <div id="active-users-container"></div>
-                        </li>
-                    </ul>
-                    <div id="view-selector-container"></div>
-                </header>
-
-                <ul class="FlexGrid FlexGrid--halves">
-                    <li class="FlexGrid-item">
-                        <div class="Chartjs">
-                            <header class="Titles">
-                                <h1 class="Titles-main">{{ __('voyager::analytics.this_vs_last_week') }}</h1>
-                                <div class="Titles-sub">{{ __('voyager::analytics.by_users') }}</div>
-                            </header>
-                            <figure class="Chartjs-figure" id="chart-1-container"></figure>
-                            <ol class="Chartjs-legend" id="legend-1-container"></ol>
-                        </div>
-                    </li>
-                    <li class="FlexGrid-item">
-                        <div class="Chartjs">
-                            <header class="Titles">
-                                <h1 class="Titles-main">{{ __('voyager::analytics.this_vs_last_year') }}</h1>
-                                <div class="Titles-sub">{{ __('voyager::analytics.by_users') }}</div>
-                            </header>
-                            <figure class="Chartjs-figure" id="chart-2-container"></figure>
-                            <ol class="Chartjs-legend" id="legend-2-container"></ol>
-                        </div>
-                    </li>
-                    <li class="FlexGrid-item">
-                        <div class="Chartjs">
-                            <header class="Titles">
-                                <h1 class="Titles-main">{{ __('voyager::analytics.top_browsers') }}</h1>
-                                <div class="Titles-sub">{{ __('voyager::analytics.by_pageview') }}</div>
-                            </header>
-                            <figure class="Chartjs-figure" id="chart-3-container"></figure>
-                            <ol class="Chartjs-legend" id="legend-3-container"></ol>
-                        </div>
-                    </li>
-                    <li class="FlexGrid-item">
-                        <div class="Chartjs">
-                            <header class="Titles">
-                                <h1 class="Titles-main">{{ __('voyager::analytics.top_countries') }}</h1>
-                                <div class="Titles-sub">{{ __('voyager::analytics.by_sessions') }}</div>
-                            </header>
-                            <figure class="Chartjs-figure" id="chart-4-container"></figure>
-                            <ol class="Chartjs-legend" id="legend-4-container"></ol>
-                        </div>
-                    </li>
-                </ul>
+        <div class="container row" style="text-align: center">
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-7"><div id="myCarousel" class="carousel slide" style="width:100%" data-ride="carousel">
+                    <!-- Indicators -->
+                   
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                
+                      <div class="item active">
+                        <img src="{{ asset('images/carousel/1.jpeg') }}" alt="Los Angeles" >
+                        {{-- <div class="carousel-caption">
+                          <h3>Los Angeles</h3>
+                          <p>LA is always so much fun!</p>
+                        </div> --}}
+                      </div>
+                
+                      <div class="item">
+                        <img src="{{ asset('images/carousel/2.jpeg') }}" alt="Chicago" style="width:100%;">
+                        {{-- <div class="carousel-caption">
+                          <h3>Chicago</h3>
+                          <p>Thank you, Chicago!</p>
+                        </div> --}}
+                      </div>
+                    
+                      <div class="item">
+                        <img src="{{ asset('images/carousel/3.jpeg') }}" alt="New York" style="width:100%;">
+                        {{-- <div class="carousel-caption">
+                          <h3>New York</h3>
+                          <p>We love the Big Apple!</p>
+                        </div> --}}
+                      </div>
+                      <div class="item">
+                        <img src="{{ asset('images/carousel/4.jpeg') }}" alt="New York" style="width:100%;">
+                        {{-- <div class="carousel-caption">
+                          <h3>New York</h3>
+                          <p>We love the Big Apple!</p>
+                        </div> --}}
+                      </div>
+                      <div class="item">
+                        <img src="{{ asset('images/carousel/5.jpeg') }}" alt="New York" style="width:100%;">
+                        {{-- <div class="carousel-caption">
+                          <h3>New York</h3>
+                          <p>We love the Big Apple!</p>
+                        </div> --}}
+                      </div>
+                  
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div></div>
+                <div class="col-sm-2"></div>
             </div>
+            
         </div>
     </div>
 @stop
