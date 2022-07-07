@@ -1,7 +1,7 @@
 <div class="side-menu sidebar-inverse">
     <nav class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
-            <div class="navbar-header">
+            <div class="navbar-header" style="background: rgb(255,156,0)">
                 <a class="navbar-brand" href="{{ route('voyager.dashboard') }}">
                     <div class="logo-icon-container">
                         <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
@@ -11,7 +11,7 @@
                             <img src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
                     </div>
-                    <div class="title">{{Voyager::setting('admin.title', 'VOYAGER')}}</div>
+                    <div class="title"><b>{{Voyager::setting('admin.title', 'VOYAGER')}}</b></div>
                 </a>
             </div>
 
