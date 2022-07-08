@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="page-title">
+                <h1 id="subtitle" class="page-title">
                     <i class="fa-solid fa-person-digging"></i> Datos Personales
                     &nbsp; &nbsp; 
                     <a href="{{ URL::previous()}}" class="btn btn-warning">

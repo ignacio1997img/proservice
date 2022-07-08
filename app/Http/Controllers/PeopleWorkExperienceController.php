@@ -814,4 +814,11 @@ class PeopleWorkExperienceController extends Controller
 
 
 
+
+
+
+    public function fichaTecnica()
+    {
+        return view('people.fichaTecnica.print-ficha');
+    }
 }

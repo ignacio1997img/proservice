@@ -72,7 +72,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="nit" name="estatura" class="form-control form-control-sm text" placeholder="Seleccione un Proveedor">
+                                                    <input type="number" id="nit" name="estatura" class="form-control form-control-sm text" placeholder="Introduzca su estatura">
                                                 </div>
                                                 <small>Estatura.</small>
                                             </div>
@@ -81,7 +81,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="responsable" name="peso" class="form-control form-control-sm text" placeholder="Seleccione un Proveedor">
+                                                    <input type="number" id="responsable" name="peso" class="form-control form-control-sm text" placeholder="Introduzca su peso">
                                                 </div>
                                                 <small>Peso.</small>
                                             </div>

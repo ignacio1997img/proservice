@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="page-title">
+                <h1 id="subtitle" class="page-title">
                     <i class="fa-solid fa-person-digging"></i> Perfil
                     &nbsp; 
                     {{-- para el administrador que va a aceptar los rubro de la persona --}}
@@ -181,6 +181,9 @@
                                                                     @endif
 
                                                                     @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                                        <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows()">
+                                                                            <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
+                                                                        </a>
                                                                         <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
                                                                             <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
                                                                         </a>
@@ -610,6 +613,13 @@
                         $('#city_id').html(html_city);
                     }
                 };
+
+
+        function openWindows()
+        {
+            // alert(4)
+            window.open("{{ route('work-experience.print-ficha-tecnica')}}/"+id, 'Apertura de caja', `width=500, height=600`);
+        }
 
     </script>
 @stop

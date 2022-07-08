@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="page-title">
+                <h1 id="subtitle" class="page-title">
                     <i class="fa-regular fa-envelope"></i> Solicitudes
                 </h1>
             </div>

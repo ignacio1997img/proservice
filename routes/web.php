@@ -20,6 +20,7 @@ use App\Http\Controllers\MessageBeneficiaryController;
 use App\Models\MessageBusine;
 use App\Models\MessagePeople;
 use App\Models\Department;
+use App\Models\People;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('people-perfil-experience/requirement-jardineria-store' , [PeopleWorkExperienceController::class, 'requirementJardineriaStore'])->name('work-experience.requirement-jardineria-store');
     Route::post('people-perfil-experience/requirement-piscinero-store' , [PeopleWorkExperienceController::class, 'requirementPiscineroStore'])->name('work-experience.requirement-piscinero-store');
     Route::post('people-perfil-experience/requirement-modelos-store' , [PeopleWorkExperienceController::class, 'requirementModelosStore'])->name('work-experience.requirement-modelos-store');
+
+    Route::get('people-perfil-experience/ficha-tecnica/{id?}', [PeopleWorkExperienceController::class, 'fichaTecnica'])->name('work-experience.print-ficha-tecnica');
 
 
     //para la bandeja de la persona

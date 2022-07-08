@@ -30,6 +30,11 @@ class CreatePeopleTable extends Migration
             $table->string('weight')->nullable();
             $table->string('height')->nullable();
             $table->string('image',600)->nullable();
+
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('tiktok')->nullable();
+            
             $table->smallInteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();

@@ -80,7 +80,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="cant_quimico" class="form-control">
+                                                    <select name="cant_quimico" class="form-control select">
                                                         <option value="">Selecione</option>
                                                         <option value="1">Si</option>
                                                         <option value="0">No</option>                                                 

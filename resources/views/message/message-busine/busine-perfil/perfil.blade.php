@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">                
                 <div class="col-md-8">
-                    <h1 class="page-title">
+                    <h1 id="subtitle" class="page-title">
                         <i class="voyager-receipt"></i> Perfil 
                     </h1>
                     <a href="{{route('message-beneficiary.bandeja')}}" class="btn btn-warning">
