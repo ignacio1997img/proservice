@@ -147,7 +147,10 @@ class PeopleController extends Controller
                     'phone2' => $request->phone2,
                     'address' => $request->address,
                     'ci' => $request->ci,
-                    'sex' => $request->sex
+                    'sex' => $request->sex,
+                    'facebook' => $request->facebook,
+                    'instagram' => $request->instagram,
+                    'tiktok' => $request->tiktok
                 ]);
                 DB::commit();
                 return redirect()->route('people-perfil-experience.index')->with(['message' => 'Perfil Actualizado exitosamente.', 'alert-type' => 'success']);

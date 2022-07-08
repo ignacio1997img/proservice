@@ -135,7 +135,7 @@
                             <td style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Peso:</b></td>
                         </tr>
                         <tr>
-                            <td width="30%"><img src="{{ asset('images/redes/tictock.png') }}" alt="GYM" width="35px"></td>
+                            <td width="30%"><img src="{{ asset('images/redes/tiktok.png') }}" alt="GYM" width="35px"></td>
                             <td style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Peso:</b></td>
                         </tr>
                         

@@ -39,7 +39,7 @@
                     <div class="panel panel-bordered">
                         <div class="panel-body">                            
                             <div class="table-responsive">
-                                <main class="main">   
+                               
                                     <div class="card-body">
                                         @if(auth()->user()->hasPermission('edit_people-perfil-data') && !auth()->user()->hasRole('admin'))
                                             <a type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-success">
@@ -140,70 +140,91 @@
                                                 </div>
                                             </div>                                         
                                         </div>
+                                        <div class="row">                                              
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <img src="{{ asset('images/redes/facebook.png') }}" alt="GYM" width="35px">&nbsp;&nbsp;&nbsp;<small>{{$people->facebook}}</small>
+                                                </div>
+                                            </div> 
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <img src="{{ asset('images/redes/instagram.png') }}" alt="GYM" width="35px">&nbsp;&nbsp;&nbsp;<small>{{$people->instagram}}</small>
+
+                                                </div>
+                                            </div>       
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <img src="{{ asset('images/redes/tiktok.png') }}" alt="GYM" width="35px">&nbsp;&nbsp;&nbsp;<small>{{$people->tiktok}}</small>
+                                                </div>
+                                            </div>                                         
+                                        </div>
+
+                                        {{-- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" --}}
                                         @if(auth()->user()->hasPermission('add_people-perfil-experience') && !auth()->user()->hasRole('admin'))
                                             <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
                                                 <i class="voyager-plus"></i> <span>Busco trabajo de</span>
                                             </a>
                                         @endif
-                                            <table id="dataTable" class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nro&deg;</th>
-                                                        <th>Experiencia Laboral</th>
-                                                        <th>Estado</th>
-                                                        <th>Acciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @php
-                                                        $i = 1;
-                                                    @endphp
-                                                    @foreach ($experiences as $item)
-                                                        <tr>
-                                                            <td>{{$i}}</td>
-                                                            <td>{{$item->rubro_people->name}} <label class="label label-primary">{{$item->typeModel_id?' - '.$item->type_model->name:''}}</label></td>    
-                                                            <td>
-                                                                @if ($item->status == 1)
-                                                                    <label class="label label-success">Aprobado</label>
-                                                                @else
-                                                                    <label class="label label-danger">Pendiente</label>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                <div class="no-sort no-click bread-actions text-right">
-
-
-                                                                    @if ($item->status == 2 && auth()->user()->hasRole('admin'))
-                                                                        @if($item->rubro_id == 4)
-                                                                            <a type="button" data-toggle="modal" data-target="#modal_editarModelaje" data-id="{{ $item->id}}"  class="btn btn-primary"><i class="fa-solid fa-edit"></i> <span class="hidden-xs hidden-sm">Editar Categoria Modelaje</span></a>
-                                                                        @endif
-                                                                        <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
-                                                                    @endif
-
-                                                                    @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
-                                                                        <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows()">
-                                                                            <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
-                                                                        </a>
-                                                                        <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
-                                                                            <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
-                                                                        </a>
-                                                                    @endif
-                                                                    @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
-                                                                        <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$item->id}}" class="btn btn-sm btn-danger">
-                                                                            <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
-                                                                        </a>
-                                                                    @endif
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        @php
-                                                            $i++;
-                                                        @endphp
-                                                    @endforeach                                        
-                                                </tbody>
-                                            </table>
+                                            
                                     </div>                      
-                                </main>
+                           
+                                <table id="dataTable" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nro&deg;</th>
+                                            <th >Experiencia Laboral</th>
+                                            <th style="text-align: center">Estado</th>
+                                            <th style="text-align: right">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $i = 1;
+                                        @endphp
+                                        @foreach ($experiences as $item)
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td>{{$item->rubro_people->name}} <label class="label label-primary">{{$item->typeModel_id?' - '.$item->type_model->name:''}}</label></td>    
+                                                <td style="text-align: center">
+                                                    @if ($item->status == 1)
+                                                        <label class="label label-success">Aprobado</label>
+                                                    @else
+                                                        <label class="label label-danger">Pendiente</label>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div class="no-sort no-click bread-actions text-right">
+
+
+                                                        @if ($item->status == 2 && auth()->user()->hasRole('admin'))
+                                                            @if($item->rubro_id == 4)
+                                                                <a type="button" data-toggle="modal" data-target="#modal_editarModelaje" data-id="{{ $item->id}}"  class="btn btn-primary"><i class="fa-solid fa-edit"></i> <span class="hidden-xs hidden-sm">Editar Categoria Modelaje</span></a>
+                                                            @endif
+                                                            <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
+                                                        @endif
+
+                                                        @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                            <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows()">
+                                                                <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
+                                                            </a>
+                                                            <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
+                                                                <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                            </a>
+                                                        @endif
+                                                        @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
+                                                            <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$item->id}}" class="btn btn-sm btn-danger">
+                                                                <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
+                                                            </a>
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @php
+                                                $i++;
+                                            @endphp
+                                        @endforeach                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -274,7 +295,7 @@
 
 {{-- para editar los datos basico de una persona mediante un perfil --}}
 {{-- modal para editar los datos de la empresa --}}
-<div class="modal fade modal-primary" role="dialog" id="modal_edit">
+<div class="modal fade modal-primary" data-backdrop="static" role="dialog" id="modal_edit">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">                
             <!-- Modal Header -->
@@ -290,7 +311,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Departamento:</b></span>
+                                    <small class="input-group-text"><b>Departamento:</b></small>
                                 </div>
                                 <select id="department_id" class="form-control select2" required>
                                     <option value="">Seleccione un departamento..</option>
@@ -301,7 +322,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Ciudad:</b></span>
+                                    <small class="input-group-text"><b>Ciudad:</b></small>
                                 </div>
                                 <select name="city_id" id="city_id" class="form-control select2" required>
                                     <option value="">Seleccione una Ciudad..</option>
@@ -316,19 +337,19 @@
                         <div class="row" >
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>CI:</b></span>
+                                    <small class="input-group-text"><b>CI:</b></small>
                                 </div>
                                 <input type="number" class="form-control" name="ci" value="{{$people->ci}}">
                             </div>
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Nombre:</b></span>
+                                    <small class="input-group-text"><b>Nombre:</b></small>
                                 </div>
                                 <input type="text" class="form-control" name="first_name" value="{{$people->first_name}}">
                             </div>     
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Apellido:</b></span>
+                                    <small class="input-group-text"><b>Apellido:</b></small>
                                 </div>
                                 <input type="text" class="form-control" name="last_name" value="{{$people->last_name}}">
                             </div>                            
@@ -337,19 +358,19 @@
                         <div class="row" >
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Fecha de Nacimiento:</b></span>
+                                    <small class="input-group-text"><b>Fecha de Nacimiento:</b></small>
                                 </div>
                                 <input type="date" class="form-control" name="birth_date" value="{{$people->birth_date}}">
                             </div>
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Email:</b></span>
+                                    <small class="input-group-text"><b>Email:</b></small>
                                 </div>
                                 <input type="text" class="form-control" name="email" value="{{$people->email}}">
                             </div>         
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Sexo:</b></span>
+                                    <small class="input-group-text"><b>Sexo:</b></small>
                                 </div>
                                 <select name="sex" id="sex" class="form-control">
                                     <option value="1" {{$people->sex == 1? 'selected':''}}>MASCULINO</option>
@@ -361,23 +382,44 @@
                         <div class="row" >
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Telefono 1:</b></span>
+                                    <small class="input-group-text"><b>Telefono 1:</b></small>
                                 </div>
                                 <input type="number" class="form-control" name="phone1" value="{{$people->phone1}}">
                             </div>
                             <div class="col-md-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Telefono 2:</b></span>
+                                    <small class="input-group-text"><b>Telefono 2:</b></small>
                                 </div>
                                 <input type="number" class="form-control" name="phone2" value="{{$people->phone2}}">
                             </div>                        
+                        </div>
+                        <h1 id="subtitle">Redes sociales</h1>
+                        <div class="row" >
+                            <div class="col-md-4">
+                                <div class="input-group-prepend">
+                                    <small class="input-group-text"><b>Facebook:</b></small>
+                                </div>
+                                <input type="text" class="form-control" name="facebook" value="{{$people->facebook}}">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group-prepend">
+                                    <small class="input-group-text"><b>Instagram:</b></small>
+                                </div>
+                                <input type="text" class="form-control" name="instagram" value="{{$people->instagram}}">
+                            </div>      
+                            <div class="col-md-4">
+                                <div class="input-group-prepend">
+                                    <small class="input-group-text"><b>TikTok:</b></small>
+                                </div>
+                                <input type="text" class="form-control" name="tiktok" value="{{$people->tiktok}}">
+                            </div>                     
                         </div>
                   
                     <div class="row">    
                             
                         <div class="col-md-12">
                             <div class="input-group-prepend">
-                            <span class="input-group-text"><b>Direccion:</b></span>
+                            <small class="input-group-text"><b>Direccion:</b></small>
                             </div>
                             <textarea class="form-control" name="address" cols="77" rows="3">{{$people->address}}</textarea>
                         </div>                
@@ -494,13 +536,25 @@
 
 @section('css')
 
+<style>
+    small{font-size: 12px;
+            color: rgb(12, 12, 12);
+            font-weight: bold;
+        }
+  
+    input.text, select.text, textarea.text{ 
+        border-radius: 5px 5px 5px 5px;
+        color: #000000;
+        border-color: rgb(63, 63, 63);
+    }
+</style>
 @stop
 
 @section('javascript')
     <script src="{{ url('js/main.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('.dataTable').DataTable({
+            $('#dataTable').DataTable({
                         language: {
                             // "order": [[ 0, "desc" ]],
                             sProcessing: "Procesando...",
