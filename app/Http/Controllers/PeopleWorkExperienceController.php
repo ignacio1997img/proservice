@@ -774,7 +774,7 @@ class PeopleWorkExperienceController extends Controller
                 {
                     $ok->update(['exp_pasarela'=> $request->exp_pasarela]);
                 }
-                return $ok;
+                // return $ok;
 
                 DB::commit();
                 return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
