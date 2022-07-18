@@ -85,7 +85,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('people-perfil-experience/requirement-piscinero-store' , [PeopleWorkExperienceController::class, 'requirementPiscineroStore'])->name('work-experience.requirement-piscinero-store');
     Route::post('people-perfil-experience/requirement-modelos-store' , [PeopleWorkExperienceController::class, 'requirementModelosStore'])->name('work-experience.requirement-modelos-store');
 
-    Route::get('people-perfil-experience/ficha-tecnica/{id?}', [PeopleWorkExperienceController::class, 'fichaTecnica'])->name('work-experience.print-ficha-tecnica');
+    Route::get('people-perfil-experience/ficha-tecnica/{id?}/{experience?}', [PeopleWorkExperienceController::class, 'fichaTecnica'])->name('work-experience.print-ficha-tecnica');
 
 
     //para la bandeja de la persona

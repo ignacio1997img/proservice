@@ -41,7 +41,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="nit" name="estatura" class="form-control form-control-sm text" placeholder="Seleccione un Proveedor">
+                                                    <input type="number" name="estatura" class="form-control form-control-sm text" placeholder="Ingrese su estatura">
                                                 </div>
                                                 <small>Estatura.</small>
                                             </div>
@@ -50,9 +50,36 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="responsable" name="peso" class="form-control form-control-sm text" placeholder="Seleccione un Proveedor">
+                                                    <input type="number"  name="peso" class="form-control form-control-sm text" placeholder="Ingrese su peso">
                                                 </div>
                                                 <small>Peso.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" name="talla_sup" class="form-control form-control-sm text" placeholder="Ingrese su talla superior">
+                                                </div>
+                                                <small>Talla Superior.</small>
+                                            </div>
+                                        </div>
+                                        <!-- === -->
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" name="talla_inf" class="form-control form-control-sm text" placeholder="Ingrese su talla inferior">
+                                                </div>
+                                                <small>Talla Inferior.</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" name="nro_calzado" class="form-control form-control-sm text" onkeypress='return validaNumericos(event)' placeholder="Ingrese su nro calzado">
+                                                </div>
+                                                <small>Nro Calzado.</small>
                                             </div>
                                         </div>
                                     </div>

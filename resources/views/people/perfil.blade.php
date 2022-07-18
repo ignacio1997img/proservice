@@ -46,6 +46,7 @@
                                                 <i class="voyager-plus"></i> <span>Editar Datos</span>
                                             </a>
                                         @endif
+                                        <h1 id="subtitle">Datos Personales</h1>
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <div class="form-group">
@@ -114,6 +115,7 @@
                                                 </div>
                                             </div>                                                  
                                         </div>
+                                        <h1 id="subtitle">Dirección Actual</h1>
                                         <div class="row">                                              
                                             <div class="col-sm-3">
                                                 <div class="form-group">
@@ -140,6 +142,7 @@
                                                 </div>
                                             </div>                                         
                                         </div>
+                                        <h1 id="subtitle">Redes Sociales</h1>
                                         <div class="row">                                              
                                             <div class="col-sm-3">
                                                 <div class="form-group">
@@ -167,7 +170,7 @@
                                         @endif
                                             
                                     </div>                      
-                           
+            
                                 <table id="dataTable" class="table table-hover">
                                     <thead>
                                         <tr>
@@ -204,9 +207,11 @@
                                                         @endif
 
                                                         @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
-                                                            <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows()">
-                                                                <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
-                                                            </a>
+                                                            @if ($item->rubro_id == 4)
+                                                                <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$people->id}}, {{ $item->id}})">
+                                                                    <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
+                                                                </a>
+                                                            @endif
                                                             <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
                                                                 <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
                                                             </a>
@@ -669,10 +674,10 @@
                 };
 
 
-        function openWindows()
+        function openWindows(id, experience)
         {
-            // alert(4)
-            window.open("{{ route('work-experience.print-ficha-tecnica')}}/"+id, 'Apertura de caja', `width=500, height=600`);
+            // alert(id)
+            window.open("{{ route('work-experience.print-ficha-tecnica')}}/"+id+"/"+experience, 'Apertura de caja', `width=500, height=800`);
         }
 
     </script>

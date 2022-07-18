@@ -13,9 +13,9 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Calificación</th>
+                                <th  style="text-align: center">Calificación</th>
                                 @if (!auth()->user()->hasrole('admin'))
-                                    <th>Accion</th>   
+                                    <th style="text-align: right">Accion</th>   
                                 @endif                             
                             </tr>
                         </thead>
@@ -23,8 +23,8 @@
                             @forelse ($data as $item)
                                 @if(number_format($item->star, 2) <= $star+1)
                                     <tr>
-                                        <td style="text-align: center">{{ $item->first_name }}</td>
-                                        <td style="text-align: center">{{ $item->last_name}}</td>
+                                        <td>{{ $item->first_name }}</td>
+                                        <td>{{ $item->last_name}}</td>
                                         <td style="text-align: center">
                                             @if($item->star >= 1 && $item->star < 2)
                                                 <i class="fa fa-star" style="color: #ffc107"></i>
@@ -56,6 +56,13 @@
                                                 <i class="fa fa-star" style="color: #ffc107"></i>
                                                 <i class="fa fa-star" style="color: #ffc107"></i>
                                                 <i class="fa fa-star" style="color: #ffc107"></i>
+                                            @endif
+                                            @if (number_format($item->star, 2)==0)
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
+                                                <i class="fa fa-star" style="color: #b3b3b3"></i>
                                             @endif
                                             <br>
                                             <small>{{number_format($item->star, 2)}}</small>
@@ -96,7 +103,7 @@
                     <input type="hidden" name="busine_id" value="{{$rubro_busine->busine_id}}">
 
                     <input type="hidden" name="people_id" id="id">
-                    <input type="text" name="people_experience_id" id="experience">  
+                    <input type="hidden" name="people_experience_id" id="experience">  
 
                     <div class="text-center" style="text-transform:uppercase">
                         <i class="fa-regular fa-envelope" style="color: rgb(87, 87, 87); font-size: 5em;"></i>
@@ -143,29 +150,7 @@
 
 
 <style>
-    #dataTable {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        }
-
-        #dataTable td, #dataTable th {
-        border: 1px solid #ddd;
-        padding: 8px;
-        color: #0f0f0f;
-        }
-
-        #dataTable tr:nth-child(even){background-color: #f2f2f2;}
-
-        #dataTable tr:hover {background-color: #ddd;}
-
-        #dataTable th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #04AA6D;
-            color: white;
-        }
+   
         small{font-size: 12px;
             color: rgb(12, 12, 12);
             font-weight: bold;

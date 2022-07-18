@@ -157,7 +157,10 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
     @endif
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
+<!-- <input type="text" class="form-control" id="nit" name="nit" onkeypress='return validaNumericos(event)' required> -->
+
 <script>
+    
     $(function() {
         setInterval(            
             function () 
@@ -215,6 +218,14 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
         var luz = '<i class="voyager-bell text-primary" style="width: 20px; font-size: 1.5em;"></i>'
                             luz+= '<span class="badge badge-warning navbar-badge" id="bandeja"></span>'
         $('#not').html(luz)
+    }
+
+
+    function validaNumericos(event) {
+        if(event.charCode >= 48 && event.charCode <= 57){
+          return true;
+        }
+        return false;        
     }
 
 </script>

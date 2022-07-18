@@ -19,4 +19,9 @@ class People extends Model
     {
         return $this->belongsTo(City::class, 'city_id');
     }
+
+    public function experience()
+    {
+        return $this->hasMany(PeopleExperience::class);
+    }
 }

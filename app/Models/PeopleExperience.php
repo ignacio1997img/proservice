@@ -27,5 +27,9 @@ class PeopleExperience extends Model
     {
         return $this->belongsTo(TypeModel::class, 'typeModel_id');
     }
+    public function requirement()
+    {
+        return $this->hasMany(PeopleRequirement::class);
+    }
 
 }

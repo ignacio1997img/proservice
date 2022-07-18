@@ -63,6 +63,10 @@ class CreatePeopleRequirementsTable extends Migration
             $table->string('image_book')->nullable();
             $table->text('curso_modelaje')->nullable();//curso de modelaje y otros relacionados
             $table->text('exp_modelaje')->nullable();//experiencia en modelaje
+            $table->string('talla_sup')->nullable();
+            $table->string('talla_inf')->nullable();
+            $table->string('nro_calzado')->nullable();
+
 
 
             $table->smallInteger('status')->default(1);

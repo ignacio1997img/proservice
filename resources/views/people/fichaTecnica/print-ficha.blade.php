@@ -67,82 +67,94 @@
         <button class="btn-print" onclick="window.print()"> Imprimir <i class="fa fa-print"></i></button>
     </div>
     @for ($i = 0; $i < 2; $i++)
-    <div style="height: 120vh" @if ($i == 1) class="show-print" @else class="border-bottom" @endif>
+    <div  @if ($i == 1) class="show-print" @else  @endif>
         <h3 id="subtitle" style="text-align: center"><span style="color:rgb(13, 86, 221)">Trabajos</span><span style="color:rgb(255,157,0)">TOP</span></h3></td>
 
-        <table width="100%" style="font-size: 20px">
+        <table width="100%" style="font-size: 18px">
             <tr>
                 <td>
                     <table width="100%" cellpadding="10">
                         <tr>
-                            <td width="35%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Nombre:</b></td>
-                            <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">........</td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Nombre: </b>{{$people->first_name}} {{$people->last_name}}</td>
+                            {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">{{$people->first_name}} {{$people->last_name}}</td> --}}
                         </tr>
                         <tr>
-                            <td width="35%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Fecha de Nacimiento:</b></td>
-                            <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">........</td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Fecha de Nacimiento:</b> {{ \Carbon\Carbon::parse($people->birth_date)->format('d/m/Y') }}</td>
+                            {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">{{ \Carbon\Carbon::parse($people->birth_date)->format('d/m/Y') }}</td> --}}
                         </tr>
                         <tr>
-                            <td width="35%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Nacionalidad:</b></td>
-                            <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">........</td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Nacionalidad:</b></td>
+                            {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">........</td> --}}
                         </tr>
                         <tr>
-                            <td width="15%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Estatura:</b></td>
-                            <td width="15%" style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px"><b>.....</b></td>
-                            <td width="15%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Peso:</b></td>
-                            <td width="15%" style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px"><b>.....</b></td>                            
+                            <td width="100%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Estatura: </b>{{$people->experience[0]->requirement[0]->estatura?$people->experience[0]->requirement[0]->estatura:'Sin datos'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Peso: </b>{{$people->experience[0]->requirement[0]->peso?$people->experience[0]->requirement[0]->peso:'Sin datos'}}</td>
                         </tr>
                         <tr>
-                            <td width="35%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Talla Superior:</b></td>
-                            <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px"> .......</td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Talla Superior:</b></td>
+                            {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px"> .......</td> --}}
                         </tr>
                         <tr>
-                            <td width="35%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Talla Inferior:</b></td>
-                            <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">.......</td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Talla Inferior:</b></td>
+                            {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">.......</td> --}}
                         </tr>
                         <tr>
-                            <td width="10%"></td>
-                            <td width="40%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Nro Calzados:</b></td>
-                            <td width="40%" style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">........</td>
-                            <td width="10%"></td>
+                            <td width="20%" colspan="1"></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px; text-align: center" colspan="1"><b>Nro Calzados:</b></td>
+                            <td width="20%" colspan="1"></td>
                         </tr>
                         <tr>
-                            <td width="10%"></td>
-                            <td width="80%" style="text-align: center"><h3 style="font-size: 25px"><span style="color:rgb(255, 255, 255); background-color:rgb(13, 86, 221); border-radius: 10px" >Experiencias:</span></h3></td>
-                            <td width="10%"></td>
+                            <td width="20%" colspan="1"></td>
+                            <td width="60%" style="text-align: center"><h3 style="font-size: 25px"><span style="color:rgb(255, 255, 255); background-color:rgb(13, 86, 221); border-radius: 10px" >Experiencias</span></h3></td>
+                            <td width="20%" colspan="1"></td>
                         </tr>
                         <tr>
-                            <td width="5%"></td>
-                            <td width="90%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Pasarelas</b></td>
-                            <td width="5%"></td>
+                            <td width="20%"></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Pasarelas</b></td>
+                            <td width="20%"></td>
                         </tr>
                         <tr>
-                            <td width="5%"></td>
-                            <td width="90%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Fotografias</b></td>
-                            <td width="5%"></td>
+                            <td width="20%"></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Fotografias</b></td>
+                            <td width="20%"></td>
                         </tr>
                         <tr>
-                            <td width="5%"></td>
-                            <td width="90%" style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Publicidades</b></td>
-                            <td width="5%"></td>
+                            <td width="20%"></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Publicidades</b></td>
+                            <td width="60%"></td>
                         </tr>
                         <tr>
-                            <td width="30%"><img src="{{ asset('images/redes/facebook.png') }}" alt="GYM" width="35px"></td>
-                            <td style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Peso:</b></td>
+                            <td style="text-align: right" width="20%" colspan="1"><img src="{{ asset('images/redes/facebook.png') }}" alt="GYM" width="35px"></td>
+                            <td style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><b>{{$people->facebook?$people->facebook:'Sin datos'}}</b></td>
                         </tr>
                         <tr>
-                            <td width="30%"><img src="{{ asset('images/redes/instagram.png') }}" alt="GYM" width="35px"></td>
-                            <td style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Peso:</b></td>
+                            <td style="text-align: right" width="20%" colspan="1"><img src="{{ asset('images/redes/instagram.png') }}" alt="GYM" width="35px"></td>
+                            <td style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><b>{{$people->instagram?$people->instagram:'Sin datos'}}</b></td>
                         </tr>
                         <tr>
-                            <td width="30%"><img src="{{ asset('images/redes/tiktok.png') }}" alt="GYM" width="35px"></td>
-                            <td style="color:rgb(13, 86, 221); background-color:rgb(229,243,254); border-radius: 10px"><b>Peso:</b></td>
+                            <td style="text-align: right" width="20%" colspan="1"><img src="{{ asset('images/redes/tiktok.png') }}" alt="GYM" width="35px"></td>
+                            <td style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><b>{{$people->tiktok? $people->tiktok:'Sin datos'}}</b></td>
                         </tr>
-                        
+                        <br>
+                        <tr></tr>
+                        <tr></tr> <tr></tr>
+                        <tr></tr> <tr></tr>
+                        <tr></tr> <tr></tr>
+                        <tr></tr> <tr></tr>
+                        <tr></tr> <tr></tr>
+                        <tr></tr>
+                        <tr>
+                            <td width="50%" colspan="2"> </td>
+                            <td style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px; text-align: center"><b>{{ date('d/M/Y') }}</b></td>
+                        </tr>
+                    
                        
                     </table>
+                    
+                    
                 </td>
+                
             </tr>
+            
         </table>
     </div>
     @endfor

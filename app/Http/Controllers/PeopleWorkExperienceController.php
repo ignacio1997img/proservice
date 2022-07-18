@@ -42,7 +42,7 @@ class PeopleWorkExperienceController extends Controller
 
     public function store(Request $request)
     {
-        // return $request;
+        return $request;
         DB::beginTransaction();
         try {
             $people = People::where('user_id',Auth::user()->id)->first();
@@ -50,7 +50,8 @@ class PeopleWorkExperienceController extends Controller
             $ok = PeopleExperience::where('people_id',$people->id)->where('rubro_id',$request->rubro_id)->where('deleted_at', null)->where('status', '!=', 0)->first();
             if(!$ok)
             {
-                PeopleExperience::create(['rubro_id' => $request->rubro_id, 'people_id' => $people->id, 'typeModel_id'=>$request->typeModel_id, 'status' => 2]);
+                $ok = PeopleExperience::create(['rubro_id' => $request->rubro_id, 'people_id' => $people->id, 'typeModel_id'=>$request->typeModel_id, 'status' => 2]);
+                PeopleRequirement::create(['people_experience_id' => $ok->id]);
                 DB::commit();
                 return redirect()->route('people-perfil-experience.index')->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
             }
@@ -817,8 +818,17 @@ class PeopleWorkExperienceController extends Controller
 
 
 
-    public function fichaTecnica()
+    public function fichaTecnica($id, $experience)
     {
-        return view('people.fichaTecnica.print-ficha');
+        // return $id;
+        $people = People::with(['experience'=>function($q) use ($experience){
+                $q->where('id',$experience)->where('deleted_at',null)->first();
+            }, 'experience.requirement'=>function($q){
+                $q->where('deleted_at', null);
+            }])
+            ->where('id', $id)->first();
+
+            // return $people;
+        return view('people.fichaTecnica.print-ficha', compact('people'));
     }
 }
