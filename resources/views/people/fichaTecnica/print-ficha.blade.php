@@ -83,23 +83,23 @@
                             {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">{{ \Carbon\Carbon::parse($people->birth_date)->format('d/m/Y') }}</td> --}}
                         </tr>
                         <tr>
-                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Nacionalidad:</b></td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Nacionalidad: Bolivia</b></td>
                             {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">........</td> --}}
                         </tr>
                         <tr>
                             <td width="100%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Estatura: </b>{{$people->experience[0]->requirement[0]->estatura?$people->experience[0]->requirement[0]->estatura:'Sin datos'}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Peso: </b>{{$people->experience[0]->requirement[0]->peso?$people->experience[0]->requirement[0]->peso:'Sin datos'}}</td>
                         </tr>
                         <tr>
-                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Talla Superior:</b></td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Talla Superior: </b>{{$people->experience[0]->requirement[0]->talla_sup?$people->experience[0]->requirement[0]->talla_sup:'Sin datos'}}</td>
                             {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px"> .......</td> --}}
                         </tr>
                         <tr>
-                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Talla Inferior:</b></td>
+                            <td width="35%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px" colspan="3"><b>Talla Inferior: </b>{{$people->experience[0]->requirement[0]->talla_inf?$people->experience[0]->requirement[0]->talla_inf:'Sin datos'}}</td>
                             {{-- <td style="color:rgb(1, 1, 1); background-color:rgb(229,243,254); border-radius: 10px">.......</td> --}}
                         </tr>
                         <tr>
                             <td width="20%" colspan="1"></td>
-                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px; text-align: center" colspan="1"><b>Nro Calzados:</b></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px; text-align: center" colspan="1"><b>Nro Calzados: </b>{{$people->experience[0]->requirement[0]->nro_calzado?$people->experience[0]->requirement[0]->nro_calzado:'Sin datos'}}</td>
                             <td width="20%" colspan="1"></td>
                         </tr>
                         <tr>
@@ -109,17 +109,17 @@
                         </tr>
                         <tr>
                             <td width="20%"></td>
-                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Pasarelas</b></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" {{$people->experience[0]->requirement[0]->exp_pasarela? 'checked':''}} value="first_checkbox"><b>Pasarelas</b></td>
                             <td width="20%"></td>
                         </tr>
                         <tr>
                             <td width="20%"></td>
-                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Fotografias</b></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" {{$people->experience[0]->requirement[0]->exp_fotografia? 'checked':''}} value="first_checkbox"><b>Fotografias</b></td>
                             <td width="20%"></td>
                         </tr>
                         <tr>
                             <td width="20%"></td>
-                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" value="first_checkbox"><b>Publicidades</b></td>
+                            <td width="60%" style="color:rgb(1,1,1); background-color:rgb(229,243,254); border-radius: 10px"><input type="checkbox" id="cbox1" {{$people->experience[0]->requirement[0]->exp_publicidad? 'checked':''}} value="first_checkbox"><b>Publicidades</b></td>
                             <td width="60%"></td>
                         </tr>
                         <tr>
