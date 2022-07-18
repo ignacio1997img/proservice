@@ -749,6 +749,31 @@ class PeopleWorkExperienceController extends Controller
                 {
                     $ok->update(['otro_idioma' => $request->otro_idioma]);
                 }
+                // return $request;
+                if($request->talla_sup)
+                {
+                    $ok->update(['talla_sup'=> $request->talla_sup]);
+                }
+                if($request->talla_inf)
+                {
+                    $ok->update(['talla_inf'=> $request->talla_inf]);
+                }
+                if($request->nro_calzado)
+                {
+                    $ok->update(['nro_calzado'=> $request->nro_calzado]);
+                }
+                if($request->exp_publicidad)
+                {
+                    $ok->update(['exp_publicidad'=> $request->exp_publicidad]);
+                }
+                if($request->exp_fotografia)
+                {
+                    $ok->update(['exp_fotografia'=> $request->exp_fotografia]);
+                }
+                if($request->exp_pasarela)
+                {
+                    $ok->update(['exp_pasarela'=> $request->exp_pasarela]);
+                }
 
                 DB::commit();
                 return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
@@ -797,8 +822,11 @@ class PeopleWorkExperienceController extends Controller
 
                 // return 1;
                 PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'modelos', 'image_ci' => $image_ci, 'image_ci2' => $image_ci2, 'image_book' => $image_book, 'estatura' => $request->estatura, 'peso'=>$request->peso,
-                                                'spanish' => $request->spanish, 'english'=> $request->english, 'frances' => $request->frances, 'italiano' => $request->italiano, 'portugues'=> $request->portugues, 'aleman'=> $request->aleman, 'otro_idioma'=> $request->otro_idioma,
-                                            'curso_modelaje'=> $request->curso_modelaje, 'exp_modelaje'=> $request->exp_modelaje ]);
+                    'spanish' => $request->spanish, 'english'=> $request->english, 'frances' => $request->frances, 'italiano' => $request->italiano, 'portugues'=> $request->portugues, 'aleman'=> $request->aleman, 'otro_idioma'=> $request->otro_idioma,
+                    'curso_modelaje'=> $request->curso_modelaje, 'exp_modelaje'=> $request->exp_modelaje,
+                    'talla_inf'=> $request->talla_inf,'talla_sup'=> $request->talla_sup, 'nro_calzado'=> $request->nro_calzado,
+                    'exp_publicidad'=> $request->exp_publicidad, 'exp_fotografia'=> $request->exp_fotografia, 'exp_pasarela'=> $request->exp_pasarela
+                ]);
                 DB::commit();
                 return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
             }

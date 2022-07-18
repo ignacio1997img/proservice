@@ -344,48 +344,55 @@
                                                     @endif
                                                 </td>           
                                             </tr>
-                                            {{--<tr>
-                                                <td>Saber Aspirar Piscina</td>
+                                            <tr>
+                                                <td>Talla Superior</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->asp_piscina == 1 || $peoplerequirement->asp_piscina == 0)
-                                                            @if ($peoplerequirement->asp_piscina == 1)
-                                                                <span class="badge badge-success">Si</span>
-                                                            @else
-                                                                <span class="badge badge-danger">No</span>
-                                                            @endif
+                                                        @if ($peoplerequirement->talla_sup)
+                                                            {{$peoplerequirement->talla_sup}}
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
                                                         @endif
                                                     @else
                                                         <span class="badge badge-danger">No cargado</span>
                                                     @endif
-                                                </td>          
+                                                </td>           
                                             </tr>
                                             <tr>
-                                                <td>Saber Calcular la Cantidad de Quimico para Piscina.</td>
+                                                <td>Talla Inferior</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->cant_quimico == 1 || $peoplerequirement->cant_quimico == 0)
-                                                            @if ($peoplerequirement->cant_quimico == 1)
-                                                                <span class="badge badge-success">Si</span>
-                                                            @else
-                                                                <span class="badge badge-danger">No</span>
-                                                            @endif
+                                                        @if ($peoplerequirement->talla_inf)
+                                                            {{$peoplerequirement->talla_inf}}
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
                                                         @endif
                                                     @else
                                                         <span class="badge badge-danger">No cargado</span>
                                                     @endif
-                                                </td>             
+                                                </td>           
                                             </tr>
                                             <tr>
-                                                <td>Tiene Conocimiento de Funcionamiento de Bomba</td>
+                                                <td>Nro Calzado</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->bomba_agua == 1 || $peoplerequirement->| == 0)
-                                                            @if ($peoplerequirement->bomba_agua == 1)
+                                                        @if ($peoplerequirement->nro_calzado)
+                                                            {{$peoplerequirement->nro_calzado}}
+                                                        @else
+                                                            <span class="badge badge-danger">No cargado</span>
+                                                        @endif
+                                                    @else
+                                                        <span class="badge badge-danger">No cargado</span>
+                                                    @endif
+                                                </td>           
+                                            </tr>
+                                            <tr>
+                                            <tr>
+                                                <td>Experiencia en pasarela</td>
+                                                <td>
+                                                    @if ($peoplerequirement)
+                                                        @if ($peoplerequirement->exp_pasarela == 1 || $peoplerequirement->exp_pasarela == 0)
+                                                            @if ($peoplerequirement->exp_pasarela == 1)
                                                                 <span class="badge badge-success">Si</span>
                                                             @else
                                                                 <span class="badge badge-danger">No</span>
@@ -399,11 +406,15 @@
                                                 </td>            
                                             </tr>
                                             <tr>
-                                                <td>¿Donde ha Trabajado ante como Piscinero?</td>
+                                                <td>Experiencia en fotografia</td>
                                                 <td>
                                                     @if ($peoplerequirement)
-                                                        @if ($peoplerequirement->trabajado_ante_donde)
-                                                            {{$peoplerequirement->trabajado_ante_donde}}
+                                                        @if ($peoplerequirement->exp_fotografia == 1 || $peoplerequirement->exp_fotografia == 0)
+                                                            @if ($peoplerequirement->exp_fotografia == 1)
+                                                                <span class="badge badge-success">Si</span>
+                                                            @else
+                                                                <span class="badge badge-danger">No</span>
+                                                            @endif
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
                                                         @endif
@@ -411,7 +422,25 @@
                                                         <span class="badge badge-danger">No cargado</span>
                                                     @endif
                                                 </td>            
-                                            </tr> --}}
+                                            </tr>
+                                            <tr>
+                                                <td>Experiencia en publicidad</td>
+                                                <td>
+                                                    @if ($peoplerequirement)
+                                                        @if ($peoplerequirement->exp_publicidad == 1 || $peoplerequirement->exp_publicidad == 0)
+                                                            @if ($peoplerequirement->exp_publicidad == 1)
+                                                                <span class="badge badge-success">Si</span>
+                                                            @else
+                                                                <span class="badge badge-danger">No</span>
+                                                            @endif
+                                                        @else
+                                                            <span class="badge badge-danger">No cargado</span>
+                                                        @endif
+                                                    @else
+                                                        <span class="badge badge-danger">No cargado</span>
+                                                    @endif
+                                                </td>            
+                                            </tr>
                                         </tbody>                                        
                                     </table>                                    
                                 </div>     

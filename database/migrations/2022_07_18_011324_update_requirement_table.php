@@ -14,9 +14,9 @@ class UpdateRequirementTable extends Migration
     public function up()
     {
         Schema::table('people_requirements', function (Blueprint $table) {
-            $table->integer('talla_sup')->nullable();
+            $table->string('talla_sup')->nullable();
             $table->integer('talla_inf')->nullable();
-            $table->integer('nro_calsado')->nullable();
+            $table->integer('nro_calzado')->nullable();
             $table->smallInteger('exp_pasarela')->nullable();
             $table->smallInteger('exp_fotografia')->nullable();
             $table->smallInteger('exp_publicidad')->nullable();
