@@ -60,7 +60,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select id="provider" name="turno[]" class="form-control select2" multiple="multiple">
+                                                    <select id="provider" name="turno[]" class="form-control select2 text" multiple="multiple">
                                                         <option value="1">DIA</option>
                                                         <option value="2">NOCHE</option>                                                 
                                                     </select>
@@ -72,7 +72,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="nit" name="estatura" class="form-control form-control-sm text" placeholder="Introduzca su estatura">
+                                                    <input type="number" id="nit" name="estatura" class="form-control form-control-sm text" step="0.01" placeholder="Introduzca su estatura">
                                                 </div>
                                                 <small>Estatura.</small>
                                             </div>
@@ -81,7 +81,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" id="responsable" name="peso" class="form-control form-control-sm text" placeholder="Introduzca su peso">
+                                                    <input type="number" id="responsable" name="peso" class="form-control form-control-sm text" step="0.01" placeholder="Introduzca su peso">
                                                 </div>
                                                 <small>Peso.</small>
                                             </div>
@@ -92,7 +92,7 @@
                                     </div>                                   
                                     {!! Form::close()!!}
                                 @endif   
-                                    <table id="detalles" class="table table-bordered table-striped table-sm">
+                                    <table id="dataTable" class="table table-bordered table-striped table-sm">
                                         <thead>
                                             <tr>
                                                 <th>Tipo</th>
@@ -106,16 +106,16 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_ci || $peoplerequirement->image_ci2)
-                                                            <span class="badge badge-success">Si cargado</span>
-                                                            @if ($peoplerequirement->image_ci)                                                            
+                                                            {{-- <span class="badge badge-success">Si cargado</span> --}}
+                                                            @if ($peoplerequirement->image_ci)                
                                                                 <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Anverso</span>
+                                                                    <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm">Anverso</span>
                                                                 </a>
                                                             @endif
 
                                                             @if ($peoplerequirement->image_ci2)                                                            
                                                                 <a href="{{url('storage/public/'.$peoplerequirement->image_ci2)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Reverso</span>
+                                                                    <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm">Reverso</span>
                                                                 </a>
                                                             @endif
 
@@ -132,9 +132,9 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_ap)
-                                                            <span class="badge badge-success">Si cargado</span>
+                                                            {{-- <span class="badge badge-success">Si cargado</span> --}}
                                                             <a href="{{url('storage/public/'.$peoplerequirement->image_ap)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                <i class="fa-solid fa-file"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
@@ -149,9 +149,8 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_lsm)
-                                                            <span class="badge badge-success">Si cargado</span>
                                                             <a href="{{url('storage/public/'.$peoplerequirement->image_lsm)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                <i class="fa-solid fa-file"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>
@@ -166,9 +165,8 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_fcc)
-                                                            <span class="badge badge-success">Si cargado</span>
                                                             <a href="{{url('storage/public/'.$peoplerequirement->image_fcc)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                <i class="fa-solid fa-file"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>

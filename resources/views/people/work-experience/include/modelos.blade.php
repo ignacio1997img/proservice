@@ -41,7 +41,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" name="estatura" class="form-control form-control-sm text" placeholder="Ingrese su estatura">
+                                                    <input type="number" name="estatura" class="form-control form-control-sm text" step="0.01" placeholder="Ingrese su estatura">
                                                 </div>
                                                 <small>Estatura.</small>
                                             </div>
@@ -50,7 +50,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number"  name="peso" class="form-control form-control-sm text" placeholder="Ingrese su peso">
+                                                    <input type="number"  name="peso" class="form-control form-control-sm text" step="0.01" placeholder="Ingrese su peso">
                                                 </div>
                                                 <small>Peso.</small>
                                             </div>
@@ -90,7 +90,7 @@
                                                     <option value="45">45</option>
                                                 </select>
                                             </div>
-                                            <small>Talla inf.</small>
+                                            <small>Talla Inferior.</small>
                                         </div>
                                         <div class="col-sm-2">
                                             <div class="form-group">
@@ -143,7 +143,7 @@
                                         </div>
                                     </div>
 
-                                    <h4>Idiomas</h4>
+                                    <h4 id="subtitle">Idiomas</h4>
                                     <div class="row">
                                        
                                         <div class="col-sm-2">
@@ -170,7 +170,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <textarea name="otro_idioma" class="form-control" rows="2"></textarea>
+                                                    <textarea name="otro_idioma" class="form-control text" rows="2"></textarea>
                                                 </div>
                                                 <small>Otro Idiomas.</small>
                                             </div>
@@ -182,7 +182,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <textarea name="curso_modelaje" class="form-control" rows="2"></textarea>
+                                                    <textarea name="curso_modelaje" class="form-control text" rows="2"></textarea>
                                                 </div>
                                                 <small>Curso de Modelaje y otros Relacionado.</small>
                                             </div>
@@ -190,7 +190,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <textarea name="exp_modelaje" class="form-control" rows="2"></textarea>
+                                                    <textarea name="exp_modelaje" class="form-control text" rows="2"></textarea>
                                                 </div>
                                                 <small>Experiencia en Modelaje.</small>
                                             </div>
@@ -201,7 +201,7 @@
                                     </div>                                   
                                     {!! Form::close()!!}
                                 @endif   
-                                    <table id="detalles" class="table table-bordered table-striped table-sm">
+                                    <table id="dataTable" class="table table-bordered table-striped table-sm">
                                         <thead>
                                             <tr>
                                                 <th>Tipo</th>
@@ -215,16 +215,16 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_ci || $peoplerequirement->image_ci2)
-                                                            <span class="badge badge-success">Si cargado</span>
+                                                            {{-- <span class="badge badge-success">Si cargado</span> --}}
                                                             @if ($peoplerequirement->image_ci)                                                            
                                                                 <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Anverso</span>
+                                                                    <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm"> Anverso</span>
                                                                 </a>
                                                             @endif
 
                                                             @if ($peoplerequirement->image_ci2)                                                            
                                                                 <a href="{{url('storage/public/'.$peoplerequirement->image_ci2)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Reverso</span>
+                                                                    <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm"> Reverso</span>
                                                                 </a>
                                                             @endif
 
@@ -241,9 +241,9 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_book)
-                                                            <span class="badge badge-success">Si cargado</span>
+                                                            {{-- <span class="badge badge-success">Si cargado</span> --}}
                                                             <a href="{{url('storage/public/'.$peoplerequirement->image_book)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                <i class="fa-solid fa-file"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>

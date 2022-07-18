@@ -38,11 +38,11 @@
                                                 <small>Antecedentes penales (imagen):</small>
                                             </div>
                                         </div> 
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="exp_mant_piscina" class="form-control">
-                                                        <option value="">Selecione</option>
+                                                    <select name="exp_mant_piscina"  class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Selecione</option>
                                                         <option value="1">Si</option>
                                                         <option value="0">No</option>                                                 
                                                     </select>
@@ -56,8 +56,8 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="medir_ph" class="form-control">
-                                                        <option value="">Selecione</option>
+                                                    <select name="medir_ph"  class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Selecione</option>
                                                         <option value="1">Si</option>
                                                         <option value="0">No</option>                                                 
                                                     </select>
@@ -68,20 +68,20 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="asp_piscina" class="form-control">
-                                                        <option value="">Selecione</option>
+                                                    <select name="asp_piscina"  class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Selecione</option>
                                                         <option value="1">Si</option>
                                                         <option value="0">No</option>                                                 
                                                     </select>
                                                 </div>
-                                                <small>Saber Aspirar Piscina</small>
+                                                <small>Saber Aspirar Piscina.</small>
                                             </div>
                                         </div> 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="cant_quimico" class="form-control select">
-                                                        <option value="">Selecione</option>
+                                                    <select name="cant_quimico"  class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Selecione</option>
                                                         <option value="1">Si</option>
                                                         <option value="0">No</option>                                                 
                                                     </select>
@@ -92,13 +92,13 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select name="bomba_agua" class="form-control">
-                                                        <option value="">Selecione</option>
+                                                    <select name="bomba_agua"  class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Selecione</option>
                                                         <option value="1">Si</option>
                                                         <option value="0">No</option>                                                 
                                                     </select>
                                                 </div>
-                                                <small>Tiene Conocimiento de Funcionamiento de Bomba</small>
+                                                <small>Tiene Conocimiento de Funcionamiento de Bomba.</small>
                                             </div>
                                         </div> 
                                         <!-- === -->
@@ -108,9 +108,9 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <textarea name="trabajado_ante_donde" class="form-control" rows="2"></textarea>
+                                                    <textarea name="trabajado_ante_donde"  class="form-control form-control-sm text" rows="2"></textarea>
                                                 </div>
-                                                <small>¿Donde ha Trabajado ante como Piscinero?.</small>
+                                                <small>¿Donde ha Trabajado ante como Piscinero?</small>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                     </div>                                   
                                     {!! Form::close()!!}
                                 @endif   
-                                    <table id="detalles" class="table table-bordered table-striped table-sm">
+                                    <table id="dataTable" class="table table-bordered table-striped table-sm">
                                         <thead>
                                             <tr>
                                                 <th>Tipo</th>
@@ -133,16 +133,16 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_ci || $peoplerequirement->image_ci2)
-                                                            <span class="badge badge-success">Si cargado</span>
+                                                            {{-- <span class="badge badge-success">Si cargado</span> --}}
                                                             @if ($peoplerequirement->image_ci)                                                            
                                                                 <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Anverso</span>
+                                                                    <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm"> Anverso</span>
                                                                 </a>
                                                             @endif
 
                                                             @if ($peoplerequirement->image_ci2)                                                            
                                                                 <a href="{{url('storage/public/'.$peoplerequirement->image_ci2)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                    <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver Reverso</span>
+                                                                    <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm"> Reverso</span>
                                                                 </a>
                                                             @endif
 
@@ -159,9 +159,9 @@
                                                 <td>
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_ap)
-                                                            <span class="badge badge-success">Si cargado</span>
+                                                            {{-- <span class="badge badge-success">Si cargado</span> --}}
                                                             <a href="{{url('storage/public/'.$peoplerequirement->image_ap)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                                <i class="fa-solid fa-file"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else
                                                             <span class="badge badge-danger">No cargado</span>

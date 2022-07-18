@@ -59,6 +59,10 @@
             color: rgb(12, 12, 12);
             font-weight: bold;
         }
+        small{font-size: 12px;
+            color: rgb(12, 12, 12);
+            font-weight: bold;
+        }
         
     </style>
 
