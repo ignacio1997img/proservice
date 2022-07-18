@@ -49,7 +49,7 @@ class PeopleRequirement extends Model
         'exp_modelaje',
         'talla_sup',
         'talla_inf',
-        'nro_calzado'
+        'nro_calzado', 'exp_pasarela', 'exp_fotografia', 'exp_publicidad'
     ];
     
 }

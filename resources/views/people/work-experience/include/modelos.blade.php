@@ -57,29 +57,88 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-1">
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="number" name="talla_sup" class="form-control form-control-sm text" placeholder="Ingrese su talla superior">
-                                                </div>
-                                                <small>Talla Superior.</small>
+                                        <div class="col-sm-2">
+                                            <div class="form-line">
+                                                <select name="talla_sup" id="" class="form-control form-control-sm text">
+                                                    <option selected disabled value="">Seleccione una opción</option>
+                                                    <option value="16">16</option>
+                                                    <option value="S">S</option>
+                                                    <option value="M">M</option>
+                                                    <option value="L">L</option>
+                                                    <option value="XL">XL</option>
+                                                    <option value="XXL">XXL</option>
+                                                    <option value="XXXL">XXXL</option>
+                                                </select>
                                             </div>
+                                            <small>Talla Superior.</small>
                                         </div>
                                         <!-- === -->
                                         <div class="col-sm-2">
+                                            <div class="form-line">
+                                                <select name="talla_inf" id="" class="form-control form-control-sm text">
+                                                    <option selected disabled value="">Seleccione una opción</option>
+                                                    <option value="35">35</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                    <option value="43">43</option>
+                                                    <option value="44">44</option>
+                                                    <option value="45">45</option>
+                                                </select>
+                                            </div>
+                                            <small>Talla inf.</small>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <select name="nro_calzado" id="" class="form-control form-control-sm text">
+                                                    <option selected disabled value="">Seleccione una opción</option>
+                                                    <option value="38">38</option>
+                                                    <option value="39">39</option>
+                                                    <option value="40">40</option>
+                                                    <option value="41">41</option>
+                                                    <option value="42">42</option>
+                                                </select>
+                                            </div>
+                                            <small>Nro de Calzado.</small>
+                                        </div>
+                                        <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" name="talla_inf" class="form-control form-control-sm text" placeholder="Ingrese su talla inferior">
+                                                    <select name="exp_pasarela" id="" class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Seleccione una opción</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
+                                                    </select>
                                                 </div>
-                                                <small>Talla Inferior.</small>
+                                                <small>Experiencia en Pasarelas.</small>
                                             </div>
                                         </div>
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="number" name="nro_calzado" class="form-control form-control-sm text" onkeypress='return validaNumericos(event)' placeholder="Ingrese su nro calzado">
+                                                    <select name="exp_fotografia" id="" class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Seleccione una opción</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
+                                                    </select>
                                                 </div>
-                                                <small>Nro Calzado.</small>
+                                                <small>Experiencia en Fotografias.</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <select name="exp_publicidad" id="" class="form-control form-control-sm text">
+                                                        <option selected disabled value="">Seleccione una opción</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+                                                </div>
+                                                <small>Experiencia en Publicidades.</small>
                                             </div>
                                         </div>
                                     </div>
