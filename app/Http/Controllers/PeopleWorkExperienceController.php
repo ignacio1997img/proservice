@@ -749,9 +749,9 @@ class PeopleWorkExperienceController extends Controller
                 {
                     $ok->update(['otro_idioma' => $request->otro_idioma]);
                 }
-                // return $request;
                 if($request->talla_sup)
                 {
+
                     $ok->update(['talla_sup'=> $request->talla_sup]);
                 }
                 if($request->talla_inf)
@@ -762,18 +762,19 @@ class PeopleWorkExperienceController extends Controller
                 {
                     $ok->update(['nro_calzado'=> $request->nro_calzado]);
                 }
-                if($request->exp_publicidad)
+                if($request->exp_publicidad != NULL)
                 {
                     $ok->update(['exp_publicidad'=> $request->exp_publicidad]);
                 }
-                if($request->exp_fotografia)
+                if($request->exp_fotografia != NULL)
                 {
                     $ok->update(['exp_fotografia'=> $request->exp_fotografia]);
                 }
-                if($request->exp_pasarela)
+                if($request->exp_pasarela != NULL)
                 {
                     $ok->update(['exp_pasarela'=> $request->exp_pasarela]);
                 }
+                return $ok;
 
                 DB::commit();
                 return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
