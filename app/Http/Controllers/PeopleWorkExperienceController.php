@@ -42,7 +42,7 @@ class PeopleWorkExperienceController extends Controller
 
     public function store(Request $request)
     {
-        return $request;
+        // return $request;
         DB::beginTransaction();
         try {
             $people = People::where('user_id',Auth::user()->id)->first();
