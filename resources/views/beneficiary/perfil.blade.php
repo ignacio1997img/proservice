@@ -180,7 +180,7 @@
         </div>
     @stop
 
-    <style>
+    {{-- <style>
         img {
             max-width: 10%;
             max-height: 10%;
@@ -189,7 +189,7 @@
             height: 100px;
             width: 20px;
         }
-    </style>
+    </style> --}}
 
 
     @section('css')
