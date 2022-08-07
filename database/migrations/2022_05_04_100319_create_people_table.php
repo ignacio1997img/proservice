@@ -35,6 +35,9 @@ class CreatePeopleTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('tiktok')->nullable();
             
+            $table->string('type')->nullable();
+
+            
             $table->smallInteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();

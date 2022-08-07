@@ -12,7 +12,7 @@ class People extends Model
 
     protected $fillable = [
         'ci', 'first_name', 'last_name','birth_date', 'email', 'phone1', 'phone2', 'address', 'city', 'sex', 'weight', 'height',
-        'image', 'user_id', 'status', 'city_id', 'facebook', 'instagram', 'tiktok'
+        'image', 'user_id', 'status', 'city_id', 'facebook', 'instagram', 'tiktok', 'type'
     ];
 
     public function city()

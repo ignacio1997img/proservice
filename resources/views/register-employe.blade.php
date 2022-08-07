@@ -112,10 +112,6 @@
                         </div>
                     </div>
 
-
-                    {{-- <div class="form-group mt-3">
-                        <textarea class="form-control" name="address" rows="5" placeholder="Dirección" required></textarea>
-                    </div> --}}
                     <div class="form-group mt-3">
                         <span ><b>Dirección</b></span>
                         <textarea class="form-control" name="address" id="address" rows="5" placeholder="Calle Patujú" required>{{ old('address') }}</textarea>

@@ -24,6 +24,7 @@ use App\Models\MessageBusine;
 use App\Models\MessagePeople;
 use App\Models\Department;
 use App\Models\People;
+use App\Models\Profession;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,10 @@ Route::get('register-beneficiary', function () {
 
 Route::get('register-pasantia', function()
 {
+    $profession = Profession::where('status',1)->get();
+    $department = Department::where('status',1)->get();
 
+    return view('register-pasantia', compact('profession', 'department'));
 });
 
 
@@ -80,6 +84,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('people/view/{id}', [PeopleController::class, 'read'])->name('people.view');
     Route::post('people/view/aprobar-rubro', [PeopleWorkExperienceController::class, 'aprobarRubro'])->name('people.aprobarRubro');
     Route::post('people/view/rubro/modelaje-update', [PeopleWorkExperienceController::class, 'updateCategoriaModelaje'])->name('people.updateCategoriaModelaje');
+
+    //pasantia
+    Route::resource('pasante', PasantiaController::class);
     
 
     //rutas para exeperiencia laboral de la persona

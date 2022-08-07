@@ -15,7 +15,7 @@
         <div class="container">
 
             <div class="section-title">
-            <h2>Registrate Como Empresa</h2>
+            <h2>Registrate Como Pasante</h2>
             <p>Registra tu empresa y podrás encontrar los trabajadores que estás necesitando al instante y no te olvides de verificar tu empresa para que encuentres clientes mediante TrabajosTOP.</p>
             </div>
 
@@ -29,7 +29,7 @@
                         </div>
                     </div> --}}
                     <div class="col-md-12 div-img" style="height: 600px;">
-                        <img src="images/register/BUSCO-EMPRESA-2.jpeg" class="img-fluid" alt="">
+                        <img src="images/register/pasante.jpg" class="img-fluid" alt="">
                     </div>
                 </div>
 
@@ -39,86 +39,79 @@
                 @php
                     $rubros = \DB::table('rubro_busines')->where('deleted_at', null)->where('status', 1)->get();
                 @endphp
-                {!! Form::open(['route' => 'busine.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
-                    {{-- @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $item)
-                                    <li>{{$item }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif --}}
-                    <div class="row">
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <span ><b>Departamento</b></span>
-                            <select id="department_id" name="department_id" class="form-control select2bs4" required>
-                                <option value="">Seleccione un departamento..</option>
-                                @foreach($department as $data)
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <span ><b>Ciudad</b></span>
-                            <select name="city_id" id="city_id" class="form-control select2bs4" required>
-                                <option value="">Seleccione una Ciudad..</option>
-                                {{--@foreach($department as $data)
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
-                                @endforeach --}}
-                            </select>
-                        </div>
+                {!! Form::open(['route' => 'pasantia.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                <div class="row">
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <span ><b>Departamento</b></span>
+                        <select id="department_id" class="form-control select2bs4" required>
+                            <option value="">Seleccione un departamento..</option>
+                            @foreach($department as $data)
+                                <option value="{{$data->id}}">{{$data->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <span ><b>Nit</b></span>
-                            <input type="text" name="nit" onkeypress='return validaNumericos(event)' class="form-control" id="nit" placeholder="7688596255" value="{{ old('nit') }}" required>
-                            @error('nit')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <span ><b>Rubro</b></span>
-                            <select name="rubro_id" id="rubro_id" class="form-control select2bs4" required>
-                                <option value="">Seleccione un tipo..</option>
-                                @foreach($rubros as $data)
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <span ><b>Ciudad</b></span>
+                        <select name="city_id" id="city_id" class="form-control select2bs4" required>
+                             <option value="">Seleccione una Ciudad..</option>
+                        </select>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <span ><b>Razón Social</b></span>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="PROTECTION SRL" value="{{ old('name') }}" required>
-                            @error('name')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <span ><b>Responsable</b></span>
-                            <input type="text" class="form-control" name="responsible" id="responsible" placeholder="Ignacio" value="{{ old('responsible') }}" required>
-                        </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <span ><b>Profesión</b></span>
+                        <select name="profession_id" class="form-control select2bs4" required>
+                            <option value="">Seleccione una opción..</option>
+                            @foreach($profession as $data)
+                                <option value="{{$data->id}}">{{$data->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <span ><b>Teléfono</b></span>
-                            <input type="text" name="phone1" id ="phone1" class="form-control" placeholder="76854410" onkeypress='return validaNumericos(event)' value="{{ old('phone1') }}" required>
-                        </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <span ><b>Página Web</b></span>
-                            <input type="text" class="form-control" name="website" placeholder="ejemplo.com" value="{{ old('website') }}">
-                        </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <span ><b>Carnet Identidad</b></span>
+                        <input type="text" name="ci" onkeypress='return validaNumericos(event)' class="form-control" id="ci" placeholder="7085555" value="{{ old('ci') }}" required>
+                        @error('ci')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <span ><b>Género</b></span>
+                        <select class="form-control select2bs4" name="sex"required>
+                            <option value="">Seleccione una opción..</option>
+                            <option value="1">Masculino</option>
+                            <option value="0">Femenino</option>
+                        </select>
+                        {{-- <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required> --}}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <span ><b>Nombre</b></span>
+                        <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Juan" value="{{ old('first_name') }}" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <span ><b>Apellido</b></span>
+                        <input type="text" class="form-control" name="last_name" id="apellido" placeholder="Ortiz Mendoza" value="{{ old('last_name') }}" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <span ><b>Telefono</b></span>
+                        <input type="text" name="phone1" class="form-control" placeholder="7894878" onkeypress='return validaNumericos(event)' value="{{ old('phone1') }}" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <span ><b>Fecha Nacimiento</b></span>
+                        <input type="date" class="form-control" name="birth_date" placeholder="Fecha Nacimiento" value="{{ old('birth_date') }}" required>
+                    </div>
+                </div>
 
-
-                    <div class="form-group mt-3">
-                        <span ><b>Dirección</b></span>
-                        <textarea class="form-control" name="address" id="address" rows="5" placeholder="Calle Patujú" required>{{ old('address') }}</textarea>
-                    </div>
+                <div class="form-group mt-3">
+                    <span ><b>Dirección</b></span>
+                    <textarea class="form-control" name="address" id="address" rows="5" placeholder="Calle Patujú" required>{{ old('address') }}</textarea>
+                </div>
 
                     <br>
                     <div class="row">
