@@ -163,6 +163,24 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2022-06-25 15:46:29',
                 'updated_at' => '2022-06-25 15:48:21',
             ),
+            8 => 
+            array (
+                'id' => 14,
+                'name' => 'professions',
+                'slug' => 'professions',
+                'display_name_singular' => 'Profession',
+                'display_name_plural' => 'Professions',
+                'icon' => 'fa-solid fa-user-doctor',
+                'model_name' => 'App\\Models\\Profession',
+                'policy_name' => NULL,
+                'controller' => NULL,
+                'description' => NULL,
+                'generate_permissions' => 1,
+                'server_side' => 0,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
+                'created_at' => '2022-08-07 10:12:25',
+                'updated_at' => '2022-08-07 10:15:31',
+            ),
         ));
         
         

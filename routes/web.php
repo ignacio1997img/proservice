@@ -17,6 +17,9 @@ use App\Http\Controllers\SearchBusineController;
 use App\Http\Controllers\MessageBusineController;
 
 use App\Http\Controllers\MessageBeneficiaryController;
+
+use App\Http\Controllers\PasantiaController;
+
 use App\Models\MessageBusine;
 use App\Models\MessagePeople;
 use App\Models\Department;
@@ -49,6 +52,11 @@ Route::get('register-busine', function () {
 Route::get('register-beneficiary', function () {
     $department = Department::where('status',1)->get();
     return view('register-beneficiary', compact('department'));
+});
+
+Route::get('register-pasantia', function()
+{
+
 });
 
 

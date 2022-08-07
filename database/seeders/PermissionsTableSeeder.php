@@ -61,6 +61,7 @@ class PermissionsTableSeeder extends Seeder
 
         Permission::generateFor('rubro_people');        
         Permission::generateFor('people');
+        Permission::generateFor('professions');
 
 
     //############### TRABAJADORES ######################
