@@ -13,7 +13,7 @@
                             <h1 id="subtitle" class="page-title">
                                 <i class="fa-solid fa-building"></i> Buscar Empresas
                             </h1>
-                        </div>
+                        </div>                        
                         {!! Form::open(['route' => 'search-busine.search', 'id' => 'form-search',  'method' => 'POST', 'class' => 'form-search']) !!}
                         <div class="col-md-5" style="margin-top: 30px">       
                             <select name="rubro_id" id="rubro_id" required class="form-control select2" style="margin-bottom: 10px">

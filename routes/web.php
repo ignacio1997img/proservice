@@ -142,6 +142,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     // para enviar solicicitudes de una empresa a los trabaladores
     Route::resource('message-beneficiary-busine', MessageBusineController::class);
+    Route::post('message-beneficiary-busineAll', [MessageBusineController::class, 'storeAll'])->name('message-beneficiary-busine.storeAll');
 
     //para  la bandeja del beneficiario
     Route::get('message-beneficiary-bandeja', [MessageBeneficiaryController::class, 'message_beneficiary'])->name('message-beneficiary.bandeja');

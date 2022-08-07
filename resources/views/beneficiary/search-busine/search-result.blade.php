@@ -1,17 +1,22 @@
-
+{!! Form::open(['route' => 'message-beneficiary-busine.storeAll', 'id' => 'form-pagars', 'method' => 'POST']) !!}  
 <div class="col-md-12" style="margin-bottom: 100px">
     <div style="z-index: -10;position: fixed;bottom:0">
         <input type="text" id="text-copy">
     </div>
     <div class="panel panel-bordered">
-        
-
             <div class="panel-body">
+                <a type="button" data-toggle="modal" data-target="#modal_solicituds" title="Enviar solicitud de trabajo" class="btn btn-primary"><i class="fa-regular fa-envelope"></i> <span class="hidden-xs hidden-sm"></span></a>                   
+
                 <div class="table-responsive">
                     <table id="dataTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Empresa</th>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" value="" id="checkAll" onchange="toggleCheckbox(this)">
+                                        Marcar Todo
+                                      </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Empresa</th>
                                 <th>Responsable</th>
                                 <th style="text-align: center">Calificación</th>
                                 @if (!auth()->user()->hasrole('admin'))
@@ -20,12 +25,22 @@
                                 
                             </tr>
                         </thead>
-                       
+                        
                         <tbody>
-                            @forelse ($data as $item)
+                            
+                            @php
+                                $i=0;
+                            @endphp
+                            @foreach ($data as $item)
                                 @if(number_format($item->star, 2) <= $star)
                                     <tr>
-                                        <td>{{ $item->name }}</td>
+                                        <td>
+                                            <label>
+                                            <input type="checkbox" name="busine_id[]" id="{{ 'check-'.$i}}" value="{{$item->id}}">
+                                                
+                                            &nbsp;&nbsp;&nbsp;&nbsp;{{ $item->name }}
+                                            </label>
+                                        </td>
                                         <td>{{ $item->responsible}}</td>
                                         <td style="text-align: center">
                                             @if($item->star >= 1 && $item->star < 2)
@@ -77,21 +92,63 @@
                                         @endif
                                         
                                     </tr>
+                                    @php
+                                        $i++;
+                                    @endphp
                                 @endif
-                            @empty
-                                <tr>
-                                    
-                                    <td colspan="4" style="text-align: center">No hay resultados</td>
-                                </tr>
-                            @endforelse
+
+                            
+                                
+                            @endforeach
+                            
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
-
-        </form>
     </div>
 </div>
+
+
+            @if (!auth()->user()->hasrole('admin'))
+                {{-- modal para enviar solicitud de trabajo --}}
+                <div class="modal modal-primary fade" tabindex="-1" id="modal_solicituds" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                                 
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title"><i class="voyager-check"></i> Enviar solicitud de Trabajo</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="text-center" style="text-transform:uppercase">
+                                    <i class="fa-regular fa-envelope" style="color: rgb(87, 87, 87); font-size: 5em;"></i>
+                                    <br>
+                                    <p><b>Desea Enviar solicitud...!</b></p>
+                                </div>
+
+                                <div class="row">   
+                                    <div class="col-md-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Observacion:</b></span>
+                                        </div>
+                                        <textarea id="detail" class="form-control" name="detail" cols="77" rows="3"></textarea>
+                                    </div>                
+                                </div>
+                            </div>       
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <input type="submit" class="btn btn-dark" value="Sí, Enviardd">
+                                <button type="button" class="btn btn-success btn-submit" onclick="sendForm('form-pagars', 'Mensaje enviado exitosamente.')">Sí, Enviar</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif    
+{!! Form::close() !!}
+
 @if (!auth()->user()->hasrole('admin'))
 {{-- modal para enviar solicitud de trabajo --}}
 <div class="modal modal-primary fade" tabindex="-1" id="modal_solicitud" role="dialog">
@@ -147,6 +204,30 @@
 </style>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    function toggleCheckbox(element)
+    {
+        var data = '{{$i}}';
+        var j=0;
+        if ($('#checkAll').is(':checked')) {
+            
+            while(j < data)
+            {
+                $('#check-'+j).prop('checked',true);
+                j++;
+            }
+        }
+        else
+        {
+            while(j < data)
+            {
+                $('#check-'+j).prop('checked',false);
+                j++;
+            }
+        }
+
+    }
+
+
     $('#modal_solicitud').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) 
         var id = button.data('id')
@@ -160,7 +241,7 @@
             $('.btn-submit').attr('disabled', true);
             $.post($('#'+formId).attr('action'), $('#'+formId).serialize(), function(res){
                 if(res.success){
-                    // toastr.success(message, 'Bien hecho!');
+                    toastr.success(message, 'Bien hecho!');
                     // alert('Solicitud enviada');
                     let timerInterval
                     Swal.fire({
@@ -185,7 +266,7 @@
                     }
                     })
                 }else{
-                    toastr.error(res.message ? res.message : 'Ocurrió un error.', 'Oopsx!')
+                    toastr.error(res.message ? res.message : 'Ocurrió un error.', 'Ocurrió un error!')
                 }
                 $('.btn-submit').attr('disabled', false);
             })

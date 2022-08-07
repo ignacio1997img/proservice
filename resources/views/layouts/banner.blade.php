@@ -13,6 +13,7 @@
             <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a>
             <a href="register-busine" class="btn-get-started scrollto">Soy Una Empresa</a>
             <a href="register-beneficiary" class="btn-get-quote">Busco Servicios</a>
+            <a href="#" class="btn-get-quote">Pasantia</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">

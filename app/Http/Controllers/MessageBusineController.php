@@ -41,6 +41,37 @@ class MessageBusineController extends Controller
             return response()->json(['success' => false, 'message' => 'Error al enviar mensaje.']);
         }
     }
+
+    public function storeAll(Request $request)
+    {
+        DB::beginTransaction();
+        return $request;
+        try {
+            $cant = count($request->busine_id);
+            // return $cant;
+            $i=0;
+            while($i < $cant)
+            {
+                $busine = Busine::find($request->busine_id[$i]);
+                $beneficiary = Beneficiary::where('user_id', Auth::user()->id)->first();
+                MessageBusine::create([
+                    'busine_id' => $request->busine_id[$i],
+                    'rubro_busine_id' => $busine->rubro_id,
+                    'beneficiary_id' => $beneficiary->id,
+                    'detail' => $request->detail
+                ]);
+                $i++;
+            }
+            DB::commit();
+            // return 2;
+            return response()->json(['success' => true, 'message' => 'Mensaje enviado correctamente.']);
+        } catch (\Exception $e) {
+            // return "nada";
+            DB::rollback();
+            return response()->json(['success' => false, 'message' => 'Seleccione una o mas empresa.']);
+        }
+        
+    }
     
 
     public function message_busine()
