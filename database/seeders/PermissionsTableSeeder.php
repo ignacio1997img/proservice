@@ -85,6 +85,25 @@ class PermissionsTableSeeder extends Seeder
             ]);
         }
 
+
+        $keys = [
+            'browse_pasantes',
+            'add_pasantes',
+            'edit_pasantes',
+            'print_pasantes',
+            'delete_pasantes',
+            'add_course',
+            'delete_course'
+            
+        ];
+
+        foreach ($keys as $key) {
+            Permission::firstOrCreate([
+                'key'        => $key,
+                'table_name' => 'pasantes',
+            ]);
+        }
+
         
         $keys = [
             'browse_message-people-bandeja'

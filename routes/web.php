@@ -86,7 +86,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('people/view/rubro/modelaje-update', [PeopleWorkExperienceController::class, 'updateCategoriaModelaje'])->name('people.updateCategoriaModelaje');
 
     //pasantia
-    Route::resource('pasante', PasantiaController::class);
+    Route::resource('pasantes', PasantiaController::class);
+    Route::post('pasantes/update', [PasantiaController::class, 'pasanteUpdate'])->name('pasantes.update');
+    Route::post('pasantes/courses/store', [PasantiaController::class, 'courseStore'])->name('pasantes-courses.store');
+    Route::delete('pasantes/courses/delete', [PasantiaController::class, 'courseDestroy'])->name('pasantes-courses.destroy');
     
 
     //rutas para exeperiencia laboral de la persona

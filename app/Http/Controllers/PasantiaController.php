@@ -5,97 +5,90 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+use App\Models\Course;
+use App\Models\Pasantia;
+use Composer\Util\Http\RequestProxy;
 
 class PasantiaController extends Controller
 {
-    public function store(Request $request)
+
+    //  para poder agregar los requisitos de la pasantia 
+    public function edit($id)
     {
-        // return  $request->all();
-        $request->validate(
-        [
-            'email' => 'required|email|unique:users',
-            'ci' => 'required|unique:people',
-            'password' => 'required|min:8|max:25'
-        ]);
+        $pasantia_id=$id;
+        $pasantia = Pasantia::where('id', $id)->first();
+        // return $id;
+        $courses = Course::where('deleted_at', null)->where('pasantia_id', $id)->get();
+        // return $courses;
+        return view('people.pasantia.add-requirement', compact('pasantia_id', 'courses', 'pasantia'));
+    }
+
+    // para poder actualizar los datos de los pasantes
+    public function pasanteUpdate(Request $request)
+    {
+        // return $request;
         DB::beginTransaction();
         try {
-            $ok = People::where('ci', $request->ci)->first();
-            if($ok)
+
+            $pasantia = Pasantia::find($request->pasantia_id);
+            if($request->type)
             {
-                // return redirect()->back()->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
-                // return redirect()->back()->with('error', 'El CI ya existe');
-                // return redirect()->route('people.create')->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
-                return redirect()->route('people.create')->with(['message' => 'El CI ya existe.', 'alert-type' => 'error']);
+                $pasantia->update(['type'=>$request->type]);
             }
 
-            $ok = User::where('email', $request->email)->first();
-            if($ok)
+            if($request->semester)
             {
-                return redirect()->back()->with(['message' => 'El email ya existe.', 'alert-type' => 'error']);
+                $pasantia->update(['semester'=>$request->semester]);
             }
 
-            $password = $request->password;
-            $user = User::create([
-                        'name' => $request->first_name,
-                        'email' => $request->email,
-                        'role_id' => 4,
-                        'password' =>bcrypt($request->password)
-                    ]);
-
-            // $user->update(['role_id' => 1]);
-
-            $file = $request->file('image');
-            if($file)
-            {  
-                $nombre_origen = $file->getClientOriginalName();
-                        
-                $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                        
-                $dir = "people/perfil/".date('F').date('Y');
-                        
-                Storage::makeDirectory($dir);
-                Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));
-                $image_ap = $dir.'/'.$newFileName;
-            }   
-
+            if($request->objetive)
+            {
+                $pasantia->update(['objetive'=>$request->objetive]);
+            }
         
-            $people = People::create([
-                'user_id' => $user->id,
-                'ci' => $request->ci,
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'birth_date' => $request->birth_date,
-                'email' => $request->email,
-                'phone1' => $request->phone1,
-                'phone2' => $request->phone2,
-                'address' => $request->address,
-                'city_id' => $request->city_id,
-                'sex' => $request->sex
-            ]);
+
 
 
             DB::commit();
-        
-            $request->merge(['email'=> $user->email, 'password'=> $password]);
-         
-
-            $ok = $request->validate([
-                'email' => ['required', 'email'],
-                'password' => ['required'],
-            ]);
-     
-    
-            if (Auth::attempt($ok)) {
-   
-                $request->session()->regenerate();
-                return redirect('admin');
-            }
-
+            // return 1;
+            return redirect()->route('pasantes.edit', ['pasante'=>$request->pasantia_id])->with(['message' => 'Registrado Exitosamente..', 'alert-type' => 'success']);
 
         } catch (\Throwable $th) {
-            DB::rollback();
+            DB::rollBack();
             // return 0;
-            return redirect()->back()->with(['message' => 'Contactese Con Los Administradores.', 'alert-type' => 'error']);
+            return redirect()->route('pasantes.edit', ['pasante'=>$request->pasantia_id])->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }
+    }
+
+    // para registar los cursos realizados para las pasantia
+    public function courseStore(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();       
+        try {
+            Course::create(['start'=>$request->start, 'finish'=>$request->finish, 'name'=>$request->name, 'institution'=>$request->institution, 'pasantia_id'=>$request->pasantia_id]);
+            DB::commit();
+            return redirect()->route('pasantes.edit', ['pasante'=>$request->pasantia_id])->with(['message' => 'Registrado Exitosamente..', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            // return 0;
+            return redirect()->route('pasantes.edit', ['pasante'=>$request->pasantia_id])->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }
+    }
+
+    //  para eliminar los curso realizados de cada pasantia
+    public function courseDestroy(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try {
+            Course::where('id', $request->id)->update(['deleted_at'=>Carbon::now()]);
+            DB::commit();
+            return redirect()->route('pasantes.edit', ['pasante'=>$request->pasantia_id])->with(['message' => 'Eliminado exitosamente..', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('pasantes.edit', ['pasante'=>$request->pasantia_id])->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
         }
     }
 

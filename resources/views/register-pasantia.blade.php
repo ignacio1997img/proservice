@@ -66,6 +66,13 @@
                 </div>
                 <br>
                 <div class="row">
+                    <div class="col-md-12 form-group mt-3 mt-md-0">
+                        <span ><b>Universidad / Institución Académica / Centro de Enseñanza Superior</b></span>
+                        <input type="text" name="institution" class="form-control" id="institution" placeholder="Universidad del Valle" min="5" max="50" value="{{ old('institution') }}" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
                     <div class="col-md-6 form-group">
                         <span ><b>Carnet Identidad</b></span>
                         <input type="text" name="ci" onkeypress='return validaNumericos(event)' class="form-control" id="ci" placeholder="7085555" value="{{ old('ci') }}" required>

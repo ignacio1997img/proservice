@@ -15,20 +15,27 @@ use App\Models\PeopleRequirement;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\TypeModel;
+use App\Models\Pasantia;
+use App\Models\Profession;
+
 use PHPUnit\Framework\MockObject\Stub\ReturnReference;
 
 class PeopleWorkExperienceController extends Controller
 {
     public function index()
     {
-        $people = People::where('user_id',Auth::user()->id)->first();
+        $user = Auth::user();
+
+        $people = People::where('user_id',$user->id)->first();
         $city = City::with('department')->where('id', $people->city_id)->first();
 
         $department= Department::where('status', 1)->get();
         $cities = City::where('department_id', $city->department->id)->get();
 
-
+        $profession = Profession::where('status', 1)->get();
         // return $city;
+        $pasantia = Pasantia::where('people_id', $people->id)->where('deleted_at', null)->first();
+        // return $pasantia;
 
 
         $model = TypeModel::all();
@@ -37,7 +44,7 @@ class PeopleWorkExperienceController extends Controller
         $experiences = PeopleExperience::with('rubro_people','type_model')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
       
         // return $experiences;
-        return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model'));
+        return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model', 'pasantia', 'profession'));
     }
 
     public function store(Request $request)

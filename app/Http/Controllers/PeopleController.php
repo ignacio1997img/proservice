@@ -108,7 +108,7 @@ class PeopleController extends Controller
             //si el registro es pasante 
             if($request->profession_id)
             {
-                Pasantia::create(['people_id'=>$people->id, 'profession_id'=>$request->profession_id]);
+                Pasantia::create(['people_id'=>$people->id, 'profession_id'=>$request->profession_id, 'institution'=>$request->institution]);
             }
             DB::commit();
         
@@ -130,7 +130,7 @@ class PeopleController extends Controller
 
         } catch (\Throwable $th) {
             DB::rollback();
-            return 0;
+            // return 0;
             return redirect()->back()->with(['message' => 'Contactese Con Los Administradores.', 'alert-type' => 'error']);
         }
     }
@@ -180,15 +180,18 @@ class PeopleController extends Controller
 
     public function read($id)
     {
+        // return 1;
         $people = People::find($id);
         $city = City::with('department')->where('id', $people->city_id)->first();
         $department= Department::where('status', 1)->get();
         $cities = City::with('department')->get();
         $model = TypeModel::all();
+
+        $pasantia = Pasantia::where('people_id', $people->id)->where('deleted_at', null)->first();
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$id)->where('deleted_at', null)->where('status', '!=', 0)->get();
         // return $experiences;
-        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro'));
+        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro', 'pasantia'));
     }
 }

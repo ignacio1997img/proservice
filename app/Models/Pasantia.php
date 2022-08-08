@@ -11,4 +11,9 @@ class Pasantia extends Model
     protected $fillable = [
         'profession_id', 'people_id', 'type', 'semester', 'institution', 'objetive', 'status', 'deleted_at'
     ];
+
+    public function profession()
+    {
+        return $this->belongsTo(Profession::class, 'profession_id');
+    }
 }

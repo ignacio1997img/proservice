@@ -1,6 +1,6 @@
 @extends('voyager::master')
 @if(auth()->user()->hasPermission('browse_people-perfil-experience') || auth()->user()->hasRole('admin'))
-@section('page_title', 'Viendo Registros')
+@section('page_title', 'Perfil')
 
 @section('page_header')
     <div class="container-fluid">
@@ -162,74 +162,125 @@
                                             </div>                                         
                                         </div>
 
+                                        {{-- para pasantes --}}
+                                        @if(auth()->user()->hasPermission('add_pasantes') && !auth()->user()->hasRole('admin') && !$pasantia)
+                                            <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
+                                                <i class="voyager-plus"></i> <span>Agregar Pasantia</span>
+                                            </a>
+                                        @endif
+                                        <hr>
+                                        @if ($pasantia && auth()->user()->hasPermission('browse_pasantes'))
+                                            <table id="dataTable" class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="text-align: center">Universidad / Institución Académica / Centro de Enseñanza Superior</th>
+                                                        <th style="text-align: center">Carrera / Área de Formación</th>
+                                                        <th style="text-align: right">Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="text-align: center">{{$pasantia->institution}}</td>
+                                                        <td style="text-align: center">{{$pasantia->profession->name}}</td>
+                                                        <td style="text-align: right">
+                                                            @if (!auth()->user()->hasRole('admin'))
+        
+                                                                @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                                   
+                                                                        {{-- <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$pasantia->id}}, {{ $pasantia->id}})">
+                                                                            <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
+                                                                        </a>
+                                                            --}}
+                                                                    <a href="{{route('pasantes.edit', ['pasante'=>$pasantia->id])}}" title="Editar" class="btn btn-sm btn-warning">
+                                                                        <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                                    </a>
+                                                                @endif
+                                                                {{-- @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
+                                                                    <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$pasantia->id}}" class="btn btn-sm btn-danger">
+                                                                        <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
+                                                                    </a>
+                                                                @endif --}}
+                                                            @endif
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        @endif
+                                        <br>
+
+                                        <hr>
+
+                                        {{-- para personas que buscan trabajos --}}
                                         {{-- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" --}}
                                         @if(auth()->user()->hasPermission('add_people-perfil-experience') && !auth()->user()->hasRole('admin'))
                                             <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
                                                 <i class="voyager-plus"></i> <span>Busco trabajo de</span>
                                             </a>
                                         @endif
-                                            
+
+                                        <table id="dataTable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nro&deg;</th>
+                                                    <th >Experiencia Laboral</th>
+                                                    <th style="text-align: center">Estado</th>
+                                                    <th style="text-align: right">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $i = 1;
+                                                @endphp
+                                                @foreach ($experiences as $item)
+                                                    <tr>
+                                                        <td>{{$i}}</td>
+                                                        <td>{{$item->rubro_people->name}} <label class="label label-primary">{{$item->typeModel_id?' - '.$item->type_model->name:''}}</label></td>    
+                                                        <td style="text-align: center">
+                                                            @if ($item->status == 1)
+                                                                <label class="label label-success">Aprobado</label>
+                                                            @else
+                                                                <label class="label label-danger">Pendiente</label>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <div class="no-sort no-click bread-actions text-right">
+        
+        
+                                                                @if ($item->status == 2 && auth()->user()->hasRole('admin'))
+                                                                    @if($item->rubro_id == 4)
+                                                                        <a type="button" data-toggle="modal" data-target="#modal_editarModelaje" data-id="{{ $item->id}}"  class="btn btn-primary"><i class="fa-solid fa-edit"></i> <span class="hidden-xs hidden-sm">Editar Categoria Modelaje</span></a>
+                                                                    @endif
+                                                                    <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
+                                                                @endif
+        
+                                                                @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                                    @if ($item->rubro_id == 4)
+                                                                        <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$people->id}}, {{ $item->id}})">
+                                                                            <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
+                                                                        </a>
+                                                                    @endif
+                                                                    <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
+                                                                        <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                                    </a>
+                                                                @endif
+                                                                @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
+                                                                    <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$item->id}}" class="btn btn-sm btn-danger">
+                                                                        <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @php
+                                                        $i++;
+                                                    @endphp
+                                                @endforeach                                        
+                                            </tbody>
+                                        </table>
                                     </div>                      
             
-                                <table id="dataTable" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Nro&deg;</th>
-                                            <th >Experiencia Laboral</th>
-                                            <th style="text-align: center">Estado</th>
-                                            <th style="text-align: right">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $i = 1;
-                                        @endphp
-                                        @foreach ($experiences as $item)
-                                            <tr>
-                                                <td>{{$i}}</td>
-                                                <td>{{$item->rubro_people->name}} <label class="label label-primary">{{$item->typeModel_id?' - '.$item->type_model->name:''}}</label></td>    
-                                                <td style="text-align: center">
-                                                    @if ($item->status == 1)
-                                                        <label class="label label-success">Aprobado</label>
-                                                    @else
-                                                        <label class="label label-danger">Pendiente</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <div class="no-sort no-click bread-actions text-right">
-
-
-                                                        @if ($item->status == 2 && auth()->user()->hasRole('admin'))
-                                                            @if($item->rubro_id == 4)
-                                                                <a type="button" data-toggle="modal" data-target="#modal_editarModelaje" data-id="{{ $item->id}}"  class="btn btn-primary"><i class="fa-solid fa-edit"></i> <span class="hidden-xs hidden-sm">Editar Categoria Modelaje</span></a>
-                                                            @endif
-                                                            <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
-                                                        @endif
-
-                                                        @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
-                                                            @if ($item->rubro_id == 4)
-                                                                <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$people->id}}, {{ $item->id}})">
-                                                                    <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
-                                                                </a>
-                                                            @endif
-                                                            <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
-                                                                <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
-                                                            </a>
-                                                        @endif
-                                                        @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
-                                                            <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$item->id}}" class="btn btn-sm btn-danger">
-                                                                <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
-                                                            </a>
-                                                        @endif
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @php
-                                                $i++;
-                                            @endphp
-                                        @endforeach                                        
-                                    </tbody>
-                                </table>
+                                
                             </div>
                         </div>
                     </div>
