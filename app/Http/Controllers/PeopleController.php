@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Pasantia;
 class PeopleController extends Controller
 {
     public function index()
@@ -99,10 +100,16 @@ class PeopleController extends Controller
                 'address' => $request->address,
                 'city_id' => $request->city_id,
                 'sex' => $request->sex,
-                'image' => $file? $image_ap: null
+                'image' => $file? $image_ap: null,
+                'type' => $request->type
             ]);
 
 
+            //si el registro es pasante 
+            if($request->profession_id)
+            {
+                Pasantia::create(['people_id'=>$people->id, 'profession_id'=>$request->profession_id]);
+            }
             DB::commit();
         
             $request->merge(['email'=> $user->email, 'password'=> $password]);
@@ -123,7 +130,7 @@ class PeopleController extends Controller
 
         } catch (\Throwable $th) {
             DB::rollback();
-            // return 0;
+            return 0;
             return redirect()->back()->with(['message' => 'Contactese Con Los Administradores.', 'alert-type' => 'error']);
         }
     }

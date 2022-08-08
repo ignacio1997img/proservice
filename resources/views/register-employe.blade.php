@@ -37,6 +37,8 @@
 
             <div class="col-lg-6 mt-4 mt-lg-0">
                 {!! Form::open(['route' => 'people.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                <input type="hidden" name="type" value="trabajador">
+
                     {{-- @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>

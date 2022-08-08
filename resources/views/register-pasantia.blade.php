@@ -36,10 +36,8 @@
             </div>
 
             <div class="col-lg-6 mt-4 mt-lg-0">
-                @php
-                    $rubros = \DB::table('rubro_busines')->where('deleted_at', null)->where('status', 1)->get();
-                @endphp
-                {!! Form::open(['route' => 'pasantia.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                {!! Form::open(['route' => 'people.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                <input type="hidden" name="type" value="pasante">
                 <div class="row">
                     <div class="col-md-4 form-group mt-3 mt-md-0">
                         <span ><b>Departamento</b></span>
