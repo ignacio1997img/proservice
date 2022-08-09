@@ -134,7 +134,7 @@
 
 
         <tr bgcolor="#eeeef5">  
-            <th colspan="6" style="text-align: left; font-size:15px;" valign="top">3. OBJETIVO DE LA PASANTÍA<small style="font-size: 10px"> (Detallar objetivo por el que postula a la pasantía en YPFB)</small></th>  
+            <th colspan="6" style="text-align: left; font-size:15px;" valign="top">3. OBJETIVO DE LA PASANTÍA</th>  
         </tr>
 
         <tr>
