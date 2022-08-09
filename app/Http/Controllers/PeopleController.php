@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Pasantia;
+use App\Models\Profession;
+
 class PeopleController extends Controller
 {
     public function index()
@@ -188,10 +190,12 @@ class PeopleController extends Controller
         $model = TypeModel::all();
 
         $pasantia = Pasantia::where('people_id', $people->id)->where('deleted_at', null)->first();
+        $profession = Profession::where('status', 1)->get();
+
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$id)->where('deleted_at', null)->where('status', '!=', 0)->get();
         // return $experiences;
-        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro', 'pasantia'));
+        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro', 'pasantia', 'profession'));
     }
 }

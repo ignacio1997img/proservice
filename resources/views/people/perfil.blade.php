@@ -164,7 +164,7 @@
 
                                         {{-- para pasantes --}}
                                         @if(auth()->user()->hasPermission('add_pasantes') && !auth()->user()->hasRole('admin') && !$pasantia)
-                                            <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
+                                            <a type="button" data-toggle="modal" data-target="#modal-pasante" class="btn btn-success">
                                                 <i class="voyager-plus"></i> <span>Agregar Pasantia</span>
                                             </a>
                                         @endif
@@ -187,10 +187,10 @@
         
                                                                 @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
                                                                    
-                                                                        {{-- <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$pasantia->id}}, {{ $pasantia->id}})">
+                                                                        <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openPasante({{$pasantia->id}})">
                                                                             <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
                                                                         </a>
-                                                            --}}
+                                                           
                                                                     <a href="{{route('pasantes.edit', ['pasante'=>$pasantia->id])}}" title="Editar" class="btn btn-sm btn-warning">
                                                                         <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
                                                                     </a>
@@ -256,7 +256,7 @@
         
                                                                 @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
                                                                     @if ($item->rubro_id == 4)
-                                                                        <a href="#" title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$people->id}}, {{ $item->id}})">
+                                                                        <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$people->id}}, {{ $item->id}})">
                                                                             <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
                                                                         </a>
                                                                     @endif
@@ -588,6 +588,101 @@
             </div>
         </div>
     </div>
+
+
+
+    {{-- para agregar pasantes --}}
+    {{-- modal para registrar las experiencia de cada persona --}}
+    <div class="modal fade modal-success" role="dialog" id="modal-pasante">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">                
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="voyager-plus"></i>Agregar Pasantía</h4>
+                </div>
+                {!! Form::open(['route' => 'pasantes.store','class' => 'was-validated'])!!}
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <input type="hidden" name="people_id" value="{{$people->id}}">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group-prepend">
+                                    <small class="input-group-text"><b>Profesión</b></small>
+                                </div>
+                                <select name="profession_id" class="form-control select2" required>
+                                    <option value="">Seleccione un tipo..</option>
+                                    @foreach($profession as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                           
+                        </div> 
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group-prepend">
+                                    <small class="input-group-text"><b>Universidad / Institución Académica / Centro de Enseñanza Superior</b></small>
+                                </div>
+                                <input type="text" class="form-control text" name="institution">
+                            </div>
+
+                           
+                        </div>     
+
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer justify-content-between">
+                        <button type="button text-left" class="btn btn-danger" data-dismiss="modal" data-toggle="tooltip" title="Volver">Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success btn-sm" title="Registrar..">
+                            Registrar
+                        </button>
+                    </div>
+                {!! Form::close()!!} 
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-danger fade" tabindex="-1" id="modal_delete_pasantia" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {!! Form::open(['route' => 'work-experience.delete', 'method' => 'DELETE']) !!}
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><i class="voyager-trash"></i> Eliminar</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id">
+
+                    <div class="text-center" style="text-transform:uppercase">
+                        <i class="voyager-trash" style="color: red; font-size: 5em;"></i>
+                        <br>
+                        
+                        <p><b>Desea eliminar la experiencia laboral?</b></p>
+                    </div>
+                    {{-- <div class="row">   
+                        <div class="col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><b>Observacion:</b></span>
+                            </div>
+                            <textarea id="observacion" class="form-control" name="observacion" cols="77" rows="3"></textarea>
+                        </div>                
+                    </div> --}}
+                </div>                
+                <div class="modal-footer">
+                    
+                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="Sí, eliminar">
+                    
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
+                </div>
+                {!! Form::close()!!} 
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')
@@ -697,6 +792,10 @@
         {
             // alert(id)
             window.open("{{ route('work-experience.print-ficha-tecnica')}}/"+id+"/"+experience, 'Apertura de caja', `width=500, height=800`);
+        }
+        function openPasante(id)
+        {
+            window.open("{{ route('pasantes.print')}}/"+id, 'print pasantes', `width=500, height=800`);
         }
 
     </script>

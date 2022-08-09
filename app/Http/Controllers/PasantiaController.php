@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Models\Course;
 use App\Models\Pasantia;
+use App\Models\People;
 use Composer\Util\Http\RequestProxy;
 
 class PasantiaController extends Controller
@@ -22,6 +23,32 @@ class PasantiaController extends Controller
         $courses = Course::where('deleted_at', null)->where('pasantia_id', $id)->get();
         // return $courses;
         return view('people.pasantia.add-requirement', compact('pasantia_id', 'courses', 'pasantia'));
+    }
+
+    public function store(Request $request)
+    {
+        // return $request;
+        DB::beginTransaction();
+        try {
+            Pasantia::create(['people_id'=>$request->people_id, 'institution'=>$request->institution, 'profession_id'=>$request->profession_id]);
+
+            DB::commit();
+            return redirect()->route('people-perfil-experience.index')->with(['message' => 'Registrado Exitosamente..', 'alert-type' => 'success']);
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return 0;
+            return redirect()->route('people-perfil-experience.index')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
+        }
+    }
+
+    public function print($id)
+    {
+        // return 1;
+        $pasantia = Pasantia::where('id', $id)->first();
+        $people = People::where('id', $pasantia->people_id)->first();
+        $courses = Course::where('pasantia_id', $pasantia->id)->where('deleted_at', null)->get();
+        return view('people.pasantia.print', compact('people', 'pasantia', 'courses'));
     }
 
     // para poder actualizar los datos de los pasantes

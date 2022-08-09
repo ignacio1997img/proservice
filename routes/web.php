@@ -87,12 +87,13 @@ Route::group(['prefix' => 'admin'], function () {
 
     //pasantia
     Route::resource('pasantes', PasantiaController::class);
+    Route::get('pasantes/print/{id?}', [PasantiaController::class, 'print'])->name('pasantes.print');
     Route::post('pasantes/update', [PasantiaController::class, 'pasanteUpdate'])->name('pasantes.update');
     Route::post('pasantes/courses/store', [PasantiaController::class, 'courseStore'])->name('pasantes-courses.store');
     Route::delete('pasantes/courses/delete', [PasantiaController::class, 'courseDestroy'])->name('pasantes-courses.destroy');
     
 
-    //rutas para exeperiencia laboral de la persona
+    //rutas para exeperiencia laboral de la personan y perfiles
     Route::resource('people-perfil-experience', PeopleWorkExperienceController::class);
 
     Route::post('people-perfil-experience/perfil/update', [PeopleController::class, 'perfilUpdate'])->name('people-perfil.update');
