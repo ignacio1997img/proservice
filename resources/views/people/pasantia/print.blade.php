@@ -138,7 +138,7 @@
         </tr>
 
         <tr>
-            <td colspan="6" style="text-align: left">Estudiante</td>
+            <td colspan="6" style="text-align: left">{{$pasantia->objetive}}</td>
         </tr>
 
         <tr bgcolor="#eeeef5">  
