@@ -25,6 +25,7 @@ use App\Models\MessagePeople;
 use App\Models\Department;
 use App\Models\People;
 use App\Models\Profession;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,14 +45,29 @@ use App\Models\Profession;
 Route::get('register-employe', function () {
 
     $department = Department::where('status',1)->get();
+    $user = Auth::user();
+    if($user)
+    {
+        return redirect('admin');
+    }
     return view('register-employe', compact('department'));
 });
 Route::get('register-busine', function () {
     $department = Department::where('status',1)->get();
+    $user = Auth::user();
+    if($user)
+    {
+        return redirect('admin');
+    }
     return view('register-busine', compact('department'));
 });
 Route::get('register-beneficiary', function () {
     $department = Department::where('status',1)->get();
+    $user = Auth::user();
+    if($user)
+    {
+        return redirect('admin');
+    }
     return view('register-beneficiary', compact('department'));
 });
 
@@ -59,6 +75,11 @@ Route::get('register-pasantia', function()
 {
     $profession = Profession::where('status',1)->get();
     $department = Department::where('status',1)->get();
+    $user = Auth::user();
+    if($user)
+    {
+        return redirect('admin');
+    }
 
     return view('register-pasantia', compact('profession', 'department'));
 });
