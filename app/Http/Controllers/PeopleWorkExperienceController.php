@@ -740,7 +740,7 @@ class PeopleWorkExperienceController extends Controller
                             
                     Storage::makeDirectory($dir);
                     // return $dir;
-                    dd(file_get_contents($file));
+                    // dd(file_get_contents($file));
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $video = $dir.'/'.$newFileName;
                     $ok->update(['video' => $video]);
