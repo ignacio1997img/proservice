@@ -21,6 +21,7 @@ class CreatePeopleRequirementsTable extends Migration
             $table->string('image_ci2')->nullable(); //carta de identidad reverso
             $table->string('image_ap')->nullable();//antecedentes penales
 
+
             //idiomas
             $table->smallInteger('spanish')->nullable();
             $table->smallInteger('english')->nullable();
@@ -69,6 +70,8 @@ class CreatePeopleRequirementsTable extends Migration
             $table->smallInteger('exp_pasarela')->nullable();
             $table->smallInteger('exp_fotografia')->nullable();
             $table->smallInteger('exp_publicidad')->nullable();
+            $table->string('video')->nullable();
+
 
 
 

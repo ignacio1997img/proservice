@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\City;
-use App\Models\Department;
-use App\Models\People;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Models\PeopleExperience;
-use App\Models\RubroPeople;
 use Carbon\Carbon;
-use App\Models\PeopleRequirement;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use App\Models\TypeModel;
+use App\Models\City;
+use App\Models\People;
 use App\Models\Pasantia;
+use App\Models\TypeModel;
+use App\Models\Department;
 use App\Models\Profession;
+use App\Models\RubroPeople;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\PeopleExperience;
+use App\Models\PeopleRequirement;
+use Symfony\Component\HttpFoundation\File\File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\MockObject\Stub\ReturnReference;
 
 class PeopleWorkExperienceController extends Controller
@@ -660,6 +661,10 @@ class PeopleWorkExperienceController extends Controller
     //para modelos
     public function requirementModelosStore(Request $request)
     {
+        $this->validate($request, [
+                // 'title' => 'required|string|max:255',
+                // 'video' => 'required|file|mimetypes:video/mp4',
+        ]);
         DB::beginTransaction();
         // return $request->all();
         try {
@@ -667,6 +672,7 @@ class PeopleWorkExperienceController extends Controller
             $image_ci = null;
             $image_ci2 = null;
             $image_book = null;
+            $video = null;
 
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
            
@@ -710,6 +716,52 @@ class PeopleWorkExperienceController extends Controller
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_book = $dir.'/'.$newFileName;
                     $ok->update(['image_book' => $image_book]);
+                }
+
+
+                $file = $request->file('video');
+                if($file)
+                {             
+                    // $file = $request->file('video');
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $filename = $file->getClientOriginalName();
+                    //  $dir = "trabajadores/modelos/video/".date('F').date('Y');
+                    // Storage::makeDirectory($dir);
+                    // // $path = public_path().'/uploads/';
+                
+
+                    // $file->move($dir, $newFileName);     
+
+
+
+                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+                    $dir = "trabajadores/modelos/video/".date('F').date('Y');
+                            
+                    Storage::makeDirectory($dir);
+                    // return $dir;
+                    dd(file_get_contents($file));
+                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $video = $dir.'/'.$newFileName;
+                    $ok->update(['video' => $video]);
+
+                  
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 }
 
                 if($request->curso_modelaje != null)
@@ -844,7 +896,7 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
-            // return 0;
+            return $th;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }

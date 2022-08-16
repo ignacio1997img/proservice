@@ -17,7 +17,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" name="image_ci"  multiple class="form-control" accept="image/*">
+                                                    <input type="file" name="image_ci" class="form-control" accept="image/*">
                                                 </div>
                                                 <small>Carnet de identidad Anverso(imagen):</small>
                                             </div>
@@ -25,7 +25,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" name="image_ci2"  multiple class="form-control" accept="image/*">
+                                                    <input type="file" name="image_ci2" class="form-control" accept="image/*">
                                                 </div>
                                                 <small>Carnet de identidad Reverso(imagen):</small>
                                             </div>
@@ -96,6 +96,8 @@
                                             <div class="form-group">
                                                 <select name="nro_calzado" id="" class="form-control form-control-sm text">
                                                     <option selected disabled value="">Seleccione una opción</option>
+                                                    <option value="36">36</option>
+                                                    <option value="37">37</option>
                                                     <option value="38">38</option>
                                                     <option value="39">39</option>
                                                     <option value="40">40</option>
@@ -195,6 +197,21 @@
                                                 <small>Experiencia en Modelaje.</small>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- === -->
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    {{-- <input type="file" name="video" class="form-control" accept="video/*"> --}}
+                                                    <input type="file" name="video" class="form-control">
+                                                </div>
+                                                <small>Video de Presentacion(Video):</small>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="row">
+                                        
                                     </div>
                                     <div class="card-footer">
                                         <button id="btn_guardar" type="submit"  class="btn btn-primary"><i class="fas fa-save"></i> Actualizar</button>
@@ -440,6 +457,23 @@
                                                         <span class="badge badge-danger">No cargado</span>
                                                     @endif
                                                 </td>            
+                                            </tr>
+                                            <tr>
+                                                <td>Video de Presentación</td>
+                                                <td>
+                                                    @if ($peoplerequirement)
+                                                        @if ($peoplerequirement->video)
+                                                            {{-- <span class="badge badge-success">Si cargado</span> --}}
+                                                            <a href="{{url('storage/public/'.$peoplerequirement->video)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                <i class="fa-solid fa-file"></i> <span class="hidden-xs hidden-sm">Ver</span>
+                                                            </a>
+                                                        @else
+                                                            <span class="badge badge-danger">No cargado</span>
+                                                        @endif
+                                                    @else
+                                                        <span class="badge badge-danger">No cargado</span>
+                                                    @endif
+                                                </td>           
                                             </tr>
                                         </tbody>                                        
                                     </table>                                    

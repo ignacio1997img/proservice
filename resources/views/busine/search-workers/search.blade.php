@@ -14,98 +14,45 @@
                             </h1>
                         </div>
                         {!! Form::open(['route' => 'search-work.search', 'id' => 'form-search',  'method' => 'POST', 'class' => 'form-search']) !!}
+                        
                         <div class="col-md-5" style="margin-top: 30px">       
-                            <select name="rubro_id" id="rubro_id" required class="form-control select2" style="margin-bottom: 10px">
-                                <option selected disabled value="">Seleccione una opcion</option>
-                                @foreach ($rubro_people as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
+                            <select name="job" id="job" required class="form-control select2" style="margin-bottom: 10px">
+                              <option selected disabled value="">Seleccione una opcion</option>
+                              <option value="1">Trabajador</option>
+                              <option value="2">Pasantes</option>
                             </select> 
                             <br><br>
-                            <select name="verified" required class="form-control select2" style="margin-bottom: 10px">
-                              <option value="">Seleccione una opcion</option>
-                              <option value="1">Persona Verificada</option>
-                              <option value="2">Persona no Verificada</option>
-                            </select>   
-                            <br><br>
-                            <div id="parametro">
-                              
-
-
-
-
-
-
-
-
-                              {{-- <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="checkbox" class="form-check-input" id="image_ap" name="image_ap">
-                                  <label class="form-check-label" for="image_ap">Antecedentes Penales</label>
-                                </div>
+                            <div id="trabajador">
+                              <select name="rubro_id" id="rubro_id" required class="form-control select2" style="margin-bottom: 10px">
+                                  <option selected disabled value="">Seleccione una opcion</option>
+                                  @foreach ($rubro_people as $item)
+                                      <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                  @endforeach
+                              </select> 
+                              <br><br>
+                              <select name="verified" required class="form-control select2" style="margin-bottom: 10px">
+                                <option value="">Seleccione una opcion</option>
+                                <option value="1">Persona Verificada</option>
+                                <option value="2">Persona no Verificada</option>
+                              </select>   
+                              <br><br>
+                              <div id="parametro">
+                                
                               </div>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="checkbox" class="form-check-input" id="image_lsm" name="image_lsm">
-                                  <label class="form-check-label" for="image_lsm">Libreta de Servio Militar</label>
-                                </div>
+                              <div class="col-sm-12">
+                                  <h4 id="subtitle" class="page-title">
+                                      Por Rango de Estrellas
+                                  </h4>
+                                  <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="1estrella"></span>
+                                  <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="2estrella"></span>
+                                  <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="3estrella"></span>
+                                  <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="4estrella"></span>
+                                  <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="5estrella"></span>
                               </div>
-                              <label>Peso</label>
-                              <br>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="inicio_peso">
-                                </div>
+                            
+                              <div class="row" id="div_cis"> 
+                                  <input type="hidden" class="form-control" name="star" value="0">                               
                               </div>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="fin_peso">
-                                </div>
-                              </div>
-                              <label>Estatura</label>
-                              <br>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="inicio_estatura">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="fin_estatura">
-                                </div>
-                              </div>
-                              
-                              <div class="col-sm-6" style="text-align: center">
-                                <label>Turnos</label>
-                                <br>
-                                <div class="col-sm-6">
-                                  <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="t_dia" name="t_dia">
-                                    <label class="form-check-label" for="t_dia">Día</label>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6">
-                                  <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="t_noche" name="t_noche">
-                                    <label class="form-check-label" for="t_noche">Noche</label>
-                                  </div>
-                                </div>
-                              </div>                  --}}
-                              
-                            </div>
-                            <div class="col-sm-12">
-                                <h4 id="subtitle" class="page-title">
-                                    Por Rango de Estrellas
-                                </h4>
-                                <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="1estrella"></span>
-                                <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="2estrella"></span>
-                                <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="3estrella"></span>
-                                <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="4estrella"></span>
-                                <span class="fa fa-star" onclick="calificar(this)" style="cursor: pointer; font-size: 1em;" id="5estrella"></span>
-                            </div>
-                           
-                            <div class="row" id="div_cis"> 
-                                <input type="hidden" class="form-control" name="star" value="0">                               
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-info" style="padding: 5px 10px"> <i class="voyager-settings"></i> Generar</button>
@@ -226,6 +173,7 @@ animation-delay: 0.5s;
         $(document).ready(function() {
           $(".select2").select2({theme: "classic"});
           $('#rubro_id').on('change', div);
+          $('#job').on()
 
             $('#form-search').on('submit', function(e){
                 e.preventDefault();
@@ -415,6 +363,9 @@ animation-delay: 0.5s;
             $('#parametro').html(html);
           }
         }
+
+
+
         
     </script>
 @stop
