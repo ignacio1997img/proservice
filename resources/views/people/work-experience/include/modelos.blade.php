@@ -234,13 +234,16 @@
                                                         @if ($peoplerequirement->image_ci || $peoplerequirement->image_ci2)
                                                             {{-- <span class="badge badge-success">Si cargado</span> --}}
                                                             @if ($peoplerequirement->image_ci)                                                            
-                                                                <a href="{{url('storage/public/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                {{-- <a href="{{url('storage/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                    <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm"> Anverso</span>
+                                                                </a> --}}
+                                                                <a href="{{asset('storage/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                                                     <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm"> Anverso</span>
                                                                 </a>
                                                             @endif
 
                                                             @if ($peoplerequirement->image_ci2)                                                            
-                                                                <a href="{{url('storage/public/'.$peoplerequirement->image_ci2)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                                <a href="{{asset('storage/'.$peoplerequirement->image_ci2)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                                                     <i class="fa-solid fa-id-card"></i> <span class="hidden-xs hidden-sm"> Reverso</span>
                                                                 </a>
                                                             @endif

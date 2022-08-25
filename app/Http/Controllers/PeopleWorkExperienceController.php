@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\PeopleExperience;
 use App\Models\PeopleRequirement;
 use Symfony\Component\HttpFoundation\File\File;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -146,6 +147,57 @@ class PeopleWorkExperienceController extends Controller
     }
 
 
+    public function image($file, $id, $type){
+        // return $file;
+        Storage::makeDirectory($type.'/'.date('F').date('Y'));
+        $base_name = $id.'@'.Str::random(40);
+
+        // return $base_name;
+        
+        // imagen normal
+        $filename = $base_name.'.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(1200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        
+        $path =  $type.'/'.date('F').date('Y').'/'.$filename;
+        $image_resize->save(public_path('../storage/app/public/'.$path));
+        $imagen = $path;
+
+        // imagen mediana
+        $filename_medium = $base_name.'_medium.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(650, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $path_medium = $type.'/'.date('F').date('Y').'/'.$filename_medium;
+        $image_resize->save(public_path('../storage/app/public/'.$path_medium));
+        // return 11;
+
+
+        // imagen pequeña
+        $filename_small = $base_name.'_small.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(260, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $path_small = $type.'/'.date('F').date('Y').'/'.$filename_small;
+        $image_resize->save(public_path('../storage/app/public/'.$path_small));
+
+
+
+        // imagen Recortada
+        $filename_cropped = $base_name.'_cropped.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(300, 250, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $path_cropped = $type.'/'.date('F').date('Y').'/'.$filename_cropped;
+        $image_resize->save(public_path('../storage/app/public/'.$path_cropped));
+
+        return $imagen;
+    }
 
 
     //FUNCIONES PARA REGISTRAR LOS REQUERIMIENTOS DE CADA RUBRO DE MANERA ESTATICA
@@ -666,7 +718,6 @@ class PeopleWorkExperienceController extends Controller
                 // 'video' => 'required|file|mimetypes:video/mp4',
         ]);
         DB::beginTransaction();
-        // return $request->all();
         try {
 
             $image_ci = null;
@@ -675,6 +726,8 @@ class PeopleWorkExperienceController extends Controller
             $video = null;
 
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
+            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
+            // return $people;
            
             if($ok)
             {
@@ -682,39 +735,47 @@ class PeopleWorkExperienceController extends Controller
                 $file = $request->file('image_ci');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/modelos/ci/".date('F').date('Y');
+                    // $dir = "trabajadores/modelos/ci/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ci = $dir.'/'.$newFileName;
+
+                    $image_ci = $this->image($file, $people->people_id, "trabajadores/modelos/ci/");
                     $ok->update(['image_ci' => $image_ci]);
                 }
 
                 $file = $request->file('image_ci2');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/modelos/ci/".date('F').date('Y');
+                    // $dir = "trabajadores/modelos/ci/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci2 = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ci2 = $dir.'/'.$newFileName;
+
+                    $image_ci2 = $this->image($file, $people->people_id, "trabajadores/modelos/ci/");
+
                     $ok->update(['image_ci2' => $image_ci2]);
                 }
 
                 $file = $request->file('image_book');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/modelos/book/".date('F').date('Y');
+                    // $dir = "trabajadores/modelos/book/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_book = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_book = $dir.'/'.$newFileName;
+
+                    $image_book = $this->image($file, $people->people_id, "trabajadores/modelos/book/");
+
                     $ok->update(['image_book' => $image_book]);
                 }
 
@@ -744,22 +805,6 @@ class PeopleWorkExperienceController extends Controller
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $video = $dir.'/'.$newFileName;
                     $ok->update(['video' => $video]);
-
-                  
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 }
@@ -843,6 +888,7 @@ class PeopleWorkExperienceController extends Controller
             else
             {
 
+                return "Contactese con el administrador";
                 
                 $file = $request->file('image_ci');
                 if($file)
@@ -896,6 +942,7 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
+            // return 0;
             return $th;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
