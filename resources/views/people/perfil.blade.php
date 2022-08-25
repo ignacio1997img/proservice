@@ -517,21 +517,15 @@
                                 <select name="rubro_id" id="rubro_id" class="form-control select2" required>
                                     <option value="">Seleccione un tipo..</option>
                                     @foreach($rubro as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @if ($item->id != 4 && auth()->user()->hasRole('trabajador'))
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endif
+                                        
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="col-md-12" id="div_model">
-                                {{-- <div class="input-group-prepend">
-                                    <span class="input-group-text"><b>Categoria de Modelaje:</b></span>
-                                </div>
-                                <select name="modelo_id" id="modelo" class="form-control select2" required>
-                                    <option value="">Seleccione un tipo..</option>
-                                    @foreach($model as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @endforeach
-                                </select> --}}
                             </div>
                         </div>     
 
@@ -664,14 +658,6 @@
                         
                         <p><b>Desea eliminar la experiencia laboral?</b></p>
                     </div>
-                    {{-- <div class="row">   
-                        <div class="col-md-12">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><b>Observacion:</b></span>
-                            </div>
-                            <textarea id="observacion" class="form-control" name="observacion" cols="77" rows="3"></textarea>
-                        </div>                
-                    </div> --}}
                 </div>                
                 <div class="modal-footer">
                     
