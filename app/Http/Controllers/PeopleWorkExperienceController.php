@@ -441,7 +441,7 @@ class PeopleWorkExperienceController extends Controller
         try {
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
             $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
-            // return $ok;
+            return $ok;
             if($ok)
             {
                 $image_ci = null;
