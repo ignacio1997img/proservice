@@ -234,7 +234,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci = $dir.'/'.$newFileName;
 
-                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci/");
+                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci");
 
                     $ok->update(['image_ci' => $image_ci]);
                 }
@@ -250,7 +250,7 @@ class PeopleWorkExperienceController extends Controller
                     
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci2 = $dir.'/'.$newFileName;
-                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci/");
+                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci");
 
                     $ok->update(['image_ci2' => $image_ci2]);
                 }
@@ -267,7 +267,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ap = $dir.'/'.$newFileName;
 
-                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/guardia/antecedente_penales/");
+                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/guardia/antecedente_penales");
 
                     $ok->update(['image_ap' => $image_ap]);
                 }
@@ -283,7 +283,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_lsm = $dir.'/'.$newFileName;
 
-                    $image_lsm = $this->image_POST($file, $people->people_id, "trabajadores/guardia/libreta_servicio/");
+                    $image_lsm = $this->image_POST($file, $people->people_id, "trabajadores/guardia/libreta_servicio");
 
                     $ok->update(['image_lsm' => $image_lsm]);
                 }
@@ -299,7 +299,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_fcc = $dir.'/'.$newFileName;
 
-                    $image_fcc = $this->image_POST($file, $people->people_id, "trabajadores/guardia/foto_tamaño_completo/");
+                    $image_fcc = $this->image_POST($file, $people->people_id, "trabajadores/guardia/foto_tamaño_completo");
 
                     $ok->update(['image_fcc' => $image_fcc]);
                 }
@@ -475,7 +475,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::makeDirectory($dir);
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci = $dir.'/'.$newFileName;
-                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/jardinero/ci/");
+                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/jardinero/ci");
 
 
 
@@ -492,7 +492,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::makeDirectory($dir);
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci2 = $dir.'/'.$newFileName;
-                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/jardinero/ci/");
+                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/jardinero/ci");
 
                     $ok->update(['image_ci2' => $image_ci2]);
                 }
@@ -507,7 +507,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::makeDirectory($dir);
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ap = $dir.'/'.$newFileName;
-                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/jardinero/antecedente_penales/");
+                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/jardinero/antecedente_penales");
                     
                     $ok->update(['image_ap' => $image_ap]);
                 }
@@ -622,7 +622,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::makeDirectory($dir);
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci = $dir.'/'.$newFileName;
-                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci/");
+                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci");
 
                     $ok->update(['image_ci' => $image_ci]);
                 }
@@ -637,7 +637,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::makeDirectory($dir);
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci2 = $dir.'/'.$newFileName;
-                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci/");
+                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci");
 
                     $ok->update(['image_ci2' => $image_ci2]);
 
@@ -653,7 +653,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::makeDirectory($dir);
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ap = $dir.'/'.$newFileName;
-                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/antecedente_penales/");
+                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/antecedente_penales");
 
                     $ok->update(['image_ap' => $image_ap]);
                 }
@@ -777,7 +777,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci = $dir.'/'.$newFileName;
 
-                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/modelos/ci/");
+                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/modelos/ci");
                     $ok->update(['image_ci' => $image_ci]);
                 }
 
@@ -792,7 +792,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci2 = $dir.'/'.$newFileName;
 
-                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/modelos/ci/");
+                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/modelos/ci");
 
                     $ok->update(['image_ci2' => $image_ci2]);
                 }
@@ -808,7 +808,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_book = $dir.'/'.$newFileName;
 
-                    $image_book = $this->image_POST($file, $people->people_id, "trabajadores/modelos/book/");
+                    $image_book = $this->image_POST($file, $people->people_id, "trabajadores/modelos/book");
 
                     $ok->update(['image_book' => $image_book]);
                 }
@@ -978,7 +978,7 @@ class PeopleWorkExperienceController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             // return 0;
-            return $th;
+            // return $th;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }

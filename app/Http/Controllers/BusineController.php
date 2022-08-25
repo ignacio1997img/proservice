@@ -14,6 +14,8 @@ use App\Models\BusineRequirement;
 use Illuminate\Support\Str;
 use App\Models\RubroBusine;
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 class BusineController extends Controller
 {
     public function index()
@@ -168,6 +170,61 @@ class BusineController extends Controller
             return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
         }
     }
+
+
+
+
+    public function image_BUSINE($file, $id, $type){
+        // return $file;
+        Storage::makeDirectory($type.'/'.date('F').date('Y'));
+        $base_name = $id.'@'.Str::random(40);
+
+        // return $base_name;
+        
+        // imagen normal
+        $filename = $base_name.'.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(1200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        
+        $path =  $type.'/'.date('F').date('Y').'/'.$filename;
+        $image_resize->save(public_path('../storage/app/public/'.$path));
+        $imagen = $path;
+
+        // imagen mediana
+        $filename_medium = $base_name.'_medium.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(650, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $path_medium = $type.'/'.date('F').date('Y').'/'.$filename_medium;
+        $image_resize->save(public_path('../storage/app/public/'.$path_medium));
+        // return 11;
+
+
+        // imagen pequeña
+        $filename_small = $base_name.'_small.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(260, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $path_small = $type.'/'.date('F').date('Y').'/'.$filename_small;
+        $image_resize->save(public_path('../storage/app/public/'.$path_small));
+
+
+
+        // imagen Recortada
+        $filename_cropped = $base_name.'_cropped.'.$file->getClientOriginalExtension();
+        $image_resize = Image::make($file->getRealPath())->orientate();
+        $image_resize->resize(300, 250, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $path_cropped = $type.'/'.date('F').date('Y').'/'.$filename_cropped;
+        $image_resize->save(public_path('../storage/app/public/'.$path_cropped));
+
+        return $imagen;
+    }
     ////// PARA LOS REQUISITOS DE LA EMPRESA
 
     public function requirementJardineriaStore(Request $request)
@@ -311,13 +368,16 @@ class BusineController extends Controller
                 $file = $request->file('image_lf');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "empresa/jadineria/licencia_funcionamiento/".date('F').date('Y');
+                    // $dir = "empresa/jadineria/licencia_funcionamiento/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_lf = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_lf = $dir.'/'.$newFileName;
+
+                    $image_lf = $this->image_BUSINE($file, $request->busine_id, "empresa/jadineria/licencia_funcionamiento/");
+
                 }
 
                 $file = $request->file('image_roe');
@@ -330,6 +390,8 @@ class BusineController extends Controller
                     Storage::makeDirectory($dir);
                     Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     $image_roe = $dir.'/'.$newFileName;
+                    $image_lf = $this->image_BUSINE($file, $request->busine_id, "empresa/jadineria/roe/");
+
                 }
 
                 $file = $request->file('image_pd');
