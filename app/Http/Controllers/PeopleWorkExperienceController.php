@@ -208,6 +208,7 @@ class PeopleWorkExperienceController extends Controller
         DB::beginTransaction();
         try {
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
+            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
             
             if($ok)
             {
@@ -225,27 +226,32 @@ class PeopleWorkExperienceController extends Controller
                 $file = $request->file('image_ci');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/guardia/ci/".date('F').date('Y');
+                    // $dir = "trabajadores/guardia/ci/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ci = $dir.'/'.$newFileName;
+
+                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci/");
+
                     $ok->update(['image_ci' => $image_ci]);
                 }
 
                 $file = $request->file('image_ci2');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/guardia/ci/".date('F').date('Y');
+                    // $dir = "trabajadores/guardia/ci/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
+                    // Storage::makeDirectory($dir);
                     
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci2 = $dir.'/'.$newFileName;
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ci2 = $dir.'/'.$newFileName;
+                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci/");
+
                     $ok->update(['image_ci2' => $image_ci2]);
                 }
 
@@ -253,39 +259,48 @@ class PeopleWorkExperienceController extends Controller
                 $file = $request->file('image_ap');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/guardia/antecedente_penales/".date('F').date('Y');
+                    // $dir = "trabajadores/guardia/antecedente_penales/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ap = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ap = $dir.'/'.$newFileName;
+
+                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/guardia/antecedente_penales/");
+
                     $ok->update(['image_ap' => $image_ap]);
                 }
 
                 $file = $request->file('image_lsm');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/guardia/libreta_servicio/".date('F').date('Y');
+                    // $dir = "trabajadores/guardia/libreta_servicio/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_lsm = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_lsm = $dir.'/'.$newFileName;
+
+                    $image_lsm = $this->image_POST($file, $people->people_id, "trabajadores/guardia/libreta_servicio/");
+
                     $ok->update(['image_lsm' => $image_lsm]);
                 }
 
                 $file = $request->file('image_fcc');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/guardia/foto_tamaño_completo/".date('F').date('Y');
+                    // $dir = "trabajadores/guardia/foto_tamaño_completo/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_fcc = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_fcc = $dir.'/'.$newFileName;
+
+                    $image_fcc = $this->image_POST($file, $people->people_id, "trabajadores/guardia/foto_tamaño_completo/");
+
                     $ok->update(['image_fcc' => $image_fcc]);
                 }
                
@@ -428,7 +443,7 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
-            return 0;
+            // return 0;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }
@@ -723,7 +738,7 @@ class PeopleWorkExperienceController extends Controller
             
         } catch (\Throwable $th) {
             DB::rollBack();
-            dd($th);
+            // dd($th);
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }
