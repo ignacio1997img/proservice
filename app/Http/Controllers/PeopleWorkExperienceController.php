@@ -796,7 +796,7 @@ class PeopleWorkExperienceController extends Controller
 
 
 
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    $newFileName = $people->people_id.'@'.Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
                     $dir = "trabajadores/modelos/video/".date('F').date('Y');
                             
