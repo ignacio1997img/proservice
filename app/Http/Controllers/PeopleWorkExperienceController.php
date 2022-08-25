@@ -441,6 +441,7 @@ class PeopleWorkExperienceController extends Controller
         try {
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
             $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
+
             // return $ok;
             if($ok)
             {
@@ -592,45 +593,53 @@ class PeopleWorkExperienceController extends Controller
             $image_ap = null;
 
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
-           
+            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
+
             if($ok)
             {
                 $file = $request->file('image_ci');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
+                    // $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ci = $dir.'/'.$newFileName;
+                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci/");
+
                     $ok->update(['image_ci' => $image_ci]);
                 }
 
                 $file = $request->file('image_ci2');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
+                    // $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci2 = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ci2 = $dir.'/'.$newFileName;
+                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci/");
+
                     $ok->update(['image_ci2' => $image_ci2]);
+
                 }
 
                 $file = $request->file('image_ap');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "trabajadores/piscinero/antecedente_penales/".date('F').date('Y');
+                    // $dir = "trabajadores/piscinero/antecedente_penales/".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ap = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_ap = $dir.'/'.$newFileName;
+                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/antecedente_penales/");
+
                     $ok->update(['image_ap' => $image_ap]);
                 }
 
