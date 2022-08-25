@@ -262,7 +262,7 @@
                                                     @if ($peoplerequirement)
                                                         @if ($peoplerequirement->image_book)
                                                             {{-- <span class="badge badge-success">Si cargado</span> --}}
-                                                            <a href="{{url('storage/public/'.$peoplerequirement->image_book)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                                                            <a href="{{asset('storage/'.$peoplerequirement->image_book)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                                                 <i class="fa-solid fa-file"></i> <span class="hidden-xs hidden-sm">Ver</span>
                                                             </a>
                                                         @else

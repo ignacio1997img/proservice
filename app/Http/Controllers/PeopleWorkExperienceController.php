@@ -147,7 +147,7 @@ class PeopleWorkExperienceController extends Controller
     }
 
 
-    public function image($file, $id, $type){
+    public function image_POST($file, $id, $type){
         // return $file;
         Storage::makeDirectory($type.'/'.date('F').date('Y'));
         $base_name = $id.'@'.Str::random(40);
@@ -743,7 +743,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci = $dir.'/'.$newFileName;
 
-                    $image_ci = $this->image($file, $people->people_id, "trabajadores/modelos/ci/");
+                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/modelos/ci/");
                     $ok->update(['image_ci' => $image_ci]);
                 }
 
@@ -758,7 +758,7 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_ci2 = $dir.'/'.$newFileName;
 
-                    $image_ci2 = $this->image($file, $people->people_id, "trabajadores/modelos/ci/");
+                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/modelos/ci/");
 
                     $ok->update(['image_ci2' => $image_ci2]);
                 }
@@ -774,10 +774,11 @@ class PeopleWorkExperienceController extends Controller
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_book = $dir.'/'.$newFileName;
 
-                    $image_book = $this->image($file, $people->people_id, "trabajadores/modelos/book/");
+                    $image_book = $this->image_POST($file, $people->people_id, "trabajadores/modelos/book/");
 
                     $ok->update(['image_book' => $image_book]);
                 }
+                // return 1;
 
 
                 $file = $request->file('video');
