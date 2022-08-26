@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>PhotoFolio Bootstrap Template - Index</title>
+  <title>TrabajosTop</title>
   <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta name="keywords" content="trabajostop, servicios, empleos, trabajos, empresas, proservice, trabajadores, beni, bolsa de empleos, oportunidades laborales">
 
   <!-- Favicons -->
-  <link href="{{asset('modelFolio/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('modelFolio/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('images/icon.png')}}" rel="icon">
+  <link href="{{asset('images/icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
