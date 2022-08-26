@@ -13,8 +13,9 @@ use App\Models\Busine;
 use App\Models\BusineRequirement;
 use Illuminate\Support\Str;
 use App\Models\RubroBusine;
-
+use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
+use Symfony\Component\HttpFoundation\File\File;
 
 class BusineController extends Controller
 {
@@ -174,19 +175,20 @@ class BusineController extends Controller
 
 
 
-    public function image_BUSINE($file, $id, $type){
-        // return $file;
+    public function image_PostB($file, $id, $type){
         Storage::makeDirectory($type.'/'.date('F').date('Y'));
         $base_name = $id.'@'.Str::random(40);
 
-        // return $base_name;
         
         // imagen normal
         $filename = $base_name.'.'.$file->getClientOriginalExtension();
         $image_resize = Image::make($file->getRealPath())->orientate();
+        return $base_name;
+
         $image_resize->resize(1200, null, function ($constraint) {
             $constraint->aspectRatio();
         });
+        
         
         $path =  $type.'/'.date('F').date('Y').'/'.$filename;
         $image_resize->save(public_path('../storage/app/public/'.$path));
@@ -223,7 +225,8 @@ class BusineController extends Controller
         $path_cropped = $type.'/'.date('F').date('Y').'/'.$filename_cropped;
         $image_resize->save(public_path('../storage/app/public/'.$path_cropped));
 
-        return $imagen;
+        // return $imagen;
+        return "Hola";
     }
     ////// PARA LOS REQUISITOS DE LA EMPRESA
 
@@ -318,6 +321,7 @@ class BusineController extends Controller
             $image_lf = null;
             $image_roe = null;         
             $image_pd = null;   
+            $busine_id = $request->busine_id;
 
             if($ok)
             {              
@@ -365,7 +369,10 @@ class BusineController extends Controller
             }
             else
             {
+                // return 0;
                 $file = $request->file('image_lf');
+                // dd($file);
+                // return $file;
                 if($file)
                 {                        
                     // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
@@ -375,35 +382,39 @@ class BusineController extends Controller
                     // Storage::makeDirectory($dir);
                     // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
                     // $image_lf = $dir.'/'.$newFileName;
+                    // return $request->busine_id;
 
-                    $image_lf = $this->image_BUSINE($file, $request->busine_id, "empresa/jadineria/licencia_funcionamiento/");
+                    $image_lf = $this->image_PostB($file, $busine_id, "empresa/guardia/licencia_funcionamiento");
+                    // $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci");
 
                 }
+                return 0;
 
                 $file = $request->file('image_roe');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "empresa/jadineria/roe".date('F').date('Y');
+                    // $dir = "empresa/jadineria/roe".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_roe = $dir.'/'.$newFileName;
-                    $image_lf = $this->image_BUSINE($file, $request->busine_id, "empresa/jadineria/roe/");
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_roe = $dir.'/'.$newFileName;
+                    $image_roe = $this->image_PostB($file, $request->busine_id, "empresa/guardia/roe");
 
                 }
-
+return 11;
                 $file = $request->file('image_pd');
                 if($file)
                 {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
                             
-                    $dir = "empresa/guardia/permiso_denacev".date('F').date('Y');
+                    // $dir = "empresa/guardia/permiso_denacev".date('F').date('Y');
                             
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_pd = $dir.'/'.$newFileName;
+                    // Storage::makeDirectory($dir);
+                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    // $image_pd = $dir.'/'.$newFileName;
+                    $image_pd = $this->image_PostB($file, $request->busine_id, "empresa/guardia/permiso_denacev");
                 }
 
                 BusineRequirement::create(['type' => 'guardia', 'busine_id' => $request->busine_id, 'image_lf' => $image_lf, 'image_roe' => $image_roe, 'image_pd' => $image_pd]);
@@ -413,6 +424,7 @@ class BusineController extends Controller
             return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
         } catch (\Throwable $th) {
             DB::rollBack();
+            
             return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
         }
     }

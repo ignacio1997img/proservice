@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PeopleExperience;
 use App\Models\PeopleRequirement;
-use Symfony\Component\HttpFoundation\File\File;
+    use Symfony\Component\HttpFoundation\File\File;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
