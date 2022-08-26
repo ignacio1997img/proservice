@@ -13,7 +13,7 @@ use App\Models\Busine;
 use App\Models\BusineRequirement;
 use Illuminate\Support\Str;
 use App\Models\RubroBusine;
-use Carbon\Carbon;
+
 use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -179,16 +179,14 @@ class BusineController extends Controller
         Storage::makeDirectory($type.'/'.date('F').date('Y'));
         $base_name = $id.'@'.Str::random(40);
 
+        // return $base_name;
         
         // imagen normal
         $filename = $base_name.'.'.$file->getClientOriginalExtension();
         $image_resize = Image::make($file->getRealPath())->orientate();
-        return $base_name;
-
         $image_resize->resize(1200, null, function ($constraint) {
             $constraint->aspectRatio();
         });
-        
         
         $path =  $type.'/'.date('F').date('Y').'/'.$filename;
         $image_resize->save(public_path('../storage/app/public/'.$path));
@@ -225,8 +223,8 @@ class BusineController extends Controller
         $path_cropped = $type.'/'.date('F').date('Y').'/'.$filename_cropped;
         $image_resize->save(public_path('../storage/app/public/'.$path_cropped));
 
-        // return $imagen;
-        return "Hola";
+        return $imagen;
+        
     }
     ////// PARA LOS REQUISITOS DE LA EMPRESA
 

@@ -161,7 +161,7 @@
         <div class="col-lg-3 col-md-4 mt-4">
           <div class="icon-box">
             <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-            <h3><a href="">Modelos</a></h3>
+            <h3><a href="{{url('model-folio')}}">Modelos</a></h3>
           </div>
         </div>
         <div class="col-lg-3 col-md-4 mt-4">

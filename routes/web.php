@@ -84,6 +84,18 @@ Route::get('register-pasantia', function()
     return view('register-pasantia', compact('profession', 'department'));
 });
 
+Route::get('model-folio', function()
+{
+    $user = Auth::user();
+    if($user)
+    {
+        return redirect('admin');
+    }
+    // return 1;
+
+    return view('modelFolio.master');
+});
+
 
 Route::get('login', function () {
     return redirect('admin/login');
