@@ -39,6 +39,17 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('modelFolio/assets/css/main.css')}}" rel="stylesheet">
 
+
+
+    <!-- Vendor CSS Files -->
+    <link href="{{asset('modelFolio/assets/vendors/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{asset('modelFolio/assets/vendors/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('modelFolio/assets/vendors/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{asset('modelFolio/assets/vendors/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{{asset('modelFolio/assets/css/style.css')}}" rel="stylesheet">
+
   <!-- =======================================================
   * Template Name: PhotoFolio - v1.0.0
   * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
@@ -62,27 +73,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="gallery.html">Nature</a></li>
-              <li><a href="gallery.html">People</a></li>
-              <li><a href="gallery.html">Architecture</a></li>
-              <li><a href="gallery.html">Animals</a></li>
-              <li><a href="gallery.html">Sports</a></li>
-              <li><a href="gallery.html">Travel</a></li>
-              <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Sub Menu 1</a></li>
-                  <li><a href="#">Sub Menu 2</a></li>
-                  <li><a href="#">Sub Menu 3</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="services.html" class="active">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="{{url('/')}}" class="active">Inicio</a></li>
+          <li><a href="services.html">Servicios</a></li>
+          <li><a href="contact.html">Contactos</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -100,218 +93,149 @@
 
   <main id="main" data-aos="fade" data-aos-delay="1500">
 
-    <!-- ======= End Page Header ======= -->
-    <div class="page-header d-flex align-items-center">
-      <div class="container position-relative">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-6 text-center">
-            <h2>Services</h2>
-            <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
 
-            <a class="cta-btn" href="contact.html">Available for hire</a>
 
+    <section  class="section site-portfolio">
+      <div class="container">
+        <div class="row mb-5 align-items-center" style="text-align: center">
+          <h1>Galeria</h1>
+        </div>
+        <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200" style="text-align: center">
+          
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>AMF</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 66</small>
+                <br>
+                <small>Altura: 1,86</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_1.jpeg')}}">
+            </a>
           </div>
-        </div>
-      </div>
-    </div><!-- End Page Header -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-xl-3 col-md-6 d-flex">
-            <div class="service-item position-relative">
-              <i class="bi bi-activity"></i>
-              <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex">
-            <div class="service-item position-relative">
-              <i class="bi bi-bounding-box-circles"></i>
-              <h4><a href="" class="stretched-link">Sed ut perspici</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex">
-            <div class="service-item position-relative">
-              <i class="bi bi-calendar4-week"></i>
-              <h4><a href="" class="stretched-link">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex">
-            <div class="service-item position-relative">
-              <i class="bi bi-broadcast"></i>
-              <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container">
-
-        <div class="section-header">
-          <h2>Prices</h2>
-          <p>Check my adorable pricing</p>
-        </div>
-
-        <div class="row gy-4 gx-lg-5">
-
-          <div class="col-lg-6">
-            <div class="pricing-item d-flex justify-content-between">
-              <h3>Portrait Photography</h3>
-              <h4>$160.00</h4>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-6">
-            <div class="pricing-item d-flex justify-content-between">
-              <h3>Fashion Photography</h3>
-              <h4>$300.00</h4>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-6">
-            <div class="pricing-item d-flex justify-content-between">
-              <h3>Sports Photography</h3>
-              <h4>$200.00</h4>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-6">
-            <div class="pricing-item d-flex justify-content-between">
-              <h3>Still Life Photography</h3>
-              <h4>$120.00</h4>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-6">
-            <div class="pricing-item d-flex justify-content-between">
-              <h3>Wedding Photography</h3>
-              <h4>$500.00</h4>
-            </div>
-          </div><!-- End Pricing Item -->
-
-          <div class="col-lg-6">
-            <div class="pricing-item d-flex justify-content-between">
-              <h3>Photojournalism</h3>
-              <h4>$200.00</h4>
-            </div>
-          </div><!-- End Pricing Item -->
-
-        </div>
-    </section><!-- End Pricing Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-      <div class="container">
-
-        <div class="section-header">
-          <h2>Testimonials</h2>
-          <p>What they are saying</p>
-        </div>
-
-        <div class="slides-3 swiper">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
-                </div>
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>JAS</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 81</small>
+                <br>
+                <small>Altura: 1,56</small>
+               
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                </p>
-                <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_2.jpeg')}}">
+            </a>
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>DAA</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 59</small>
+                <br>
+                <small>Altura: 1,55</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_3.jpeg')}}">
+            </a>
+          </div>
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>IFG</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 75</small>
+                <br>
+                <small>Altura: 1,84</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_4.jpeg')}}">
+            </a>
+          </div>
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>TYA</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 55</small>
+                <br>
+                <small>Altura: 1,64</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_5.jpeg')}}">
+            </a>
+          </div><div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>DFA</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 65</small>
+                <br>
+                <small>Altura: 1,81</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_6.jpeg')}}">
+            </a>
+          </div>
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>SWA</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 70</small>
+                <br>
+                <small>Altura: 1,80</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_7.jpeg')}}">
+            </a>
+          </div>
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>DDA</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 71</small>
+                <br>
+                <small>Altura: 1,50</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_8.jpeg')}}">
+            </a>
+          </div>
+          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+            <a href="#" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>APL</h3>
+                {{-- <span>Profesional</span> --}}
+                {{-- <br> --}}
+                <small>Peso: 79</small>
+                <br>
+                <small>Altura: 1,75</small>
+               
+              </div>
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_9.jpeg')}}">
+            </a>
+          </div>
 
+
+          
+          
+        </div>
       </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End  Works Section -->
+
+   
 
   </main><!-- End #main -->
 
