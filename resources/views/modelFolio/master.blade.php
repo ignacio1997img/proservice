@@ -137,14 +137,11 @@
         <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200" style="text-align: center">
           
           <div class="item profesional col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="{{url('model-folio/gallery')}}" class="item-wrap fancybox">
+            <a href="" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Boxed Water</h3>
                 <span>Profesional</span>
-                <br>
-                <small>Peso: </small>
-                <br>
-                <small>Estatura: </small>
+               
               </div>
               <img class="img-fluid" src="modelFolio/assets/img/gallery/img_1.jpg">
             </a>
