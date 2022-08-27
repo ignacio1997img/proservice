@@ -41,7 +41,13 @@
 
 
 
-
+    <style>
+      .div-img {
+          width: 800px;
+          height: 800px;
+          /* background-color: #9FC; */
+          }
+    </style>
 
 
 
@@ -108,8 +114,13 @@
   <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-6 text-center">
-          <img src="modelFolio/assets/img/collage.jpeg" class="img-fluid" alt="">
+        <div class="col-lg-6 text-center" >
+          {{-- <img src="modelFolio/assets/img/collage.jpeg" class="img-fluid" alt="" style="height: 600px;"> --}}
+          {{-- <div class="div-img"> --}}
+                {{-- <img src="images/register/BUSCO-EMPRESA-1.jpeg" class="img-fluid" alt=""> --}}
+            <img src="modelFolio/assets/img/collage.jpeg" class="img-fluid" alt="">
+            
+          {{-- </div> --}}
         </div>
       </div>
     </div>
@@ -121,17 +132,17 @@
     <section class="section site-portfolio">
       <div class="container">
         <div class="row mb-5 align-items-center">
-          <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+          <div class="col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up">
             {{-- <h2>Hey, I'm Johan Stanworth</h2>
             <p class="mb-0">Freelance Creative &amp; Professional Graphics Designer</p> --}}
           </div>
-          <div class="col-md-12 col-lg-6 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-12 col-lg-8 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
             <div id="filters" class="filters">
               <a href="#" data-filter="*" class="active">Todo</a>
               <a href="#" data-filter=".web">Modelos Profesionales</a>
               <a href="#" data-filter=".design">Modelos Standard</a>
               <a href="#" data-filter=".branding">Azafatas/Impulsadore</a>
-              <a href="#" data-filter=".photography">Photography</a>
+              {{-- <a href="#" data-filter=".photography">Photography</a> --}}
             </div>
           </div>
         </div>
