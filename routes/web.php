@@ -86,13 +86,6 @@ Route::get('register-pasantia', function()
 
 Route::get('model-folio', function()
 {
-    $user = Auth::user();
-    if($user)
-    {
-        return redirect('admin');
-    }
-    // return 1;
-
     return view('modelFolio.master');
 });
 

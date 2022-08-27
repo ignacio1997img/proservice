@@ -111,7 +111,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+  <section id="heros" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center" >
@@ -129,78 +129,72 @@
   <main id="main">
 
     <!-- ======= Works Section ======= -->
-    <section class="section site-portfolio">
+    <section  class="section site-portfolio">
       <div class="container">
-        <div class="row mb-5 align-items-center">
-          <div class="col-md-12 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up">
-            {{-- <h2>Hey, I'm Johan Stanworth</h2>
-            <p class="mb-0">Freelance Creative &amp; Professional Graphics Designer</p> --}}
-          </div>
-          <div class="col-md-12 col-lg-8 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
-            <div id="filters" class="filters">
-              <a href="#" data-filter="*" class="active">Todo</a>
-              <a href="#" data-filter=".web">Modelos Profesionales</a>
-              <a href="#" data-filter=".design">Modelos Standard</a>
-              <a href="#" data-filter=".branding">Azafatas/Impulsadore</a>
-              {{-- <a href="#" data-filter=".photography">Photography</a> --}}
-            </div>
-          </div>
+        <div class="row mb-5 align-items-center" style="text-align: center">
+          <h1>Fit Models</h1>
         </div>
-        <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
-          <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+        <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200" style="text-align: center">
+          
+          <div class="item profesional col-sm-6 col-md-4 col-lg-4 mb-4">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Boxed Water</h3>
-                <span>Web</span>
+                <span>Profesional</span>
+                <br>
+                <small>Peso: </small>
+                <br>
+                <small>Estatura: </small>
               </div>
               <img class="img-fluid" src="modelFolio/assets/img/gallery/img_1.jpg">
             </a>
           </div>
-          <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
+          <div class="item profesional col-sm-6 col-md-4 col-lg-4 mb-4">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Build Indoo</h3>
-                <span>Photography</span>
+                <span>Profesional</span>
               </div>
               <img class="img-fluid" src="modelFolio/assets/img/gallery/img_2.jpg">
             </a>
           </div>
-          <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
+          <div class="item standar col-sm-6 col-md-4 col-lg-4 mb-4">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Cocooil</h3>
-                <span>Branding</span>
+                <span>Estandar</span>
               </div>
               <img class="img-fluid" src="modelFolio/assets/img/gallery/img_3.jpg">
             </a>
           </div>
-          <div class="item design col-sm-6 col-md-4 col-lg-4 mb-4">
+          {{-- <div class="item standar col-sm-6 col-md-2 col-lg-2 mb-2">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Nike Shoe</h3>
-                <span>Design</span>
+                <span>Estandar</span>
               </div>
               <img class="img-fluid" src="modelFolio/assets/img/gallery/img_4.jpg">
             </a>
           </div>
-          <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
+          <div class="item normal col-sm-6 col-md-2 col-lg-2 mb-2">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Kitchen Sink</h3>
-                <span>Photography</span>
+                <span>Normal</span>
               </div>
               <img class="img-fluid" src="modelFolio/assets/img/gallery/img_5.jpg">
             </a>
           </div>
-          <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
+          <div class="item standar col-sm-6 col-md-2 col-lg-2 mb-2">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Amazon</h3>
-                <span>brandingn</span>
+                <span>Estandar</span>
               </div>
               <img class="img-fluid" src="modelFolio/assets/img/gallery/img_6.jpg">
             </a>
-          </div>
+          </div> --}}
+          
         </div>
       </div>
     </section><!-- End  Works Section -->

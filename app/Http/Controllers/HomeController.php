@@ -40,8 +40,13 @@ class HomeController extends Controller
         // return $mie
         return view('welcome', compact('peoplev','solicitud_pendiente', 'miembros', 'busine'));
     }
-    // public function welcome()
+
+    // public function modelFolio()
     // {
-    //     return view('welcome');
+
+    //     // $profesional = PeopleExperience::where()
+    //     // $standar =
+    //     // $normal = 
+    //     return view('modelFolio.master');
     // }
 }
