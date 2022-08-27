@@ -28,6 +28,23 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('modelFolio/assets/css/main.css')}}" rel="stylesheet">
 
+
+  
+    <!-- Vendor CSS Files -->
+    <link href="{{asset('modelFolio/assets/vendors/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{asset('modelFolio/assets/vendors/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('modelFolio/assets/vendors/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{asset('modelFolio/assets/vendors/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{{asset('modelFolio/assets/css/style.css')}}" rel="stylesheet">
+
+
+
+
+
+
+
   <!-- =======================================================
   * Template Name: PhotoFolio - v1.0.0
   * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
@@ -52,7 +69,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{{url('/')}}" class="active">Inicio</a></li>
-          <li><a href="about.html">About</a></li>
+          {{-- <li><a href="about.html">About</a></li> --}}
           {{-- <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="gallery.html">Nature</a></li>
@@ -77,9 +94,9 @@
 
       <div class="header-social-links">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.facebook.com/TrabajosTop/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://wa.me/59178128183?text=Me gustaría saber más sobre su plataforma" target="_blank" class="twitter"><i class="bi bi-whatsapp"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -92,170 +109,90 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
-          <h2>I'm <span>Jenny Wilson</span> a Professional Photographer from New York City</h2>
-          <p>Blanditiis praesentium aliquam illum tempore incidunt debitis dolorem magni est deserunt sed qui libero. Qui voluptas amet.</p>
-          <a href="contact.html" class="btn-get-started">Available for hire</a>
+          <img src="modelFolio/assets/img/collage.jpeg" class="img-fluid" alt="">
         </div>
       </div>
     </div>
   </section><!-- End Hero Section -->
 
-  <main id="main" data-aos="fade" data-aos-delay="1500">
+  <main id="main">
 
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-      <div class="container-fluid">
-
-        <div class="row gy-4 justify-content-center">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-1.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-1.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
+    <!-- ======= Works Section ======= -->
+    <section class="section site-portfolio">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+            {{-- <h2>Hey, I'm Johan Stanworth</h2>
+            <p class="mb-0">Freelance Creative &amp; Professional Graphics Designer</p> --}}
+          </div>
+          <div class="col-md-12 col-lg-6 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
+            <div id="filters" class="filters">
+              <a href="#" data-filter="*" class="active">Todo</a>
+              <a href="#" data-filter=".web">Modelos Profesionales</a>
+              <a href="#" data-filter=".design">Modelos Standard</a>
+              <a href="#" data-filter=".branding">Azafatas/Impulsadore</a>
+              <a href="#" data-filter=".photography">Photography</a>
             </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-2.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-2.jpg" title="Gallery 2" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-3.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-3.jpg" title="Gallery 3" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-4.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-4.jpg" title="Gallery 4" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-5.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-5.jpg" title="Gallery 5" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-6.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-6.jpg" title="Gallery 6" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-7.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-7.jpg" title="Gallery 7" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-8.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-8.jpg" title="Gallery 8" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-9.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-9.jpg" title="Gallery 9" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-10.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-10.jpg" title="Gallery 10" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-11.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-11.jpg" title="Gallery 11" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-12.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-12.jpg" title="Gallery 12" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-13.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-13.jpg" title="Gallery 13" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-14.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-14.jpg" title="Gallery 14" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-15.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-15.jpg" title="Gallery 15" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="modelFolio/assets/img/gallery/gallery-16.jpg" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="modelFolio/assets/img/gallery/gallery-16.jpg" title="Gallery 16" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-
+          </div>
         </div>
-
+        <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+          <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Boxed Water</h3>
+                <span>Web</span>
+              </div>
+              <img class="img-fluid" src="modelFolio/assets/img/gallery/img_1.jpg">
+            </a>
+          </div>
+          <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Build Indoo</h3>
+                <span>Photography</span>
+              </div>
+              <img class="img-fluid" src="modelFolio/assets/img/gallery/img_2.jpg">
+            </a>
+          </div>
+          <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Cocooil</h3>
+                <span>Branding</span>
+              </div>
+              <img class="img-fluid" src="modelFolio/assets/img/gallery/img_3.jpg">
+            </a>
+          </div>
+          <div class="item design col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Nike Shoe</h3>
+                <span>Design</span>
+              </div>
+              <img class="img-fluid" src="modelFolio/assets/img/gallery/img_4.jpg">
+            </a>
+          </div>
+          <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Kitchen Sink</h3>
+                <span>Photography</span>
+              </div>
+              <img class="img-fluid" src="modelFolio/assets/img/gallery/img_5.jpg">
+            </a>
+          </div>
+          <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Amazon</h3>
+                <span>brandingn</span>
+              </div>
+              <img class="img-fluid" src="modelFolio/assets/img/gallery/img_6.jpg">
+            </a>
+          </div>
+        </div>
       </div>
-    </section><!-- End Gallery Section -->
+    </section><!-- End  Works Section -->
 
   </main><!-- End #main -->
 
@@ -263,7 +200,7 @@
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>TrabajosTop</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -290,6 +227,22 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('modelFolio/assets/js/main.js')}}"></script>
+
+
+
+
+
+
+
+    <!-- Vendor JS Files -->
+    <script src="{{asset('modelFolio/assets/vendors/aos/aos.js')}}"></script>
+    <script src="{{asset('modelFolio/assets/vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('modelFolio/assets/vendors/isotope-layout/isotope.pkgd.min.js')}}"></script> 
+    <script src="{{asset('modelFolio/assets/vendors/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('modelFolio/assets/vendors/php-email-form/validate.js')}}"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="{{asset('modelFolio/assets/js/mains.js')}}"></script>
 
 </body>
 
