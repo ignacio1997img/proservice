@@ -119,7 +119,7 @@
                 <small>Talla Inferior: 40</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_1.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_1.jpeg')}}">
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
@@ -139,7 +139,7 @@
                 <small>Talla Inferior: 42</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_2.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_2.jpeg')}}">
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
@@ -159,7 +159,7 @@
                 <small>Talla Inferior: 38</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_3.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_3.jpeg')}}">
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
@@ -179,7 +179,7 @@
                 <small>Talla Inferior: 40</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_4.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_4.jpeg')}}">
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
@@ -199,7 +199,7 @@
                 <small>Talla Inferior: 41</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_5.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_5.jpeg')}}">
             </a>
           </div><div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
             <a href="#" class="item-wrap fancybox">
@@ -218,7 +218,7 @@
                 <small>Talla Inferior: 39</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_6.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_6.jpeg')}}">
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
@@ -238,7 +238,7 @@
                 <small>Talla Inferior: 42</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_7.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_7.jpeg')}}">
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
@@ -258,7 +258,7 @@
                 <small>Talla Inferior: 38</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_8.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_8.jpeg')}}">
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
@@ -278,7 +278,7 @@
                 <small>Talla Inferior: 41</small>
                
               </div>
-              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_9.jpeg')}}">
+              <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/b_9.jpeg')}}">
             </a>
           </div>
 

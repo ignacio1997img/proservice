@@ -88,9 +88,19 @@ Route::get('model-folio', function()
 {
     return view('modelFolio.master');
 });
+
 Route::get('model-folio/gallery', function()
 {
     return view('modelFolio.folio');
+});
+Route::get('model-folio/gallery2', function()
+{
+    return view('modelFolio.folio2');
+});
+
+Route::get('model-folio/gallery3', function()
+{
+    return view('modelFolio.folio3');
 });
 
 

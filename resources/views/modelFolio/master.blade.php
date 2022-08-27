@@ -147,7 +147,7 @@
             </a>
           </div>
           <div class="item profesional col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
+            <a href="{{url('model-folio/gallery2')}}" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Build Indoo</h3>
                 <span>Profesional</span>
@@ -156,7 +156,7 @@
             </a>
           </div>
           <div class="item standar col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
+            <a href="{{url('model-folio/gallery3')}}" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Cocooil</h3>
                 <span>Estandar</span>
