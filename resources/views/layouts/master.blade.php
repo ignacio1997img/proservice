@@ -6,14 +6,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>TrabajosTop</title>
-  <link href="{{asset('images/icon.png')}}" rel="icon">
-  <link href="{{asset('images/icon.png')}}" rel="apple-touch-icon">
+  {{-- <link href="{{asset('images/icon.png')}}" rel="icon">
+  <link href="{{asset('images/icon.png')}}" rel="apple-touch-icon"> --}}
   <title>{{setting('admin.title')}}</title>
   <meta property="og:url"           content="{{url('')}}" />
   {{-- <meta property="og:type"          content="" /> --}}
   <meta property="og:title"         content="{{setting('site.title')}}" />
   <meta property="og:description"   content="{{setting('site.description')}}" />
-  {{-- <meta property="og:image"         content="{{ asset('images/icon.png') }}" /> --}}
+  <meta property="og:image"         content="{{ asset('images/icon.png') }}" />
   <meta name="keywords" content="trabajostop, servicios, empleos, trabajos, empresas, proservice, trabajadores, beni, bolsa de empleos, oportunidades laborales">
 
   <!-- Favicons -->

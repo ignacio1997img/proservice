@@ -12,6 +12,10 @@
   <!-- Favicons -->
   <link href="{{asset('images/icon.png')}}" rel="icon">
   <link href="{{asset('images/icon.png')}}" rel="apple-touch-icon">
+  
+  <meta property="og:title"         content="{{setting('site.title')}}" />
+  <meta property="og:description"   content="{{setting('site.description')}}" />
+  <meta property="og:image"         content="{{ asset('images/icon.png') }}" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
