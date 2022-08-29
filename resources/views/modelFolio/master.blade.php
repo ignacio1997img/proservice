@@ -97,8 +97,8 @@
               </li>
             </ul>
           </li> --}}
-          <li><a href="services.html">Servicios</a></li>
-          <li><a href="contact.html">Contactos</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Contactos</a></li>
         </ul>
       </nav><!-- .navbar -->
 
