@@ -13,7 +13,7 @@
                     @if ($businerequirements->image_lf)
                         <span class="badge badge-success">Si cargado</span>
                         
-                            <a href="{{url('storage/public/'.$businerequirements->image_lf)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                            <a href="{{url('storage/'.$businerequirements->image_lf)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                 <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
                             </a>
                     
@@ -32,7 +32,7 @@
                     @if ($businerequirements->image_roe)
                         <span class="badge badge-success">Si cargado</span>
                         @if(auth()->user()->hasPermission('view_busine-perfil-requirement'))
-                            <a href="{{url('storage/public/'.$businerequirements->image_roe)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
+                            <a href="{{url('storage/'.$businerequirements->image_roe)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
                                 <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
                             </a>
                         @endif
@@ -74,6 +74,7 @@
                                     <span class="input-group-text"><b>Roe:</b></span>
                                 </div>
                                 <input type="file" name="image_roe"  multiple class="form-control" accept="image/*">
+                                {{-- <input type="file" name="image_lf"  multiple class="form-control" accept="image/*"> --}}
                             </div>                           
                         </div>
                     </div>
