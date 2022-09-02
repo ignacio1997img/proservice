@@ -10,10 +10,10 @@
             <li><i class="ri-check-line"></i> Informacion Verificada y confiable</li>
           </ul>
           <div class="mt-3">
-            <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a>
-            <a href="register-busine" class="btn-get-started scrollto">Soy Una Empresa</a>
+            <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Registrarme Como Trabajador</a>
+            <a href="register-busine" class="btn-get-started scrollto">Registrar Mi Empresa</a>
             <a href="register-beneficiary" class="btn-get-started scrollto">Busco Servicios</a>
-            <a href="{{url('register-pasantia')}}" class="btn-get-started scrollto">Pasantia</a>
+            <a href="{{url('register-pasantia')}}" class="btn-get-started scrollto">Registrarme Como Pasante</a>
             <a href="{{url('model-folio')}}" class="btn-get-quote">Modelos</a>
           </div>
         </div>
