@@ -114,7 +114,7 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
+  <!-- ======= Hero Section 
   <section id="heros" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
     <div class="container">
       <div class="row justify-content-center">
@@ -128,7 +128,7 @@
         </div>
       </div>
     </div>
-  </section><!-- End Hero Section -->
+  </section> ======= -->   <!-- End Hero Section -->
 
   <main id="main">
 
