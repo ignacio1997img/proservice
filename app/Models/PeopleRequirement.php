@@ -47,7 +47,7 @@ class PeopleRequirement extends Model
         'image_book',
         'curso_modelaje',
         'exp_modelaje',
-        'talla_sup', 'talla_inf', 'nro_calzado', 'exp_pasarela', 'exp_fotografia', 'exp_publicidad', 'video'
+        'talla_sup', 'talla_inf', 'eye', 'nro_calzado', 'exp_pasarela', 'exp_fotografia', 'exp_publicidad', 'video'
     ];
     
 }

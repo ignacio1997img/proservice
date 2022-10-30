@@ -1,7 +1,7 @@
 @extends('voyager::master')
 @if(auth()->user()->hasPermission('browse_search-busine'))
 
-@section('page_title', 'Buscar Trabajadores')
+@section('page_title', 'Buscar Empresa')
 
 @section('page_header')
     <div class="container-fluid">

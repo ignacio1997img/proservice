@@ -101,10 +101,8 @@ class PeopleWorkExperienceController extends Controller
     //metodo para ver la vista de los requisitos
     public function requirementCreate($id, $rubro_id)
     {        
-        // return 1;
         $rubro = RubroPeople::find($rubro_id);
         $peoplerequirement = PeopleRequirement::where('people_experience_id', $id)->where('deleted_at', null)->where('status', 1)->first();
-        // return $peoplerequirement;
         return view('people.work-experience.add-requirement', compact('id', 'rubro_id', 'rubro', 'peoplerequirement'));
     }
 
@@ -750,6 +748,7 @@ class PeopleWorkExperienceController extends Controller
                 // 'title' => 'required|string|max:255',
                 // 'video' => 'required|file|mimetypes:video/mp4',
         ]);
+        // return $request;
         DB::beginTransaction();
         try {
 
@@ -859,6 +858,10 @@ class PeopleWorkExperienceController extends Controller
                 if($request->peso != null)
                 {
                     $ok->update(['peso' => $request->peso]);
+                }
+                if($request->eye)
+                {
+                    $ok->update(['eye'=> $request->eye]);
                 }
                 if($request->spanish != null)
                 {

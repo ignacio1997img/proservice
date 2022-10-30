@@ -17,6 +17,7 @@ class MessageBusine extends Model
         'date_view',
         'status',
         'deleted_at',
+        'file',
 
         'star', 'comment', 'star_date'
     ];

@@ -48,6 +48,13 @@ class RolesTableSeeder extends Seeder
             ])->save();
         }
 
+        $role = Role::firstOrNew(['name' => 'modelfolio']);
+        if (!$role->exists) {
+            $role->fill([
+                'display_name' => 'Modelo Porta Folio'
+            ])->save();
+        }
+
 
         
     }

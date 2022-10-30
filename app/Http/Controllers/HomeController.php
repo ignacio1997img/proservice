@@ -8,6 +8,10 @@ use App\Models\Busine;
 use App\Models\Beneficiary;
 use App\Models\PeopleExperience;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -49,4 +53,7 @@ class HomeController extends Controller
     //     // $normal = 
     //     return view('modelFolio.master');
     // }
+
+    // funcion para registrar solo archivos de cualquier formato
+    
 }

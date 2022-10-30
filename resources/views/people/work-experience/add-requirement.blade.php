@@ -37,7 +37,7 @@
 <style>
     
     input.text, select.text, textarea.text{ 
-        border-radius: 5px 5px 5px 5px;
+        border-radius: 1px 1px 1px 1px;
         color: #000000;
         border-color: rgb(63, 63, 63);
     }

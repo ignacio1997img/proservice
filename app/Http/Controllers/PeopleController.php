@@ -198,4 +198,13 @@ class PeopleController extends Controller
         // return $experiences;
         return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro', 'pasantia', 'profession'));
     }
+
+
+
+
+
+
+
+
+    //  
 }

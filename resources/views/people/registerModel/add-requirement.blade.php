@@ -1,3 +1,23 @@
+@extends('voyager::master')
+
+@section('page_title', 'Requisitos')
+
+@section('page_header')
+    <h1 class="page-title" id="subtitle">
+        <i class="voyager-folder"></i> Requisitos para modelo
+        &nbsp; 
+        <a href="{{ auth()->user()->hasRole('admin')? URL::previous():route('people-perfil-experience.index')}}" class="btn btn-warning">
+          <i class="fa-solid fa-circle-left"></i>
+            Volver
+        </a>
+        {{-- <a href="{{ URL::previous() }}" class="btn btn-warning">
+            <i class="fa-solid fa-circle-left"></i>
+              Volver
+        </a> --}}
+    </h1>
+@stop
+
+@section('content')
 <div id="app">
     <div class="page-content browse container-fluid" >
         @include('voyager::alerts')
@@ -7,17 +27,17 @@
                     <div class="panel-body">                            
                         <div class="table-responsive">
                             <main class="main">     
-                                @if(!auth()->user()->hasRole('admin'))
-                                {!! Form::open(['route' => 'work-experience.requirement-modelos-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}                               
+                                {{-- @if(!auth()->user()->hasRole('admin')) --}}
+                                {!! Form::open(['route' => 'registerModel-requirement.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}                               
                                 <div class="card-body">
-                                    <input type="hidden" name="people_experience_id" value="{{$id}}">
-                                    <input type="hidden" name="rubro_id" value="{{$rubro_id}}">
+                                    <input type="hidden" name="people_experience_id" value="{{$experience->id}}">
+                                    {{-- <input type="hidden" name="rubro_id" value="{{$rubro_id}}"> --}}
                                     <div class="row">
                                         <!-- === -->
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" name="image_ci" class="form-control" accept="image/*">
+                                                    <input type="file" name="image_ci" id="image_ci" class="form-control" accept="image/png,image/jpeg">
                                                 </div>
                                                 <small>Carnet identidad Anverso(imagen):</small>
                                             </div>
@@ -25,7 +45,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" name="image_ci2" class="form-control" accept="image/*">
+                                                    <input type="file" name="image_ci2" class="form-control" accept="image/png,image/jpeg">
                                                 </div>
                                                 <small>Carnet identidad Reverso(imagen):</small>
                                             </div>
@@ -33,7 +53,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" name="image_book"  class="form-control" accept="image/*">
+                                                    <input type="file" name="image_book"  class="form-control" accept="image/png,image/jpeg">
                                                 </div>
                                                 <small>Book (imagen):</small>
                                             </div>
@@ -217,7 +237,7 @@
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     {{-- <input type="file" name="video" class="form-control" accept="video/*"> --}}
-                                                    <input type="file" name="video" class="form-control">
+                                                    <input type="file" name="video" accept="video/*" class="form-control">
                                                 </div>
                                                 <small>Video de Presentacion(Video):</small>
                                             </div>
@@ -230,7 +250,7 @@
                                         <button id="btn_guardar" type="submit"  class="btn btn-primary"><i class="fas fa-save"></i> Actualizar</button>
                                     </div>                                   
                                     {!! Form::close()!!}
-                                @endif   
+                                {{-- @endif    --}}
                                     <table id="dataTable" class="table table-bordered table-striped table-sm">
                                         <thead>
                                             <tr>
@@ -516,3 +536,66 @@
         </div>
     </div>
 </div> 
+    
+@stop
+
+@section('css')
+<style>
+    
+    input.text, select.text, textarea.text{ 
+        border-radius: 5px 5px 5px 5px;
+        color: #000000;
+        border-color: rgb(63, 63, 63);
+    }
+
+   
+    small{font-size 10px;
+        color: rgb(12, 12, 12);
+        font-weight: bold;
+    }
+    
+
+
+</style>
+@stop
+
+
+@section('javascript')
+    <script>
+        $(document).ready(function () {
+            
+        });
+        $(document).on('change','#image_ci',function(){
+            // this.files[0].size recupera el tamaño del archivo
+            // alert(this.files[0].size);
+            
+            var fileName = this.files[0].name;
+            var fileSize = this.files[0].size;
+
+            if(fileSize > 3000000){
+                alert('El archivo no debe superar los 3MB');
+                this.value = '';
+                this.files[0].name = '';
+            }else{
+                // recuperamos la extensión del archivo
+                var ext = fileName.split('.').pop();
+                
+                // Convertimos en minúscula porque 
+                // la extensión del archivo puede estar en mayúscula
+                ext = ext.toLowerCase();
+            
+                // console.log(ext);
+                switch (ext) {
+                    case 'jpg':
+                    case 'jpeg':
+                    case 'png':
+                    case 'pdf': break;
+                    default:
+                        alert('El archivo no tiene la extensión adecuada');
+                        this.value = ''; // reset del valor
+                        this.files[0].name = '';
+                }
+            }
+        });
+    </script>
+@stop

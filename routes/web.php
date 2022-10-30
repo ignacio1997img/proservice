@@ -17,8 +17,11 @@ use App\Http\Controllers\SearchBusineController;
 use App\Http\Controllers\MessageBusineController;
 
 use App\Http\Controllers\MessageBeneficiaryController;
-
+use App\Http\Controllers\ModelController;
 use App\Http\Controllers\PasantiaController;
+
+use App\Http\Controllers\ModelfolioController;
+use App\Http\Controllers\AjaxQueryController;
 
 use App\Models\MessageBusine;
 use App\Models\MessagePeople;
@@ -89,19 +92,11 @@ Route::get('model-folio', function()
     return view('modelFolio.master');
 });
 
-Route::get('model-folio/gallery', function()
-{
-    return view('modelFolio.folio');
-});
-Route::get('model-folio/gallery2', function()
-{
-    return view('modelFolio.folio2');
-});
+Route::get('model-folio/gallery', [ModelfolioController::class, 'folioProfesional']);
 
-Route::get('model-folio/gallery3', function()
-{
-    return view('modelFolio.folio3');
-});
+Route::get('model-folio/gallery2', [ModelfolioController::class, 'foliostandard']);
+
+Route::get('model-folio/gallery3', [ModelfolioController::class, 'folioImpulsadores']);
 
 
 
@@ -224,6 +219,17 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
+    // PORTAFOLIO
+
+    Route::resource('modelfolio', ModelfolioController::class);
+    Route::post('modelfolio/update', [ModelfolioController::class, 'update'])->name('modelfolio.update');
+
+    // PARA LOS MEDELOS INDEPENDIENTES
+    Route::resource('registerModel', ModelController::class);
+    Route::get('registerModel/requirement/view/{id?}', [ModelController::class, 'viewRequirement'])->name('registerModel-requirement.view');
+    Route::post('registerModel/requirement/store', [ModelController::class , 'storeRequirement'])->name('registerModel-requirement.store');
+
+
 
 
 
@@ -232,6 +238,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('notification-message', [AjaxController::class, 'getNotifications'])->name('get.notifications');
 
     Route::get('get/city/{id?}', [AjaxController::class , 'getCity'])->name('ajax.get_city');
+
+
+
+    // SOLO PARA CONSULTA NO ELIMINAR
+    //  para ver si exite el CI
+    Route::get('ajaxQuery/ci/{data?}', [AjaxQueryController::class, 'ajaxCi'])->name('ajaxQuery.ci');
+
+    //para obtener el correo electronico si existe o no registrado
+    Route::get('ajaxQuery/email/{data?}', [AjaxQueryController::class, 'ajaxEmail'])->name('ajaxQuery.email');
 
 });
 

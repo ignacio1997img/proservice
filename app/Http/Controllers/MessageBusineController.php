@@ -13,26 +13,50 @@ use App\Models\MessagePeople;
 use App\Models\People;
 use App\Models\PeopleExperience;
 use App\Models\PeopleRequirement;
+use Illuminate\Support\Str;
 use App\Models\MessageBusine;
+
 
 class MessageBusineController extends Controller
 {
-    
+    public function file($file, $id, $type)
+    {
+        // $nombre_origen = $file->getClientOriginalName();                        
+        $newFileName = $id.'@'.Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                        
+        $dir = $type.'/'.date('F').date('Y');
+                        
+        Storage::makeDirectory($dir);
+        Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));
+                // $image_ap = $dir.'/'.$newFileName;
+        return $dir.'/'.$newFileName;                 
+    }
 
     public function store(Request $request)
     {
-        // dd(1);
+        // dd($request);
         DB::beginTransaction();
         try {
             $busine = Busine::find($request->busine_id);
             $beneficiary = Beneficiary::where('user_id', Auth::user()->id)->first();
+            $files = $request->file('pdf');
+            $data='';
+            // return 1;
+            if($files)
+            {
+                return $files;
+                // $data = $this->file($files, $beneficiary->id, 'beneficiario/message');
+            }
+            // return 1;
             MessageBusine::create([
                 'busine_id' => $request->busine_id,
                 'rubro_busine_id' => $busine->rubro_id,
                 'beneficiary_id' => $beneficiary->id,
-                'detail' => $request->detail
+                'detail' => $request->detail,
+                'file'=> $data?$data:null
             ]);
             // return $busine;
+            
 
             DB::commit();
             return response()->json(['success' => true, 'message' => 'Mensaje enviado correctamente.']);
@@ -45,7 +69,7 @@ class MessageBusineController extends Controller
     public function storeAll(Request $request)
     {
         DB::beginTransaction();
-        return $request;
+        // return $request;
         try {
             $cant = count($request->busine_id);
             // return $cant;

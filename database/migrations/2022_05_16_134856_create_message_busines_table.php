@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateMessageBusinesTable extends Migration
 {
@@ -19,6 +20,7 @@ class CreateMessageBusinesTable extends Migration
             $table->foreignId('rubro_busine_id')->nullable()->constrained('rubro_busines');
             $table->foreignId('beneficiary_id')->nullable()->constrained('beneficiaries');
             $table->text('detail')->nullable();
+            $table->string('file')->nullable();
             $table->datetime('view')->nullable();
             $table->datetime('date_view')->nullable();
 

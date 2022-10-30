@@ -102,12 +102,43 @@
         </div>
         <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200" style="text-align: center">
           
-          <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+          @foreach ($folio as $item)
+            @php
+                                $image = asset('images/default.jpg');
+                                // dd($image);
+
+                                if($item->image_book){
+                                    $image = asset('storage/'.str_replace('.', '_cropped.', $item->image_book));
+                                }
+                                // $now = \Carbon\Carbon::now();
+                                // $birthday = new \Carbon\Carbon($item->birthday);
+                                // $age = $birthday->diffInYears($now);
+            @endphp
+            <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
+              <a href="#" class="item-wrap fancybox">
+                <div class="work-info">
+                  {{-- <h3>AMF</h3> --}}
+                  {{-- <span>Profesional</span> --}}
+                  {{-- <br> --}}
+                  <small>Peso: {{$item->peso? $item->peso:'SN'}}</small>
+                  <br>
+                  <small>Altura: {{$item->estatura? $item->estatura:'SN'}}</small>
+                  <br>
+                  <small>Ojo: {{$item->eye? $item->eye:'SN'}}</small>
+                  <br>
+                  <small>Talla Sup: {{$item->talla_sup? $item->talla_sup:'SN'}}</small>
+                  <br>
+                  <small>Talla Inf: {{$item->talla_inf? $item->talla_inf:'SN'}}</small>
+                
+                </div>
+                <img class="img-fluid" src="{{$image}}" style="height: 200px">
+              </a>
+            </div>
+          @endforeach
+          {{-- <div class="item profesional col-sm-6 col-md-2 col-lg-2 mb-2">
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>AMF</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 66</small>
                 <br>
                 <small>Altura: 1,86</small>
@@ -126,8 +157,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>JAS</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 81</small>
                 <br>
                 <small>Altura: 1,56</small>
@@ -146,8 +175,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>DAA</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 59</small>
                 <br>
                 <small>Altura: 1,55</small>
@@ -166,8 +193,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>IFG</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 75</small>
                 <br>
                 <small>Altura: 1,84</small>
@@ -186,8 +211,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>TYA</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 55</small>
                 <br>
                 <small>Altura: 1,64</small>
@@ -205,8 +228,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>DFA</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 65</small>
                 <br>
                 <small>Altura: 1,81</small>
@@ -225,8 +246,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>SWA</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 70</small>
                 <br>
                 <small>Altura: 1,80</small>
@@ -245,8 +264,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>DDA</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 71</small>
                 <br>
                 <small>Altura: 1,50</small>
@@ -265,8 +282,6 @@
             <a href="#" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>APL</h3>
-                {{-- <span>Profesional</span> --}}
-                {{-- <br> --}}
                 <small>Peso: 79</small>
                 <br>
                 <small>Altura: 1,75</small>
@@ -280,7 +295,7 @@
               </div>
               <img class="img-fluid" src="{{asset('modelFolio/assets/img/portfolio/a_9.jpeg')}}">
             </a>
-          </div>
+          </div> --}}
 
 
           

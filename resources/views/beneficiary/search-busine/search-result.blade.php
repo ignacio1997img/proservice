@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'message-beneficiary-busine.storeAll', 'id' => 'form-pagars', 'method' => 'POST']) !!}  
+{!! Form::open(['route' => 'message-beneficiary-busine.storeAll', 'id' => 'form-pagars', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}  
 <div class="col-md-12" style="margin-bottom: 100px">
     <div style="z-index: -10;position: fixed;bottom:0">
         <input type="text" id="text-copy">
@@ -127,6 +127,14 @@
                                     <br>
                                     <p><b>Desea Enviar solicitud...!</b></p>
                                 </div>
+                                <div class="row">   
+                                    <div class="col-md-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Archivo PDF:</b></span>
+                                        </div>
+                                        <input type="file" class="form-control" name="file" accept = "application/pdf">
+                                    </div>                
+                                </div>
 
                                 <div class="row">   
                                     <div class="col-md-12">
@@ -139,7 +147,7 @@
                             </div>       
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <input type="submit" class="btn btn-dark" value="Sí, Enviardd">
+                                {{-- <input type="submit" class="btn btn-dark" value="Sí, Enviardd"> --}}
                                 <button type="button" class="btn btn-success btn-submit" onclick="sendForm('form-pagars', 'Mensaje enviado exitosamente.')">Sí, Enviar</button>
 
                             </div>
@@ -154,7 +162,9 @@
 <div class="modal modal-primary fade" tabindex="-1" id="modal_solicitud" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            {!! Form::open(['route' => 'message-beneficiary-busine.store', 'id' => 'form-pagar', 'method' => 'POST', 'class' => 'form-search']) !!}        
+      
+            <form action="{{route('message-beneficiary-busine.store')}}" method="POST" id="form-pagar" enctype="multipart/form-data">
+                @csrf       
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="voyager-check"></i> Enviar solicitud de Trabajo</h4>
@@ -166,6 +176,14 @@
                     <i class="fa-regular fa-envelope" style="color: rgb(87, 87, 87); font-size: 5em;"></i>
                     <br>
                     <p><b>Desea Enviar solicitud...!</b></p>
+                </div>
+                <div class="row">   
+                    <div class="col-md-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><b>Archivo PDF:</b></span>
+                        </div>
+                        <input type="file" class="form-control" name="pdf" accept = "application/pdf">
+                    </div>                
                 </div>
 
                 <div class="row">   
@@ -179,11 +197,11 @@
             </div>                
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                {{-- <input type="submit" class="btn btn-dark" value="Sí, Enviar"> --}}
+                <input type="submit" class="btn btn-dark" value="Sí, Enviar">
                 <button type="button" class="btn btn-success btn-submit" onclick="sendForm('form-pagar', 'Mensaje enviado exitosamente.')">Sí, Enviar</button>
 
             </div>
-            {!! Form::close() !!}
+            </form>
         </div>
     </div>
 </div>
@@ -236,9 +254,21 @@
         modal.find('.modal-body #id').val(id)
                 
     });
+    $(document).ready(function() {
+        // alert(1)
+        $('#form-pagar').attr('enctype','multipart/form-data');
+        // $("#btn").click(function() {
+        // $('#form1').attr("action","/controller/action/id/");
+        // $('#form1').attr("target","upload_iframe");
+        // $('#form1').attr("enctype","multipart/form-data");
+
+        // });
+    });
 
     function sendForm(formId, message){
             $('.btn-submit').attr('disabled', true);
+            // $('#'+formId).attr('encytpe'),enctype
+            $('#'+formId).attr('enctype','multipart/form-data');
             $.post($('#'+formId).attr('action'), $('#'+formId).serialize(), function(res){
                 if(res.success){
                     toastr.success(message, 'Bien hecho!');

@@ -19,6 +19,7 @@ class CreatePeopleExperiencesTable extends Migration
             $table->foreignId('rubro_id')->nullable()->constrained('rubro_people');
             $table->foreignId('typeModel_id')->nullable()->constrained('type_models');//para cuando selecione modelo 
 
+            $table->smallInteger('folio')->default(0);
 
             $table->smallInteger('status')->default(2);  // 1: activo, 2: pendiente 0: inactivo
 

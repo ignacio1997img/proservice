@@ -37,7 +37,7 @@ class PasantiaController extends Controller
 
         } catch (\Throwable $th) {
             DB::rollBack();
-            return 0;
+            // return 0;
             return redirect()->route('people-perfil-experience.index')->with(['message' => 'Ocurrió un error.', 'alert-type' => 'error']);
         }
     }

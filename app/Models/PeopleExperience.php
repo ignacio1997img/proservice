@@ -15,7 +15,7 @@ class PeopleExperience extends Model
         'typeModel_id',
         'status',
         'deleted_at',
-        'cant', 'star'
+        'cant', 'star', 'folio'
     ];
 
     public function rubro_people()
@@ -30,6 +30,10 @@ class PeopleExperience extends Model
     public function requirement()
     {
         return $this->hasMany(PeopleRequirement::class);
+    }
+    public function people()
+    {
+        return $this->belongsTo(People::class, 'people_id');
     }
 
 }
