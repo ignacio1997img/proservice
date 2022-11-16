@@ -1,5 +1,5 @@
 @extends('voyager::master')
-
+@if(auth()->user()->hasPermission('prueba'))
 @section('page_title', 'Viendo Registros')
 
 @section('page_header')
@@ -414,3 +414,8 @@
     </script>
 
 @stop
+@else
+    @section('content')
+        <h1>No tienes permiso</h1>
+    @stop
+@endif

@@ -1,5 +1,5 @@
 @extends('voyager::master')
-{{-- @if(auth()->user()->hasPermission('browse_message-people-bandeja')) --}}
+@if(auth()->user()->hasPermission('prueba'))
 
 @section('page_title', 'Viendo Porta Folio')
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
@@ -391,8 +391,8 @@
 
 @stop
 
-{{-- @else
+@else
     @section('content')
         <h1>No tienes permiso</h1>
     @stop
-@endif --}}
+@endif

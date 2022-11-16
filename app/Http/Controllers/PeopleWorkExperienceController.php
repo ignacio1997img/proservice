@@ -18,6 +18,7 @@ use App\Models\PeopleRequirement;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\FileController;
 
 use Illuminate\Support\Facades\Storage;
 use PHPUnit\Framework\MockObject\Stub\ReturnReference;
@@ -103,6 +104,7 @@ class PeopleWorkExperienceController extends Controller
     {        
         $rubro = RubroPeople::find($rubro_id);
         $peoplerequirement = PeopleRequirement::where('people_experience_id', $id)->where('deleted_at', null)->where('status', 1)->first();
+        // $requirement = PeopleRequirement::where('people_experience_id', $id)->where('deleted_at', null)->where('status', 1)->first();
         return view('people.work-experience.add-requirement', compact('id', 'rubro_id', 'rubro', 'peoplerequirement'));
     }
 
@@ -982,6 +984,75 @@ class PeopleWorkExperienceController extends Controller
             DB::rollBack();
             // return 0;
             // return $th;
+            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
+        }
+    }
+
+
+    
+
+    // para sistema de seguridad   *requirementSeguritySystemStore*
+    public function requirementSeguritySystemStore(Request $request)
+    {
+        // dd($request);
+        $imageObj = new FileController;
+
+        DB::beginTransaction();
+        try {
+
+            $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
+            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
+
+            $file = $request->file('image_ci');
+            if($file)
+            {       
+                $ci = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                $ok->update(['image_ci' => $ci]);
+            }
+
+            $file = $request->file('image_ci2');
+            if($file)
+            {       
+                $image_ci2 = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                $ok->update(['image_ci2' => $image_ci2]);
+            }
+            $file = $request->file('image_ap');
+            if($file)
+            {       
+                $image_ap = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/antecedentePenales");
+                $ok->update(['image_ap' => $image_ap]);
+            }
+
+
+            if($request->exp_camaraSeguridad != null)
+            {
+                $ok->update(['exp_camaraSeguridad' => $request->exp_camaraSeguridad]);
+            }
+
+            if($request->exp_controlAcceso != null)
+            {
+                $ok->update(['exp_controlAcceso' => $request->exp_controlAcceso]);
+            }
+
+            if($request->exp_cercoElectrico != null)
+            {
+                $ok->update(['exp_cercoElectrico' => $request->exp_cercoElectrico]);
+            }
+
+            if($request->exp_sistemaAlarma != null)
+            {
+                $ok->update(['exp_sistemaAlarma' => $request->exp_sistemaAlarma]);
+            }
+            DB::commit();
+
+            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
+
+            
+            
+            
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return 0;
             return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
         }
     }

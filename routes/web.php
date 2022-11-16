@@ -143,6 +143,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('people-perfil-experience/requirement-jardineria-store' , [PeopleWorkExperienceController::class, 'requirementJardineriaStore'])->name('work-experience.requirement-jardineria-store');
     Route::post('people-perfil-experience/requirement-piscinero-store' , [PeopleWorkExperienceController::class, 'requirementPiscineroStore'])->name('work-experience.requirement-piscinero-store');
     Route::post('people-perfil-experience/requirement-modelos-store' , [PeopleWorkExperienceController::class, 'requirementModelosStore'])->name('work-experience.requirement-modelos-store');
+    Route::post('people-perfil-experience/requirement-seguritySystem-store' , [PeopleWorkExperienceController::class, 'requirementSeguritySystemStore'])->name('work-experience.requirement-seguritySystem-store');
+
 
     Route::get('people-perfil-experience/ficha-tecnica/{id?}/{experience?}', [PeopleWorkExperienceController::class, 'fichaTecnica'])->name('work-experience.print-ficha-tecnica');
 

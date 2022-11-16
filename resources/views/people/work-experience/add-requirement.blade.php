@@ -30,8 +30,12 @@
     @if ($rubro_id == 4)
         @include('people.work-experience.include.modelos')
     @endif
+    @if ($rubro_id == 5)
+        @include('people.work-experience.include.5-securitySystem')
+    @endif
     
 @stop
+
 
 @section('css')
 <style>
@@ -47,17 +51,79 @@
         color: rgb(12, 12, 12);
         font-weight: bold;
     }
-    
 
 
-</style>
+        img.zoom {
+            /* width: 350px;
+            height: 200px; */
+            width: 350px;
+            height: 200px;
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            -ms-transition: all .2s ease-in-out;
+        }
+        
+        .transition {
+            -webkit-transform: scale(5.0); 
+            -moz-transform: scale(5.0);
+            -o-transform: scale(5.0);
+            transform: scale(5.0);
+        }
+    </style>
 @stop
 
 
 @section('javascript')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
     <script>
-        $(document).ready(function () {
-            
+        $(document).ready(function(){
+            $('.zoom').hover(function() {
+                $(this).addClass('transition');
+            }, function() {
+                $(this).removeClass('transition');
+            });
         });
+    </script>
+
+    <script>
+            $(document).on('change','.imageLength',function(){
+                var fileName = this.files[0].name;
+                var fileSize = this.files[0].size;
+
+                if(fileSize > 10000000){
+                    swal({
+                        title: "Error",
+                        text: "El archivo no debe superar los 10 MB",
+                        type: "error",
+                        showCancelButton: false
+                    });
+                    this.value = '';
+                    this.files[0].name = '';
+                }
+                
+                    // recuperamos la extensión del archivo
+                    var ext = fileName.split('.').pop();
+                    
+                    // Convertimos en minúscula porque 
+                    // la extensión del archivo puede estar en mayúscula
+                    ext = ext.toLowerCase();
+                    // console.log(ext);
+                    switch (ext) {
+                        case 'jpg':
+                        case 'jpeg':
+                        case 'png': break;
+                        default:
+                            swal({
+                                title: "Error",
+                                text: "El archivo no tiene la extensión adecuada",
+                                type: "error",
+                                showCancelButton: false
+                            });
+                            this.value = ''; // reset del valor
+                            this.files[0].name = '';
+                    }
+            });
     </script>
 @stop
