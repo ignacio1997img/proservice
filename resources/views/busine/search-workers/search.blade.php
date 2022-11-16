@@ -362,6 +362,70 @@ animation-delay: 0.5s;
                               </div>`
             $('#parametro').html(html);
           }
+          if(id == 5)
+          {
+            var html = `<div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="image_nit" name="image_nit">
+                                  <label class="form-check-label" for="image_nit">Nit</label>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="image_ap" name="image_ap">
+                                  <label class="form-check-label" for="image_ap">Antecedentes Penales</label>
+                                </div>
+                              </div>
+                              <div class="col-sm-12">
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="image_lsm" name="image_lsm">
+                                  <label class="form-check-label" for="image_lsm">Libreta de Servio Militar</label>
+                                </div>
+                              </div>
+                              
+                              <label>Peso</label>
+                              <br>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="number" class="form-check-input" step="0.01" name="inicio_peso">
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="number" class="form-check-input" step="0.01" name="fin_peso">
+                                </div>
+                              </div>
+                              <label>Estatura</label>
+                              <br>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="number" class="form-check-input" step="0.01" name="inicio_estatura">
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="number" class="form-check-input" step="0.01" name="fin_estatura">
+                                </div>
+                              </div>
+                              
+                              <div class="col-sm-6" style="text-align: center">
+                                <label>Turnos</label>
+                                <br>
+                                <div class="col-sm-6">
+                                  <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="t_dia" name="t_dia">
+                                    <label class="form-check-label" for="t_dia">Día</label>
+                                  </div>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="t_noche" name="t_noche">
+                                    <label class="form-check-label" for="t_noche">Noche</label>
+                                  </div>
+                                </div>
+                              </div> `
+            $('#parametro').html(html);
+          }
         }
 
 

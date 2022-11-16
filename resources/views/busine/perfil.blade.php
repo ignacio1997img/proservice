@@ -19,7 +19,6 @@
     
 
     @section('content')    
-    
         <div id="app">
             <div class="page-content browse container-fluid" >
                 @include('voyager::alerts')
