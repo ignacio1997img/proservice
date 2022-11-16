@@ -24,7 +24,7 @@
                         </div>
                         
                         <div class="form-group col-md-3">
-                            <small>Experiencia en cámara de seguridad</small>
+                            <small>Experiencia en cámaras de seguridad</small>
                             <select name="exp_camaraSeguridad" class="form-control form-control-sm text">
                                 <option selected disabled value="">Seleccione</option>
                                 <option value="1">SI</option>
@@ -50,7 +50,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <small>Experiencia en sistema de alarma</small>
+                            <small>Experiencia en sistemas de alarma</small>
                             <select name="exp_sistemaAlarma" class="form-control form-control-sm text">
                                 <option selected disabled value="">Seleccione</option>
                                 <option value="1">SI</option>
@@ -115,7 +115,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="height: 50px">Experiencia en cámara de seguridad</td>
+                                            <td style="height: 50px">Experiencia en cámaras de seguridad</td>
                                             <td style="text-align: center">
                                                 @if ($peoplerequirement->exp_camaraSeguridad === null)
                                                     <label class="label label-danger">Sin datos</label>
@@ -157,7 +157,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="height: 50px">Experiencia en sistema de alarma</td>
+                                            <td style="height: 50px">Experiencia en sistemas de alarma</td>
                                             <td style="text-align: center">
                                                 @if ($peoplerequirement->exp_sistemaAlarma === null)
                                                     <label class="label label-danger">Sin datos</label>

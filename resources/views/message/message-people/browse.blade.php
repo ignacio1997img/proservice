@@ -107,8 +107,7 @@
                     <input type="hidden" name="id" id="id">
 
                     <div class="text-center" style="text-transform:uppercase">
-                        {{-- <i class="voyager-check" style="color: green; font-size: 5em;"></i> --}}
-                        <i class="fa-regular fa-envelope" style="color: rgb(51, 161, 75); font-size: 4em;"></i>
+                        <i class="fa-regular fa-envelope" style="color: #575757; font-size: 4em;"></i>
                         <br>
                         <p><b>Aceptar Solicitud....!</b></p>
                     </div>
@@ -123,19 +122,18 @@
     </div>
 
     <div class="modal modal-danger fade" tabindex="-1" id="modal_rechazar" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 {!! Form::open(['route' => 'message-people.rechazar', 'method' => 'POST']) !!}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="fa-regular fa-envelope"></i>  Rechazar</h4>
+                    <h4 class="modal-title"><i class="fa-regular fa-envelope"></i>  Solicitud</h4>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">
 
                     <div class="text-center" style="text-transform:uppercase">
-                        {{-- <i class="voyager-check" style="color: green; font-size: 5em;"></i> --}}
-                        <i class="fa-solid fa-message" style="font-size: 4em;"></i>
+                        <i class="fa-regular fa-envelope" style="font-size: 4em;"></i>
                         <br>
                         <p><b>Rechazar Solicitud....!</b></p>
                     </div>

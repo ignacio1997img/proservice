@@ -86,14 +86,20 @@ class SearchWorkController extends Controller
         $image_book = '';
 
 
+        $exp_camaraSeguridad = '';
+        $exp_controlAcceso = '';
+        $exp_cercoElectrico = '';
+        $exp_sistemaAlarma = '';
+
+
 
         $query_filtro = 1;
 
         //para  guardia filtro 
         if($request->rubro_id == 1)
         {
-            $image_ap = $request->image_ap ? 'pr.image_ap != null': '1=1';
-            $image_lsm = $request->image_lsm? 'pr.image_lsm != null' : '1=1';
+            $image_ap = $request->image_ap ? 'pr.image_ap is not null': '1=1';
+            $image_lsm = $request->image_lsm? 'pr.image_lsm is not null' : '1=1';
             $t_dia = $request->t_dia? 'pr.t_dia = 1' : '1=1';
             $t_noche = $request->t_noche? 'pr.t_noche = 1' : '1=1';
             $i_peso = $request->inicio_peso? 'pr.peso >= '.$request->inicio_peso : '1=1';
@@ -107,7 +113,7 @@ class SearchWorkController extends Controller
         //para jardinero
         if($request->rubro_id == 2)
         {
-            $image_ap = $request->image_ap ? 'pr.image_ap != null':'1=1';
+            $image_ap = $request->image_ap ? 'pr.image_ap is not null':'1=1';
             $exp_jardineria = $request->exp_jardineria? 'pr.exp_jardineria = 1':'1=1';
             $exp_paisajismo = $request->exp_paisajismo? 'pr.exp_paisajismo = 1':'1=1';
 
@@ -117,7 +123,7 @@ class SearchWorkController extends Controller
         //para piscinero
         if($request->rubro_id == 3)
         {
-            $image_ap = $request->image_ap ? 'pr.image_ap != null': '1=1';
+            $image_ap = $request->image_ap ? 'pr.image_ap is not null': '1=1';
             $exp_mant_piscina = $request->exp_mant_piscina? 'pr.exp_mant_piscina = 1': '1=1';
             $medir_ph = $request->medir_ph? 'pr.medir_ph = 1': '1=1';
             $asp_piscina = $request->asp_piscina? 'pr.asp_piscina = 1': '1=1';
@@ -129,7 +135,7 @@ class SearchWorkController extends Controller
         //para modelos
         if($request->rubro_id == 4)
         {
-            $image_book = $request->image_book ? 'pr.image_book != null': '1=1';
+            $image_book = $request->image_book ? 'pr.image_book is not null': '1=1';
             $i_peso = $request->inicio_peso? 'pr.peso >= '.$request->inicio_peso : '1=1';
             $f_peso = $request->fin_peso? 'pr.peso <= '.$request->fin_peso : '1=1';
             $i_estatura = $request->inicio_estatura? 'pr.estatura >= '.$request->inicio_estatura : '1=1';
@@ -138,18 +144,29 @@ class SearchWorkController extends Controller
             $query_filtro = $image_book.' and '.$i_peso.' and '.$f_peso.' and '.$i_estatura.' and '.$f_estatura;
         }
 
+        if($request->rubro_id == 5)
+        {
+            $image_ap = $request->image_ap ? 'pr.image_ap is not null': '1=1';
+            $exp_camaraSeguridad = $request->exp_camaraSeguridad? 'pr.exp_camaraSeguridad = 1':'1=1';
+            $exp_controlAcceso = $request->exp_controlAcceso? 'pr.exp_controlAcceso = 1':'1=1';
+            $exp_cercoElectrico = $request->exp_cercoElectrico? 'pr.exp_cercoElectrico = 1':'1=1';
+            $exp_sistemaAlarma = $request->exp_sistemaAlarma? 'pr.exp_sistemaAlarma = 1':'1=1';
+
+            $query_filtro = ' '.$image_ap.' and '.$exp_camaraSeguridad.' and '.$exp_controlAcceso.' and '.$exp_sistemaAlarma.' and '.$exp_cercoElectrico;
+        }
+
+        // dd($exp_camaraSeguridad);
         $data = DB::table('people as p')
                 ->join('people_experiences as pe', 'pe.people_id', 'p.id')
                 ->leftJoin('people_requirements as pr', 'pr.people_experience_id', 'pe.id')
                 ->whereRaw($query_filtro)
                 ->where('pe.rubro_id', $request->rubro_id)
                 ->where('pe.status', $request->verified)
-                ->select('p.id', 'p.first_name', 'p.last_name', DB::raw("(pe.star / pe.cant) as star"), 'pe.id as people_experience_id')
+                ->select('pr.image_ap','p.id', 'p.first_name', 'p.last_name', DB::raw("(pe.star / pe.cant) as star"), 'pe.id as people_experience_id')
                 // ->groupBy('p.id', 'p.first_name', 'p.last_name')
                 ->orderBy('star', 'desc')
                 ->get();
         // dd($data);
-     
 
         return view('busine.search-workers.search-result', compact('data','rubro_people', 'rubro_busine', 'star'));
     }

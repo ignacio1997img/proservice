@@ -8,14 +8,14 @@
             <div class="col-md-12">
                 <div class="panel panel-bordered">
                     <div class="panel-body" style="padding: 0px">
-                        <div class="col-md-7" style="padding: 0px">
+                        <div class="col-md-6" style="padding: 0px">
                             <h1 id="subtitle" class="page-title">
                                 <i class="fa-solid fa-person-digging"></i> Buscar Trabajadores 
                             </h1>
                         </div>
                         {!! Form::open(['route' => 'search-work.search', 'id' => 'form-search',  'method' => 'POST', 'class' => 'form-search']) !!}
                         
-                        <div class="col-md-5" style="margin-top: 30px">       
+                        <div class="col-md-6" style="margin-top: 30px">       
                             <select name="job" id="job" required class="form-control select2" style="margin-bottom: 10px">
                               <option selected disabled value="">Seleccione una opcion</option>
                               <option value="1">Trabajador</option>
@@ -364,66 +364,40 @@ animation-delay: 0.5s;
           }
           if(id == 5)
           {
-            var html = `<div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="checkbox" class="form-check-input" id="image_nit" name="image_nit">
-                                  <label class="form-check-label" for="image_nit">Nit</label>
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
+            var html =       `<div class="col-sm-6">
                                 <div class="form-group form-check">
                                   <input type="checkbox" class="form-check-input" id="image_ap" name="image_ap">
                                   <label class="form-check-label" for="image_ap">Antecedentes Penales</label>
                                 </div>
                               </div>
-                              <div class="col-sm-12">
+
+                              <div class="col-sm-6">
                                 <div class="form-group form-check">
-                                  <input type="checkbox" class="form-check-input" id="image_lsm" name="image_lsm">
-                                  <label class="form-check-label" for="image_lsm">Libreta de Servio Militar</label>
+                                  <input type="checkbox" class="form-check-input" id="exp_camaraSeguridad" name="exp_camaraSeguridad">
+                                  <label class="form-check-label" for="exp_camaraSeguridad">Experiencia en cámaras de seguridad</label>
                                 </div>
                               </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exp_controlAcceso" name="exp_controlAcceso">
+                                  <label class="form-check-label" for="exp_controlAcceso">Experiencia en control de acceso</label>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exp_cercoElectrico" name="exp_cercoElectrico">
+                                  <label class="form-check-label" for="exp_cercoElectrico">Experiencia en cerco electrico</label>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="exp_sistemaAlarma" name="exp_sistemaAlarma">
+                                  <label class="form-check-label" for="exp_sistemaAlarma">Experiencia en sistemas de alarma</label>
+                                </div>
+                              </div>`
                               
-                              <label>Peso</label>
-                              <br>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="inicio_peso">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="fin_peso">
-                                </div>
-                              </div>
-                              <label>Estatura</label>
-                              <br>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="inicio_estatura">
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-group form-check">
-                                  <input type="number" class="form-check-input" step="0.01" name="fin_estatura">
-                                </div>
-                              </div>
                               
-                              <div class="col-sm-6" style="text-align: center">
-                                <label>Turnos</label>
-                                <br>
-                                <div class="col-sm-6">
-                                  <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="t_dia" name="t_dia">
-                                    <label class="form-check-label" for="t_dia">Día</label>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6">
-                                  <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="t_noche" name="t_noche">
-                                    <label class="form-check-label" for="t_noche">Noche</label>
-                                  </div>
-                                </div>
-                              </div> `
+                             
             $('#parametro').html(html);
           }
         }
