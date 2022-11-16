@@ -84,6 +84,8 @@ class BusineController extends Controller
                 'city_id' => $request->city_id
 
             ]);
+            // return $busine->id;
+            BusineRequirement::create(['busine_id'=> $busine->id]);
             // return $request;
             DB::commit();
 
@@ -624,6 +626,50 @@ class BusineController extends Controller
         }
     }
 
+
+
+    public function requirementSeguritySystemStore(Request $request)
+    {
+        $imageObj = new FileController;        
+        DB::beginTransaction();
+        try {
+            $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
+            $ok->update(['type' => 'sistemaSeguridad']);
+            $busine_id = $request->busine_id;
+            
+            $file = $request->file('image_nit');
+            if($file)
+            {       
+                $image_nit = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/nit");
+                $ok->update(['image_nit' => $image_nit]);
+            }
+            
+            $file = $request->file('image_lf');
+            if($file)
+            {       
+                $image_lf = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/licencia_funcionamiento");
+                $ok->update(['image_lf' => $image_lf]);
+            }
+
+            $file = $request->file('image_roe');
+            if($file)
+            {       
+                $image_roe = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/roe");
+                $ok->update(['image_roe' => $image_roe]);
+            }
+            $file = $request->file('image_pd');
+            if($file)
+            {       
+                $image_pd = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/antecedentePenales");
+                $ok->update(['image_pd' => $image_pd]);
+            }       
+            DB::commit();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
+        }
+    }
 
 
 

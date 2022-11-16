@@ -166,6 +166,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('busine/perfil/requirement-guardia-store' , [BusineController::class, 'requirementGuardiaStore'])->name('busine.perfil.requirement-guardia-store');
     Route::post('busine/perfil/requirement-piscina-store' , [BusineController::class, 'requirementPiscinaStore'])->name('busine.perfil.requirement-piscina-store');
     Route::post('busine/perfil/requirement-modelo-store' , [BusineController::class, 'requirementModeloStore'])->name('busine.perfil.requirement-modelo-store');
+    Route::post('busine/perfil/requirement-seguritySystem-store' , [BusineController::class, 'requirementSeguritySystemStore'])->name('busine.perfil.requirement-seguritySystem-store');
 
 
     // buscar trabajadores de empresas 

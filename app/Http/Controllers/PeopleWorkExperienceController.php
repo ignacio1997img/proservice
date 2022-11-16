@@ -1002,6 +1002,7 @@ class PeopleWorkExperienceController extends Controller
 
             $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
             $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
+            $ok->update(['type'=>'sistemaSeguridad']);
 
             $file = $request->file('image_ci');
             if($file)

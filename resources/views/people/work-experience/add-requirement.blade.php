@@ -31,7 +31,7 @@
         @include('people.work-experience.include.modelos')
     @endif
     @if ($rubro_id == 5)
-        @include('people.work-experience.include.5-securitySystem')
+        @include('people.work-experience.include.5t-sistemaSeguridad')
     @endif
     
 @stop

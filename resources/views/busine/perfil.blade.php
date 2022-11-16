@@ -27,9 +27,9 @@
                     <div class="col-md-12">
                         <div class="panel panel-bordered">
                             <div class="panel-body">                            
-                                <div class="table-responsive">
+                                {{-- <div class="table-responsive">
                                     <main class="main">   
-                                        <div class="card-body">
+                                        <div class="card-body"> --}}
                                             @if($busine->status == 2)
                                                 <div class="alert alert-warning" style="padding: 5px 10px;" >
                                                     <div class="row">
@@ -167,60 +167,20 @@
                                                 @include('busine.perfil-requirement.modelo')
                                             @endif
 
+                                            @if ($busine->rubro_id == 5)
+                                                @include('busine.perfil-requirement.5e-sistemaSeguridad')
+                                            @endif
 
 
 
 
 
+
+                                           
                                             
-                                            {{-- <table id="detalles" class="table table-bordered table-striped table-sm">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Tipo</th>
-                                                        <th>Estado</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Licencia de funcionamiento</td>
-                                                        <td>
-                                                            @if ($businerequirements)
-                                                                @if ($businerequirements->image_ci)
-                                                                    <span class="badge badge-success">Si cargado</span>
-                                                                    <a href="{{url('storage/'.$businerequirements->image_ci)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                        <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
-                                                                    </a>
-                                                                @else
-                                                                    <span class="badge badge-danger">No cargado</span>
-                                                                @endif
-                                                            @else
-                                                                <span class="badge badge-danger">No cargado</span>
-                                                            @endif
-                                                        </td>            
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Roe</td>
-                                                        <td>
-                                                            @if ($businerequirements)
-                                                                @if ($businerequirements->image_ap)
-                                                                    <span class="badge badge-success">Si cargado</span>
-                                                                    <a href="{{url('storage/'.$businerequirements->image_ap)}}" title="Ver" target="_blank" class="btn btn-sm btn-success">
-                                                                        <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver</span>
-                                                                    </a>
-                                                                @else
-                                                                    <span class="badge badge-danger">No cargado</span>
-                                                                @endif
-                                                            @else
-                                                                <span class="badge badge-danger">No cargado</span>
-                                                            @endif
-                                                        </td>          
-                                                    </tr>
-                                                </tbody>                                        
-                                            </table> --}}
-                                            
-                                        </div>                      
+                                        {{-- </div>                      
                                     </main>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -371,10 +331,82 @@
 
 
     @section('css')
-    <script src="{{ asset('js/app.js') }}" defer></script>      
+    <script src="{{ asset('js/app.js') }}" defer></script> 
+    <style>
+        img.zoom {
+            /* width: 350px;
+            height: 200px; */
+            width: 350px;
+            height: 200px;
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            -ms-transition: all .2s ease-in-out;
+        }
+        
+        .transition {
+            -webkit-transform: scale(5.0); 
+            -moz-transform: scale(5.0);
+            -o-transform: scale(5.0);
+            transform: scale(5.0);
+        }
+    </style>     
     @stop
 
     @section('javascript')
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('.zoom').hover(function() {
+                    $(this).addClass('transition');
+                }, function() {
+                    $(this).removeClass('transition');
+                });
+            });
+        </script>
+        <script>
+            $(document).on('change','.imageLength',function(){
+                var fileName = this.files[0].name;
+                var fileSize = this.files[0].size;
+
+                if(fileSize > 10000000){
+                    // swal({
+                    //     title: "Error",
+                    //     text: "El archivo no debe superar los 10 MB",
+                    //     type: "error",
+                    //     showCancelButton: false
+                    // });
+                    alert('El archivo no debe superar los 10 MB')
+                    this.value = '';
+                    this.files[0].name = '';
+                }
+                
+                    // recuperamos la extensión del archivo
+                    var ext = fileName.split('.').pop();
+                    
+                    // Convertimos en minúscula porque 
+                    // la extensión del archivo puede estar en mayúscula
+                    ext = ext.toLowerCase();
+                    // console.log(ext);
+                    switch (ext) {
+                        case 'jpg':
+                        case 'jpeg':
+                        case 'png': break;
+                        default:
+                            // swal({
+                            //     title: "Error",
+                            //     text: "El archivo no tiene la extensión adecuada",
+                            //     type: "error",
+                            //     showCancelButton: false
+                            // });
+                            alert('El archivo no tiene la extensión adecuada')
+                            this.value = ''; // reset del valor
+                            this.files[0].name = '';
+                    }
+            });
+        </script>
     
         <script>
 

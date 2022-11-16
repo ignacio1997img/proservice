@@ -11,6 +11,7 @@ class BusineRequirement extends Model
 
     protected $fillable = [
         'type',
+        'image_nit',
         'busine_id',
         'image_lf',
         'image_roe',

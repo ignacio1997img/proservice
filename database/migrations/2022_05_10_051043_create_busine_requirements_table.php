@@ -17,6 +17,7 @@ class CreateBusineRequirementsTable extends Migration
             $table->id();
             $table->foreignId('busine_id')->nullable()->constrained('busines');
             $table->string('type')->nullable();
+            $table->string('image_nit')->nullable(); 
             $table->string('image_lf')->nullable(); //licencia de funcionamiento
             $table->string('image_roe')->nullable();
 

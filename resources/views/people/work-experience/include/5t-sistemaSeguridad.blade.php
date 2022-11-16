@@ -3,6 +3,7 @@
         <div class="col-md-12">
             <div class="panel panel-bordered">
                 <div class="panel-body">
+                    @if(!auth()->user()->hasRole('admin'))   
                     <form id="agent" action="{{route('work-experience.requirement-seguritySystem-store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
@@ -63,6 +64,8 @@
                         </div>
                     </div>
                     </form>  
+                    @endif    
+
 
                     <div class="row"  style="min-height: 120px">
                         <div class="col-md-12">
