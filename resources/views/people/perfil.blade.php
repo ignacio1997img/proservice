@@ -178,9 +178,9 @@
         
                                                                 @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
                                                                    
-                                                                        <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openPasante({{$pasantia->id}})">
-                                                                            <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
-                                                                        </a>
+                                                                    <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openPasante({{$pasantia->id}})">
+                                                                        <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
+                                                                    </a>
                                                            
                                                                     <a href="{{route('pasantes.edit', ['pasante'=>$pasantia->id])}}" title="Editar" class="btn btn-sm btn-warning">
                                                                         <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>

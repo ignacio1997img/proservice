@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('main')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <style>
     .div-img {
         width: 600px;
@@ -160,6 +161,7 @@
                         <div class="sent-message">Your message has been sent. Thank you!</div>
                     </div> --}}
                     <br>
+                    <div class="g-recaptcha" data-sitekey="6LcAThQjAAAAACx7cPNlKT4VS-1l2f5pxdgwvFcG"></div>
                     <div style="text-align: right" >
                         {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
                         <button type="submit" class="btn" style="background-color: #ff9d00;">Registrarse</button>
