@@ -16,14 +16,6 @@
                             Volver
                         </a>
                     @endif
-
-
-                    {{-- @if(auth()->user()->hasPermission('browse_people-perfil-experience'))
-                        <a href="{{route('people-perfil-experience.index')}}" class="btn btn-warning">
-                        <i class="fa-solid fa-circle-left"></i>
-                            Volver
-                        </a>
-                    @endif --}}
                 </h1>
             </div>
         </div>
@@ -38,9 +30,8 @@
                 <div class="col-md-12">
                     <div class="panel panel-bordered">
                         <div class="panel-body">                            
-                            <div class="table-responsive">
-                               
-                                    <div class="card-body">
+                            {{-- <div class="table-responsive">                                --}}
+                                    {{-- <div class="card-body"> --}}
                                         @if(auth()->user()->hasPermission('edit_people-perfil-data') && !auth()->user()->hasRole('admin'))
                                             <a type="button" data-toggle="modal" data-target="#modal_edit" class="btn btn-success">
                                                 <i class="voyager-plus"></i> <span>Editar Datos</span>
@@ -278,10 +269,10 @@
                                                 @endforeach                                        
                                             </tbody>
                                         </table>
-                                    </div>                      
+                                    {{-- </div>                       --}}
             
                                 
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
