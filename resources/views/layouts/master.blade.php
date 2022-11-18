@@ -168,7 +168,7 @@
 <script type="text/javascript">
     $(function()
     {
-
+      // alert(1);
       // $('.select2').select2()
       
       $('.select2bs4').select2({

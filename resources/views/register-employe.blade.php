@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-lg-6 mt-4 mt-lg-0">
-                {!! Form::open(['route' => 'people.store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+                {!! Form::open(['route' => 'people.store','class' => 'was-validated', 'onsubmit'=>'miFuncion()', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                 <input type="hidden" name="type" value="trabajador">
 
                     {{-- @if ($errors->any())
@@ -155,18 +155,11 @@
                         </div>
                     </div>
                     
-                    {{-- <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
-                    </div> --}}
                     <br>
-                    <div class="g-recaptcha" data-sitekey="6LcAThQjAAAAACx7cPNlKT4VS-1l2f5pxdgwvFcG"></div>
-                    <div style="text-align: right" >
-                        {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
-                        <button type="submit" class="btn" style="background-color: #ff9d00;">Registrarse</button>
-                        {{-- <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a> --}}
+                    <div id="g-recaptcha"></div>
 
+                    <div style="text-align: right" >
+                        <button type="submit" class="btn" id="btn-sumit" disabled style="background-color: #ff9d00;">Registrarse</button>
                     </div>
                 {!! Form::close()!!} 
             </div>
@@ -177,8 +170,38 @@
     </section><!-- End Contact Section -->
 
     </main>
+    
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 
-    <script>
+        <script type="text/javascript">
+            var onloadCallback = function() {
+                grecaptcha.render('g-recaptcha', {
+                    'sitekey' : '6LcAThQjAAAAACx7cPNlKT4VS-1l2f5pxdgwvFcG',
+                    'callback' : function(response){
+                        if (response.length == 0) {
+
+                        }
+                        else {
+                            var id = setInterval(            
+                                function () 
+                                {                
+                                    // alert(1);
+                                    $('#btn-sumit').attr('disabled', 'disabled');
+                                    clearInterval(id);
+                                }, 60000 //en medio minuto se recargará solo la campana de notificación..
+                            );
+
+                            $('#btn-sumit').removeAttr('disabled');
+                            $('#alert-captcha').css('display', 'none');
+                        }
+                    }
+                });
+            };
+        </script>
+
+
+    <script>        
         function mostrarContrasena(){
             
             var tipo = document.getElementById("password");

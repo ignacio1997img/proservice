@@ -17,6 +17,7 @@ use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Pasantia;
 use App\Models\Profession;
+use Illuminate\Support\Facades\Http;
 
 class PeopleController extends Controller
 {
@@ -41,7 +42,17 @@ class PeopleController extends Controller
     }
     public function store(Request $request)
     {
-        // return  $request->all();
+        // $ok =Http::get('http://api.trabajostop.com/?number=59163286317&message=hola');ç
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret'=>'6LcAThQjAAAAAJRt1vnUdRfRlTqN9N0hQxEal-AM',
+            'response'=>$request->input('g-recaptcha-response')
+        ])->object();
+
+        if(!$response->success)
+        {
+            return "Error";
+        }
+
         $request->validate(
         [
             'email' => 'required|email|unique:users',
