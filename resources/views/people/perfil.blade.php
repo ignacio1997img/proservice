@@ -174,25 +174,14 @@
                                                         <td style="text-align: center">{{$pasantia->institution}}</td>
                                                         <td style="text-align: center">{{$pasantia->profession->name}}</td>
                                                         <td style="text-align: right">
-                                                            @if (!auth()->user()->hasRole('admin'))
-        
-                                                                @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
-                                                                   
-                                                                    <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openPasante({{$pasantia->id}})">
-                                                                        <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
-                                                                    </a>
-                                                           
-                                                                    <a href="{{route('pasantes.edit', ['pasante'=>$pasantia->id])}}" title="Editar" class="btn btn-sm btn-warning">
-                                                                        <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
-                                                                    </a>
-                                                                @endif
-                                                                {{-- @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
-                                                                    <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$pasantia->id}}" class="btn btn-sm btn-danger">
-                                                                        <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
-                                                                    </a>
-                                                                @endif --}}
+                                                            <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openPasante({{$pasantia->id}})">
+                                                                <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
+                                                            </a>
+                                                            @if (!auth()->user()->hasRole('admin') && auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                                <a href="{{route('pasantes.edit', ['pasante'=>$pasantia->id])}}" title="Editar" class="btn btn-sm btn-warning">
+                                                                    <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                                </a>
                                                             @endif
-
                                                         </td>
                                                     </tr>
                                                 </tbody>
