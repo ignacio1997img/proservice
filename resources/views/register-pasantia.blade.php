@@ -134,11 +134,7 @@
                                   <input type="password" class="form-control" name="password" id="password" id="email" placeholder="******" required>
                                   
                                   <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button" onclick="mostrarContrasena()" id="boton"><span class="fa fa-eye"></span></button>
-                                    {{-- <span class="input-group-addon" style="background:#fff;border:0px;font-size:25px;cursor:pointer;padding:0px;position: relative;bottom:10px" id="btn-verpassword">
-                                        <span class="fa fa-eye"></span>
-                                    </span> --}}
-                                    
+                                    <button class="btn btn-primary" type="button" onclick="mostrarContrasena()" id="boton"><span class="fa fa-eye"></span></button>                                    
                                   </div>
                                 </div>
                             </div>    
@@ -147,24 +143,12 @@
                             @enderror                       
                         </div>
                     </div>
-                    
-
-                    {{-- <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><b>Contacto</b></span>
-                          </div>
-                          <input type="text" class="form-control" name="contacto" id="contacto" style="text-transform:uppercase">
-                          <div class="valid-feedback">¡Campo opcional!</div>
-                        </div>
-                    </div> --}}
 
                     <br>
-                    <div style="text-align: right" >
-                        {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
-                        <button type="submit" class="btn" style="background-color: #ff9d00;">Registrarse</button>
-                        {{-- <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a> --}}
+                    <div id="g-recaptcha"></div>
 
+                    <div style="text-align: right" >
+                        <button type="submit" class="btn" id="btn-sumit" disabled style="background-color: #ff9d00;">Registrarse</button>
                     </div>
                 {!! Form::close()!!} 
             </div>
@@ -176,24 +160,35 @@
 
     </main>
 
-    <script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 
-        // $(document).ready(function(){
-  
-        //     let ver_pass = false;
-        //     $('#btn-verpassword').click(function(){
-        //         // alert(4324)
-        //         if(ver_pass){
-        //             ver_pass = false;
-        //             $(this).html('<span class="fa fa-eye"></span>');
-        //             $('#password').prop('type', 'password');
-        //         }else{
-        //             ver_pass = true;
-        //             $(this).html('<span class="fa fa-eye-slash"></span>');
-        //             $('#password').prop('type', 'text');
-        //         }
-        //     });
-        // });
+        <script type="text/javascript">
+            var onloadCallback = function() {
+                grecaptcha.render('g-recaptcha', {
+                    'sitekey' : '6LcAThQjAAAAACx7cPNlKT4VS-1l2f5pxdgwvFcG',
+                    'callback' : function(response){
+                        if (response.length == 0) {
+
+                        }
+                        else {
+                            var id = setInterval(            
+                                function () 
+                                {                
+                                    // alert(1);
+                                    $('#btn-sumit').attr('disabled', 'disabled');
+                                    clearInterval(id);
+                                }, 60000 //en medio minuto se recargará solo la campana de notificación..
+                            );
+
+                            $('#btn-sumit').removeAttr('disabled');
+                            $('#alert-captcha').css('display', 'none');
+                        }
+                    }
+                });
+            };
+        </script>
+    <script>
         function mostrarContrasena(){
             
             var tipo = document.getElementById("password");
