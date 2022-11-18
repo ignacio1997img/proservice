@@ -92,11 +92,11 @@
                         </div>
                     </div>
                     <br>
-                    <div style="text-align: right" >
-                        {{-- <button type="button" class="btn btn-default">Cancelar</button> --}}
-                        <button type="submit" class="btn" style="background-color: #ff9d00;">Registrarse</button>
-                        {{-- <a href="{{url('register-employe')}}" class="btn-get-started scrollto">Busco Trabajo</a> --}}
+                   
+                    <div id="g-recaptcha"></div>
 
+                    <div style="text-align: right" >
+                        <button type="submit" class="btn" id="btn-sumit" disabled style="background-color: #ff9d00;">Registrarse</button>
                     </div>
                 {!! Form::close()!!} 
             </div>
@@ -107,19 +107,48 @@
     </section><!-- End Contact Section -->
 
     </main>
-    <script>
-        function mostrarContrasena(){
-            
-            var tipo = document.getElementById("password");
-                if(tipo.type == "password"){
-                    $('#boton').html('<span class="fa fa-eye-slash"></span>');
-                    $('#password').prop('type', 'text');
-                }
-                else
-                {
-                    $('#boton').html('<span class="fa fa-eye"></span>');
-                    $('#password').prop('type', 'password');
-                }
-        }
-    </script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+        <script src="{{asset('js/jquery.min.js')}}"></script>
+
+        <script type="text/javascript">
+            var onloadCallback = function() {
+                grecaptcha.render('g-recaptcha', {
+                    'sitekey' : '6LcAThQjAAAAACx7cPNlKT4VS-1l2f5pxdgwvFcG',
+                    'callback' : function(response){
+                        if (response.length == 0) {
+
+                        }
+                        else {
+                            var id = setInterval(            
+                                function () 
+                                {                
+                                    // alert(1);
+                                    $('#btn-sumit').attr('disabled', 'disabled');
+                                    clearInterval(id);
+                                }, 60000 //en medio minuto se recargará solo la campana de notificación..
+                            );
+
+                            $('#btn-sumit').removeAttr('disabled');
+                            $('#alert-captcha').css('display', 'none');
+                        }
+                    }
+                });
+            };
+        </script>
+
+        <script>
+            function mostrarContrasena(){
+                
+                var tipo = document.getElementById("password");
+                    if(tipo.type == "password"){
+                        $('#boton').html('<span class="fa fa-eye-slash"></span>');
+                        $('#password').prop('type', 'text');
+                    }
+                    else
+                    {
+                        $('#boton').html('<span class="fa fa-eye"></span>');
+                        $('#password').prop('type', 'password');
+                    }
+            }
+        </script>
 @endsection

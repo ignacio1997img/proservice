@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Beneficiary;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 class BeneficiaryController extends Controller
 {
@@ -26,6 +27,16 @@ class BeneficiaryController extends Controller
     }
     public function store(Request $request)
     {
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret'=>'6LcAThQjAAAAAJRt1vnUdRfRlTqN9N0hQxEal-AM',
+            'response'=>$request->input('g-recaptcha-response')
+        ])->object();
+
+        if(!$response->success)
+        {
+            return "Error";
+        }
+
         $request->validate(
         [
             'email' => 'required|email|unique:users',

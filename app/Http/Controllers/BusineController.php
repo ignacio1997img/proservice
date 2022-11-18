@@ -13,6 +13,7 @@ use App\Models\Busine;
 use App\Models\BusineRequirement;
 use Illuminate\Support\Str;
 use App\Models\RubroBusine;
+use Illuminate\Support\Facades\Http;
 
 use Intervention\Image\ImageManagerStatic as Image;
 use Symfony\Component\HttpFoundation\File\File;
@@ -33,6 +34,15 @@ class BusineController extends Controller
 
     public function store(Request $request)
     {
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret'=>'6LcAThQjAAAAAJRt1vnUdRfRlTqN9N0hQxEal-AM',
+            'response'=>$request->input('g-recaptcha-response')
+        ])->object();
+
+        if(!$response->success)
+        {
+            return "Error";
+        }
         $message =$request->validate(
         [
                 'email' => 'required|email|unique:users',
