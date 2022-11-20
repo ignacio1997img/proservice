@@ -1,69 +1,72 @@
+@if(auth()->user()->hasPermission('add_people-perfil-experience') || auth()->user()->hasRole('admin')) 
 <div class="page-content edit-add container-fluid">    
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-bordered">
                 <div class="panel-body">
-                    @if(!auth()->user()->hasRole('admin'))   
-                    <form id="agent" action="{{route('work-experience.requirement-seguritySystem-store')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
+                    @endif    
 
-                        <input type="hidden" name="people_experience_id" value="{{$id}}">
-                        <input type="hidden" name="rubro_id" value="{{$rubro_id}}">
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <small>Carnet de identidad Anverso *imagen</small>                            
-                            <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ci" class="form-control imageLength">                            
+                    @if(auth()->user()->hasPermission('add_people-perfil-experience') && !auth()->user()->hasRole('admin'))   
+                        <form id="agent" action="{{route('work-experience.requirement-seguritySystem-store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            <input type="hidden" name="people_experience_id" value="{{$id}}">
+                            <input type="hidden" name="rubro_id" value="{{$rubro_id}}">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <small>Carnet de identidad Anverso *imagen</small>                            
+                                <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ci" class="form-control imageLength">                            
+                            </div>
+                            <div class="form-group col-md-3">
+                                <small>Carnet de identidad Reverso *imagen</small>
+                                <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ci2" class="form-control imageLength">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <small>Antecedentes penales *imagen</small>
+                                <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ap" class="form-control imageLength">
+                            </div>
+                            
+                            <div class="form-group col-md-3">
+                                <small>Experiencia en cámaras de seguridad</small>
+                                <select name="exp_camaraSeguridad" class="form-control form-control-sm text">
+                                    <option selected disabled value="">Seleccione</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-md-3">
-                            <small>Carnet de identidad Reverso *imagen</small>
-                            <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ci2" class="form-control imageLength">
+                        <div class="row">                        
+                            <div class="form-group col-md-3">
+                                <small>Experiencia en control de acceso</small>
+                                <select name="exp_controlAcceso" class="form-control form-control-sm text">
+                                    <option selected disabled value="">Seleccione</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <small>Experiencia en cerco electrico</small>
+                                <select name="exp_cercoElectrico" class="form-control form-control-sm text">
+                                    <option selected disabled value="">Seleccione</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <small>Experiencia en sistemas de alarma</small>
+                                <select name="exp_sistemaAlarma" class="form-control form-control-sm text">
+                                    <option selected disabled value="">Seleccione</option>
+                                    <option value="1">SI</option>
+                                    <option value="0">NO</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-md-3">
-                            <small>Antecedentes penales *imagen</small>
-                            <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ap" class="form-control imageLength">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
                         </div>
-                        
-                        <div class="form-group col-md-3">
-                            <small>Experiencia en cámaras de seguridad</small>
-                            <select name="exp_camaraSeguridad" class="form-control form-control-sm text">
-                                <option selected disabled value="">Seleccione</option>
-                                <option value="1">SI</option>
-                                <option value="0">NO</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">                        
-                        <div class="form-group col-md-3">
-                            <small>Experiencia en control de acceso</small>
-                            <select name="exp_controlAcceso" class="form-control form-control-sm text">
-                                <option selected disabled value="">Seleccione</option>
-                                <option value="1">SI</option>
-                                <option value="0">NO</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <small>Experiencia en cerco electrico</small>
-                            <select name="exp_cercoElectrico" class="form-control form-control-sm text">
-                                <option selected disabled value="">Seleccione</option>
-                                <option value="1">SI</option>
-                                <option value="0">NO</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <small>Experiencia en sistemas de alarma</small>
-                            <select name="exp_sistemaAlarma" class="form-control form-control-sm text">
-                                <option selected disabled value="">Seleccione</option>
-                                <option value="1">SI</option>
-                                <option value="0">NO</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-                    </form>  
+                        </form>  
                     @endif    
 
 
@@ -176,9 +179,10 @@
                         </div>                                    
                     </div>
                     
-                  
+                    @if(auth()->user()->hasPermission('add_people-perfil-experience') || auth()->user()->hasRole('admin')) 
                 </div>
             </div>
         </div>
     </div>                        
 </div>
+@endif    

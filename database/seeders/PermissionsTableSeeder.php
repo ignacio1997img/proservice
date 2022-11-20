@@ -71,6 +71,7 @@ class PermissionsTableSeeder extends Seeder
         $keys = [
             'browse_people-perfil-experience',
             'edit_people-perfil-data',
+            'list_people-perfil-experience',            
             'add_people-perfil-experience',
             'edit_people-perfil-requirement',
             'delete_people-perfil-requirement',
@@ -139,7 +140,8 @@ class PermissionsTableSeeder extends Seeder
 
         
         $keys = [
-            'browse_message-busine-bandeja'
+            'browse_message-busine-bandeja',
+            'people-perfil-experience'
         ];
 
         foreach ($keys as $key) {

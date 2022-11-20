@@ -15,6 +15,12 @@ use App\Models\PeopleExperience;
 use App\Models\PeopleRequirement;
 use Illuminate\Support\Str;
 use App\Models\MessageBusine;
+use App\Models\City;
+use App\Models\TypeModel;
+use App\Models\Department;
+use App\Models\Pasantia;
+use App\Models\Profession;
+use App\Models\RubroPeople;
 
 
 class MessageBusineController extends Controller
@@ -189,7 +195,22 @@ class MessageBusineController extends Controller
     //PARA VER LOS PERFILES DE CADA PERSONA QUE SE HAYA ENVIADO UN MENSAJE
     public function people_perfil_view($id, $people_id, $rubro_id, $experience)
     {
-        // return $people_id;
+        $unique_experience = $rubro_id;
+        $people = People::find($people_id);
+        $city = City::with('department')->where('id', $people->city_id)->first();
+        $department= Department::where('status', 1)->get();
+        $cities = City::with('department')->get();
+        $model = TypeModel::all();
+
+        $pasantia = Pasantia::where('people_id', $people->id)->where('deleted_at', null)->first();
+        $profession = Profession::where('status', 1)->get();
+
+        $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
+        $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('deleted_at', null)->where('status', '!=', 0)->get();
+
+        $peoplerequirement = PeopleRequirement::where('people_experience_id', $experience)->where('deleted_at', null)->where('status', 1)->first();
+
+
 
         $message = MessagePeople::find($id);
         if($message->data_view == null){
@@ -199,14 +220,15 @@ class MessageBusineController extends Controller
         }
 
         // return $rubro_id;
-        $people = People::find($people_id);
-        // $experiences = PeopleExperience::with('rubro_people')->where('people_id',$people_id)->where('rubro_id', $rubro_id)->first();
+        // $people = People::find($people_id);
+        // $peoplerequirement = PeopleRequirement::where('people_experience_id', $experience)->first();
 
-        // $experiences = PeopleExperience::find($experience);
-        // return $experiences;
-        $peoplerequirement = PeopleRequirement::where('people_experience_id', $experience)->first();
+        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro', 'pasantia', 'profession',   'unique_experience', 'peoplerequirement'));
+        // return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model', 'pasantia', 'profession'));
+
         // return $requirement;
-        return view('message.message-people.people-perfil.perfil', compact('people', 'peoplerequirement', 'rubro_id'));
+        // return view('message.message-people.people-perfil.perfil', compact('people', 'peoplerequirement', 'rubro_id'));
+        // return view('message.message-people.people-perfil.perfil', compact('people', 'peoplerequirement', 'rubro_id'));
     }
 
 

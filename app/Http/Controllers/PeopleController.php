@@ -206,8 +206,10 @@ class PeopleController extends Controller
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people')->where('people_id',$id)->where('deleted_at', null)->where('status', '!=', 0)->get();
+        $unique_experience=NULL;
+
         // return $experiences;
-        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro', 'pasantia', 'profession'));
+        return view('people.perfil', compact('people','department', 'city', 'cities', 'model', 'experiences', 'rubro', 'pasantia', 'profession', 'unique_experience'));
     }
 
 

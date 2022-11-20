@@ -27,6 +27,7 @@ class PeopleWorkExperienceController extends Controller
 {
     public function index()
     {
+        // return 1;
         $user = Auth::user();
 
         $people = People::where('user_id',$user->id)->first();
@@ -36,18 +37,19 @@ class PeopleWorkExperienceController extends Controller
         $cities = City::where('department_id', $city->department->id)->get();
 
         $profession = Profession::where('status', 1)->get();
-        // return $city;
+
         $pasantia = Pasantia::where('people_id', $people->id)->where('deleted_at', null)->first();
-        // return $pasantia;
 
 
         $model = TypeModel::all();
         
         $rubro = RubroPeople::where('status',1)->where('deleted_at', null)->get();
         $experiences = PeopleExperience::with('rubro_people','type_model')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
+
+        $unique_experience=NULL;
       
         // return $experiences;
-        return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model', 'pasantia', 'profession'));
+        return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model', 'pasantia', 'profession', 'unique_experience'));
     }
 
     public function store(Request $request)

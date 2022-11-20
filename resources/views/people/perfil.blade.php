@@ -1,5 +1,5 @@
 @extends('voyager::master')
-@if(auth()->user()->hasPermission('browse_people-perfil-experience') || auth()->user()->hasRole('admin'))
+@if(auth()->user()->hasPermission('browse_people-perfil-experience') || auth()->user()->hasPermission('people-perfil-experience') || auth()->user()->hasRole('admin'))
 @section('page_title', 'Perfil')
 
 @section('page_header')
@@ -159,112 +159,137 @@
                                                 <i class="voyager-plus"></i> <span>Agregar Pasantia</span>
                                             </a>
                                         @endif
-                                        <hr>
                                         @if ($pasantia && auth()->user()->hasPermission('browse_pasantes'))
-                                            <table id="dataTable" class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="text-align: center">Universidad / Institución Académica / Centro de Enseñanza Superior</th>
-                                                        <th style="text-align: center">Carrera / Área de Formación</th>
-                                                        <th style="text-align: right">Acciones</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="text-align: center">{{$pasantia->institution}}</td>
-                                                        <td style="text-align: center">{{$pasantia->profession->name}}</td>
-                                                        <td style="text-align: right">
-                                                            <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openPasante({{$pasantia->id}})">
-                                                                <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
-                                                            </a>
-                                                            @if (!auth()->user()->hasRole('admin') && auth()->user()->hasPermission('edit_people-perfil-requirement'))
-                                                                <a href="{{route('pasantes.edit', ['pasante'=>$pasantia->id])}}" title="Editar" class="btn btn-sm btn-warning">
-                                                                    <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
-                                                                </a>
-                                                            @endif
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        @endif
-                                        <br>
-
-                                        <hr>
-
-                                        {{-- para personas que buscan trabajos --}}
-                                        {{-- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" --}}
-                                        @if(auth()->user()->hasPermission('add_people-perfil-experience') && !auth()->user()->hasRole('admin'))
-                                            <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
-                                                <i class="voyager-plus"></i> <span>Busco trabajo de</span>
-                                            </a>
-                                        @endif
+                                        <hr>                                        
                                         <div class="row"  style="min-height: 120px">
                                             <div class="col-md-12">
                                                 <div class="table-responsive">
-
                                                     <table id="dataTable" class="table table-hover">
                                                         <thead>
                                                             <tr>
-                                                                <th>Nro&deg;</th>
-                                                                <th >Experiencia Laboral</th>
-                                                                <th style="text-align: center">Estado</th>
+                                                                <th style="text-align: center">Universidad / Institución Académica / Centro de Enseñanza Superior</th>
+                                                                <th style="text-align: center">Carrera / Área de Formación</th>
                                                                 <th style="text-align: right">Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @php
-                                                                $i = 1;
-                                                            @endphp
-                                                            @foreach ($experiences as $item)
-                                                                <tr>
-                                                                    <td>{{$i}}</td>
-                                                                    <td>{{$item->rubro_people->name}} <label class="label label-primary">{{$item->typeModel_id?' - '.$item->type_model->name:''}}</label></td>    
-                                                                    <td style="text-align: center">
-                                                                        @if ($item->status == 1)
-                                                                            <label class="label label-success">Aprobado</label>
-                                                                        @else
-                                                                            <label class="label label-danger">Pendiente</label>
-                                                                        @endif
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="no-sort no-click bread-actions text-right">
-                    
-                    
-                                                                            @if ($item->status == 2 && auth()->user()->hasRole('admin'))
-                                                                                @if($item->rubro_id == 4)
-                                                                                    <a type="button" data-toggle="modal" data-target="#modal_editarModelaje" data-id="{{ $item->id}}"  class="btn btn-primary"><i class="fa-solid fa-edit"></i> <span class="hidden-xs hidden-sm">Editar Categoria Modelaje</span></a>
-                                                                                @endif
-                                                                                <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
-                                                                            @endif
-                    
-                                                                            @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
-                                                                                @if ($item->rubro_id == 4)
-                                                                                    <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$people->id}}, {{ $item->id}})">
-                                                                                        <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
-                                                                                    </a>
-                                                                                @endif
-                                                                                <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
-                                                                                    <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
-                                                                                </a>
-                                                                            @endif
-                                                                            @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
-                                                                                <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$item->id}}" class="btn btn-sm btn-danger">
-                                                                                    <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
-                                                                                </a>
-                                                                            @endif
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                @php
-                                                                    $i++;
-                                                                @endphp
-                                                            @endforeach                                        
+                                                            <tr>
+                                                                <td style="text-align: center">{{$pasantia->institution}}</td>
+                                                                <td style="text-align: center">{{$pasantia->profession->name}}</td>
+                                                                <td style="text-align: right">
+                                                                    <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openPasante({{$pasantia->id}})">
+                                                                        <i class="fa-solid fa-print"></i><span class="hidden-xs hidden-sm"></span>
+                                                                    </a>
+                                                                    @if (!auth()->user()->hasRole('admin') && auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                                        <a href="{{route('pasantes.edit', ['pasante'=>$pasantia->id])}}" title="Editar" class="btn btn-sm btn-warning">
+                                                                            <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                                        </a>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>                                    
-                                        </div>
-                            
+                                        </div>  
+                                        @endif
+                                        <br>                                        
+
+                                        {{-- para personas que buscan trabajos --}}
+                                        {{-- """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" --}}
+                                        @if(auth()->user()->hasPermission('add_people-perfil-experience') && !auth()->user()->hasRole('admin'))
+                                        <hr>
+                                            <a type="button" data-toggle="modal" data-target="#modal-create" class="btn btn-success">
+                                                <i class="voyager-plus"></i> <span>Busco trabajo de</span>
+                                            </a>
+                                        @endif
+                                        @if(auth()->user()->hasPermission('list_people-perfil-experience'))
+                                            <div class="row"  style="min-height: 120px">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+
+                                                        <table id="dataTable" class="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Nro&deg;</th>
+                                                                    <th >Experiencia Laboral</th>
+                                                                    <th style="text-align: center">Estado</th>
+                                                                    <th style="text-align: right">Acciones</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php
+                                                                    $i = 1;
+                                                                @endphp
+                                                                @foreach ($experiences as $item)
+                                                                    <tr>
+                                                                        <td>{{$i}}</td>
+                                                                        <td>{{$item->rubro_people->name}} <label class="label label-primary">{{$item->typeModel_id?' - '.$item->type_model->name:''}}</label></td>    
+                                                                        <td style="text-align: center">
+                                                                            @if ($item->status == 1)
+                                                                                <label class="label label-success">Aprobado</label>
+                                                                            @else
+                                                                                <label class="label label-danger">Pendiente</label>
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="no-sort no-click bread-actions text-right">
+                        
+                        
+                                                                                @if ($item->status == 2 && auth()->user()->hasRole('admin'))
+                                                                                    @if($item->rubro_id == 4)
+                                                                                        <a type="button" data-toggle="modal" data-target="#modal_editarModelaje" data-id="{{ $item->id}}"  class="btn btn-primary"><i class="fa-solid fa-edit"></i> <span class="hidden-xs hidden-sm">Editar Categoria Modelaje</span></a>
+                                                                                    @endif
+                                                                                    <a type="button" data-toggle="modal" data-target="#modal_aprobar" data-id="{{ $item->id}}"  class="btn btn-success"><i class="fa-solid fa-check-to-slot"></i> <span class="hidden-xs hidden-sm">Aprobar</span></a>
+                                                                                @endif
+                        
+                                                                                @if(auth()->user()->hasPermission('edit_people-perfil-requirement'))
+                                                                                    @if ($item->rubro_id == 4)
+                                                                                        <a title="Ficha Técnica" class="btn btn-sm btn-primary" onclick="openWindows({{$people->id}}, {{ $item->id}})">
+                                                                                            <i class="fa-solid fa-file"></i><span class="hidden-xs hidden-sm"> Ficha Técnica</span>
+                                                                                        </a>
+                                                                                    @endif
+                                                                                    <a href="{{route('work-experience.requirement-create', ['id'=>$item->id, 'rubro_id'=>$item->rubro_id])}}" title="Editar" class="btn btn-sm btn-warning">
+                                                                                        <i class="voyager-receipt"></i> <span class="hidden-xs hidden-sm">Requisitos</span>
+                                                                                    </a>
+                                                                                @endif
+                                                                                @if(auth()->user()->hasPermission('delete_people-perfil-requirement'))
+                                                                                    <a title="Eliminar Rubro" data-toggle="modal" data-target="#modal_delete" data-id="{{$item->id}}" class="btn btn-sm btn-danger">
+                                                                                        <i class="voyager-trash"></i> <span class="hidden-xs hidden-sm">Eliminar</span>
+                                                                                    </a>
+                                                                                @endif
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    @php
+                                                                        $i++;
+                                                                    @endphp
+                                                                @endforeach                                        
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>                                    
+                                            </div> 
+                                        @endif
+
+                                        @if ($unique_experience)
+                                            @if ($unique_experience == 1)
+                                                @include('people.work-experience.include.guardia')
+                                            @endif
+                                            @if ($unique_experience == 2)
+                                                @include('people.work-experience.include.jardinero')
+                                            @endif
+                                            @if ($unique_experience == 3)
+                                                @include('people.work-experience.include.piscinero')
+                                            @endif
+                                            @if ($unique_experience == 4)
+                                                @include('people.work-experience.include.modelos')
+                                            @endif
+                                            @if ($unique_experience == 5)
+                                                @include('people.work-experience.include.5t-sistemaSeguridad')
+                                            @endif
+                                        @endif
+
                         </div>
                     </div>
                 </div>
@@ -272,6 +297,7 @@
         </div>
     </div>   
 
+    @if (auth()->user()->hasRole('admin'))
     <div class="modal modal-primary fade" tabindex="-1" id="modal_editarModelaje" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -304,7 +330,9 @@
             </div>
         </div>
     </div>
+    @endif
 
+    @if (auth()->user()->hasRole('admin'))
     {{-- modal para aprobar los rubros de cada persona --}}
     <div class="modal modal-primary fade" tabindex="-1" id="modal_aprobar" role="dialog">
         <div class="modal-dialog">
@@ -331,6 +359,7 @@
             </div>
         </div>
     </div>
+    @endif
 
 {{-- para editar los datos basico de una persona mediante un perfil --}}
 {{-- modal para editar los datos de la empresa --}}
@@ -664,6 +693,25 @@
         color: #000000;
         border-color: rgb(63, 63, 63);
     }
+
+    /* para efecto de imagen */
+    img.zoom {
+            /* width: 350px;
+            height: 200px; */
+            width: 350px;
+            height: 200px;
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            -ms-transition: all .2s ease-in-out;
+    }
+        
+    .transition {
+            -webkit-transform: scale(5.0); 
+            -moz-transform: scale(5.0);
+            -o-transform: scale(5.0);
+            transform: scale(5.0);
+    }
 </style>
 @stop
 
@@ -767,6 +815,19 @@
             window.open("{{ route('pasantes.print')}}/"+id, 'print pasantes', `width=500, height=800`);
         }
 
+    </script>
+
+
+
+    {{-- para efecto de imagen  --}}
+    <script>
+        $(document).ready(function(){
+            $('.zoom').hover(function() {
+                $(this).addClass('transition');
+            }, function() {
+                $(this).removeClass('transition');
+            });
+        });
     </script>
 @stop
 @else
