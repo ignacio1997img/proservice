@@ -18,10 +18,10 @@
         @include('people.work-experience.include.1t-guardiaSeguridad')
     @endif
     @if ($rubro_id == 2)
-        @include('people.work-experience.include.jardinero')
+        @include('people.work-experience.include.2t-jardinero')
     @endif
     @if ($rubro_id == 3)
-        @include('people.work-experience.include.piscinero')
+        @include('people.work-experience.include.3t-piscinero')
     @endif
     @if ($rubro_id == 4)
         @include('people.work-experience.include.modelos')
