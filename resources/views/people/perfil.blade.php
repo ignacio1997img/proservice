@@ -272,14 +272,15 @@
                                         @endif
 
                                         @if ($unique_experience)
+
                                             @if ($unique_experience == 1)
-                                                @include('people.work-experience.include.guardia')
+                                                @include('people.work-experience.include.1t-guardiaSeguridad')
                                             @endif
                                             @if ($unique_experience == 2)
-                                                @include('people.work-experience.include.jardinero')
+                                                @include('people.work-experience.include.2t-jardinero')
                                             @endif
                                             @if ($unique_experience == 3)
-                                                @include('people.work-experience.include.piscinero')
+                                                @include('people.work-experience.include.3t-piscinero')
                                             @endif
                                             @if ($unique_experience == 4)
                                                 @include('people.work-experience.include.modelos')
