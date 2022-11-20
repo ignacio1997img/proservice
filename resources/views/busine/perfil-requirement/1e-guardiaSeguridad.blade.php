@@ -71,7 +71,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="voyager-plus"></i> Requisito de la Empresa</h4>
             </div>
-            {!! Form::open(['route' => 'busine.perfil.requirement-seguritySystem-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+            {!! Form::open(['route' => 'busine.perfil.requirement-guardia-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                 <!-- Modal body -->
                 <div class="modal-body">
                     <input type="hidden" name="busine_id" value="{{$busine->id}}">

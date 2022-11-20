@@ -154,7 +154,7 @@
                                             
                                             {{-- para desplegar los requisitos de GUARDIA --}}
                                             @if ($busine->rubro_id == 1)
-                                                @include('busine.perfil-requirement.guardia')
+                                                @include('busine.perfil-requirement.1e-guardiaSeguridad')
                                             @endif
                                             @if ($busine->rubro_id == 2)
                                                 @include('busine.perfil-requirement.jardineria')
@@ -317,16 +317,6 @@
         </div>
     @stop
 
-    {{-- <style>
-        img {
-            max-width: 10%;
-            max-height: 10%;
-        }
-        .cat {
-            height: 100px;
-            width: 20px;
-        }
-    </style> --}}
 
 
     @section('css')
@@ -354,7 +344,7 @@
 
     @section('javascript')
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script> --}}
 
         <script>
             $(document).ready(function(){
@@ -366,18 +356,18 @@
             });
         </script>
         <script>
+            // Swal.fire({ target: document.getElementById('modal_requirement')
             $(document).on('change','.imageLength',function(){
                 var fileName = this.files[0].name;
                 var fileSize = this.files[0].size;
 
                 if(fileSize > 10000000){
-                    // swal({
-                    //     title: "Error",
-                    //     text: "El archivo no debe superar los 10 MB",
-                    //     type: "error",
-                    //     showCancelButton: false
-                    // });
-                    alert('El archivo no debe superar los 10 MB')
+                    Swal.fire({
+                        target: document.getElementById('modal_requirement'),
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'El archivo no debe superar los 10 MB!'
+                    })
                     this.value = '';
                     this.files[0].name = '';
                 }
@@ -392,15 +382,15 @@
                     switch (ext) {
                         case 'jpg':
                         case 'jpeg':
-                        case 'png': break;
+                        case 'png': 
+                        case 'pdf': break;
                         default:
-                            // swal({
-                            //     title: "Error",
-                            //     text: "El archivo no tiene la extensión adecuada",
-                            //     type: "error",
-                            //     showCancelButton: false
-                            // });
-                            alert('El archivo no tiene la extensión adecuada')
+                            Swal.fire({
+                                target: document.getElementById('modal_requirement'),
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'El archivo no tiene la extensión adecuada!'
+                            })
                             this.value = ''; // reset del valor
                             this.files[0].name = '';
                     }
