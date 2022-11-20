@@ -1,7 +1,6 @@
 @extends('voyager::master')
 @if(auth()->user()->hasPermission('browse_people-perfil-experience') || auth()->user()->hasPermission('people-perfil-experience') || auth()->user()->hasRole('admin'))
 @section('page_title', 'Perfil')
-
 @section('page_header')
     <div class="container-fluid">
         <div class="row">
@@ -717,10 +716,9 @@
 
 @section('javascript')
     <script src="{{ url('js/main.js') }}"></script>
+
     <script>
         $(document).ready(function() {
-            
-
                 $('#rubro_id').on('change', tipo_modelo);
                 $('#department_id').on('change', selectCity);
 

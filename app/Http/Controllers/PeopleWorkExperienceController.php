@@ -1009,20 +1009,42 @@ class PeopleWorkExperienceController extends Controller
             $file = $request->file('image_ci');
             if($file)
             {       
-                $ci = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $ci = $imageObj->file($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                }
+                else
+                {
+                    $ci = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                }  
                 $ok->update(['image_ci' => $ci]);
             }
 
             $file = $request->file('image_ci2');
             if($file)
             {       
-                $image_ci2 = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_ci2 = $imageObj->file($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                }
+                else
+                {
+                    $image_ci2 = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                } 
+                
                 $ok->update(['image_ci2' => $image_ci2]);
             }
             $file = $request->file('image_ap');
             if($file)
             {       
-                $image_ap = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/antecedentePenales");
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_ap = $imageObj->file($file, $people->people_id, "trabajadores/sistemaSeguridad/antecedentePenales");
+                }
+                else
+                {
+                    $image_ap = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/antecedentePenales");
+                } 
                 $ok->update(['image_ap' => $image_ap]);
             }
 

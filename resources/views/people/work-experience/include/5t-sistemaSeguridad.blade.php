@@ -15,15 +15,15 @@
                         <div class="row">
                             <div class="form-group col-md-3">
                                 <small>Carnet de identidad Anverso *imagen</small>                            
-                                <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ci" class="form-control imageLength">                            
+                                <input type="file" accept="image/jpeg,image/jpg,image/png,application/pdf" name="image_ci" class="form-control imageLength">                            
                             </div>
                             <div class="form-group col-md-3">
                                 <small>Carnet de identidad Reverso *imagen</small>
-                                <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ci2" class="form-control imageLength">
+                                <input type="file" accept="image/jpeg,image/jpg,image/png,application/pdf" name="image_ci2" class="form-control imageLength">
                             </div>
                             <div class="form-group col-md-3">
                                 <small>Antecedentes penales *imagen</small>
-                                <input type="file" accept="image/jpeg,image/jpg,image/png" name="image_ap" class="form-control imageLength">
+                                <input type="file" accept="image/jpeg,image/jpg,image/png,application/pdf" name="image_ap" class="form-control imageLength">
                             </div>
                             
                             <div class="form-group col-md-3">
@@ -88,7 +88,7 @@
                                                     <label class="label label-danger">Sin datos</label>
                                                 @else                                                                
                                                     <a href="{{asset('storage/'.$peoplerequirement->image_ci)}}" title="Ver" target="_blank">
-                                                        <img src="{{asset('storage/'.$peoplerequirement->image_ci)}}" href="{{asset('storage/'.$peoplerequirement->image_ci)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
+                                                        <img @if(strpos($peoplerequirement->image_ci, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$peoplerequirement->image_ci)}}" @endif  href="{{asset('storage/'.$peoplerequirement->image_ci)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
                                                     </a> 
                                                 @endif
                                             </td>
@@ -100,7 +100,7 @@
                                                     <label class="label label-danger">Sin datos</label>
                                                 @else
                                                     <a href="{{asset('storage/'.$peoplerequirement->image_ci2)}}" title="Ver" target="_blank">
-                                                        <img src="{{asset('storage/'.$peoplerequirement->image_ci2)}}" href="{{asset('storage/'.$peoplerequirement->image_ci2)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
+                                                        <img @if(strpos($peoplerequirement->image_ci2, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$peoplerequirement->image_ci2)}}" @endif href="{{asset('storage/'.$peoplerequirement->image_ci2)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
                                                     </a> 
                                                 @endif
                                             </td>
@@ -112,7 +112,7 @@
                                                     <label class="label label-danger">Sin datos</label>
                                                 @else
                                                     <a href="{{asset('storage/'.$peoplerequirement->image_ap)}}" title="Ver" target="_blank">
-                                                        <img src="{{asset('storage/'.$peoplerequirement->image_ap)}}" href="{{asset('storage/'.$peoplerequirement->image_ap)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
+                                                        <img @if(strpos($peoplerequirement->image_ap, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$peoplerequirement->image_ap)}}" @endif href="{{asset('storage/'.$peoplerequirement->image_ap)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
                                                     </a>                                                                
                                                 @endif                                                            
                                             </td>

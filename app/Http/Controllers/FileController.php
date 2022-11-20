@@ -82,6 +82,15 @@ class FileController extends Controller
 
     public function file($file, $id, $type)
     {
-        
+        $newFileName = $id.'@'.Str::random(20).time().'.'.$file->getClientOriginalExtension();
+                            
+        $dir = $type.'/'.date('F').date('Y');
+                            
+        Storage::makeDirectory($dir);
+
+        Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
+                    $file = $dir.'/'.$newFileName;
+                    // $ok->update(['video' => $video]);
+        return $file;
     }
 }

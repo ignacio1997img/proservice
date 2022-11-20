@@ -10,10 +10,6 @@
           <i class="fa-solid fa-circle-left"></i>
             Volver
         </a>
-        {{-- <a href="{{ URL::previous() }}" class="btn btn-warning">
-            <i class="fa-solid fa-circle-left"></i>
-              Volver
-        </a> --}}
     </h1>
 @stop
 
@@ -76,7 +72,6 @@
 
 @section('javascript')
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.8.0/sweetalert2.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.zoom').hover(function() {
@@ -93,12 +88,11 @@
                 var fileSize = this.files[0].size;
 
                 if(fileSize > 10000000){
-                    swal({
-                        title: "Error",
-                        text: "El archivo no debe superar los 10 MB",
-                        type: "error",
-                        showCancelButton: false
-                    });
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'El archivo no debe superar los 10 MB!'
+                    })
                     this.value = '';
                     this.files[0].name = '';
                 }
@@ -113,14 +107,14 @@
                     switch (ext) {
                         case 'jpg':
                         case 'jpeg':
-                        case 'png': break;
+                        case 'png': 
+                        case 'pdf': break;
                         default:
-                            swal({
-                                title: "Error",
-                                text: "El archivo no tiene la extensión adecuada",
-                                type: "error",
-                                showCancelButton: false
-                            });
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'El archivo no tiene la extensión adecuada!'
+                            })
                             this.value = ''; // reset del valor
                             this.files[0].name = '';
                     }
