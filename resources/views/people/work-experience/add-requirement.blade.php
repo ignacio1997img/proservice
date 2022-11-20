@@ -15,7 +15,7 @@
 
 @section('content')
     @if ($rubro_id == 1)
-        @include('people.work-experience.include.guardia')
+        @include('people.work-experience.include.1t-guardiaSeguridad')
     @endif
     @if ($rubro_id == 2)
         @include('people.work-experience.include.jardinero')

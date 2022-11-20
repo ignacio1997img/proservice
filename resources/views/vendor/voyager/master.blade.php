@@ -235,6 +235,16 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
     }
 
 </script>
+<!-- PARA PONER NUMERICO AL LOS INPUT  -->
+<!-- <input type="text" class="form-control" id="nit" name="nit" onkeypress='return validaNumericos(event)' required> -->
+<script type="text/javascript">
+    function validaNumericos(event) {
+        if(event.charCode >= 48 && event.charCode <= 57){
+          return true;
+        }
+        return false;        
+    }
+  </script>
 @include('voyager::media.manager')
 @yield('javascript')
 @stack('javascript')

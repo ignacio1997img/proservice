@@ -202,253 +202,7 @@ class PeopleWorkExperienceController extends Controller
     }
 
 
-    //FUNCIONES PARA REGISTRAR LOS REQUERIMIENTOS DE CADA RUBRO DE MANERA ESTATICA
-
-    public function requirementGuardiaStore(Request $request)
-    {
-        // return $request;
-        DB::beginTransaction();
-        try {
-            $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
-            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
-            
-            if($ok)
-            {
-                
-                $image_ci = null;
-                $image_ci2 = null;
-                $image_ap = null;
-                $image_lsm = null;
-                $image_fcc = null;
-                // $m=0;
-                $d=0;
-                $n=0;
-                
-
-                $file = $request->file('image_ci');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/guardia/ci/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_ci = $dir.'/'.$newFileName;
-
-                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci");
-
-                    $ok->update(['image_ci' => $image_ci]);
-                }
-
-                $file = $request->file('image_ci2');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/guardia/ci/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_ci2 = $dir.'/'.$newFileName;
-                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci");
-
-                    $ok->update(['image_ci2' => $image_ci2]);
-                }
-
-                // return 1;
-                $file = $request->file('image_ap');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/guardia/antecedente_penales/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_ap = $dir.'/'.$newFileName;
-
-                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/guardia/antecedente_penales");
-
-                    $ok->update(['image_ap' => $image_ap]);
-                }
-
-                $file = $request->file('image_lsm');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/guardia/libreta_servicio/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_lsm = $dir.'/'.$newFileName;
-
-                    $image_lsm = $this->image_POST($file, $people->people_id, "trabajadores/guardia/libreta_servicio");
-
-                    $ok->update(['image_lsm' => $image_lsm]);
-                }
-
-                $file = $request->file('image_fcc');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/guardia/foto_tamaño_completo/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_fcc = $dir.'/'.$newFileName;
-
-                    $image_fcc = $this->image_POST($file, $people->people_id, "trabajadores/guardia/foto_tamaño_completo");
-
-                    $ok->update(['image_fcc' => $image_fcc]);
-                }
-               
-                if($request->turno)
-                {
-                    $i=0;
-                    while($i < count($request->turno))
-                    {
-                        // if($request->turno[$i] == '1')
-                        // {
-                        //     $m++;
-                        // }
-                        if($request->turno[$i] == '1')
-                        {
-                            $d++;
-                        }
-                        if($request->turno[$i] == '2')
-                        {
-                            $n++;
-                        }
-                        $i++;
-                    }
-                    $ok->update(['t_dia' => $d, 't_noche' => $n]);
-
-                }
-                // return $request;
-                if($request->peso)
-                {
-                    $ok->update(['peso' => $request->peso]);
-                }
-                if($request->estatura)
-                {
-                    $ok->update(['estatura' => $request->estatura]);
-                }
-
-
-            }
-            else
-            {
-                $image_ci = null;
-                $image_ci2 = null;
-                $image_ap = null;
-                $image_lsm = null;
-                $image_fcc = null;
-                // $m=0;
-                $d=0;
-                $n=0;
-               
-
-                $file = $request->file('image_ci');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/guardia/ci/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci = $dir.'/'.$newFileName;
-                }
-
-                $file = $request->file('image_ci2');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/guardia/ci/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci2 = $dir.'/'.$newFileName;
-                }
-
-                $file = $request->file('image_ap');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/guardia/antecedente_penales/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ap = $dir.'/'.$newFileName;
-                }
-
-                $file = $request->file('image_lsm');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/guardia/libreta_servicio/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_lsm = $dir.'/'.$newFileName;
-                }
-
-                $file = $request->file('image_fcc');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/guardia/foto_tamaño_completo/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_fcc = $dir.'/'.$newFileName;
-                }
-               
-                if($request->turno)
-                {
-                    $i=0;
-                    while($i < count($request->turno))
-                    {
-                        // if($request->turno[$i] == '1')
-                        // {
-                        //     $m++;
-                        // }
-                        if($request->turno[$i] == '1')
-                        {
-                            $d++;
-                        }
-                        if($request->turno[$i] == '2')
-                        {
-                            $n++;
-                        }
-                        $i++;
-                    }
-                }
-               
-                // return $request->all();
-                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'guardia', 'image_ci' => $image_ci, 'image_ci2' => $image_ci2, 'image_ap' => $image_ap,
-                                        'image_lsm' => $image_lsm, 'image_fcc' => $image_fcc, 't_dia' => $d, 't_noche' => $n, 'estatura' => $request->estatura, 'peso'=>$request->peso]);
-        
-            }
-
-            // return 1;
-            DB::commit();
-            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
-            
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            // return 0;
-            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
-        }
-    }
+    //FUNCIONES PARA REGISTRAR LOS REQUERIMIENTOS DE CADA RUBRO DE MANERA ESTAT
 
 
     public function requirementJardineriaStore(Request $request)
@@ -990,15 +744,133 @@ class PeopleWorkExperienceController extends Controller
         }
     }
 
+    // para seguridad de guardia
+    public function requirementGuardiaStore(Request $request)
+    {
+        // dd($request);
+        $imageObj = new FileController;
+        DB::beginTransaction();
+        try {
+            $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
+            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
+            $ok->update(['type'=>'guardia']);
+        // return $ok;
+            $file = $request->file('image_ci');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $ci = $imageObj->file($file, $people->people_id, "trabajadores/guardia/ci");
+                }
+                else
+                {
+                    $ci = $imageObj->image($file, $people->people_id, "trabajadores/guardia/ci");
+                }  
+                $ok->update(['image_ci' => $ci]);
+            }
 
-    
+            $file = $request->file('image_ci2');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_ci2 = $imageObj->file($file, $people->people_id, "trabajadores/guardia/ci");
+                }
+                else
+                {
+                    $image_ci2 = $imageObj->image($file, $people->people_id, "trabajadores/guardia/ci");
+                } 
+                
+                $ok->update(['image_ci2' => $image_ci2]);
+            }
+
+            $file = $request->file('image_ap');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_ap = $imageObj->file($file, $people->people_id, "trabajadores/guardia/antecedente_penales");
+                }
+                else
+                {
+                    $image_ap = $imageObj->image($file, $people->people_id, "trabajadores/guardia/antecedente_penales");
+                } 
+                $ok->update(['image_ap' => $image_ap]);
+            }
+
+            $file = $request->file('image_lsm');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_lsm = $imageObj->file($file, $people->people_id, "trabajadores/guardia/libreta_servicio");
+                }
+                else
+                {
+                    $image_lsm = $imageObj->image($file, $people->people_id, "trabajadores/guardia/libreta_servicio");
+                } 
+                $ok->update(['image_lsm' => $image_lsm]);
+            }
+
+            $file = $request->file('image_fcc');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_fcc = $imageObj->file($file, $people->people_id, "trabajadores/guardia/foto_tamaño_completo");
+                }
+                else
+                {
+                    $image_fcc = $imageObj->image($file, $people->people_id, "trabajadores/guardia/foto_tamaño_completo");
+                } 
+                $ok->update(['image_fcc' => $image_fcc]);
+            }
+
+            if($request->turno)
+            {
+                $i=0;
+                $d=0;
+                $n=0;
+                while($i < count($request->turno))
+                {
+                    if($request->turno[$i] == '1')
+                    {
+                            $d++;
+                    }
+                    if($request->turno[$i] == '2')
+                    {
+                        $n++;
+                    }
+                    $i++;
+                }
+                $ok->update(['t_dia' => $d, 't_noche' => $n]);
+            }
+            if($request->peso)
+            {
+                $ok->update(['peso' => $request->peso]);
+            }
+            if($request->estatura)
+            {
+                $ok->update(['estatura' => $request->estatura]);
+            }
+
+
+            // return 1;
+            DB::commit();
+            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
+            
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return 0;
+            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
+        }
+    }    
 
     // para sistema de seguridad   *requirementSeguritySystemStore*
     public function requirementSeguritySystemStore(Request $request)
     {
         // dd($request);
         $imageObj = new FileController;
-
         DB::beginTransaction();
         try {
 
