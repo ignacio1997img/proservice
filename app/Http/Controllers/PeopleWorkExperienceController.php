@@ -207,151 +207,7 @@ class PeopleWorkExperienceController extends Controller
 
     
 
-    public function requirementPiscineroStore(Request $request)
-    {
-        DB::beginTransaction();
-        // return $request->all();
-        try {
-
-            $image_ci = null;
-            $image_ci2 = null;
-            $image_ap = null;
-
-            $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
-            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
-
-            if($ok)
-            {
-                $file = $request->file('image_ci');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_ci = $dir.'/'.$newFileName;
-                    $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci");
-
-                    $ok->update(['image_ci' => $image_ci]);
-                }
-
-                $file = $request->file('image_ci2');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_ci2 = $dir.'/'.$newFileName;
-                    $image_ci2 = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/ci");
-
-                    $ok->update(['image_ci2' => $image_ci2]);
-
-                }
-
-                $file = $request->file('image_ap');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "trabajadores/piscinero/antecedente_penales/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_ap = $dir.'/'.$newFileName;
-                    $image_ap = $this->image_POST($file, $people->people_id, "trabajadores/piscinero/antecedente_penales");
-
-                    $ok->update(['image_ap' => $image_ap]);
-                }
-
-                if($request->exp_mant_piscina != null)
-                {
-                    $ok->update(['exp_mant_piscina' => $request->exp_mant_piscina]);
-                }
-                if($request->medir_ph != null)
-                {
-                    $ok->update(['medir_ph' => $request->medir_ph]);
-                }
-                if($request->asp_piscina != null)
-                {
-                    $ok->update(['asp_piscina' => $request->asp_piscina]);
-                }
-                if($request->cant_quimico != null)
-                {
-                    $ok->update(['cant_quimico' => $request->cant_quimico]);
-                }
-                if($request->bomba_agua != null)
-                {
-                    $ok->update(['bomba_agua' => $request->bomba_agua]);
-                }
-                if($request->trabajado_ante_donde != null)
-                {
-                    $ok->update(['trabajado_ante_donde' => $request->trabajado_ante_donde]);
-                }
-
-                // return $ok;
-                
-
-            }
-            else
-            {
-
-                $file = $request->file('image_ci');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci = $dir.'/'.$newFileName;
-                }
-
-                $file = $request->file('image_ci2');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/piscinero/ci/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ci2 = $dir.'/'.$newFileName;
-                }
-
-                $file = $request->file('image_ap');
-                if($file)
-                {                        
-                    $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    $dir = "trabajadores/piscinero/antecedente_penales/".date('F').date('Y');
-                            
-                    Storage::makeDirectory($dir);
-                    Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    $image_ap = $dir.'/'.$newFileName;
-                }
-
-
-                PeopleRequirement::create(['people_experience_id' => $request->people_experience_id, 'type'=>'piscinero', 'image_ci' => $image_ci, 'image_ci2' => $image_ci2, 'image_ap' => $image_ap, 'exp_mant_piscina' => $request->exp_mant_piscina,
-                                                'medir_ph' => $request->medir_ph, 'asp_piscina'=> $request->asp_piscina, 'cant_quimico' => $request->cant_quimico, 'bomba_agua' => $request->bomba_agua, 'trabajado_ante_donde'=> $request->trabajado_ante_donde ]);
-        
-            }
-
-            
-            DB::commit();
-            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
-            
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            // dd($th);
-            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
-        }
-    }
+    
 
     //para modelos
     public function requirementModelosStore(Request $request)
@@ -715,7 +571,7 @@ class PeopleWorkExperienceController extends Controller
         }
     }    
 
-    // para los piscineros
+    // para los jardinero
     public function requirementJardineriaStore(Request $request)
     {
         $imageObj = new FileController;
@@ -879,6 +735,97 @@ class PeopleWorkExperienceController extends Controller
         }
     }
 
+    // para los piscinero
+    public function requirementPiscineroStore(Request $request)
+    {
+        $imageObj = new FileController;
+        DB::beginTransaction();
+        // return $request->all();
+        try {
+            $ok = PeopleRequirement::where('people_experience_id', $request->people_experience_id)->where('deleted_at', null)->first();
+            $people = PeopleExperience::where('id', $ok->people_experience_id)->where('deleted_at', null)->first();
+            $ok->update(['type'=>'piscinero']);
+
+            $file = $request->file('image_ci');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $ci = $imageObj->file($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                }
+                else
+                {
+                    $ci = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                }  
+                $ok->update(['image_ci' => $ci]);
+            }
+
+            $file = $request->file('image_ci2');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_ci2 = $imageObj->file($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                }
+                else
+                {
+                    $image_ci2 = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/ci");
+                } 
+                
+                $ok->update(['image_ci2' => $image_ci2]);
+            }
+            $file = $request->file('image_ap');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_ap = $imageObj->file($file, $people->people_id, "trabajadores/sistemaSeguridad/antecedentePenales");
+                }
+                else
+                {
+                    $image_ap = $imageObj->image($file, $people->people_id, "trabajadores/sistemaSeguridad/antecedentePenales");
+                } 
+                $ok->update(['image_ap' => $image_ap]);
+            }
+
+            if($request->exp_mant_piscina != null)
+            {
+                $ok->update(['exp_mant_piscina' => $request->exp_mant_piscina]);
+            }
+
+            if($request->medir_ph != null)
+            {
+                $ok->update(['medir_ph' => $request->medir_ph]);
+            }
+
+            if($request->asp_piscina != null)
+            {
+                $ok->update(['asp_piscina' => $request->asp_piscina]);
+            }
+
+            if($request->cant_quimico != null)
+            {
+                $ok->update(['cant_quimico' => $request->cant_quimico]);
+            }
+
+            if($request->bomba_agua != null)
+            {
+                $ok->update(['bomba_agua' => $request->bomba_agua]);
+            }
+
+            if($request->trabajado_ante_donde != null)
+            {
+                $ok->update(['trabajado_ante_donde' => $request->trabajado_ante_donde]);
+            }
+            
+            DB::commit();
+            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Registro guardado exitosamente.', 'alert-type' => 'success']);
+            
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('work-experience.requirement-create',['id'=>$request->people_experience_id, 'rubro_id'=>$request->rubro_id])->with(['message' => 'Ocurrió un error al guardar el registro.', 'alert-type' => 'error']);
+        }
+    }
 
 
 
