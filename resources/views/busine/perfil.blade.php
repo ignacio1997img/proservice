@@ -157,10 +157,10 @@
                                                 @include('busine.perfil-requirement.1e-guardiaSeguridad')
                                             @endif
                                             @if ($busine->rubro_id == 2)
-                                                @include('busine.perfil-requirement.jardineria')
+                                                @include('busine.perfil-requirement.2e-jardineria')
                                             @endif
                                             @if ($busine->rubro_id == 3)
-                                                @include('busine.perfil-requirement.piscina')
+                                                @include('busine.perfil-requirement.3e-piscina')
                                             @endif
                                             @if ($busine->rubro_id == 4)
                                                 @include('busine.perfil-requirement.modelo')

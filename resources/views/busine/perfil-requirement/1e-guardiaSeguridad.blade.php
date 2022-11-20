@@ -16,7 +16,7 @@
                                 <label class="label label-danger">Sin datos</label>
                             @else                                                                
                                 <a href="{{asset('storage/'.$businerequirements->image_nit)}}" title="Ver" target="_blank">
-                                    <img @if(strpos($peoplerequirement->image_nit, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_nit)}}" @endif href="{{asset('storage/'.$businerequirements->image_nit)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
+                                    <img @if(strpos($businerequirements->image_nit, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_nit)}}" @endif href="{{asset('storage/'.$businerequirements->image_nit)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
                                 </a> 
                             @endif
                         </td>
@@ -28,7 +28,7 @@
                                 <label class="label label-danger">Sin datos</label>
                             @else                                                                
                                 <a href="{{asset('storage/'.$businerequirements->image_lf)}}" title="Ver" target="_blank">
-                                    <img @if(strpos($peoplerequirement->image_lf, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_lf)}}" @endif href="{{asset('storage/'.$businerequirements->image_lf)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
+                                    <img @if(strpos($businerequirements->image_lf, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_lf)}}" @endif href="{{asset('storage/'.$businerequirements->image_lf)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
                                 </a> 
                             @endif
                         </td>
@@ -40,7 +40,7 @@
                                 <label class="label label-danger">Sin datos</label>
                             @else
                                 <a href="{{asset('storage/'.$businerequirements->image_roe)}}" title="Ver" target="_blank">
-                                    <img @if(strpos($peoplerequirement->image_roe, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_roe)}}" @endif href="{{asset('storage/'.$businerequirements->image_roe)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
+                                    <img @if(strpos($businerequirements->image_roe, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_roe)}}" @endif href="{{asset('storage/'.$businerequirements->image_roe)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
                                 </a> 
                             @endif
                         </td>
@@ -52,7 +52,7 @@
                                 <label class="label label-danger">Sin datos</label>
                             @else
                                 <a href="{{asset('storage/'.$businerequirements->image_pd)}}" title="Ver" target="_blank">
-                                    <img @if(strpos($peoplerequirement->image_pd, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_pd)}}" @endif href="{{asset('storage/'.$businerequirements->image_pd)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
+                                    <img @if(strpos($businerequirements->image_pd, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_pd)}}" @endif href="{{asset('storage/'.$businerequirements->image_pd)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
                                 </a>                                                                
                             @endif                                                            
                         </td>

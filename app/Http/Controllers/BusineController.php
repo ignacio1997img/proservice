@@ -240,302 +240,186 @@ class BusineController extends Controller
     }
 
     ////// PARA LOS REQUISITOS DE LA EMPRESA
+    public function requirementGuardiaStore(Request $request)
+    {
+        $imageObj = new FileController;        
+        DB::beginTransaction();
+        try {
+            $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
+            $ok->update(['type' => 'guardia']);
+            
+            $file = $request->file('image_nit');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_nit = $imageObj->file($file, $request->busine_id, "empresa/guardia/nit");
+                }
+                else
+                {
+                    $image_nit = $imageObj->image($file, $request->busine_id, "empresa/guardia/nit");
+                } 
+                $ok->update(['image_nit' => $image_nit]);
+            }
+            
+            $file = $request->file('image_lf');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_lf = $imageObj->file($file, $request->busine_id, "empresa/guardia/licencia_funcionamiento");
+                }
+                else
+                {
+                    $image_lf = $imageObj->image($file, $request->busine_id, "empresa/guardia/licencia_funcionamiento");
+                } 
+                $ok->update(['image_lf' => $image_lf]);
+            }
+
+            $file = $request->file('image_roe');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_roe = $imageObj->file($file, $request->busine_id, "empresa/guardia/roe");
+                }
+                else
+                {
+                    $image_roe = $imageObj->image($file, $request->busine_id, "empresa/guardia/roe");
+                } 
+                $ok->update(['image_roe' => $image_roe]);
+            }
+            $file = $request->file('image_pd');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_pd = $imageObj->file($file, $request->busine_id, "empresa/guardia/permiso_denacev");
+                }
+                else
+                {
+                    $image_pd = $imageObj->image($file, $request->busine_id, "empresa/guardia/permiso_denacev");
+                } 
+                $ok->update(['image_pd' => $image_pd]);
+            }       
+            DB::commit();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
+        }
+    }
 
     public function requirementJardineriaStore(Request $request)
     {
-        // return $request->all();
+        $imageObj = new FileController;        
         DB::beginTransaction();
         try {
             $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
-            $busine_id = $request->busine_id;
-            // return $ok;
-
-            if($ok)
-            {
-                $image_lf = null;
-                $image_roe = null;                
-
-                $file = $request->file('image_lf');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/jadineria/licencia_funcionamiento/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_lf = $dir.'/'.$newFileName;
-                    // $ok->update(['image_lf' => $image_lf]);
-                    $image_lf = $this->image_PostB($file, $busine_id, "empresa/jadineria/licencia_funcionamiento");
-                    $ok->update(['image_lf' => $image_lf]);
+            $ok->update(['type' => 'jardineria']);
+            
+            $file = $request->file('image_nit');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_nit = $imageObj->file($file, $request->busine_id, "empresa/jadineria/nit");
                 }
-
-
-                $file = $request->file('image_roe');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/jadineria/roe/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_roe = $dir.'/'.$newFileName;
-                    $image_roe = $this->image_PostB($file, $busine_id, "empresa/jadineria/roe");
-                    $ok->update(['image_roe' => $image_roe]);
-                }
-
-
+                else
+                {
+                    $image_nit = $imageObj->image($file, $request->busine_id, "empresa/jadineria/nit");
+                } 
+                $ok->update(['image_nit' => $image_nit]);
             }
-            else
-            {
-                // return 0;
-                $image_lf = null;
-                $image_roe = null;
-
-                $file = $request->file('image_lf');
-                // dd($file);
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/jadineria/licencia_funcionamiento/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_lf = $dir.'/'.$newFileName;
-                    $image_lf = $this->image_PostB($file, $busine_id, "empresa/jadineria/licencia_funcionamiento");
+            
+            $file = $request->file('image_lf');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_lf = $imageObj->file($file, $request->busine_id, "empresa/jadineria/licencia_funcionamiento");
                 }
-                // return 22;
+                else
+                {
+                    $image_lf = $imageObj->image($file, $request->busine_id, "empresa/jadineria/licencia_funcionamiento");
+                } 
+                $ok->update(['image_lf' => $image_lf]);
+            }
 
-                $file = $request->file('image_roe');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/jadineria/roe".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_roe = $dir.'/'.$newFileName;
-                    $image_roe = $this->image_PostB($file, $busine_id, "empresa/jadineria/roe");
+            $file = $request->file('image_roe');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_roe = $imageObj->file($file, $request->busine_id, "empresa/jadineria/roe");
                 }
-                // return 11;
-
-                BusineRequirement::create(['type' => 'jardineria', 'busine_id' => $request->busine_id, 'image_lf' => $image_lf, 'image_roe' => $image_roe]);
-                                    
-            }            
+                else
+                {
+                    $image_roe = $imageObj->image($file, $request->busine_id, "empresa/jadineria/roe");
+                } 
+                $ok->update(['image_roe' => $image_roe]);
+            }     
             DB::commit();
             return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
         } catch (\Throwable $th) {
             DB::rollBack();
-            // return 1;
-            return $th;
             return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
         }
+        
     }
 
-    public function requirementGuardiaStore(Request $request)
-    {
-        // return $request->all();
-        DB::beginTransaction();
-        try {
-            $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
-            $busine_id = $request->busine_id;
-
-            $image_lf = null;
-            $image_roe = null;         
-            $image_pd = null;   
-            $busine_id = $request->busine_id;
-
-            if($ok)
-            {         
-                // return 1;     
-                $file = $request->file('image_lf');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/guardia/licencia_funcionamiento/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_lf = $dir.'/'.$newFileName;
-                    $image_lf = $this->image_PostB($file, $busine_id, "empresa/guardia/licencia_funcionamiento");
-                    $ok->update(['image_lf' => $image_lf]);
-                }
-
-
-                $file = $request->file('image_roe');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/guardia/roe/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_roe = $dir.'/'.$newFileName;
-                    $image_roe = $this->image_PostB($file, $busine_id, "empresa/guardia/roe");
-                    $ok->update(['image_roe' => $image_roe]);
-                }
-
-                $file = $request->file('image_pd');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/guardia/permiso_denacev/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_roe = $dir.'/'.$newFileName;
-                    $image_pd = $this->image_PostB($file, $busine_id, "empresa/guardia/permiso_denacev");
-                    $ok->update(['image_pd' => $image_pd]);
-                }
-
-
-            }
-            else
-            {
-                // return 0;
-                $file = $request->file('image_lf');
-                // dd($file);
-                // return $file;
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/jadineria/licencia_funcionamiento/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_lf = $dir.'/'.$newFileName;
-                    // return $request->busine_id;
-
-                    $image_lf = $this->image_PostB($file, $busine_id, "empresa/guardia/licencia_funcionamiento");
-                    // $image_ci = $this->image_POST($file, $people->people_id, "trabajadores/guardia/ci");
-
-                }
-
-                $file = $request->file('image_roe');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/jadineria/roe".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_roe = $dir.'/'.$newFileName;
-                    $image_roe = $this->image_PostB($file, $busine_id, "empresa/guardia/roe");
-
-                }
-                $file = $request->file('image_pd');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/guardia/permiso_denacev".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_pd = $dir.'/'.$newFileName;
-                    $image_pd = $this->image_PostB($file, $busine_id, "empresa/guardia/permiso_denacev");
-                }
-
-                BusineRequirement::create(['type' => 'guardia', 'busine_id' => $request->busine_id, 'image_lf' => $image_lf, 'image_roe' => $image_roe, 'image_pd' => $image_pd]);
-                                    
-            }            
-            DB::commit();
-            return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            // return 1;
-            return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
-        }
-    }
+    
 
 
     public function requirementPiscinaStore(Request $request)
     {
-        // return $request->all();
+        $imageObj = new FileController;        
         DB::beginTransaction();
         try {
             $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
-            $busine_id = $request->busine_id;
-
-            if($ok)
-            {
-                $image_lf = null;
-                $image_roe = null;                
-
-                $file = $request->file('image_lf');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/piscina/licencia_funcionamiento/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_lf = $dir.'/'.$newFileName;
-                    $image_lf = $this->image_PostB($file, $busine_id, "empresa/piscina/licencia_funcionamiento");
-                    $ok->update(['image_lf' => $image_lf]);
+            $ok->update(['type' => 'piscina']);
+            
+            $file = $request->file('image_nit');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_nit = $imageObj->file($file, $request->busine_id, "empresa/piscina/nit");
                 }
-
-
-                $file = $request->file('image_roe');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/piscina/roe/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_roe = $dir.'/'.$newFileName;
-                    $image_roe = $this->image_PostB($file, $busine_id, "empresa/piscina/roe");
-                    $ok->update(['image_roe' => $image_roe]);
-                }
-
-
+                else
+                {
+                    $image_nit = $imageObj->image($file, $request->busine_id, "empresa/piscina/nit");
+                } 
+                $ok->update(['image_nit' => $image_nit]);
             }
-            else
-            {
-                $image_lf = null;
-                $image_roe = null;
-
-                $file = $request->file('image_lf');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/piscina/licencia_funcionamiento/".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_lf = $dir.'/'.$newFileName;
-                    $image_lf = $this->image_PostB($file, $busine_id, "empresa/piscina/licencia_funcionamiento");
+            
+            $file = $request->file('image_lf');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_lf = $imageObj->file($file, $request->busine_id, "empresa/piscina/licencia_funcionamiento");
                 }
+                else
+                {
+                    $image_lf = $imageObj->image($file, $request->busine_id, "empresa/piscina/licencia_funcionamiento");
+                } 
+                $ok->update(['image_lf' => $image_lf]);
+            }
 
-                $file = $request->file('image_roe');
-                if($file)
-                {                        
-                    // $newFileName = Str::random(20).time().'.'.$file->getClientOriginalExtension();
-                            
-                    // $dir = "empresa/piscina/roe".date('F').date('Y');
-                            
-                    // Storage::makeDirectory($dir);
-                    // Storage::disk('public')->put($dir.'/'.$newFileName, file_get_contents($file));                    
-                    // $image_roe = $dir.'/'.$newFileName;
-                    $image_roe = $this->image_PostB($file, $busine_id, "empresa/piscina/roe");
-
+            $file = $request->file('image_roe');
+            if($file)
+            {       
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_roe = $imageObj->file($file, $request->busine_id, "empresa/piscina/roe");
                 }
-
-                BusineRequirement::create(['type' => 'piscina', 'busine_id' => $request->busine_id, 'image_lf' => $image_lf, 'image_roe' => $image_roe]);
-                                    
-            }            
+                else
+                {
+                    $image_roe = $imageObj->image($file, $request->busine_id, "empresa/piscina/roe");
+                } 
+                $ok->update(['image_roe' => $image_roe]);
+            }     
             DB::commit();
             return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
         } catch (\Throwable $th) {
@@ -646,37 +530,68 @@ class BusineController extends Controller
             $ok = BusineRequirement::where('busine_id', $request->busine_id)->where('deleted_at', null)->first();
             $ok->update(['type' => 'sistemaSeguridad']);
             $busine_id = $request->busine_id;
+            // return $ok;
+            // dd($request);
             
             $file = $request->file('image_nit');
             if($file)
             {       
-                $image_nit = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/nit");
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_nit = $imageObj->file($file, $request->busine_id, "empresa/sistemaSeguridad/nit");
+                }
+                else
+                {
+                    $image_nit = $imageObj->image($file, $request->busine_id, "empresa/sistemaSeguridad/nit");
+                } 
                 $ok->update(['image_nit' => $image_nit]);
             }
             
             $file = $request->file('image_lf');
             if($file)
             {       
-                $image_lf = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/licencia_funcionamiento");
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_lf = $imageObj->file($file, $request->busine_id, "empresa/sistemaSeguridad/licencia_funcionamiento");
+                }
+                else
+                {
+                    $image_lf = $imageObj->image($file, $request->busine_id, "empresa/sistemaSeguridad/licencia_funcionamiento");
+                } 
                 $ok->update(['image_lf' => $image_lf]);
             }
 
             $file = $request->file('image_roe');
             if($file)
             {       
-                $image_roe = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/roe");
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_roe = $imageObj->file($file, $request->busine_id, "empresa/sistemaSeguridad/roe");
+                }
+                else
+                {
+                    $image_roe = $imageObj->image($file, $request->busine_id, "empresa/sistemaSeguridad/roe");
+                } 
                 $ok->update(['image_roe' => $image_roe]);
             }
             $file = $request->file('image_pd');
             if($file)
             {       
-                $image_pd = $imageObj->image($file, $busine_id, "empresa/sistemaSeguridad/antecedentePenales");
+                if($file->getClientOriginalExtension()=='pdf')
+                {
+                    $image_pd = $imageObj->file($file, $request->busine_id, "empresa/sistemaSeguridad/permiso_denacev");
+                }
+                else
+                {
+                    $image_pd = $imageObj->image($file, $request->busine_id, "empresa/sistemaSeguridad/permiso_denacev");
+                } 
                 $ok->update(['image_pd' => $image_pd]);
             }       
             DB::commit();
             return redirect()->route('busines.perfil-view')->with(['message' => 'Perfil Actualizado Exitosamente.', 'alert-type' => 'success']);
         } catch (\Throwable $th) {
             DB::rollBack();
+            return 0;
             return redirect()->route('busines.perfil-view')->with(['message' => 'Ocurrió un error al actualizar el perfil.', 'alert-type' => 'error']);
         }
     }

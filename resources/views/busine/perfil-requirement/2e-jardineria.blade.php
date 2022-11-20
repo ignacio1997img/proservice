@@ -45,18 +45,6 @@
                             @endif
                         </td>
                     </tr>
-                    <tr>
-                        <td style="height: 50px">Permiso de denacev</td>
-                        <td style="text-align: center">
-                            @if (!$businerequirements->image_pd)
-                                <label class="label label-danger">Sin datos</label>
-                            @else
-                                <a href="{{asset('storage/'.$businerequirements->image_pd)}}" title="Ver" target="_blank">
-                                    <img @if(strpos($businerequirements->image_pd, ".pdf")) src="{{asset('images/icon/pdf.png')}}" @else src="{{asset('storage/'.$businerequirements->image_pd)}}" @endif href="{{asset('storage/'.$businerequirements->image_pd)}}" class="zoom" style="width: 60px; height: 60px; border-radius: 30px; margin-right: 10px"/>
-                                </a>                                                                
-                            @endif                                                            
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -71,7 +59,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="voyager-plus"></i> Requisito de la Empresa</h4>
             </div>
-            {!! Form::open(['route' => 'busine.perfil.requirement-seguritySystem-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
+            {!! Form::open(['route' => 'busine.perfil.requirement-jardineria-store','class' => 'was-validated', 'method'=>'POST', 'enctype' => 'multipart/form-data'])!!}
                 <!-- Modal body -->
                 <div class="modal-body">
                     <input type="hidden" name="busine_id" value="{{$busine->id}}">
@@ -88,11 +76,7 @@
                             <div class="form-group col-md-6">
                                 <small>Roe *imagen</small>                            
                                 <input type="file" accept="image/jpeg,image/jpg,image/png,application/pdf" name="image_roe" class="form-control imageLength">                            
-                            </div>
-                            <div class="form-group col-md-6">
-                                <small>Permiso de denacev *imagen</small>                            
-                                <input type="file" accept="image/jpeg,image/jpg,image/png,application/pdf" name="image_pd" class="form-control imageLength">                            
-                            </div>                         
+                            </div>                       
                         </div>
 
 
