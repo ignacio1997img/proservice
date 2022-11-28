@@ -30,6 +30,10 @@ use App\Models\People;
 use App\Models\Profession;
 use Illuminate\Support\Facades\Auth;
 
+
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -251,6 +255,11 @@ Route::group(['prefix' => 'admin'], function () {
     //para obtener el correo electronico si existe o no registrado
     Route::get('ajaxQuery/email/{data?}', [AjaxQueryController::class, 'ajaxEmail'])->name('ajaxQuery.email');
 
+
+
+
+
+
 });
 
     // Route::get('welcome', [HomeController::class, 'welcome'])->name('welcome');
@@ -263,6 +272,33 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('beneficiary/create-beneficiary', [BeneficiaryController::class, 'create'])->name('beneficiary.create');
     Route::post('beneficiary/beneficiary-store', [BeneficiaryController::class, 'store'])->name('beneficiary.store');
+
+
+
+
+
+
+    Route::get('contactanos', function(){
+        $correo = new ContactanosMailable;
+
+        Mail::to('mmolinaguzmanignacio1997@gmail.com')->send($correo);
+        return "Mensaje Enviado";
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Clear cache

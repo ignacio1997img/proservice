@@ -11,7 +11,7 @@ class ContactanosMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subjetc = "Contactanos";
+    public $subject = "Informacion de Contactos";
 
     public function __construct()
     {
@@ -25,6 +25,6 @@ class ContactanosMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.contactanos');
     }
 }

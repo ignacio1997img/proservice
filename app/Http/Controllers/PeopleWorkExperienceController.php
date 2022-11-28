@@ -47,6 +47,7 @@ class PeopleWorkExperienceController extends Controller
         $experiences = PeopleExperience::with('rubro_people','type_model')->where('people_id',$people->id)->where('deleted_at', null)->where('status', '!=', 0)->get();
 
         $unique_experience=NULL;
+        // return Carbon::now();
       
         // return $experiences;
         return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model', 'pasantia', 'profession', 'unique_experience'));
