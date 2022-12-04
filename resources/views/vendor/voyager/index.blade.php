@@ -57,6 +57,7 @@
 
     @php
         $user = \Auth::user();
+        $ok = NULL;
         // dd($user);
     @endphp
 
