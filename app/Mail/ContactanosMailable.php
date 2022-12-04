@@ -25,6 +25,7 @@ class ContactanosMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.contactanos');
+        $name="ignacio";
+        return $this->view('emails.contactanos', compact('name'));
     }
 }

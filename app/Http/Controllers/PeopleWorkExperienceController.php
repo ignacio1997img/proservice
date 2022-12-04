@@ -53,6 +53,7 @@ class PeopleWorkExperienceController extends Controller
         return view('people.perfil', compact('people', 'city', 'department', 'cities', 'experiences', 'rubro', 'model', 'pasantia', 'profession', 'unique_experience'));
     }
 
+    // para registrar las experiencia de cada persona
     public function store(Request $request)
     {
         // return $request;
@@ -88,9 +89,9 @@ class PeopleWorkExperienceController extends Controller
         try {
             // return Carbon::now();
             $experience = PeopleExperience::find($request->id);
-            $experience->update(['status' => 0, 'deleted_at' => Carbon::now()]);
+            $experience->update(['deleted_at' => Carbon::now()]);
 
-            PeopleRequirement::where('people_experience_id', $experience->id)->update(['status' => 0, 'deleted_at' => Carbon::now()]);
+            PeopleRequirement::where('people_experience_id', $experience->id)->update(['deleted_at' => Carbon::now()]);
 
 
             DB::commit();

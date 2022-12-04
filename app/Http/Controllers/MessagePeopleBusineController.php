@@ -12,6 +12,21 @@ use Illuminate\Support\Facades\Auth;
 
 class MessagePeopleBusineController extends Controller
 {
+
+
+    //para que puedan ver las solicitudes de mensajes las personas
+    public function message_people()
+    {
+        // return 1;
+        $user = Auth::user();
+        $people = People::where('user_id', $user->id)->where('status', 1)->where('deleted_at', null)->first();
+        // return $people;
+        $message = MessagePeople::with(['busine','rubro_busine'])->where('people_id', $people->id)->where('deleted_at', null)->orderBy('id', 'desc')->get();
+        // return $message;
+        return view('message.message-people.browse', compact('message'));
+    }
+
+
     // para poder enivar mensajes a la persona
     public function store(Request $request)
     {
@@ -38,17 +53,7 @@ class MessagePeopleBusineController extends Controller
 
 
 
-    //para que puedan ver las solicitudes de mensajes las personas
-    public function message_people()
-    {
-        // return 1;
-        $user = Auth::user();
-        $people = People::where('user_id', $user->id)->where('status', 1)->where('deleted_at', null)->first();
-        // return $people;
-        $message = MessagePeople::with(['busine','rubro_busine'])->where('people_id', $people->id)->where('deleted_at', null)->orderBy('id', 'desc')->get();
-        // return $message;
-        return view('message.message-people.browse', compact('message'));
-    }
+    
 
     public function aceptar(Request $request)
     {

@@ -281,8 +281,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('contactanos', function(){
         $correo = new ContactanosMailable;
 
-        Mail::to('mmolinaguzmanignacio1997@gmail.com')->send($correo);
+        Mail::to('mmalue43@gmail.com')->send($correo);
         return "Mensaje Enviado";
+        // return view('emails.contactanos');
     });
 
 

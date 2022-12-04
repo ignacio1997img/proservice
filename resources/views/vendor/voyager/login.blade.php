@@ -41,20 +41,24 @@
                     </div>
                 </div>
             @endif --}}
+            <br>
 
 
             <div class="form-group" id="rememberMeGroup">
-                <div class="controls">
+                
+                {{-- <a href="url"><p style="color:#0088ff;font-weight:bold">¿Olvidaste tu contraseña?</p></a> --}}
+                {{-- <div class="controls">
                     <input type="checkbox" name="remember" id="remember" value="1"><label for="remember" class="remember-me-text">{{ __('voyager::generic.remember_me') }}</label>
-                </div>
+                </div> --}}
             </div>
+
 
             <button type="submit" class="btn btn-success">
                 <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('voyager::login.loggingin') }}...</span>
                 <span class="signin">{{ __('voyager::generic.login') }}</span>
             </button>
             &nbsp;&nbsp;&nbsp;
-            <a type="button" href="{{url('/')}}" class="btn btn-dark">Cancelar</a>
+            <a type="button" href="{{url('/')}}" class="btn btn-dark">Inicio</a>
 
         </form>
 

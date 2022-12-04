@@ -149,6 +149,7 @@
 
                     <div style="text-align: right" >
                         <button type="submit" class="btn" id="btn-sumit" disabled style="background-color: #ff9d00;">Registrarse</button>
+                        <a type="button" href="{{url('/')}}" class="btn" style="background-color: #526069; color:#ffffff;">Inicio</a>
                     </div>
                 {!! Form::close()!!} 
             </div>

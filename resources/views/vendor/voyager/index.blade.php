@@ -54,12 +54,84 @@
             
         </div>
     </div>
+
+    @php
+        $user = \Auth::user();
+        // dd($user);
+    @endphp
+
+    @if ($user->role_id == 4)
+        @php
+
+            $rubro = App\Models\RubroPeople::where('status',1)->where('deleted_at', null)->get();
+            $people = App\Models\People::where('user_id', $user->id)->first();
+            $ok = App\Models\PeopleExperience::where('people_id', $people->id)->where('deleted_at', null)->get()->count();
+            // dd($ok);
+        @endphp
+        {{-- modal para registrar las experiencia de cada persona --}}
+        <div class="modal fade modal-primary" data-backdrop="static" data-keyboard="false" role="dialog" id="modal-create">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">                
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button> --}}
+                        <h4 class="modal-title"><i class="fa-solid fa-person-digging"></i> Registre Su Experiencia Laboral</h4>
+                    </div>
+                    {!! Form::open(['route' => 'people-perfil-experience.store','class' => 'was-validated'])!!}
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Tipo de Trabajo:</b></span>
+                                    </div>
+                                    <select name="rubro_id" id="rubro_id" class="form-control select2" required>
+                                        <option value="" disabled selected>Seleccione un tipo..</option>
+                                        @foreach($rubro as $item)
+                                            {{-- @if ($item->id != 4 && auth()->user()->hasRole('trabajador')) --}}
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            {{-- @endif --}}
+                                            
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>     
+
+                        </div>
+                        
+                        <!-- Modal footer -->
+                        <div class="modal-footer justify-content-between">
+                            {{-- <button type="button text-left" class="btn btn-danger" data-dismiss="modal" data-toggle="tooltip" title="Volver">Cancelar
+                            </button> --}}
+                            <button type="submit" class="btn btn-dark btn-sm" title="Registrar..">
+                                Registrar
+                            </button>
+                        </div>
+                    {!! Form::close()!!} 
+                    
+                </div>
+            </div>
+        </div>
+    @endif
 @stop
 
 @section('javascript')
+<script>
+    $(document).ready(function(){
+        let role = '{{$user->role_id}}';
+        let cant = '{{$ok}}';
+        if(role == 4 && cant == 0)
+        {
+            $('#modal-create').modal('show');
+        }
+    });
+</script>
 
     @if(isset($google_analytics_client_id) && !empty($google_analytics_client_id))
         <script>
+            
+
+
             (function (w, d, s, g, js, fs) {
                 g = w.gapi || (w.gapi = {});
                 g.analytics = {
